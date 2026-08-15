@@ -4,6 +4,7 @@ import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
 import path from 'path';
 
 export default defineConfig({
+  base: '/dropship/',
   plugins: [react(), TanStackRouterVite()],
   resolve: {
     alias: {
@@ -11,6 +12,6 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5174,
+    port: 3002,
   },
 });

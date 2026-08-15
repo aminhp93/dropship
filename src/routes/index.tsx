@@ -1,3 +1,4 @@
+import { QuyTrinh2026Tab } from "@/features/dropshipping/components/QuyTrinh2026Tab";
 import { Link } from "@tanstack/react-router";
 import { readings, slugify } from "@/features/dropshipping/data/linhthach-reading-data";
 import { createFileRoute } from "@tanstack/react-router";
@@ -250,7 +251,7 @@ const CONTENT_SCRIPT_DATA = {
 
 function DropshippingPlaybook() {
   const [activeTab, setActiveTab] = useState<
-    "overview" | "quytrinh" | "blog" | "blog-linh-thach" | "sanpham"
+    "overview" | "quy-trinh-2026" | "quytrinh" | "blog" | "blog-linh-thach" | "sanpham"
   >("overview");
   const sopVersion = "2026";
   const [activePhaseIndex, setActivePhaseIndex] = useState<number>(0);
@@ -330,12 +331,18 @@ function DropshippingPlaybook() {
 
   // Initial load
   useEffect(() => {
-    loadProducts().then((data) => {
-      if (data && data.length > 0) {
+    let ignore = false;
+    async function init() {
+      const data = await loadProducts();
+      if (!ignore && data && data.length > 0) {
         setSelectedProductId(data[0].id);
-        loadProductData(data[0].id);
+        await loadProductData(data[0].id);
       }
-    });
+    }
+    init();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const handleProductSelect = async (id: string) => {
@@ -475,7 +482,8 @@ function DropshippingPlaybook() {
         <div className="flex border-b border-zinc-200 dark:border-zinc-800">
           {[
             { id: "overview", label: "Tổng quan", icon: BookOpen },
-            { id: "quytrinh", label: "Quy trình", icon: ClipboardList },
+            { id: "quy-trinh-2026", label: "Quy trình 2026", icon: Sparkles },
+            { id: "quytrinh", label: "SOP Chi Tiết", icon: ClipboardList },
             { id: "blog", label: "Blog", icon: Newspaper },
             { id: "blog-linh-thach", label: "Blog Linh Thạch", icon: Video },
             { id: "sanpham", label: "Sản phẩm", icon: FolderOpen },
@@ -486,7 +494,7 @@ function DropshippingPlaybook() {
                 key={tab.id}
                 onClick={() => {
                   setActiveTab(
-                    tab.id as "overview" | "quytrinh" | "blog" | "blog-linh-thach" | "sanpham",
+                    tab.id as "overview" | "quy-trinh-2026" | "quytrinh" | "blog" | "blog-linh-thach" | "sanpham",
                   );
                   if (tab.id === "overview") {
                     setActivePhaseIndex(0);
@@ -509,6 +517,9 @@ function DropshippingPlaybook() {
             );
           })}
         </div>
+
+        {/* Quy Trinh 2026 Tab Content */}
+        {activeTab === "quy-trinh-2026" && <QuyTrinh2026Tab />}
 
         {/* Dynamic SOP Content */}
         {(activeTab === "overview" || activeTab === "quytrinh") && (

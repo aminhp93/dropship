@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocation } from '@tanstack/react-router';
 
 interface LoginGateProps {
@@ -7,18 +7,14 @@ interface LoginGateProps {
 
 export function LoginGate({ children }: LoginGateProps) {
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("site-password") === import.meta.env.VITE_SITE_PASSWORD;
+  });
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const isPublicPage = location.pathname === '/';
 
-  useEffect(() => {
-    const savedPassword = localStorage.getItem('site-password');
-    if (savedPassword === import.meta.env.VITE_SITE_PASSWORD) {
-      setIsAuthenticated(true);
-    }
-  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
