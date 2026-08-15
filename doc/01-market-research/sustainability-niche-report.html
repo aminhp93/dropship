@@ -1,0 +1,771 @@
+<title>Sustainability Niche Report — Top 10 — Aug 2026</title>
+<style>
+  :root {
+    --bg: #f5f6f1;
+    --bg-elevated: #ffffff;
+    --bg-sunken: #e9ece0;
+    --text: #1d211a;
+    --text-muted: #62695a;
+    --border: #dbe0d1;
+    --accent: #4c7a3f;
+    --accent-soft: #dcebd6;
+    --good: #3c7a5d;
+    --good-soft: #dcece3;
+    --warn: #a8781f;
+    --warn-soft: #f3e6cc;
+    --bad: #a5372f;
+    --bad-soft: #f3dcd9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171a15;
+      --bg-elevated: #1f2419;
+      --bg-sunken: #141712;
+      --text: #e9ede1;
+      --text-muted: #99a189;
+      --border: #333c2b;
+      --accent: #7bb469;
+      --accent-soft: #223321;
+      --good: #6cb491;
+      --good-soft: #1e2f27;
+      --warn: #e0ac52;
+      --warn-soft: #332a17;
+      --bad: #e07a72;
+      --bad-soft: #382220;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171a15; --bg-elevated: #1f2419; --bg-sunken: #141712;
+    --text: #e9ede1; --text-muted: #99a189; --border: #333c2b;
+    --accent: #7bb469; --accent-soft: #223321;
+    --good: #6cb491; --good-soft: #1e2f27; --warn: #e0ac52; --warn-soft: #332a17; --bad: #e07a72; --bad-soft: #382220;
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f6f1; --bg-elevated: #ffffff; --bg-sunken: #e9ece0;
+    --text: #1d211a; --text-muted: #62695a; --border: #dbe0d1;
+    --accent: #4c7a3f; --accent-soft: #dcebd6;
+    --good: #3c7a5d; --good-soft: #dcece3; --warn: #a8781f; --warn-soft: #f3e6cc; --bad: #a5372f; --bad-soft: #f3dcd9;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); }
+  body {
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  h1, h2, h3 { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; text-wrap: balance; margin: 0; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+
+  header.masthead { border-bottom: 3px solid var(--text); padding-bottom: 20px; margin-bottom: 36px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+  h1 { font-size: 34px; font-weight: 600; }
+  .subhead { color: var(--text-muted); font-size: 15px; margin-top: 10px; max-width: 62ch; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 18px; font-size: 13px; color: var(--text-muted); }
+  .meta-row span b { color: var(--text); font-weight: 600; }
+
+  section { margin-top: 48px; }
+  .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); font-weight: 600; margin-bottom: 16px; }
+
+  .scoreboard { display: flex; flex-direction: column; gap: 10px; }
+  .score-row { display: grid; grid-template-columns: 28px 1fr 200px 60px; align-items: center; gap: 14px; padding: 10px 14px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; }
+  .score-rank { color: var(--text-muted); font-size: 13px; }
+  .score-name { font-weight: 600; font-size: 15px; }
+  .score-name a { color: inherit; }
+  .bar-track { height: 8px; background: var(--bg-sunken); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: var(--accent); }
+  .score-num { text-align: right; font-weight: 700; font-size: 15px; }
+
+  .product { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 28px 30px; margin-bottom: 28px; }
+  .product-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .product-head h2 { font-size: 23px; }
+  .product-head .id { color: var(--text-muted); font-size: 13px; margin-top: 4px; }
+  .score-badge { font-family: Georgia, serif; font-weight: 700; font-size: 26px; padding: 6px 16px; border-radius: 8px; white-space: nowrap; }
+  .score-badge small { font-family: -apple-system, sans-serif; font-size: 12px; font-weight: 600; opacity: 0.75; margin-left: 2px; }
+  .badge-good { background: var(--good-soft); color: var(--good); }
+  .badge-warn { background: var(--warn-soft); color: var(--warn); }
+  .badge-bad { background: var(--bad-soft); color: var(--bad); }
+
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .chip { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-muted); }
+  .chip.on-good { color: var(--good); border-color: var(--good); background: var(--good-soft); }
+  .chip.on-warn { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+  .chip.on-bad { color: var(--bad); border-color: var(--bad); background: var(--bad-soft); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; }
+  @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } .score-row { grid-template-columns: 22px 1fr; grid-template-areas: "rank name" "bar bar"; } .score-row .bar-track, .score-row .score-num { display: none; } }
+
+  .field h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 6px; font-weight: 700; }
+  .field p, .field ul { margin: 0; font-size: 14.5px; }
+  .field ul { padding-left: 18px; }
+  .field p a, .field li a, .verdict a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  .field.full { grid-column: 1 / -1; }
+
+  .verdict { margin-top: 20px; padding: 16px 18px; background: var(--bg-sunken); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; font-size: 14.5px; }
+  .verdict b { font-family: Georgia, serif; }
+  .sources { font-size: 12.5px; color: var(--text-muted); margin-top: 14px; }
+
+  table.compare { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.compare th, table.compare td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  table.compare th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; }
+  table.compare tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+  .table-wrap table { min-width: 640px; }
+
+  .note-box { background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 8px; padding: 18px 22px; font-size: 13.5px; color: var(--text-muted); }
+  .note-box h3 { font-size: 14px; color: var(--text); margin-bottom: 8px; }
+  .note-box ul { margin: 8px 0 0; padding-left: 18px; }
+  .note-box li { margin-bottom: 4px; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--text-muted); }
+
+  .viz-log { margin-top: 20px; }
+  .viz-log h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 10px; font-weight: 700; }
+  .viz-row { display: grid; grid-template-columns: 128px 1fr; gap: 14px; padding: 10px 0; border-top: 1px solid var(--border); font-size: 13.5px; }
+  .viz-row:first-of-type { border-top: none; }
+  .viz-src { font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .viz-badge { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 6px; flex: none; font-size: 10px; font-weight: 700; font-family: -apple-system, sans-serif; background: var(--bg-sunken); color: var(--text-muted); border: 1px solid var(--border); }
+  .viz-src a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 12px; display: block; margin-top: 3px; border-bottom: 1px solid var(--accent-soft); width: fit-content; }
+  .viz-obs { color: var(--text-muted); }
+  .viz-obs b { color: var(--text); font-weight: 600; }
+  @media (max-width: 640px) { .viz-row { grid-template-columns: 1fr; gap: 4px; } }
+
+  .quicknav { position: sticky; top: 0; z-index: 20; display: flex; gap: 8px; flex-wrap: wrap; background: var(--bg); padding: 10px 0 12px; margin: -12px 0 24px; border-bottom: 1px solid var(--border); }
+  .quicknav a { font-size: 12.5px; font-weight: 600; text-decoration: none; color: var(--text-muted); background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 100px; padding: 6px 13px; white-space: nowrap; }
+  .quicknav a:hover, .quicknav a:focus-visible { color: var(--accent); border-color: var(--accent); }
+  .quicknav a b { color: inherit; font-weight: 700; margin-right: 5px; }
+
+  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 18px; }
+  .stat-strip .stat { background: var(--bg-elevated); padding: 12px 14px; }
+  .stat-strip .stat-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .stat-strip .stat-value { font-size: 15px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+  @media (max-width: 640px) { .stat-strip { grid-template-columns: 1fr 1fr; } }
+
+  .field ul.stat-list { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .field ul.stat-list li { padding-left: 15px; position: relative; }
+  .field ul.stat-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .field ul.stat-list b { color: var(--text); }
+
+  details.note-box { padding: 0; overflow: hidden; }
+  details.note-box summary { cursor: pointer; padding: 16px 22px; font-size: 13.5px; color: var(--text); font-weight: 600; list-style: none; display: flex; align-items: center; gap: 8px; }
+  details.note-box summary::-webkit-details-marker { display: none; }
+  details.note-box summary::before { content: "▸"; color: var(--accent); font-size: 11px; transition: transform 0.15s; }
+  details.note-box[open] summary::before { transform: rotate(90deg); }
+  details.note-box .note-body { padding: 0 22px 18px; }
+  details.note-box summary .sub { font-weight: 400; color: var(--text-muted); }
+</style>
+
+<header class="masthead">
+  <div class="eyebrow">Dropshipping Market Research · Sustainability Niche</div>
+  <h1>Top 10 Sustainability Products, Weighed for Demand</h1>
+  <p class="subhead">The highest-scoring 10 of 13 sustainability/eco-friendly products from Shopify's <a href="https://www.shopify.com/blog/dropshipping-niches" style="color:inherit">dropshipping niches guide</a>, each checked live against Google Trends (5-year + 12-month), Google Shopping, TikTok, and the Meta Ads Library — same methodology as the Car Accessories report.</p>
+  <div class="meta-row">
+    <span>Compiled <b>Aug 10, 2026</b></span>
+    <span>Region <b>United States</b></span>
+    <span>Window <b>5-year + trailing 12 months</b></span>
+    <span>Sources <b>Google Trends · Google Shopping · TikTok · Meta Ads Library</b></span>
+  </div>
+</header>
+
+<nav class="quicknav" aria-label="Jump to product">
+  <a href="#scoreboard"><b>↑</b>Ranking</a>
+  <a href="#vegan-snacks">Vegan Snacks · 8</a>
+  <a href="#beeswax-wrap">Beeswax Wraps · 7</a>
+  <a href="#compostable-plates">Compostable Plates · 7</a>
+  <a href="#solar-lights">Solar Lights · 7</a>
+  <a href="#coffee-cups">Coffee Cups · 6.5</a>
+  <a href="#water-bottles">Water Bottles · 6</a>
+  <a href="#shampoo-bars">Shampoo Bars · 6</a>
+  <a href="#organic-bedding">Organic Bedding · 5.5</a>
+  <a href="#activewear">Activewear · 5</a>
+  <a href="#metal-straws">Metal Straws · 4</a>
+  <a href="#methodology">Methodology</a>
+</nav>
+
+<section>
+  <details class="note-box" style="border-left: 3px solid var(--accent);">
+    <summary>How this pass was run <span class="sub">— keywords → Trends (5yr + 12mo) → Shopping → TikTok → Meta Ads Library, all checked live</span></summary>
+    <div class="note-body">
+      <p>13 sustainability products were researched live on Aug 10, 2026 across four parallel research passes (3-4 products each). For each: correct English keyword → Google Trends chart checked at <b>both 5-year and 12-month</b> ranges, live, plus its interest-by-region breakdown and related/rising queries → Google Shopping search (live pricing/ratings, doubling as a competition check) → TikTok video search (live) → Meta Ads Library (live active-ad check, since Meta retired the standalone Audience Insights tool in 2024).</p>
+      <p style="margin-top:10px;">The lowest-scoring 3 of 13 — Natural Cleaning Products (3/10, saturated by CPG brands + noisy Trends data), Canvas Tote Bags (4/10, a single viral fashion moment already faded), and Travel Utensil Set (4/10, thinnest data of the set on every channel) — were dropped to keep this report to the top 10. One honest limitation: the browser tool used has no way to export screenshots as image files, so pictures aren't embeddable here — each "Live source views" block links to the exact same live query instead.</p>
+    </div>
+  </details>
+</section>
+
+<section id="scoreboard">
+  <div class="section-label">Ranked by opportunity score — top 10 of 13 products researched</div>
+  <div class="scoreboard">
+    <div class="score-row"><span class="score-rank mono">01</span><span class="score-name"><a href="#vegan-snacks">Vegan Snacks</a></span><span class="bar-track"><span class="bar-fill" style="width:80%; background:var(--good);"></span></span><span class="score-num mono" style="color:var(--good);">8 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">02</span><span class="score-name"><a href="#beeswax-wrap">Beeswax Food Wraps</a></span><span class="bar-track"><span class="bar-fill" style="width:70%; background:var(--good);"></span></span><span class="score-num mono" style="color:var(--good);">7 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">02</span><span class="score-name"><a href="#compostable-plates">Compostable Plates, Cups &amp; Bowls</a></span><span class="bar-track"><span class="bar-fill" style="width:70%; background:var(--good);"></span></span><span class="score-num mono" style="color:var(--good);">7 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">02</span><span class="score-name"><a href="#solar-lights">Solar-Powered Lights</a></span><span class="bar-track"><span class="bar-fill" style="width:70%; background:var(--good);"></span></span><span class="score-num mono" style="color:var(--good);">7 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">05</span><span class="score-name"><a href="#coffee-cups">Reusable Coffee Cups</a></span><span class="bar-track"><span class="bar-fill" style="width:65%; background:var(--good);"></span></span><span class="score-num mono" style="color:var(--good);">6.5 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">06</span><span class="score-name"><a href="#water-bottles">Insulated Water Bottles</a></span><span class="bar-track"><span class="bar-fill" style="width:60%; background:var(--warn);"></span></span><span class="score-num mono" style="color:var(--warn);">6 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">06</span><span class="score-name"><a href="#shampoo-bars">Solid Shampoo &amp; Conditioner Bars</a></span><span class="bar-track"><span class="bar-fill" style="width:60%; background:var(--warn);"></span></span><span class="score-num mono" style="color:var(--warn);">6 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">08</span><span class="score-name"><a href="#organic-bedding">Organic Cotton Bedding</a></span><span class="bar-track"><span class="bar-fill" style="width:55%; background:var(--warn);"></span></span><span class="score-num mono" style="color:var(--warn);">5.5 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">09</span><span class="score-name"><a href="#activewear">Sustainable Activewear</a></span><span class="bar-track"><span class="bar-fill" style="width:50%; background:var(--warn);"></span></span><span class="score-num mono" style="color:var(--warn);">5 / 10</span></div>
+    <div class="score-row"><span class="score-rank mono">10</span><span class="score-name"><a href="#metal-straws">Reusable Metal Straws</a></span><span class="bar-track"><span class="bar-fill" style="width:40%; background:var(--bad);"></span></span><span class="score-num mono" style="color:var(--bad);">4 / 10</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">At a glance</div>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr><th>Product</th><th>Trend shape (live)</th><th>Shopping lead</th><th>TikTok top</th><th>Meta ads (live)</th><th>Best angle</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Vegan Snacks</td><td class="mono">Evergreen, never below ~45/100</td><td class="mono">LOUISville Jerky $8.49, 4.6★</td><td class="mono">181.5K</td><td>~910, genuine, funded DTC</td><td>Own hook (scarcity/social proof), needs 3PL fit</td></tr>
+        <tr><td>Beeswax Food Wraps</td><td class="mono">Earth Day spike, 2x historical high</td><td class="mono">Bee's Wrap $19.99, 4.7★</td><td class="mono">810.4K</td><td>~110, mostly genuine</td><td>Bread bags / kits vs. Bee's Wrap</td></tr>
+        <tr><td>Compostable Plates, Cups &amp; Bowls</td><td class="mono">7-wk spring/wedding-season plateau</td><td class="mono">ECOLipak $75.96, 4.9★</td><td class="mono">97.2K</td><td>~44, 100% genuine</td><td>Certification/PFAS-safe messaging</td></tr>
+        <tr><td>Solar-Powered Lights</td><td class="mono">Recurring spring seasonal, tallest in '26</td><td class="mono">Hampton Bay $4.97, 4.0★</td><td class="mono">17.8K</td><td>~5,000, genuine</td><td>Sub-niche vs. Home Depot/Walmart</td></tr>
+        <tr><td>Reusable Coffee Cups</td><td class="mono">Recurring spring spike, organic TikTok pull</td><td class="mono">Fellow Carter $29.95, 4.7★</td><td class="mono">178K</td><td>~380, mostly genuine</td><td>Collapsible-cup / Starbucks-culture tie-in</td></tr>
+        <tr><td>Insulated Water Bottles</td><td class="mono">Evergreen + spring spike, brand-saturated</td><td class="mono">YETI Rambler $40, 4.7★</td><td class="mono">194K</td><td>~2,200, mostly genuine</td><td>Sharp sub-niche (dog-bowl lid, cycling)</td></tr>
+        <tr><td>Solid Shampoo &amp; Conditioner Bars</td><td class="mono">Sharp '26 breakout, likely ad-driven</td><td class="mono">Earthling Co $15.99, 4.7★</td><td class="mono">50.9K</td><td>~2,200, one advertiser dominant</td><td>Caution: spike may be one campaign's</td></tr>
+        <tr><td>Organic Cotton Bedding</td><td class="mono">Thin/noisy, spring spike, higher AOV</td><td class="mono">Pact Sateen $170, 4.7★</td><td class="mono">5.4K</td><td>~370, genuine, no junk</td><td>Curated brand story over volume play</td></tr>
+        <tr><td>Sustainable Activewear</td><td class="mono">Recent volatile rise, thin geography</td><td class="mono">PlantTec Shorts $58, 4.5★</td><td class="mono">6.3K</td><td>~130, ~half genuine</td><td>Monitor momentum, not proven yet</td></tr>
+        <tr><td>Reusable Metal Straws</td><td class="mono">Sporadic spikes, near-zero baseline</td><td class="mono">Klean Kanteen $2.95, 4.8★</td><td class="mono">341.1K</td><td>~3, essentially no ad activity</td><td>TikTok-first launch, not SEO/PPC</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="vegan-snacks" class="product">
+  <div class="product-head">
+    <div><h2>Vegan Snacks</h2><div class="id mono">Vegan jerky · cookies · protein bars · gummy candy</div></div>
+    <div class="score-badge badge-good">8<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-good">Evergreen demand</span><span class="chip on-good">Broadest reach</span><span class="chip">Funded advertisers</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends floor/peak</div><div class="stat-value">45–100, never zero</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">LOUISville Jerky 4.6★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">181.5K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~910, genuine</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li>Interest <b>never dropped below ~45/100</b> across the full 5-year window — a fundamentally evergreen shape vs. the near-zero baselines of most other products — peaking at 100 the week of Apr 12, 2026.</li>
+        <li>12-month view shows healthy cyclical swings between 45–100 all year, no dead months.</li>
+        <li>Rising: "welch's mixed fruit snacks" (+650%), "healthy snacks for work" (+350%), "vegan travel snacks" (+180%), "vegan snacks for kids" (+40%).</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>Two dedicated Shopping categories ("Vegan jerky," "Vegan cookies"). <b>LOUISville Vegan Jerky</b> Maple Bacon $8.49 (4.6★, 538 reviews); NOBLE JERKY $5.99 (4.6★, 393); Primal Spirit Sampler $14.95 (4.4★, 301).</li>
+        <li>Multiple viable price points and sub-formats — a mature, multi-SKU category.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li><b>~910 active ads</b>, genuinely on-product and well-funded: Shameless Snacks (low-sugar vegan gummy candy) running urgency/scarcity copy and social-proof "sold out at Target" hooks.</li>
+        <li>A second advertiser ("The Snack Burglar") re-promoted the same narrative — a real, competitive, proven direct-response playbook.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. 46 of 51 US subregions registered interest — the broadest geographic footprint of all 13 products — used as a proxy for genuinely large absolute search volume.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>Essentially evergreen with a mild spring bump (plausibly health/New Year resolution carryover). Competition is intense but validated — several funded niche brands already run profitable-looking paid acquisition, so a new entrant needs real differentiation, not just a "vegan" label.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=vegan%20snacks&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">5-yr chart stayed in a stable 50–100 band the entire window with no crash to zero — a clearly evergreen, non-fad demand curve unlike every other product in this set.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=vegan+snacks&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">"Vegan jerky" and "Vegan cookies" categories, led by LOUISville Vegan Jerky Maple Bacon ($8.49, 4.6★/538) and NOBLE JERKY ($5.99, 4.6★/393).</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=vegan%20snacks" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Multiple videos cleared six figures: "Save this for your midnight…" (albinasveganf…) 181.5K likes, "Eggplant Fries" (dr.vegan) 155.3K — the most consistently high engagement of the 13 products.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=vegan%20snacks" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~910 results, top ads confirmed genuine and well-funded — Shameless Snacks' scarcity/social-proof gummy candy campaigns, actively promoted by more than one advertiser account.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> The clear standout on demand durability — stable multi-year search volume, the broadest geography, real six-figure TikTok engagement, and genuinely funded advertisers all point to a sustained market rather than a fad. The tradeoff is operational: as perishable food CPG, it's a harder fit for pure dropshipping (shipping speed, spoilage, repeat-purchase fulfillment) than the other products — success depends more on 3PL/fulfillment quality than demand risk.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="beeswax-wrap" class="product">
+  <div class="product-head">
+    <div><h2>Beeswax Food Wraps</h2><div class="id mono">Reusable food wraps · bread bags · wrap rolls · DIY kits</div></div>
+    <div class="score-badge badge-good">7<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-good">Earth Day spike (2x baseline)</span><span class="chip">Bee's Wrap category leader</span><span class="chip">~110 active Meta ads</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · Apr 12</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">Bee's Wrap 4.7★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">810.4K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~110, mostly genuine</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li>Search interest hit <b>100 on Apr 12, 2026</b> — more than double the prior 5-year high of 47 (Dec 25, 2022) — then stayed elevated (54–73) through mid-May before reverting to a 15–20 baseline by August.</li>
+        <li>5-yr baseline oscillates narrowly (10–45) with mild recurring bumps around Black Friday/Christmas and mid-April each year; 2026 shares the Earth Day timing but is far larger in magnitude.</li>
+        <li>Rising: "beeswax bread bag" (+2,950% 5yr / +200% 12mo), "abeego beeswax wrap" (+300%), "beeswax reusable food wrap" (+300%).</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>Shopping's featured category is literally "Beeswax Wraps," dominated by <b>Bee's Wrap</b> (3 of top 5 listings) at $19.99–$24.99, 4.6–4.7★, 750–1,400+ reviews.</li>
+        <li>Smaller entrants (Ames Farm DIY Kit, $26) still rank on page one — room for differentiated SKUs alongside the incumbent.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li><b>~110 active ads</b>; sampled creatives genuinely on-product — CrustKeeper (bread-storage angle) and Lorine's Beeswax Bread Bags ran direct-response DTC ads.</li>
+        <li>One unrelated match (a tallow-skincare brand) also appeared — minor but not dominant noise.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. A &gt;2x jump over the historical 5-year ceiling indicates a real, dateable demand event (mid-April 2026) rather than chronic high volume.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>Seasonal, peaking sharply around Earth Day (mid-April) with a secondary bump at the winter holidays. Competition is moderate-to-high — Bee's Wrap has strong brand equity, but the category still supports differentiated SKUs (bread bags, rolls, kits) from smaller players.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=beeswax%20wrap&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Flat/noisy (10–45 band) for four years, then a vertical spike to 100 on Apr 12, 2026 before decaying back to baseline by August. Top states: Wyoming, Montana, Vermont.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=beeswax+wrap&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">"Beeswax Wraps" carousel led by Bee's Wrap's Assorted 3-Pack ($19.99, 4.7★/1.4K) and Bee's Wrap Roll ($24.99, 4.6★/751), alongside a $26 Ames Farm DIY Kit.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=beeswax%20wrap" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top result <b>810.4K likes</b>; recurring niche creator "goldilocksgo" appeared four times in the top 8 (135.3K–810.4K likes each) — one creator currently dominates organic content.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=beeswax%20wrap" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~110 active ads; sampled creatives (CrustKeeper, Lorine's Beeswax Bread Bags) confirmed genuine, product-specific direct-response ads.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> A real, dateable demand spike (Earth Day 2026) on a stable multi-year base, backed by a confirmed genuine, active Meta ad ecosystem and a dominant-but-not-insurmountable incumbent. Workable for a differentiated SKU (bread bags, bundles, prints) rather than a head-on commodity play against Bee's Wrap.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="compostable-plates" class="product">
+  <div class="product-head">
+    <div><h2>Compostable Plates, Cups &amp; Bowls</h2><div class="id mono">Sugarcane/bagasse · bamboo fiber · palm leaf disposables</div></div>
+    <div class="score-badge badge-good">7<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-good">Spring/wedding-season surge</span><span class="chip">Fragmented marketplace</span><span class="chip on-warn">PFAS scrutiny risk</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · Apr 5</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">ECOLipak 4.9★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">97.2K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~44, 100% genuine</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li>Search interest peaked at <b>100 on Apr 5, 2026</b> and stayed elevated (61–91) for a full seven-week stretch through mid-May — a genuine multi-week seasonal plateau, not a single-day spike.</li>
+        <li>5-yr baseline is low and noisy (10–22) with mild year-over-year growth before the much larger 2026 surge.</li>
+        <li>Rising: "compostable plates for wedding" (+160%), "bagasse plates" (+350%), "compostable plates and cutlery" (+100%).</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>Two sub-categories ("Sugarcane and Bamboo Plates," "Palm Leaf Plates"), no single dominant brand. <b>ECOLipak</b> 150-pc set $75.96 (4.9★, 135 reviews); Matter Compostable $3.99 (4.3★, 24).</li>
+        <li>Prices span $3.99–$76, including bulk/B2B suppliers alongside DTC brands — an open field.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li>Smallest ad volume in the set (<b>~44 active ads</b>), but every sampled creative genuinely on-product: Home By Tammy x Amazon, Dean Supply Company, Peelable Dinnerware.</li>
+        <li>Low volume + 100% on-target creative suggests a real but under-advertised niche.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. Related-topics panel surfaced "PFAS" (forever chemicals) as a breakout topic — both a demand driver (safety research) and a reputational risk worth managing with certification claims.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>Clearly seasonal, concentrated in spring/early summer around graduations, weddings, and outdoor entertaining. Competition is moderate but fragmented — no single brand dominates the way Bee's Wrap does — though PFAS scrutiny around molded-fiber plates is a credibility risk worth addressing with third-party certification.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=compostable%20plates&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Low, choppy baseline (10–22) for four years before a sharp climb from Mar 29, 2026, hitting 100 on Apr 5 and staying 61–91 for seven weeks — a genuine seasonal plateau.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=compostable+plates&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">"Sugarcane and Bamboo Plates" carousel (Matter $3.99, 4.3★/24; ECOLipak 150-pc $75.96, 4.9★/135) followed by a separate "Palm Leaf Plates" category — fragmented, no dominant brand.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=compostable%20plates" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top video <b>97.2K likes</b> (@dailyideasguy), but most other results sat under 110 likes despite several "Paid partnership" tags — active influencer seeding with still-modest organic payoff.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=compostable%20plates" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~44 active ads, all three sampled creatives confirmed genuinely on-product (reusable paper plates, B2B eco-disposables, "Peel Plates") — unlike the noisier results seen in other products.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> A genuine, multi-week seasonal demand surge tied to spring event season, a fragmented marketplace without a dominant incumbent, and a small but 100%-genuine Meta ad ecosystem — a credible opportunity, provided PFAS/certification concerns are addressed proactively in marketing.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="solar-lights" class="product">
+  <div class="product-head">
+    <div><h2>Solar-Powered Lights</h2><div class="id mono">Solar garden/path lights · security &amp; motion lights · string lights</div></div>
+    <div class="score-badge badge-good">7<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-good">Seasonal spring surge</span><span class="chip on-bad">Big-box competition</span><span class="chip">Multi-category demand</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · Apr 12</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">Hampton Bay 4.0★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">17.8K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~5,000, confirmed</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li><b>100</b> peak the week of Apr 12, 2026, part of a recurring seasonal sawtooth pattern that repeats every spring from 2021–2026.</li>
+        <li>Top states skew rural: Wyoming, Kansas, Vermont, New Hampshire, Mississippi.</li>
+        <li>Rising: "shop deals on solar powered outdoor lights," "solar powered led string lights" (+200%).</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>Two dedicated category rows: "Solar Path and Garden Lights" and "Solar Security and Motion Lights." <b>Hampton Bay</b> $4.97 (Home Depot, 404 reviews); Better Homes &amp; Gardens $18.88 (4.3★, 310); VOLT G3 $61.99 (premium landscape brand).</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li><b>~5,000 active ads</b>, genuinely on-product: UDPOWER (solar power stations), Amazon Home ("solar speakers, stake lights"), Everything Envy ("solar-powered side tables").</li>
+        <li>Ad copy skews outdoor-living/patio-upgrade, not novelty/gift.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. Trends index recurs to peak levels every spring across all 5 years sampled — durable, not one-off.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>Strong, reliable spring demand cycle (Mar–May) tied to gardening/outdoor season, but highly competitive — Home Depot, Walmart, REI, and VOLT Lighting already dominate Shopping results at the generic keyword level.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=solar%20powered%20lights&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Stable recurring seasonal spike (55–72) every spring 2022–2025 that broke rhythm in 2026 with an unusually tall spike to 100 the week of Apr 12; runner-up peak near 93 in early May.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=solar+powered+lights&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Two branded category rows led by the Hampton Bay Terrace Park LED light at $4.97 (Home Depot, 404 reviews) and Better Homes &amp; Gardens Corbyn landscape light at $18.88 (Walmart, 310 reviews).</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=solar%20powered%20lights" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top video (alexfindsbest) 17.8K likes marked "Top liked," alongside two other results tagged "Paid partnership" — active affiliate/brand-deal activity.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=solar%20powered%20lights" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~5,000 active results, genuinely on-product across three distinct advertisers, confirming real, sustained ad spend.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> Durable and evergreen with reliable spring spikes and clean validation across all four channels, but the most commercially saturated of the top products — a dropshipper needs a specific sub-niche rather than competing head-on with Home Depot and Walmart on the broad keyword.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="coffee-cups" class="product">
+  <div class="product-head">
+    <div><h2>Reusable Coffee Cups</h2><div class="id mono">Insulated travel mugs · stainless steel tumblers · collapsible cups</div></div>
+    <div class="score-badge badge-good">6.5<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-good">Organic TikTok virality</span><span class="chip">Starbucks-culture tailwind</span><span class="chip">Accessible price point</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · Apr 12</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">Fellow Carter 4.7★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">178K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~380, mostly genuine</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li><b>Peak 100 on Apr 12, 2026</b>, rising from a steady 20–30 baseline; stayed elevated (55–75) through most of April/May with a secondary bump to ~58 in June.</li>
+        <li>5-yr history shows the same recurring 10–30 baseline oscillation every year, with 2026 again the largest — a pattern that mirrors other sustainability products almost exactly in timing.</li>
+        <li>Related topic Starbucks +250%; rising queries: "collapsible reusable coffee cup" (+2,900%), "travel coffee cup" (+250%), "reusable coffee cup stainless" (+180%).</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>"Insulated Travel Mugs" category: Owala SmoothSip $24.99 (4.8★, 621); <b>Fellow Carter Move Mug</b> $29.95 (4.7★, 5.1K); RTIC Road Trip $22.99 (4.4★, 2.1K); Stanley Café-To-Go $30 (4.6★, 580).</li>
+        <li>Review volume (hundreds to 5K+) is healthy without being as saturated as insulated water bottles.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li><b>~380 active ads</b>; Nova Ceramics appeared twice with a genuinely on-product hand-glazed mug creative ("Sustainable &amp; reusable... Pure ceramic taste").</li>
+        <li>One unrelated match (health-story engagement bait) also appeared — spot-check, don't trust raw counts.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. "Collapsible reusable coffee cup" rising +2,900% stands out as the strongest single-term signal in the report.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>Tracks coffee-culture seasonality and cultural moments (Starbucks tie-ins), with the same spring 2026 spike seen across the set. Competition includes well-reviewed niche players (Fellow, Owala, RTIC, Stanley) but no single brand dominates as completely as in water bottles, leaving more room for a differentiated entrant.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=reusable%20coffee%20cup&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Steady 10–30 baseline for years spiking to 100 on Apr 12, 2026 and staying elevated (55–75) into June; Wyoming, Delaware, Alaska top states.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=reusable+coffee+cup&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">"Insulated Travel Mugs" carousel led by the $24.99 Owala SmoothSip (4.8★/621) and the $29.95 Fellow Carter Move Mug (4.7★/5.1K).</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=reusable%20coffee%20cup" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top "Top liked" video 178K likes; unlike the bedding niche, most top-performing videos here were NOT tagged "Paid partnership" — genuine organic virality.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=reusable%20coffee%20cup" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~380 active ads; Nova Ceramics' hand-glazed mug creative confirmed genuine across two variations, alongside one unrelated engagement-bait ad.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> The healthiest balance in the set — real organic TikTok virality (not just paid seeding), on-topic rising queries, and a marketplace with strong but not monopolistic competitors. At $20–30 with clear cultural tailwinds, this is a well-balanced entry.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="water-bottles" class="product">
+  <div class="product-head">
+    <div><h2>Insulated Water Bottles</h2><div class="id mono">Stainless-steel vacuum-insulated bottles, tumblers &amp; straw-lid sport caps</div></div>
+    <div class="score-badge badge-warn">6<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-warn">Saturated category</span><span class="chip">TikTok viral (Owala)</span><span class="chip">Evergreen + spring spike</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · Apr 12</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">YETI Rambler 4.7★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">194K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~2,200, mostly genuine</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li><b>Peak index 100</b> on Apr 12, 2026 — a ~4x spike off a 15–30 baseline — settled to a still-elevated 40–90 band through May–June before fading to ~25–30 by August.</li>
+        <li>5-yr view shows the same ~15–25 baseline every year, but 2026 is by far the largest spike in the window.</li>
+        <li>"Owala freesip...with straw" flagged Breakout; large insulated water bottle (+100%), glass water bottle (+80%), CamelBak also Breakout.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>"Top-Rated Insulated Water Bottles" module: <b>YETI Rambler</b> Chug Cap $40 (4.7★, 19K reviews); TAKEYA Actives $31.99 (4.8★, 3.9K); Stanley Quick Flip Go $28 (4.4★, 1.1K).</li>
+        <li>Review counts in the thousands to tens-of-thousands confirm a mature, high-transaction-volume category.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li><b>~2,200 active ads</b>; 2-of-3 sampled genuinely on-product (Let's Wander sticker bottle, Rover &amp; Oak dog-bowl-lid bottle).</li>
+        <li>1-of-3 an unrelated political ad — raw counts overstate true on-product volume somewhat, though most sampled were legitimate.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. Trends peak (100, sustained 40–90 for ~3 months) plus 19K cumulative reviews on the YETI listing alone both point to very high absolute volume.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>Essentially evergreen with a strong spring hydration/fitness-season ramp. Competition is intense and brand-led (Stanley, Owala, YETI, Hydro Flask, CamelBak all show up organically) — a generic dropship SKU will struggle against name-brand loyalty and reviews in the thousands.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=insulated%20water%20bottle&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Low, steady 15–25 baseline for years that rockets to 100 on Apr 12, 2026 and stays elevated (40–90) for ~12 weeks; Wyoming, Kansas, California, Washington, Utah top states.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=insulated+water+bottle&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">"Top-Rated Insulated Water Bottles" carousel led by the $40 YETI Rambler Chug Cap (4.7★/19K) and $31.99 TAKEYA Actives (4.8★/3.9K).</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=insulated%20water%20bottle" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top video an Owala-hashtagged, paid-partnership clip at 194K likes; second "Top liked" copper-insulation video at 23.3K.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=insulated%20water%20bottle" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~2,200 active ads; 2-of-3 sampled cards genuinely on-product (Let's Wander, Rover &amp; Oak), 1-of-3 an unrelated political ad matching the keyword string.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> Unambiguous, large, sustained demand across every channel — but that demand is already captured by Stanley, Owala, YETI and CamelBak. A dropshipper needs either a sharp sub-niche angle (dog-bowl lids, cycling-specific, novelty prints) or heavy paid-social spend to compete, not a generic reseller listing.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="shampoo-bars" class="product">
+  <div class="product-head">
+    <div><h2>Solid Shampoo &amp; Conditioner Bars</h2><div class="id mono">Solid shampoo bars, conditioner bars, zero-waste haircare</div></div>
+    <div class="score-badge badge-warn">6<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-warn">Viral 2026 breakout</span><span class="chip on-bad">Ad-driven spike</span><span class="chip">Entrenched DTC brands</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · Apr 12</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">Earthling Co 4.7★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">50.9K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~2,200, 1 advertiser dominant</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li><b>Peak 100</b> the week of Apr 12, 2026, up from a flat baseline of ~15–20 held for 4+ years — a genuine breakout, not seasonal.</li>
+        <li>Interest decayed back to near-baseline (~15) by Jul 2026, suggesting the surge was event/campaign-driven rather than a permanent shift.</li>
+        <li>Top states: Wyoming, DC, Hawaii, California, Louisiana.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>"Shampoo Bars for Oily Hair" led by <b>The Earthling Co</b> $15.99 (4.7★, 2.2K reviews) — highest review count in this niche group.</li>
+        <li>Ethique $14.00 (4.7★, 1.3K) and HiBAR $14.95 (4.8★, 615, via REI) show mature, trusted brands already own this space.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li><b>~2,200 active ads</b>, almost entirely one advertiser (<b>Humby Organics</b>), running multiple angles all starting 7 Mar 2026 — just before the Trends spike.</li>
+        <li>Timing strongly suggests the Trends breakout was substantially driven by this single paid campaign, not organic demand growth.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. Related/rising queries returned mostly unrelated noise (apple ipad, barebells protein bar), indicating thinner absolute volume than the index alone suggests.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>No recurring seasonality in 5 years of history — flat until a single 2026 breakout — while competition is high among well-reviewed, well-funded DTC brands (Earthling Co, Ethique, HiBAR).</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=shampoo%20bar&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Flat ~15–20 for four straight years, isolated spike to 100 beginning March 2026, decaying back to near-baseline by July.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=shampoo+bar&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">"Shampoo Bars for Oily Hair" led by The Earthling Co Vegan Shampoo Bar ($15.99, 4.7★/2.2K) and Ethique Clarifying bar ($14.00, 4.7★/1.3K, 180-day returns).</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=shampoo%20bar" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top video (amberpot, Mar 2025) 50.9K likes marked "Top liked," with "Paid partnership" tags visible on two other results.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=shampoo%20bar" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~2,200 active ads almost entirely from Humby Organics, whose genuine on-product ads all launched 7 Mar 2026 — directly preceding and likely driving the Trends spike.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> The most dramatic recent search growth in the sustainability set, but it looks like one advertiser's campaign drove a temporary spike that was already fading by mid-2026, not durable organic demand. The category has proven long-term product-market fit, but a new entrant faces established competitors with thousands of reviews already locking in trust.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="organic-bedding" class="product">
+  <div class="product-head">
+    <div><h2>Organic Cotton Bedding</h2><div class="id mono">GOTS-certified organic cotton sheet sets, duvet covers &amp; shams</div></div>
+    <div class="score-badge badge-warn">5.5<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-warn">Higher AOV</span><span class="chip on-bad">Lower/noisier volume</span><span class="chip">Influencer-seeded on TikTok</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · Apr 5–12</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">Organic Sateen 4.9★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">5.4K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~370, genuine</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li><b>Peak 100</b> around Apr 5–12, 2026, jumping from a very low, near-flat 10–20 baseline (lower than most other products) — oscillated 45–75 through April–June before falling back to ~15–20 by August.</li>
+        <li>5-yr view is almost-zero most of the time with only small seasonal ticks — the lowest-volume baseline of the products researched.</li>
+        <li>Related-query noise included two irrelevant "Breakout" entries (a mattress brand, "apple iphone 17") — a classic low-volume-keyword artifact. "Percale" rising +80% is the one clean signal.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>"Organic Cotton Sateen Bedding" module: <b>Organic Sateen Bed Sheets Set</b> $74.99 (4.9★, 250 reviews); Pact Organic Room Service $170 (4.7★, 781); Bare Home $75.89, 30% off (4.1★, 97).</li>
+        <li>Review counts (dozens to low hundreds) an order of magnitude smaller than the water-bottle category — smaller but real buyer base.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li><b>~370 active ads</b>, noticeably fewer than most other products, but all three sampled genuinely on-product: Quince, Crate and Kids, Pact.</li>
+        <li>No junk/unrelated matches surfaced in the sample — this keyword stays on-topic for Meta's matching.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. Trends baseline (10–20 index) well below most other products in the set, but 3-digit Shopping review counts and higher AOV ($75–$260) point to a real, if thin, demand pool.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>More sporadic/seasonal than evergreen (near-flat most of the year with a pronounced early-spring 2026 spike, likely tied to spring-refresh/Earth Month marketing). Competition comes from established DTC sustainability brands rather than mass mainstream brands, so it's a narrower but less brutally contested field than water bottles.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=organic%20cotton%20bedding&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Near-flat 10–20 baseline for years, spike to 100 around Apr 5–12, 2026, decaying to ~15–20 by August. Wyoming, DC, Connecticut top states.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=organic+cotton+bedding&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">"Organic Cotton Sateen Bedding" carousel topped by a $74.99 4.9★ sateen sheet set (250 reviews) and Pact's $170 Room Service Sateen Sheet Set (4.7★/781).</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=organic%20cotton%20bedding" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top video 5,416 likes (ladyblue_offic); nearly every result on the page — including several from a repeat creator — was tagged "Paid partnership," indicating largely seeded/gifted marketing rather than spontaneous virality.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=organic%20cotton%20bedding" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~370 active ads, all three sampled (Quince, Crate and Kids, Pact) genuinely on-product sustainable-bedding advertisers with real sustainability hooks — no junk matches.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> Lower and noisier absolute search interest than most other products, but buyers who do search convert into much higher-ticket purchases ($75–$260 vs. $20–$40), and the Meta Ads/Shopping data confirm a real, focused market. A slower-volume, higher-margin niche better suited to a curated brand story than pure impulse-buy volume.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="activewear" class="product">
+  <div class="product-head">
+    <div><h2>Sustainable Activewear</h2><div class="id mono">Organic cotton, bamboo &amp; recycled-fiber leggings, bike shorts, tees, sports bras</div></div>
+    <div class="score-badge badge-warn">5<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-warn">Rising but thin</span><span class="chip on-bad">Volatile</span><span class="chip on-bad">Mixed ad relevance</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak (12mo)</div><div class="stat-value">100 · wk Jun 7</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">PlantTec 4.5★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">6.3K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~130, ~half genuine</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li><b>Peak index 100</b> hit the week of Jun 7, 2026 after a volatile 25–70 climb from Feb 2026, then fell back to ~10–20 by August — a live upswing, not a plateau yet.</li>
+        <li>5-yr view is flat near zero from 2021 through mid-2024 with only two isolated spikes — a genuinely recent (last ~12–18 months) surge.</li>
+        <li>Related topics/queries returned mostly noise (PDF, "March," a math wiki, LinkedIn) — a sign of low absolute query volume.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>Broad "All products" spread rather than one dominant sub-category. Top listings mix small sustainable labels (<b>PlantTec</b>, Activebygs) with mid-size performance brands (Pursue Fitness) at $30–$58, several at 50% off.</li>
+        <li>Heavy discounting suggests price competition.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li>Genuine hit: Ingrid&amp;Isabel (sustainable maternity activewear, on-product).</li>
+        <li>Off-target: a B2B fabric manufacturer and a generic fitness-influencer ad with no sustainability angle — roughly half the top results are false-positive matches.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. Only 20 of 51 US subregions registered any measurable interest — a much narrower geographic footprint than most other products.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>The rise looks momentum-driven (fitness/New Year and spring-summer apparel cycles) rather than a stable evergreen pattern. A dropshipper would be betting on continued category momentum rather than tapping an already-large addressable search audience.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=sustainable%20activewear&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Flat near-zero through 2021–2023 before increasingly tall, jagged spikes from late 2025 crested at 100 in early June 2026.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=sustainable+activewear&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Generic "All products" grid led by PlantTec Organic Cotton Bike Shorts ($58, 4.5★/114) and a "Sustainable Activewear Short Sleeve Tee" ($30, 5.0★/3), several at 50% off.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=sustainable%20activewear" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top video ("Natural fiber activewear br…", thewellness…) 6,340 likes — a modest ceiling next to most other products in the set.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=sustainable%20activewear" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">~130 active ads, but only about half genuinely on-product; the rest were a B2B textile-manufacturer ad and unrelated generic fitness content.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> A real, recent upward swing in interest, but the underlying signal is thin and noisy — low regional spread, junk-quality related queries, and only partial ad-library relevance all point to a smaller, less-proven audience than the hype suggests. Worth monitoring, not yet a slam-dunk.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="metal-straws" class="product">
+  <div class="product-head">
+    <div><h2>Reusable Metal Straws</h2><div class="id mono">Stainless steel straws, straw sets with cleaning brush, portable/travel straws</div></div>
+    <div class="score-badge badge-bad">4<small>/10</small></div>
+  </div>
+  <div class="chips"><span class="chip on-bad">Low Trends volume</span><span class="chip on-bad">Thin ad library (~3 results)</span><span class="chip on-good">Strong organic TikTok pull</span></div>
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-label">Trends peak</div><div class="stat-value">100 · Apr 12 (sparse)</div></div>
+    <div class="stat"><div class="stat-label">Top Shopping item</div><div class="stat-value">Klean Kanteen 4.8★</div></div>
+    <div class="stat"><div class="stat-label">TikTok top video</div><div class="stat-value">341.1K likes</div></div>
+    <div class="stat"><div class="stat-label">Meta ads (live)</div><div class="stat-value">~3, mostly junk</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="field"><h4>Google Trends</h4>
+      <ul class="stat-list">
+        <li><b>Peak 100</b> the week of Apr 12, 2026, but the 5-yr chart is near-zero most weeks with only isolated single-week spikes — a classic low-absolute-volume pattern.</li>
+        <li>Only 6 US states had enough data for "Interest by subregion" (vs. 50+ for most other products), and related queries returned "not enough data."</li>
+        <li>Top states: Maryland, Massachusetts, Florida, California, New York.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Marketplace signals</h4>
+      <ul class="stat-list">
+        <li>Google Shopping showed no dedicated category — just generic "All products" — and flagged "AI-researched recommendations aren't available for this search."</li>
+        <li><b>Klean Kanteen</b> Straw $2.95, marked down from $7.95 (4.8★, 721 reviews) is the clear standout; most competitors have single-digit review counts.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Meta Ads Library</h4>
+      <ul class="stat-list">
+        <li>Only <b>~3 active ads</b> matched, none straw-specific: a B2B sourcing site, unrelated sensory chew toys, a general eco box with low impressions.</li>
+        <li>Essentially no advertiser runs dedicated paid campaigns against this keyword currently.</li>
+      </ul>
+    </div>
+    <div class="field"><h4>Estimated search volume</h4>
+      <ul class="stat-list mono">
+        <li style="font-family:-apple-system,sans-serif;">No direct keyword-volume tool queried live. Sparse weekly Trends data (flat at 0 with occasional spikes to 25–100) plus near-absent subregion/related-query data and a thin Ads Library are the strongest available low-volume proxies.</li>
+      </ul>
+    </div>
+    <div class="field full"><h4>Seasonality &amp; competition</h4>
+      <p>No discernible seasonal pattern (spikes are sporadic, not calendar-tied); paid-ad competition is essentially nonexistent, which also signals limited proven paid-acquisition demand — organic/TikTok is the one channel showing real strength.</p>
+    </div>
+  </div>
+  <div class="viz-log">
+    <h4>Live source views captured Aug 10, 2026</h4>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GT</span>Google Trends<a href="https://trends.google.com/trends/explore?geo=US&amp;date=today%205-y&amp;q=reusable%20metal%20straws&amp;hl=en" target="_blank" rel="noopener">Open 5-yr view ↗</a></span><span class="viz-obs">Flat at or near zero most of the period with sporadic single-week spikes, most recently peaking at 100 the week of Apr 12, 2026; only 6 states had subregion data.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">GS</span>Shopping<a href="https://www.google.com/search?q=reusable+metal+straws&amp;tbm=shop&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">No branded category row; the Klean Kanteen Straw at $2.95 (721 reviews) was the only listing with substantial review history among mostly single-digit-review competitors.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">TT</span>TikTok<a href="https://www.tiktok.com/search/video?q=reusable%20metal%20straws" target="_blank" rel="noopener">Open search ↗</a></span><span class="viz-obs">Top video (boba.tribe, Aug 2025) 341.1K likes — the highest TikTok engagement of every product researched across both the car accessories and sustainability reports.</span></div>
+    <div class="viz-row"><span class="viz-src"><span class="viz-badge">FB</span>Ads Library<a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=reusable%20metal%20straws" target="_blank" rel="noopener">Open library ↗</a></span><span class="viz-obs">Only ~3 active results, none genuinely on-product, confirming essentially no dedicated paid ad activity for this keyword.</span></div>
+  </div>
+  <div class="verdict"><b>Verdict:</b> A real channel disconnect — Google search and paid-ad activity are both thin, suggesting the keyword is past its search-driven peak and commoditized, but TikTok engagement (341K likes) is the strongest of any product researched. Demand lives on organic social discovery rather than search or paid acquisition — a plausible fit for a TikTok-first launch, harder to validate via SEO/PPC.</div>
+  <div class="sources">Sources: trends.google.com (live) · google.com/shopping (live) · tiktok.com (live) · facebook.com/ads/library (live)</div>
+</section>
+
+<section id="methodology">
+  <div class="note-box">
+    <h3>Methodology &amp; limitations</h3>
+    <p>13 sustainability products from Shopify's "Sustainability" niche list were researched live on Aug 10, 2026, following the same checklist used for the Car Accessories report: correct English keywords, demand reviewed at both 5-year and 12-month Trends windows plus interest-by-region and related/rising queries, Google Shopping, TikTok, and the Meta Ads Library, all opened live across four parallel research passes. The lowest-scoring 3 were dropped to keep this to the top 10. Honest gaps, flagged rather than papered over:</p>
+    <ul>
+      <li><b>Google Keyword Planner</b> requires an authenticated Google Ads account, unavailable in this session. Search-volume figures throughout are Trends-relative-index readings and marketplace-review proxies, not Planner-grade numbers.</li>
+      <li><b>Meta Audience Insights</b> (the standalone tool) was discontinued by Meta in 2024. The Meta Ads Library was used as the live substitute — match quality varied widely: Compostable Plates and Organic Cotton Bedding returned 100% genuine on-product ads, while Sustainable Activewear and Insulated Water Bottles were roughly half genuine, and Reusable Metal Straws returned essentially no dedicated advertisers at all (~3 results).</li>
+      <li>The Solid Shampoo Bars spike is a specific, flagged concern: the Trends breakout timing lines up almost exactly with one advertiser's (Humby Organics) campaign launch date, suggesting the "demand spike" may be substantially ad-driven rather than organic — reported directly rather than smoothed into a clean growth story.</li>
+      <li>Screenshots were captured and reviewed live for every chart, listing, and search shown — but the browser tool used has no way to export them as image files, so they can't be embedded in this document. Each "Live source views" block links to the exact same query so you can reopen the identical live view at any time.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Compiled for a dropshipping market-research pass on the Shopify "Sustainability" niche list. Scores are directional (1–10) — a synthesis of trend direction, competitive density, and ad-market saturation, not a guarantee of margin or fulfillment feasibility.
+</footer>
