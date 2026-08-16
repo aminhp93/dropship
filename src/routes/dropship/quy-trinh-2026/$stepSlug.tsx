@@ -12,7 +12,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MarketResearchTool } from "@/features/dropshipping/components/MarketResearchTool";
 import { NGO_THANH_STEPS } from "@/features/dropshipping/components/QuyTrinh2026Tab";
-import { ArrowLeft, Sparkles, ExternalLink, Search } from "lucide-react";
+import { ArrowLeft, Sparkles, Search } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -59,38 +59,20 @@ export function QuyTrinh2026DetailPage() {
                 {currentStep.slideTitle}
               </h1>
             </div>
+
+            {/* STEP 2 SPECIAL FEATURE: Minimal clean button at the top right */}
+            {isStep2 && (
+              <Button
+                variant="outline"
+                onClick={() => setIsToolOpen(true)}
+                className="text-xs font-semibold px-4 py-2 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-2xs"
+              >
+                <Search className="w-3.5 h-3.5 text-zinc-500" />
+                <span>Công Cụ Tra Cứu Thị Trường & Ads Spy</span>
+              </Button>
+            )}
           </div>
         </div>
-
-        {/* STEP 2 SPECIAL FEATURE: Top Action Button for Market Research & Ads Spy Tool */}
-        {isStep2 && (
-          <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-800 p-4 rounded-2xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
-            <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/30">
-                <Search className="w-5 h-5 text-amber-300" />
-              </div>
-              <div>
-                <h3 className="font-black text-sm sm:text-base flex items-center gap-2">
-                  Bộ Công Cụ Tra Cứu Thị Trường & Ads Spy
-                  <Badge className="bg-amber-400 text-purple-950 font-mono text-[10px] font-bold">
-                    Interactive Tool
-                  </Badge>
-                </h3>
-                <p className="text-xs text-purple-100/90">
-                  Tra cứu trực tiếp sản phẩm WIN trên TikTok, Meta Ads Library, Pinterest & AliExpress
-                </p>
-              </div>
-            </div>
-
-            <Button
-              onClick={() => setIsToolOpen(true)}
-              className="bg-amber-400 hover:bg-amber-300 text-purple-950 font-black text-xs px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 shrink-0 cursor-pointer hover:scale-105"
-            >
-              <Sparkles className="w-4 h-4 text-purple-900 animate-pulse" />
-              🔥 MỞ BỘ CÔNG CỤ TRA CỨU THỊ TRƯỜNG
-            </Button>
-          </div>
-        )}
 
         {/* Detail Content Card */}
         <Card className="p-8 border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-6 shadow-sm">
