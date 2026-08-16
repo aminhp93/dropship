@@ -6,7 +6,7 @@ import { LoginGate } from '@/components/LoginGate';
 const RootComponent = () => {
   return (
     <LoginGate>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <div className="min-h-screen bg-background relative selection:bg-blue-500/30">
           <Navbar />
           <main className="bg-zinc-50 dark:bg-zinc-950">
