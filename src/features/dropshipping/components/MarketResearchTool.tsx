@@ -4,6 +4,12 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { 
   Search, 
   ExternalLink, 
@@ -14,7 +20,10 @@ import {
   Facebook, 
   Layers,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  FileText,
+  Copy,
+  Check
 } from 'lucide-react';
 
 interface PlatformConfig {
@@ -31,8 +40,43 @@ interface PlatformConfig {
 export function MarketResearchTool() {
   const [keyword, setKeyword] = useState<string>("dash cam");
   const [lastLaunchedKeyword, setLastLaunchedKeyword] = useState<string | null>(null);
+  const [isPromptOpen, setIsPromptOpen] = useState<boolean>(false);
+  const [copied, setCopied] = useState<boolean>(false);
 
   const cleanQuery = keyword.trim() || "dash cam";
+
+  const auditPromptText = `Bạn là Chuyên gia Thẩm định Nghiên cứu Sản phẩm E-commerce (Product Research Auditor). Hãy kiểm tra, phản biện và chấm điểm lại kết quả tự đánh giá dưới đây cho sản phẩm/từ khóa "${cleanQuery}".
+
+---
+### 📥 DỮ LIỆU NGHIÊN CỨU ĐẦU VÀO:
+- Tên sản phẩm / Từ khóa: ${cleanQuery}
+- Ngành hàng: Car Accessories / General E-commerce
+- Dữ liệu ghi nhận từ 5 nguồn live:
+  1. Google Trends (5-Year & 12-Month US): [Nhập xu hướng / độ ổn định / tính mùa vụ]
+  2. TikTok Search Video: [Nhập mức độ viral / lượt xem / ý định mua trong comment]
+  3. Meta Ads Library US: [Nhập số lượng active ads / đánh giá mức độ chạy ad thực tế]
+  4. Google Shopping US: [Nhập khoảng giá bán của đối thủ]
+  5. Google Keyword Planner: [Nhập search volume / độ cạnh tranh từ khóa]
+
+---
+### 🎯 YÊU CẦU KIỂM TRA & ĐÁNH GIÁ:
+1. Phân Tích Độ Tin Cậy Dữ Liệu (Data Validation):
+   - Nhận diện rủi ro từ khóa nhiễu trên Meta Ads Library (phân biệt giữa số lượng ad hiển thị và ad thực sự chạy sản phẩm này).
+   - Kiểm tra tính bền vững của nhu cầu qua 2 cửa sổ Google Trends (5 năm vs 12 tháng).
+
+2. Bảng Chấm Điểm Cơ Hội (Opportunity Scoring - Thang 1-10):
+   - Đánh giá 5 chỉ số: Nhu cầu thị trường, Lợi nhuận gộp (Margin), Yếu tố Viral (Wow Factor), Giải quyết nỗi đau (Problem Solving), Mức độ cạnh tranh.
+   - Nguyên tắc chấm điểm: Đánh giá khách quan, tập trung điểm số ở khoảng thực tế (3 - 7/10), loại bỏ đánh giá cảm tính cực đoan.
+
+3. Kết Luận & Khuyến Nghị (Audit Verdict):
+   - Phân loại: GO (Triển khai) | PAUSE (Cần test thêm) | PASS (Bỏ qua).
+   - Liệt kê 3 rủi ro chính và 2 bước test tinh gọn tiếp theo.`;
+
+  const handleCopyPrompt = () => {
+    navigator.clipboard.writeText(auditPromptText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const platforms: PlatformConfig[] = [
     {
@@ -90,7 +134,6 @@ export function MarketResearchTool() {
   const handleLaunchAll = (targetQuery?: string) => {
     const q = targetQuery || cleanQuery;
     
-    // Open all 5 links with micro-delays to bypass browser pop-up blocker
     platforms.forEach((p, index) => {
       setTimeout(() => {
         const link = document.createElement('a');
@@ -125,7 +168,7 @@ export function MarketResearchTool() {
           )}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <div className="relative flex-1">
             <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <Input
@@ -137,13 +180,25 @@ export function MarketResearchTool() {
             />
           </div>
 
-          <Button
-            onClick={() => handleLaunchAll()}
-            className="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-6 py-2.5 rounded-xl flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-md"
-          >
-            <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
-            🚀 Mở Tất Cả 5 Tab Mới
-          </Button>
+          {/* Action Buttons Group */}
+          <div className="flex items-center gap-2 shrink-0">
+            <Button
+              onClick={() => handleLaunchAll()}
+              className="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-5 py-2.5 rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all"
+            >
+              <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+              🚀 Mở Tất Cả 5 Tab Mới
+            </Button>
+
+            <Button
+              variant="outline"
+              onClick={() => setIsPromptOpen(true)}
+              className="bg-zinc-800 hover:bg-zinc-700 border-zinc-700 text-purple-300 hover:text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer shadow-md transition-all"
+            >
+              <FileText className="w-4 h-4 text-purple-400" />
+              <span>Prompt AI Audit</span>
+            </Button>
+          </div>
         </div>
 
         {/* Browser Pop-up Hint Note */}
@@ -194,6 +249,38 @@ export function MarketResearchTool() {
           </div>
         ))}
       </div>
+
+      {/* Dialog Modal for AI Audit Prompt */}
+      <Dialog open={isPromptOpen} onOpenChange={setIsPromptOpen}>
+        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-zinc-900 border border-zinc-800 text-white p-6 rounded-2xl shadow-2xl">
+          <DialogHeader className="border-b border-zinc-800 pb-4">
+            <DialogTitle className="flex items-center justify-between gap-2 text-base font-bold text-white">
+              <span className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-purple-400" />
+                Prompt AI Audit Đánh Giá Lại Sản Phẩm
+              </span>
+              <Button
+                size="sm"
+                onClick={handleCopyPrompt}
+                className="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5"
+              >
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copied ? "Đã Sao Chép!" : "Sao Chép Prompt"}</span>
+              </Button>
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4 pt-4">
+            <p className="text-xs text-zinc-400">
+              Sao chép prompt dưới đây và dán vào ChatGPT / Claude / Antigravity AI để tự động thẩm định & phản biện kết quả research từ khóa <span className="text-purple-400 font-bold font-mono">"{cleanQuery}"</span>:
+            </p>
+
+            <pre className="p-4 bg-zinc-950 rounded-xl border border-zinc-800 text-xs text-zinc-300 font-mono whitespace-pre-wrap leading-relaxed overflow-x-auto selection:bg-purple-500/30">
+              {auditPromptText}
+            </pre>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 }
