@@ -12,7 +12,7 @@ import {
   ShoppingBag, 
   Video, 
   Facebook, 
-  Image as ImageIcon,
+  Layers,
   CheckCircle2,
   AlertCircle
 } from 'lucide-react';
@@ -29,10 +29,10 @@ interface PlatformConfig {
 }
 
 export function MarketResearchTool() {
-  const [keyword, setKeyword] = useState<string>("Portable UV Toothbrush Sanitizer");
+  const [keyword, setKeyword] = useState<string>("dash cam");
   const [lastLaunchedKeyword, setLastLaunchedKeyword] = useState<string | null>(null);
 
-  const cleanQuery = keyword.trim() || "Portable UV Toothbrush Sanitizer";
+  const cleanQuery = keyword.trim() || "dash cam";
 
   const platforms: PlatformConfig[] = [
     {
@@ -43,27 +43,27 @@ export function MarketResearchTool() {
       color: "border-blue-500/30 text-blue-400 bg-blue-500/10",
       badge: "Active Ads • Max Impressions",
       description: "Xem các mẫu quảng cáo Facebook/Instagram đang active tại Mỹ, xếp theo lượt hiển thị cao nhất.",
-      getUrl: (q) => `https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&is_targeted_country=false&media_type=all&q=${encodeURIComponent(q)}&search_type=keyword_unordered`
+      getUrl: (q) => `https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&is_targeted_country=false&media_type=all&q=${encodeURIComponent(q)}&search_type=keyword_unordered&sort_data[mode]=total_impressions&sort_data[direction]=desc`
     },
     {
       id: "tiktok",
-      name: "TikTok Search (Organic & Viral)",
+      name: "TikTok Search Video",
       category: "social",
       icon: Video,
       color: "border-pink-500/30 text-pink-400 bg-pink-500/10",
       badge: "Organic Traffic • Viral Video",
       description: "Tìm kiếm video ngắn viral, xem ý định mua hàng trong comment (#tiktokmademebuyit).",
-      getUrl: (q) => `https://www.tiktok.com/search?q=${encodeURIComponent(q)}`
+      getUrl: (q) => `https://www.tiktok.com/search/video?q=${encodeURIComponent(q)}`
     },
     {
-      id: "pinterest",
-      name: "Pinterest Search & Trends",
-      category: "social",
-      icon: ImageIcon,
-      color: "border-red-500/30 text-red-400 bg-red-500/10",
-      badge: "Visual Search • Aesthetic Trends",
-      description: "Tra cứu hình ảnh visual, infographic sản phẩm và ý tưởng trang trí/quà tặng của tệp nữ Mỹ.",
-      getUrl: (q) => `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(q)}`
+      id: "googleShopping",
+      name: "Google Shopping US",
+      category: "shopping",
+      icon: ShoppingBag,
+      color: "border-emerald-500/30 text-emerald-400 bg-emerald-500/10",
+      badge: "US Price • Competitors",
+      description: "So sánh giá bán thực tế và nghiên cứu trang bán hàng của các đối thủ tại Mỹ.",
+      getUrl: (q) => `https://www.google.com/search?q=${encodeURIComponent(q).replace(/%20/g, '+')}&hl=en&gl=us&sec_src=docs&udm=28`
     },
     {
       id: "googleTrends",
@@ -73,17 +73,17 @@ export function MarketResearchTool() {
       color: "border-amber-500/30 text-amber-400 bg-amber-500/10",
       badge: "5-Year Search Volume • Seasonality",
       description: "Phân tích xu hướng tìm kiếm 5 năm qua tại Mỹ (kiểm tra tính mùa vụ & độ tăng trưởng).",
-      getUrl: (q) => `https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=${encodeURIComponent(q)}&hl=en`
+      getUrl: (q) => `https://trends.google.com/trends/explore?geo=US&date=today%205-y&q=${encodeURIComponent(q)}&hl=en`
     },
     {
-      id: "aliExpress",
-      name: "AliExpress Wholesale Search",
-      category: "shopping",
-      icon: ShoppingBag,
-      color: "border-orange-500/30 text-orange-400 bg-orange-500/10",
-      badge: "COGS & Suppliers",
-      description: "Tra cứu giá vốn nhập kho, lượt bán và xếp hạng nhà cung cấp uy tín trên AliExpress.",
-      getUrl: (q) => `https://www.aliexpress.com/w/wholesale-${encodeURIComponent(q).replace(/%20/g, '-')}.html`
+      id: "keywordPlanner",
+      name: "Google Keyword Planner",
+      category: "trends",
+      icon: Layers,
+      color: "border-purple-500/30 text-purple-400 bg-purple-500/10",
+      badge: "Search Volume • Top Bids",
+      description: "Đo lường lượng tìm kiếm hàng tháng (Monthly Search Volume) và chi phí đấu giá từ khóa.",
+      getUrl: () => `https://ads.google.com/aw/keywordplanner/ideas/new?ocid=8463729243&ascid=8463729243&euid=6596601082&__u=4928328618&uscid=8463729243&__c=9691242307&authuser=0&sourceid=emp`
     }
   ];
 
@@ -120,7 +120,7 @@ export function MarketResearchTool() {
           </label>
           {lastLaunchedKeyword && (
             <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" /> Đã kích hoạt 5 tab cho "{lastLaunchedKeyword}"
+              <CheckCircle2 className="w-3.5 h-3.5" /> Đã mở 5 tab cho từ khóa "{lastLaunchedKeyword}"
             </span>
           )}
         </div>
@@ -132,7 +132,7 @@ export function MarketResearchTool() {
               type="text"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
-              placeholder="Nhập tên sản phẩm (Ví dụ: Portable UV Toothbrush Sanitizer)..."
+              placeholder="Nhập tên sản phẩm (Ví dụ: dash cam)..."
               className="pl-10 bg-zinc-900 border-zinc-700 text-white text-sm focus:border-purple-500 focus:ring-purple-500/20 rounded-xl"
             />
           </div>
@@ -150,7 +150,7 @@ export function MarketResearchTool() {
         <div className="flex items-center gap-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-300/90 font-medium">
           <AlertCircle className="w-4 h-4 shrink-0 text-amber-400" />
           <span>
-            Lưu ý: Nếu trình duyệt hiển thị thông báo **"Pop-ups blocked"** ở góc thanh URL, hãy nhấn **"Always allow pop-ups" (Cho phép cửa sổ bật lên)** để trình duyệt mở đủ cả 5 tab cùng lúc.
+            Lưu ý: Nếu trình duyệt hiển thị thông báo **"Pop-ups blocked"** ở góc thanh URL, hãy chọn **"Always allow pop-ups" (Luôn cho phép cửa sổ bật lên)** để trình duyệt mở đủ 5 tab cùng lúc.
           </span>
         </div>
       </div>
