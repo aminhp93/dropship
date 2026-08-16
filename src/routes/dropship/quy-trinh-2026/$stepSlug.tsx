@@ -11,8 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MarketResearchTool } from "@/features/dropshipping/components/MarketResearchTool";
+import { PPSPYDashboard } from "@/features/dropshipping/components/PPSPYDashboard";
 import { NGO_THANH_STEPS } from "@/features/dropshipping/components/QuyTrinh2026Tab";
-import { ArrowLeft, Sparkles, Search } from "lucide-react";
+import { ArrowLeft, Sparkles, Search, Eye } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/dropship/quy-trinh-2026/$stepSlug")({
 export function QuyTrinh2026DetailPage() {
   const { stepSlug } = Route.useParams();
   const [isToolOpen, setIsToolOpen] = useState(false);
+  const [isPPSPYOpen, setIsPPSPYOpen] = useState(false);
 
   // Find step by matching stepSlug or step id (e.g. buoc-1, buoc-2, buoc-3)
   const currentStep = NGO_THANH_STEPS.find((s) => {
@@ -60,16 +62,26 @@ export function QuyTrinh2026DetailPage() {
               </h1>
             </div>
 
-            {/* STEP 2 SPECIAL FEATURE: Minimal clean button at the top right */}
+            {/* STEP 2 SPECIAL FEATURE: Buttons for Market Research Tool & PPSPY Dashboard */}
             {isStep2 && (
-              <Button
-                variant="outline"
-                onClick={() => setIsToolOpen(true)}
-                className="text-xs font-semibold px-4 py-2 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-2xs"
-              >
-                <Search className="w-3.5 h-3.5 text-zinc-500" />
-                <span>Công Cụ Tra Cứu Thị Trường & Ads Spy</span>
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => setIsToolOpen(true)}
+                  className="text-xs font-semibold px-4 py-2 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-2xs"
+                >
+                  <Search className="w-3.5 h-3.5 text-zinc-500" />
+                  <span>Công Cụ Tra Cứu Thị Trường</span>
+                </Button>
+
+                <Button
+                  onClick={() => setIsPPSPYOpen(true)}
+                  className="text-xs font-bold px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-xs"
+                >
+                  <Eye className="w-3.5 h-3.5 text-amber-300" />
+                  <span>PPSPY Dashboard</span>
+                </Button>
+              </div>
             )}
           </div>
         </div>
@@ -98,6 +110,24 @@ export function QuyTrinh2026DetailPage() {
           </div>
         </Card>
 
+        {/* Integrated PPSPY Dashboard Component in Step 2 Detail Page */}
+        {isStep2 && (
+          <div className="space-y-4 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+                  <Eye className="w-5 h-5 text-purple-500" />
+                  Hệ Thống Phân Tích & Soi Cửa Hàng PPSPY (Integrated Suite)
+                </h2>
+                <p className="text-xs text-zinc-500">
+                  Theo dõi doanh số thời gian thực, tra cứu 200M+ sản phẩm Shopify và phát hiện Theme / App của đối thủ.
+                </p>
+              </div>
+            </div>
+            <PPSPYDashboard />
+          </div>
+        )}
+
         {/* Dialog Modal for Market Research Tool */}
         {isStep2 && (
           <Dialog open={isToolOpen} onOpenChange={setIsToolOpen}>
@@ -124,6 +154,15 @@ export function QuyTrinh2026DetailPage() {
               <div className="pt-4">
                 <MarketResearchTool />
               </div>
+            </DialogContent>
+          </Dialog>
+        )}
+
+        {/* Dialog Modal for Fullscreen PPSPY Dashboard */}
+        {isStep2 && (
+          <Dialog open={isPPSPYOpen} onOpenChange={setIsPPSPYOpen}>
+            <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-zinc-950 border border-zinc-800 p-6 rounded-3xl shadow-2xl">
+              <PPSPYDashboard />
             </DialogContent>
           </Dialog>
         )}
