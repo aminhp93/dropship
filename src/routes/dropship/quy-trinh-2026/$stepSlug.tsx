@@ -1,10 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MarketResearchTool } from "@/features/dropshipping/components/MarketResearchTool";
 import { NGO_THANH_STEPS } from "@/features/dropshipping/components/QuyTrinh2026Tab";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles, ExternalLink, Search } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -14,6 +22,7 @@ export const Route = createFileRoute("/dropship/quy-trinh-2026/$stepSlug")({
 
 export function QuyTrinh2026DetailPage() {
   const { stepSlug } = Route.useParams();
+  const [isToolOpen, setIsToolOpen] = useState(false);
 
   // Find step by matching stepSlug or step id (e.g. buoc-1, buoc-2, buoc-3)
   const currentStep = NGO_THANH_STEPS.find((s) => {
@@ -25,7 +34,7 @@ export function QuyTrinh2026DetailPage() {
 
   return (
     <ScrollArea className="h-full">
-      <div className="p-8 max-w-5xl mx-auto space-y-8">
+      <div className="p-8 max-w-5xl mx-auto space-y-6">
         {/* Navigation & Header */}
         <div className="space-y-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
           <Link
@@ -53,6 +62,36 @@ export function QuyTrinh2026DetailPage() {
           </div>
         </div>
 
+        {/* STEP 2 SPECIAL FEATURE: Top Action Button for Market Research & Ads Spy Tool */}
+        {isStep2 && (
+          <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-800 p-4 rounded-2xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/30">
+                <Search className="w-5 h-5 text-amber-300" />
+              </div>
+              <div>
+                <h3 className="font-black text-sm sm:text-base flex items-center gap-2">
+                  Bộ Công Cụ Tra Cứu Thị Trường & Ads Spy
+                  <Badge className="bg-amber-400 text-purple-950 font-mono text-[10px] font-bold">
+                    Interactive Tool
+                  </Badge>
+                </h3>
+                <p className="text-xs text-purple-100/90">
+                  Tra cứu trực tiếp sản phẩm WIN trên TikTok, Meta Ads Library, Pinterest & AliExpress
+                </p>
+              </div>
+            </div>
+
+            <Button
+              onClick={() => setIsToolOpen(true)}
+              className="bg-amber-400 hover:bg-amber-300 text-purple-950 font-black text-xs px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 shrink-0 cursor-pointer hover:scale-105"
+            >
+              <Sparkles className="w-4 h-4 text-purple-900 animate-pulse" />
+              🔥 MỞ BỘ CÔNG CỤ TRA CỨU THỊ TRƯỜNG
+            </Button>
+          </div>
+        )}
+
         {/* Detail Content Card */}
         <Card className="p-8 border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-6 shadow-sm">
           {/* Key Metrics Banner */}
@@ -77,20 +116,34 @@ export function QuyTrinh2026DetailPage() {
           </div>
         </Card>
 
-        {/* Embedded Market Research & Ads Spy Tool specifically inside Step 2 */}
+        {/* Dialog Modal for Market Research Tool */}
         {isStep2 && (
-          <div className="space-y-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-            <div className="space-y-1">
-              <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-purple-500" />
-                Bộ Công Cụ Tra Cứu Thị Trường & Ads Spy Trực Tiếp
-              </h2>
-              <p className="text-xs text-zinc-500">
-                Sử dụng các công cụ tra cứu tích hợp sẵn dưới đây để thực hành săn sản phẩm WIN trên TikTok, Meta, Pinterest và AliExpress.
-              </p>
-            </div>
-            <MarketResearchTool />
-          </div>
+          <Dialog open={isToolOpen} onOpenChange={setIsToolOpen}>
+            <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl shadow-2xl">
+              <DialogHeader className="border-b border-zinc-100 dark:border-zinc-800 pb-4">
+                <DialogTitle className="flex items-center gap-3 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                  <div className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center shadow-md shrink-0">
+                    <Search className="w-5 h-5 text-amber-300" />
+                  </div>
+                  <div>
+                    <span className="flex items-center gap-2">
+                      Bộ Công Cụ Tra Cứu Thị Trường & Ads Spy
+                      <Badge className="bg-purple-600 text-white text-[10px] font-mono">
+                        Live Spy
+                      </Badge>
+                    </span>
+                    <span className="block text-xs font-normal text-zinc-500 dark:text-zinc-400 mt-0.5">
+                      Tra cứu trực tiếp từ các nền tảng TikTok, Meta Ads, Pinterest và AliExpress
+                    </span>
+                  </div>
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="pt-4">
+                <MarketResearchTool />
+              </div>
+            </DialogContent>
+          </Dialog>
         )}
       </div>
     </ScrollArea>
