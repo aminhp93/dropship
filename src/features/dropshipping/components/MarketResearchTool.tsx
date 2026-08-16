@@ -12,7 +12,6 @@ import {
   ShoppingBag, 
   Video, 
   Facebook, 
-  Layers,
   Image as ImageIcon,
   CheckCircle2
 } from 'lucide-react';
@@ -27,14 +26,6 @@ interface PlatformConfig {
   description: string;
   getUrl: (query: string) => string;
 }
-
-const PRESET_KEYWORDS = [
-  "Portable UV Toothbrush Sanitizer",
-  "Ergonomic Neck Massager",
-  "Pet Hair Vacuum Clipper",
-  "Magnetic Motion Sensor LED Bar",
-  "7 in 1 Electronics Cleaner Kit"
-];
 
 export function MarketResearchTool() {
   const [keyword, setKeyword] = useState<string>("Portable UV Toothbrush Sanitizer");
@@ -125,10 +116,6 @@ export function MarketResearchTool() {
     window.open(p.getUrl(cleanQuery), '_blank');
   };
 
-  const handleSelectPreset = (preset: string) => {
-    setKeyword(preset);
-  };
-
   return (
     <Card className="bg-zinc-900/90 border-purple-500/30 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
       {/* Header */}
@@ -145,7 +132,7 @@ export function MarketResearchTool() {
             Tra Cứu Thị Trường & Ads Spy Cửa Sổ Mới
           </h2>
           <p className="text-xs text-zinc-400 leading-relaxed">
-            Nhập hoặc chọn từ khóa để tự động **mở đồng loạt cả 5 nền tảng** (Facebook Ads Library, TikTok, Pinterest, Google Trends, AliExpress) trong 5 tab trình duyệt mới!
+            Nhập từ khóa sản phẩm để tự động mở đồng loạt cả 5 nền tảng (Facebook Ads Library, TikTok, Pinterest, Google Trends, AliExpress) trong 5 tab trình duyệt mới!
           </p>
         </div>
 
@@ -158,7 +145,7 @@ export function MarketResearchTool() {
         </Button>
       </div>
 
-      {/* Input & Quick Presets Section */}
+      {/* Input Section */}
       <div className="space-y-4 bg-zinc-950/70 p-5 rounded-2xl border border-zinc-800/80">
         <label className="text-xs font-bold text-zinc-300 uppercase tracking-wider block">
           Nhập Từ Khóa Sản Phẩm (Keyword):
@@ -183,34 +170,6 @@ export function MarketResearchTool() {
             <ExternalLink className="w-4 h-4" />
             Mở Tất Cả 5 Tab Mới
           </Button>
-        </div>
-
-        {/* Quick Presets with 1-Click Auto Launch */}
-        <div className="space-y-2 pt-2 border-t border-zinc-800/60">
-          <span className="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">
-            Gợi ý từ khóa sản phẩm HOT WIN:
-          </span>
-          <div className="flex flex-wrap items-center gap-2">
-            {PRESET_KEYWORDS.map((preset) => (
-              <div key={preset} className="flex items-center">
-                <button
-                  onClick={() => {
-                    handleSelectPreset(preset);
-                    handleLaunchAll(preset);
-                  }}
-                  className={cn(
-                    "text-[11px] px-3 py-1.5 rounded-xl border transition-all font-medium cursor-pointer flex items-center gap-1.5",
-                    keyword === preset
-                      ? "bg-purple-500/20 text-purple-300 border-purple-500/50 font-bold shadow-xs"
-                      : "bg-zinc-900 text-zinc-300 border-zinc-800 hover:bg-zinc-800 hover:text-white"
-                  )}
-                >
-                  <span>{preset}</span>
-                  <ExternalLink className="w-3 h-3 text-purple-400 opacity-80" />
-                </button>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
