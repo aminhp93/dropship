@@ -118,33 +118,6 @@ export function MarketResearchTool() {
 
   return (
     <Card className="bg-zinc-900/90 border-purple-500/30 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-800 pb-6">
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2">
-            <Badge className="bg-purple-500/20 text-purple-400 border border-purple-500/30 font-mono text-[10px] uppercase tracking-widest font-bold">
-              Product Research Tool
-            </Badge>
-            <span className="text-xs text-zinc-500 font-mono">1-Click Multi-Tab Launcher</span>
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-            <Search className="w-6 h-6 text-purple-400" />
-            Tra Cứu Thị Trường & Ads Spy Cửa Sổ Mới
-          </h2>
-          <p className="text-xs text-zinc-400 leading-relaxed">
-            Nhập từ khóa sản phẩm để tự động mở đồng loạt cả 5 nền tảng (Facebook Ads Library, TikTok, Pinterest, Google Trends, AliExpress) trong 5 tab trình duyệt mới!
-          </p>
-        </div>
-
-        <Button
-          onClick={() => handleLaunchAll()}
-          className="bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-500 hover:to-indigo-500 text-white font-black text-xs px-6 py-3.5 rounded-2xl shadow-xl transition-all hover:scale-105 flex items-center gap-2 shrink-0 cursor-pointer"
-        >
-          <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
-          🚀 MỞ CẢ 5 TAB TRÌNH DUYỆT MỚI
-        </Button>
-      </div>
-
       {/* Input Section */}
       <div className="space-y-4 bg-zinc-950/70 p-5 rounded-2xl border border-zinc-800/80">
         <label className="text-xs font-bold text-zinc-300 uppercase tracking-wider block">
@@ -167,8 +140,8 @@ export function MarketResearchTool() {
             onClick={() => handleLaunchAll()}
             className="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-6 py-2.5 rounded-xl flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-md"
           >
-            <ExternalLink className="w-4 h-4" />
-            Mở Tất Cả 5 Tab Mới
+            <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+            🚀 Mở Tất Cả 5 Tab Mới
           </Button>
         </div>
       </div>
