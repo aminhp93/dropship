@@ -13,7 +13,7 @@ import {
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const NGO_THANH_STEPS = [
+export const NGO_THANH_STEPS = [
   {
     id: "buoc-1",
     step: "BƯỚC 1",

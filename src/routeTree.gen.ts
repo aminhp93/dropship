@@ -14,9 +14,10 @@ import { Route as DropshipRouteImport } from './routes/dropship'
 import { Route as DropshipIndexRouteImport } from './routes/dropship/index'
 import { Route as DropshipBlogRouteImport } from './routes/dropship/blog'
 import { Route as DropshipPlaybookRouteImport } from './routes/dropship/playbook'
-import { Route as DropshipQuyTrinh2026RouteImport } from './routes/dropship/quy-trinh-2026'
 import { Route as DropshipSanphamRouteImport } from './routes/dropship/sanpham'
 import { Route as DropshipSopChiTietRouteImport } from './routes/dropship/sop-chi-tiet'
+import { Route as DropshipQuyTrinh2026IndexRouteImport } from './routes/dropship/quy-trinh-2026/index'
+import { Route as DropshipQuyTrinh2026StepSlugRouteImport } from './routes/dropship/quy-trinh-2026/$stepSlug'
 import { Route as DropshipReadingIndexRouteImport } from './routes/dropship/reading/index'
 import { Route as DropshipReadingSlugRouteImport } from './routes/dropship/reading/$slug'
 
@@ -45,11 +46,6 @@ const DropshipPlaybookRoute = DropshipPlaybookRouteImport.update({
   path: '/playbook',
   getParentRoute: () => DropshipRoute,
 } as any)
-const DropshipQuyTrinh2026Route = DropshipQuyTrinh2026RouteImport.update({
-  id: '/quy-trinh-2026',
-  path: '/quy-trinh-2026',
-  getParentRoute: () => DropshipRoute,
-} as any)
 const DropshipSanphamRoute = DropshipSanphamRouteImport.update({
   id: '/sanpham',
   path: '/sanpham',
@@ -60,6 +56,18 @@ const DropshipSopChiTietRoute = DropshipSopChiTietRouteImport.update({
   path: '/sop-chi-tiet',
   getParentRoute: () => DropshipRoute,
 } as any)
+const DropshipQuyTrinh2026IndexRoute =
+  DropshipQuyTrinh2026IndexRouteImport.update({
+    id: '/quy-trinh-2026/',
+    path: '/quy-trinh-2026/',
+    getParentRoute: () => DropshipRoute,
+  } as any)
+const DropshipQuyTrinh2026StepSlugRoute =
+  DropshipQuyTrinh2026StepSlugRouteImport.update({
+    id: '/quy-trinh-2026/$stepSlug',
+    path: '/quy-trinh-2026/$stepSlug',
+    getParentRoute: () => DropshipRoute,
+  } as any)
 const DropshipReadingIndexRoute = DropshipReadingIndexRouteImport.update({
   id: '/reading/',
   path: '/reading/',
@@ -76,22 +84,24 @@ export interface FileRoutesByFullPath {
   '/dropship': typeof DropshipRouteWithChildren
   '/dropship/blog': typeof DropshipBlogRoute
   '/dropship/playbook': typeof DropshipPlaybookRoute
-  '/dropship/quy-trinh-2026': typeof DropshipQuyTrinh2026Route
   '/dropship/sanpham': typeof DropshipSanphamRoute
   '/dropship/sop-chi-tiet': typeof DropshipSopChiTietRoute
   '/dropship/': typeof DropshipIndexRoute
+  '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
   '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
+  '/dropship/quy-trinh-2026/': typeof DropshipQuyTrinh2026IndexRoute
   '/dropship/reading/': typeof DropshipReadingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dropship/blog': typeof DropshipBlogRoute
   '/dropship/playbook': typeof DropshipPlaybookRoute
-  '/dropship/quy-trinh-2026': typeof DropshipQuyTrinh2026Route
   '/dropship/sanpham': typeof DropshipSanphamRoute
   '/dropship/sop-chi-tiet': typeof DropshipSopChiTietRoute
   '/dropship': typeof DropshipIndexRoute
+  '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
   '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
+  '/dropship/quy-trinh-2026': typeof DropshipQuyTrinh2026IndexRoute
   '/dropship/reading': typeof DropshipReadingIndexRoute
 }
 export interface FileRoutesById {
@@ -100,11 +110,12 @@ export interface FileRoutesById {
   '/dropship': typeof DropshipRouteWithChildren
   '/dropship/blog': typeof DropshipBlogRoute
   '/dropship/playbook': typeof DropshipPlaybookRoute
-  '/dropship/quy-trinh-2026': typeof DropshipQuyTrinh2026Route
   '/dropship/sanpham': typeof DropshipSanphamRoute
   '/dropship/sop-chi-tiet': typeof DropshipSopChiTietRoute
   '/dropship/': typeof DropshipIndexRoute
+  '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
   '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
+  '/dropship/quy-trinh-2026/': typeof DropshipQuyTrinh2026IndexRoute
   '/dropship/reading/': typeof DropshipReadingIndexRoute
 }
 export interface FileRouteTypes {
@@ -114,22 +125,24 @@ export interface FileRouteTypes {
     | '/dropship'
     | '/dropship/blog'
     | '/dropship/playbook'
-    | '/dropship/quy-trinh-2026'
     | '/dropship/sanpham'
     | '/dropship/sop-chi-tiet'
     | '/dropship/'
+    | '/dropship/quy-trinh-2026/$stepSlug'
     | '/dropship/reading/$slug'
+    | '/dropship/quy-trinh-2026/'
     | '/dropship/reading/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/dropship/blog'
     | '/dropship/playbook'
-    | '/dropship/quy-trinh-2026'
     | '/dropship/sanpham'
     | '/dropship/sop-chi-tiet'
     | '/dropship'
+    | '/dropship/quy-trinh-2026/$stepSlug'
     | '/dropship/reading/$slug'
+    | '/dropship/quy-trinh-2026'
     | '/dropship/reading'
   id:
     | '__root__'
@@ -137,11 +150,12 @@ export interface FileRouteTypes {
     | '/dropship'
     | '/dropship/blog'
     | '/dropship/playbook'
-    | '/dropship/quy-trinh-2026'
     | '/dropship/sanpham'
     | '/dropship/sop-chi-tiet'
     | '/dropship/'
+    | '/dropship/quy-trinh-2026/$stepSlug'
     | '/dropship/reading/$slug'
+    | '/dropship/quy-trinh-2026/'
     | '/dropship/reading/'
   fileRoutesById: FileRoutesById
 }
@@ -187,13 +201,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DropshipPlaybookRouteImport
       parentRoute: typeof DropshipRoute
     }
-    '/dropship/quy-trinh-2026': {
-      id: '/dropship/quy-trinh-2026'
-      path: '/quy-trinh-2026'
-      fullPath: '/dropship/quy-trinh-2026'
-      preLoaderRoute: typeof DropshipQuyTrinh2026RouteImport
-      parentRoute: typeof DropshipRoute
-    }
     '/dropship/sanpham': {
       id: '/dropship/sanpham'
       path: '/sanpham'
@@ -206,6 +213,20 @@ declare module '@tanstack/react-router' {
       path: '/sop-chi-tiet'
       fullPath: '/dropship/sop-chi-tiet'
       preLoaderRoute: typeof DropshipSopChiTietRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/quy-trinh-2026/': {
+      id: '/dropship/quy-trinh-2026/'
+      path: '/quy-trinh-2026'
+      fullPath: '/dropship/quy-trinh-2026/'
+      preLoaderRoute: typeof DropshipQuyTrinh2026IndexRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/quy-trinh-2026/$stepSlug': {
+      id: '/dropship/quy-trinh-2026/$stepSlug'
+      path: '/quy-trinh-2026/$stepSlug'
+      fullPath: '/dropship/quy-trinh-2026/$stepSlug'
+      preLoaderRoute: typeof DropshipQuyTrinh2026StepSlugRouteImport
       parentRoute: typeof DropshipRoute
     }
     '/dropship/reading/': {
@@ -228,22 +249,24 @@ declare module '@tanstack/react-router' {
 interface DropshipRouteChildren {
   DropshipBlogRoute: typeof DropshipBlogRoute
   DropshipPlaybookRoute: typeof DropshipPlaybookRoute
-  DropshipQuyTrinh2026Route: typeof DropshipQuyTrinh2026Route
   DropshipSanphamRoute: typeof DropshipSanphamRoute
   DropshipSopChiTietRoute: typeof DropshipSopChiTietRoute
   DropshipIndexRoute: typeof DropshipIndexRoute
+  DropshipQuyTrinh2026StepSlugRoute: typeof DropshipQuyTrinh2026StepSlugRoute
   DropshipReadingSlugRoute: typeof DropshipReadingSlugRoute
+  DropshipQuyTrinh2026IndexRoute: typeof DropshipQuyTrinh2026IndexRoute
   DropshipReadingIndexRoute: typeof DropshipReadingIndexRoute
 }
 
 const DropshipRouteChildren: DropshipRouteChildren = {
   DropshipBlogRoute: DropshipBlogRoute,
   DropshipPlaybookRoute: DropshipPlaybookRoute,
-  DropshipQuyTrinh2026Route: DropshipQuyTrinh2026Route,
   DropshipSanphamRoute: DropshipSanphamRoute,
   DropshipSopChiTietRoute: DropshipSopChiTietRoute,
   DropshipIndexRoute: DropshipIndexRoute,
+  DropshipQuyTrinh2026StepSlugRoute: DropshipQuyTrinh2026StepSlugRoute,
   DropshipReadingSlugRoute: DropshipReadingSlugRoute,
+  DropshipQuyTrinh2026IndexRoute: DropshipQuyTrinh2026IndexRoute,
   DropshipReadingIndexRoute: DropshipReadingIndexRoute,
 }
 
