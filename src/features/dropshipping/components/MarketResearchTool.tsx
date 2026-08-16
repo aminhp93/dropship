@@ -13,7 +13,8 @@ import {
   Video, 
   Facebook, 
   Image as ImageIcon,
-  CheckCircle2
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 
 interface PlatformConfig {
@@ -88,14 +89,25 @@ export function MarketResearchTool() {
 
   const handleLaunchAll = (targetQuery?: string) => {
     const q = targetQuery || cleanQuery;
-    platforms.forEach(p => {
-      window.open(p.getUrl(q), '_blank');
+    
+    // Open all 5 links with micro-delays to bypass browser pop-up blocker
+    platforms.forEach((p, index) => {
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = p.getUrl(q);
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, index * 100);
     });
+
     setLastLaunchedKeyword(q);
   };
 
   const handleLaunchSingle = (p: PlatformConfig) => {
-    window.open(p.getUrl(cleanQuery), '_blank');
+    window.open(p.getUrl(cleanQuery), '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -108,7 +120,7 @@ export function MarketResearchTool() {
           </label>
           {lastLaunchedKeyword && (
             <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" /> Đã mở từ khóa "{lastLaunchedKeyword}"
+              <CheckCircle2 className="w-3.5 h-3.5" /> Đã kích hoạt 5 tab cho "{lastLaunchedKeyword}"
             </span>
           )}
         </div>
@@ -132,6 +144,14 @@ export function MarketResearchTool() {
             <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
             🚀 Mở Tất Cả 5 Tab Mới
           </Button>
+        </div>
+
+        {/* Browser Pop-up Hint Note */}
+        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-300/90 font-medium">
+          <AlertCircle className="w-4 h-4 shrink-0 text-amber-400" />
+          <span>
+            Lưu ý: Nếu trình duyệt hiển thị thông báo **"Pop-ups blocked"** ở góc thanh URL, hãy nhấn **"Always allow pop-ups" (Cho phép cửa sổ bật lên)** để trình duyệt mở đủ cả 5 tab cùng lúc.
+          </span>
         </div>
       </div>
 
