@@ -10,52 +10,96 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ReadingRouteImport } from './routes/reading'
-import { Route as ReadingSlugRouteImport } from './routes/reading/$slug'
+import { Route as DropshipRouteImport } from './routes/dropship'
+import { Route as DropshipIndexRouteImport } from './routes/dropship/index'
+import { Route as DropshipPlaybookRouteImport } from './routes/dropship/playbook'
+import { Route as DropshipReadingIndexRouteImport } from './routes/dropship/reading/index'
+import { Route as DropshipReadingSlugRouteImport } from './routes/dropship/reading/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReadingRoute = ReadingRouteImport.update({
-  id: '/reading',
-  path: '/reading',
+const DropshipRoute = DropshipRouteImport.update({
+  id: '/dropship',
+  path: '/dropship',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReadingSlugRoute = ReadingSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ReadingRoute,
+const DropshipIndexRoute = DropshipIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DropshipRoute,
+} as any)
+const DropshipPlaybookRoute = DropshipPlaybookRouteImport.update({
+  id: '/playbook',
+  path: '/playbook',
+  getParentRoute: () => DropshipRoute,
+} as any)
+const DropshipReadingIndexRoute = DropshipReadingIndexRouteImport.update({
+  id: '/reading/',
+  path: '/reading/',
+  getParentRoute: () => DropshipRoute,
+} as any)
+const DropshipReadingSlugRoute = DropshipReadingSlugRouteImport.update({
+  id: '/reading/$slug',
+  path: '/reading/$slug',
+  getParentRoute: () => DropshipRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/reading': typeof ReadingRouteWithChildren
-  '/reading/$slug': typeof ReadingSlugRoute
+  '/dropship': typeof DropshipRouteWithChildren
+  '/dropship/playbook': typeof DropshipPlaybookRoute
+  '/dropship/': typeof DropshipIndexRoute
+  '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
+  '/dropship/reading/': typeof DropshipReadingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/reading': typeof ReadingRouteWithChildren
-  '/reading/$slug': typeof ReadingSlugRoute
+  '/dropship/playbook': typeof DropshipPlaybookRoute
+  '/dropship': typeof DropshipIndexRoute
+  '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
+  '/dropship/reading': typeof DropshipReadingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/reading': typeof ReadingRouteWithChildren
-  '/reading/$slug': typeof ReadingSlugRoute
+  '/dropship': typeof DropshipRouteWithChildren
+  '/dropship/playbook': typeof DropshipPlaybookRoute
+  '/dropship/': typeof DropshipIndexRoute
+  '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
+  '/dropship/reading/': typeof DropshipReadingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/reading' | '/reading/$slug'
+  fullPaths:
+    | '/'
+    | '/dropship'
+    | '/dropship/playbook'
+    | '/dropship/'
+    | '/dropship/reading/$slug'
+    | '/dropship/reading/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/reading' | '/reading/$slug'
-  id: '__root__' | '/' | '/reading' | '/reading/$slug'
+  to:
+    | '/'
+    | '/dropship/playbook'
+    | '/dropship'
+    | '/dropship/reading/$slug'
+    | '/dropship/reading'
+  id:
+    | '__root__'
+    | '/'
+    | '/dropship'
+    | '/dropship/playbook'
+    | '/dropship/'
+    | '/dropship/reading/$slug'
+    | '/dropship/reading/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ReadingRoute: typeof ReadingRouteWithChildren
+  DropshipRoute: typeof DropshipRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -67,37 +111,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reading': {
-      id: '/reading'
-      path: '/reading'
-      fullPath: '/reading'
-      preLoaderRoute: typeof ReadingRouteImport
+    '/dropship': {
+      id: '/dropship'
+      path: '/dropship'
+      fullPath: '/dropship'
+      preLoaderRoute: typeof DropshipRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reading/$slug': {
-      id: '/reading/$slug'
-      path: '/$slug'
-      fullPath: '/reading/$slug'
-      preLoaderRoute: typeof ReadingSlugRouteImport
-      parentRoute: typeof ReadingRoute
+    '/dropship/': {
+      id: '/dropship/'
+      path: '/'
+      fullPath: '/dropship/'
+      preLoaderRoute: typeof DropshipIndexRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/playbook': {
+      id: '/dropship/playbook'
+      path: '/playbook'
+      fullPath: '/dropship/playbook'
+      preLoaderRoute: typeof DropshipPlaybookRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/reading/': {
+      id: '/dropship/reading/'
+      path: '/reading'
+      fullPath: '/dropship/reading/'
+      preLoaderRoute: typeof DropshipReadingIndexRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/reading/$slug': {
+      id: '/dropship/reading/$slug'
+      path: '/reading/$slug'
+      fullPath: '/dropship/reading/$slug'
+      preLoaderRoute: typeof DropshipReadingSlugRouteImport
+      parentRoute: typeof DropshipRoute
     }
   }
 }
 
-interface ReadingRouteChildren {
-  ReadingSlugRoute: typeof ReadingSlugRoute
+interface DropshipRouteChildren {
+  DropshipPlaybookRoute: typeof DropshipPlaybookRoute
+  DropshipIndexRoute: typeof DropshipIndexRoute
+  DropshipReadingSlugRoute: typeof DropshipReadingSlugRoute
+  DropshipReadingIndexRoute: typeof DropshipReadingIndexRoute
 }
 
-const ReadingRouteChildren: ReadingRouteChildren = {
-  ReadingSlugRoute: ReadingSlugRoute,
+const DropshipRouteChildren: DropshipRouteChildren = {
+  DropshipPlaybookRoute: DropshipPlaybookRoute,
+  DropshipIndexRoute: DropshipIndexRoute,
+  DropshipReadingSlugRoute: DropshipReadingSlugRoute,
+  DropshipReadingIndexRoute: DropshipReadingIndexRoute,
 }
 
-const ReadingRouteWithChildren =
-  ReadingRoute._addFileChildren(ReadingRouteChildren)
+const DropshipRouteWithChildren = DropshipRoute._addFileChildren(
+  DropshipRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ReadingRoute: ReadingRouteWithChildren,
+  DropshipRoute: DropshipRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
-import { Clock, ExternalLink, Search, ArrowLeft, Video } from "lucide-react";
+import { Clock, ExternalLink, Search, Video } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -10,7 +10,7 @@ import {
   slugify,
 } from "@/features/dropshipping/data/linhthach-reading-data";
 
-export const Route = createFileRoute("/reading")({
+export const Route = createFileRoute("/dropship/reading/")({
   component: ReadingListPage,
 });
 
@@ -34,16 +34,9 @@ export function ReadingListPage() {
   return (
     <ScrollArea className="h-full">
       <div className="p-8 max-w-7xl mx-auto space-y-6">
-        {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <Link
-                to="/"
-                className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-purple-600 font-medium transition-colors mr-2"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" /> Dropship
-              </Link>
               <Badge className="bg-purple-600 text-white font-bold text-[10px]">
                 179 Bài Học
               </Badge>
@@ -53,11 +46,10 @@ export function ReadingListPage() {
               Blog Linh Thạch
             </h1>
             <p className="text-xs text-zinc-500 leading-relaxed max-w-2xl">
-              Tổng hợp 179 bài học & video cẩm nang thực chiến Dropshipping của Linh Thạch (sắp xếp theo thứ tự từ cũ đến mới). Click vào tiêu đề bài viết để xem chi tiết.
+              Tổng hợp 179 bài học & video cẩm nang thực chiến Dropshipping của Linh Thạch (sắp xếp theo thứ tự từ cũ đến mới).
             </p>
           </div>
 
-          {/* Search Box */}
           <div className="relative w-full sm:w-72">
             <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
@@ -73,9 +65,7 @@ export function ReadingListPage() {
           </div>
         </div>
 
-        {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[320px_minmax(0,1fr)] gap-8 items-start">
-          {/* Sidebar Video Selector */}
           <Card className="p-4 border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-3 shadow-xs">
             <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 px-2 flex justify-between items-center">
               <span>Danh sách bài học</span>
@@ -114,7 +104,6 @@ export function ReadingListPage() {
             </ScrollArea>
           </Card>
 
-          {/* Main Video Reading View */}
           {active && (
             <Card className="p-8 border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-8 rounded-2xl">
               <div className="space-y-4">
@@ -144,10 +133,9 @@ export function ReadingListPage() {
                   </a>
                 </div>
 
-                {/* Clickable Title Link */}
                 <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-snug">
                   <Link
-                    to="/reading/$slug"
+                    to="/dropship/reading/$slug"
                     params={{ slug: slugify(active.title) }}
                     className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors inline-flex items-center gap-2 group"
                   >
@@ -161,7 +149,6 @@ export function ReadingListPage() {
                 </div>
               </div>
 
-              {/* Chapters */}
               <div className="space-y-0">
                 <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 pb-3 border-b border-zinc-100 dark:border-zinc-800">
                   Tóm tắt theo mốc thời gian
@@ -191,13 +178,12 @@ export function ReadingListPage() {
                 ))}
               </div>
 
-              {/* Action Bar Link to detail */}
               <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
                 <span className="text-zinc-500">
                   Bấm vào tiêu đề bài viết để tới trang chi tiết đầy đủ với video player.
                 </span>
                 <Link
-                  to="/reading/$slug"
+                  to="/dropship/reading/$slug"
                   params={{ slug: slugify(active.title) }}
                   className="font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1"
                 >

@@ -19,7 +19,7 @@ import {
   type Reading,
 } from "@/features/dropshipping/data/linhthach-reading-data";
 
-export const Route = createFileRoute("/reading/$slug")({
+export const Route = createFileRoute("/dropship/reading/$slug")({
   component: ReadingDetailPage,
 });
 
