@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MarketResearchTool } from "@/features/dropshipping/components/MarketResearchTool";
 import { NGO_THANH_STEPS } from "@/features/dropshipping/components/QuyTrinh2026Tab";
 import { ArrowRight, Sparkles } from "lucide-react";
 
@@ -80,11 +79,6 @@ export function QuyTrinh2026MainPage() {
               </Card>
             );
           })}
-        </div>
-
-        {/* Interactive Market Research Tool */}
-        <div className="pt-6 border-t border-zinc-200 dark:border-zinc-800">
-          <MarketResearchTool />
         </div>
       </div>
     </ScrollArea>
