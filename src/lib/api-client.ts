@@ -41,3 +41,9 @@ export async function upsertDropshipPhaseContent(productId: string, phaseData: {
   if (!response.ok) throw new Error('Failed to upsert dropship phase content');
   return response.json();
 }
+
+export async function fetchLiveStoreSpy(domain: string) {
+  const response = await fetch(`${API_BASE_URL}/personal/dropshipping/spy?domain=${encodeURIComponent(domain)}`);
+  if (!response.ok) throw new Error('Failed to inspect live store');
+  return response.json();
+}
