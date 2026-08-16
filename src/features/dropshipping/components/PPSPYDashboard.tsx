@@ -1,25 +1,23 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { fetchLiveStoreSpy } from '@/lib/api-client';
-import { 
-  TrendingUp, 
-  ShoppingBag, 
-  Search, 
-  ExternalLink, 
-  Eye, 
-  Zap, 
-  DollarSign, 
-  Cpu, 
-  Globe, 
-  Loader2, 
+import {
+  ShoppingBag,
+  Search,
+  ExternalLink,
+  Eye,
+  DollarSign,
+  Cpu,
+  Globe,
+  Loader2,
   AlertCircle,
   Users,
   Activity,
-  ArrowUpRight
+  TrendingUp
 } from 'lucide-react';
 
 interface RealProduct {
@@ -38,6 +36,17 @@ interface RealProduct {
   url: string;
 }
 
+interface RevenueEstimate {
+  available: boolean;
+  source?: string;
+  monthlyRevenueUsd?: number | null;
+  annualRevenueUsd?: number | null;
+  monthlyVisits?: number | null;
+  globalRank?: number | null;
+  trafficSources?: Record<string, number> | null;
+  reason?: string;
+}
+
 interface RealStoreSpyData {
   success: boolean;
   domain: string;
@@ -53,6 +62,24 @@ interface RealStoreSpyData {
     newestProductDate: string;
   };
   products: RealProduct[];
+  revenueEstimate?: RevenueEstimate;
+}
+
+const TRAFFIC_CHANNEL_COLORS = ['bg-blue-500', 'bg-pink-500', 'bg-emerald-500', 'bg-amber-500', 'bg-purple-500', 'bg-cyan-500'];
+
+function formatChannelLabel(key: string): string {
+  return key.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// Apify may return shares as fractions (0-1) or already as percent (0-100).
+function normalizeTrafficSources(sources: Record<string, number>): { channel: string; percent: number }[] {
+  const entries = Object.entries(sources).filter(([, v]) => typeof v === 'number');
+  const maxVal = Math.max(0, ...entries.map(([, v]) => v));
+  const isFraction = maxVal <= 1;
+  return entries
+    .map(([key, v]) => ({ channel: formatChannelLabel(key), percent: Math.round(isFraction ? v * 100 : v) }))
+    .filter((e) => e.percent > 0)
+    .sort((a, b) => b.percent - a.percent);
 }
 
 export function PPSPYDashboard() {
@@ -87,61 +114,25 @@ export function PPSPYDashboard() {
     handleInspectStore('govee.com');
   }, []);
 
-  // DYNAMIC COMPUTATION BASED ON REAL LIVE DATA & TARGET DOMAIN
-  const dynamicAnalytics = useMemo(() => {
-    if (!liveData) return null;
-
-    const domainStr = liveData.domain || 'govee.com';
-    let seed = 0;
-    for (let i = 0; i < domainStr.length; i++) {
-      seed += domainStr.charCodeAt(i);
-    }
-
-    const realAvgPrice = parseFloat(liveData.metrics.avgPrice) || 45.0;
-    const realTotalProducts = liveData.metrics.totalProducts || 15;
-
-    // Monthly multipliers for 12 months (seasonality index)
-    const seasonality = [0.8, 0.95, 1.6, 1.85, 1.0, 1.05, 1.2, 1.35, 1.45, 1.55, 1.65, 1.75];
-    const monthNames = ['T9/2025', 'T10/2025', 'T11/2025 (BFCM)', 'T12/2025 (Xmas)', 'T1/2026', 'T2/2026', 'T3/2026', 'T4/2026', 'T5/2026', 'T6/2026', 'T7/2026', 'T8/2026 (Live)'];
-
-    const baseMonthlyOrders = Math.max(120, realTotalProducts * 80 + (seed % 400));
-
-    const monthlyHistory = monthNames.map((m, idx) => {
-      const mult = seasonality[idx];
-      const orders = Math.round(baseMonthlyOrders * mult);
-      const revenue = Math.round(orders * realAvgPrice);
-      const traffic = Math.round(revenue / (realAvgPrice * 0.024)); // 2.4% CR benchmark
-      return { month: m, revenue, traffic, orders };
-    });
-
-    const annualRevenue = monthlyHistory.reduce((acc, m) => acc + m.revenue, 0);
-    const annualTraffic = monthlyHistory.reduce((acc, m) => acc + m.traffic, 0);
-    const maxMonthlyRev = Math.max(...monthlyHistory.map(m => m.revenue));
-    const avgMonthlyVisits = Math.round(annualTraffic / 12);
-
-    return {
-      monthlyHistory,
-      annualRevenue,
-      annualTraffic,
-      maxMonthlyRev,
-      avgMonthlyVisits,
-      realAvgPrice,
-      realTotalProducts
-    };
-  }, [liveData]);
+  const revenueEstimate = liveData?.revenueEstimate;
+  const realAvgPrice = liveData ? (parseFloat(liveData.metrics.avgPrice) || 0) : 0;
+  const realTotalProducts = liveData?.metrics.totalProducts || 0;
+  const trafficChannels = revenueEstimate?.available && revenueEstimate.trafficSources
+    ? normalizeTrafficSources(revenueEstimate.trafficSources)
+    : [];
 
   return (
     <Card className="bg-zinc-950 border-purple-500/30 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-8 text-white font-sans">
       {/* Search Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-800/80 pb-6">
         <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <Badge className="bg-purple-600 text-white font-black text-[10px] tracking-widest uppercase px-2.5 py-0.5">
-              100% Dynamic Real Live Analytics
+          <div className="flex items-center gap-2 flex-wrap">
+            <Badge className="bg-emerald-600 text-white font-black text-[10px] tracking-widest uppercase px-2.5 py-0.5">
+              Real Scraped Data (Products/Pixels/Apps)
             </Badge>
-            <span className="text-xs text-purple-400 font-mono flex items-center gap-1 font-bold">
-              <Zap className="w-3.5 h-3.5 text-amber-400 animate-pulse" /> Domain-Specific Store Metrics
-            </span>
+            <Badge className="bg-amber-600 text-white font-black text-[10px] tracking-widest uppercase px-2.5 py-0.5">
+              Revenue/Traffic: Apify 3rd-Party Estimate
+            </Badge>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight flex items-center gap-2">
             <Eye className="w-6 h-6 text-purple-400" />
@@ -174,33 +165,52 @@ export function PPSPYDashboard() {
         </div>
       )}
 
-      {/* TOP EXECUTIVE KPI CARDS (100% DYNAMIC) */}
-      {dynamicAnalytics && (
+      {/* TOP EXECUTIVE KPI CARDS */}
+      {liveData && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-zinc-900/80 p-5 rounded-2xl border border-zinc-800 space-y-1.5 shadow-xs">
+          <div className="bg-zinc-900/80 p-5 rounded-2xl border border-amber-500/20 space-y-1.5 shadow-xs">
             <div className="flex items-center justify-between text-zinc-400">
-              <span className="text-[10px] font-bold uppercase tracking-wider block">Ước Tính Doanh Thu 1 Năm ({liveData?.domain})</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider block">Doanh Thu Ước Tính / Tháng</span>
               <DollarSign className="w-4 h-4 text-emerald-400" />
             </div>
-            <div className="text-2xl font-black text-emerald-400 font-mono">
-              ${(dynamicAnalytics.annualRevenue / 1000000).toFixed(2)}M USD
-            </div>
-            <span className="text-[10px] text-zinc-400 flex items-center gap-1">
-              <ArrowUpRight className="w-3 h-3 text-emerald-400" /> Tăng trưởng +{(24 + (liveData?.products.length || 5) % 15).toFixed(1)}% YoY
-            </span>
+            {revenueEstimate?.available && typeof revenueEstimate.monthlyRevenueUsd === 'number' ? (
+              <>
+                <div className="text-2xl font-black text-emerald-400 font-mono">
+                  ${(revenueEstimate.monthlyRevenueUsd / 1000).toFixed(1)}k USD
+                </div>
+                <span className="text-[10px] text-zinc-400 block">
+                  ~${((revenueEstimate.annualRevenueUsd ?? revenueEstimate.monthlyRevenueUsd * 12) / 1000000).toFixed(2)}M/năm · nguồn: Apify Shopify Store Analyzer
+                </span>
+              </>
+            ) : (
+              <>
+                <div className="text-sm font-bold text-zinc-500">Không khả dụng</div>
+                <span className="text-[10px] text-amber-400 block">{revenueEstimate?.reason || 'Cần cấu hình APIFY_API_TOKEN ở backend'}</span>
+              </>
+            )}
           </div>
 
-          <div className="bg-zinc-900/80 p-5 rounded-2xl border border-zinc-800 space-y-1.5 shadow-xs">
+          <div className="bg-zinc-900/80 p-5 rounded-2xl border border-amber-500/20 space-y-1.5 shadow-xs">
             <div className="flex items-center justify-between text-zinc-400">
-              <span className="text-[10px] font-bold uppercase tracking-wider block">Lưu Lượng Traffic 12 Tháng</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider block">Traffic Ước Tính / Tháng</span>
               <Users className="w-4 h-4 text-purple-400" />
             </div>
-            <div className="text-2xl font-black text-purple-400 font-mono">
-              {(dynamicAnalytics.annualTraffic / 1000000).toFixed(2)}M Lượt Ghé Thăm
-            </div>
-            <span className="text-[10px] text-zinc-400 flex items-center gap-1">
-              <Activity className="w-3 h-3 text-purple-400" /> ~{dynamicAnalytics.avgMonthlyVisits.toLocaleString()} Visits / Tháng
-            </span>
+            {revenueEstimate?.available && typeof revenueEstimate.monthlyVisits === 'number' ? (
+              <>
+                <div className="text-2xl font-black text-purple-400 font-mono">
+                  {(revenueEstimate.monthlyVisits / 1000).toFixed(1)}k Visits
+                </div>
+                <span className="text-[10px] text-zinc-400 flex items-center gap-1">
+                  <Activity className="w-3 h-3 text-purple-400" />
+                  {revenueEstimate.globalRank ? `Global Rank #${revenueEstimate.globalRank.toLocaleString()}` : 'Ước tính bên thứ 3 (Apify)'}
+                </span>
+              </>
+            ) : (
+              <>
+                <div className="text-sm font-bold text-zinc-500">Không khả dụng</div>
+                <span className="text-[10px] text-amber-400 block">{revenueEstimate?.reason || 'Cần cấu hình APIFY_API_TOKEN ở backend'}</span>
+              </>
+            )}
           </div>
 
           <div className="bg-zinc-900/80 p-5 rounded-2xl border border-zinc-800 space-y-1.5 shadow-xs">
@@ -209,9 +219,9 @@ export function PPSPYDashboard() {
               <ShoppingBag className="w-4 h-4 text-amber-400" />
             </div>
             <div className="text-2xl font-black text-amber-400 font-mono">
-              ${dynamicAnalytics.realAvgPrice.toFixed(2)}
+              ${realAvgPrice.toFixed(2)}
             </div>
-            <span className="text-[10px] text-zinc-400 block">Conversion Rate dự tính: 2.4%</span>
+            <span className="text-[10px] text-zinc-400 block">Tính từ giá thật trong /products.json</span>
           </div>
 
           <div className="bg-zinc-900/80 p-5 rounded-2xl border border-zinc-800 space-y-1.5 shadow-xs">
@@ -220,89 +230,52 @@ export function PPSPYDashboard() {
               <Globe className="w-4 h-4 text-blue-400" />
             </div>
             <div className="text-2xl font-black text-blue-400 font-mono">
-              {dynamicAnalytics.realTotalProducts} Sản Phẩm
+              {realTotalProducts} Sản Phẩm
             </div>
             <span className="text-[10px] text-zinc-400 block">Quét trực tiếp từ /products.json</span>
           </div>
         </div>
       )}
 
-      {/* 12-MONTH REVENUE & TRAFFIC CHART (DYNAMICALLY RENDERED) */}
-      {dynamicAnalytics && (
-        <Card className="bg-zinc-900 border-zinc-800 p-6 rounded-2xl space-y-5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800 pb-4">
-            <div className="space-y-0.5">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-emerald-400" />
-                Biểu Đồ Doanh Thu & Traffic 12 Tháng Của Store "{liveData?.domain}"
-              </h3>
-              <p className="text-xs text-zinc-400">
-                Tính toán động từ giá trung bình (${dynamicAnalytics.realAvgPrice}) và số lượng sản phẩm ({dynamicAnalytics.realTotalProducts}).
-              </p>
-            </div>
-            <Badge variant="outline" className="text-[10px] font-mono border-emerald-500/30 text-emerald-400 bg-emerald-500/10 self-start sm:self-auto">
-              Dynamic Store History
-            </Badge>
-          </div>
-
-          {/* Bar & Visual Trend Lines */}
-          <div className="space-y-4 pt-2">
-            <div className="grid grid-cols-6 sm:grid-cols-12 gap-2 items-end h-48 pt-6 border-b border-zinc-800 pb-2">
-              {dynamicAnalytics.monthlyHistory.map((m, idx) => {
-                const heightPercent = Math.max(15, Math.round((m.revenue / dynamicAnalytics.maxMonthlyRev) * 100));
-                return (
-                  <div key={idx} className="flex flex-col items-center gap-1.5 h-full justify-end group cursor-pointer">
-                    <div className="opacity-0 group-hover:opacity-100 transition-all text-[9px] font-mono text-emerald-400 font-bold bg-zinc-950 px-1.5 py-0.5 rounded border border-zinc-800 whitespace-nowrap">
-                      ${(m.revenue / 1000).toFixed(0)}k
-                    </div>
-                    <div 
-                      style={{ height: `${heightPercent}%` }} 
-                      className="w-full bg-gradient-to-t from-purple-600 via-indigo-500 to-emerald-400 rounded-t-md group-hover:brightness-125 transition-all" 
-                    />
-                    <span className="text-[9px] font-mono text-zinc-400 truncate w-full text-center">{m.month.split(' ')[0]}</span>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-zinc-400 pt-1 font-mono">
-              <div className="flex items-center gap-4">
-                <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-emerald-400 rounded-sm"></span> Doanh thu hàng tháng ($)</span>
-                <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-purple-500 rounded-sm"></span> Lưu lượng Traffic (Visits)</span>
-              </div>
-              <span className="text-zinc-500">Shopify API Data Match: 100%</span>
-            </div>
-          </div>
-        </Card>
+      {liveData && !revenueEstimate?.available && (
+        <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 flex items-start gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+          <span>
+            Chưa có số liệu Doanh thu/Traffic đáng tin cậy cho domain này ({revenueEstimate?.reason || 'thiếu cấu hình nguồn dữ liệu'}).
+            Dashboard đã <strong>ngừng bịa số</strong> cho phần này — cần cấu hình <code className="font-mono">APIFY_API_TOKEN</code> ở backend
+            (actor <a href="https://apify.com/apivault_labs/shopify-store-analyzer" target="_blank" rel="noopener noreferrer" className="underline">apivault_labs/shopify-store-analyzer</a>, ~$0.007/store) để có ước tính thật từ traffic panel.
+          </span>
+        </div>
       )}
 
       {/* TRAFFIC SOURCES BREAKDOWN & STORE TECH STACK */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <Card className="lg:col-span-6 bg-zinc-900 border-zinc-800 p-6 rounded-2xl space-y-4">
           <h3 className="text-sm font-bold text-white flex items-center gap-2 border-b border-zinc-800 pb-3">
-            <Users className="w-4 h-4 text-purple-400" />
-            Cơ Cấu Nguồn Traffic Lắng Nghe (Traffic Channels Breakdown)
+            <TrendingUp className="w-4 h-4 text-purple-400" />
+            Cơ Cấu Nguồn Traffic ({liveData?.domain || '...'})
           </h3>
 
-          <div className="space-y-3 pt-1">
-            {[
-              { channel: 'Meta Ads (Facebook / Instagram)', percent: 52, color: 'bg-blue-500' },
-              { channel: 'TikTok Ads & Organic Video', percent: 30, color: 'bg-pink-500' },
-              { channel: 'Google Search & Shopping Ads', percent: 11, color: 'bg-emerald-500' },
-              { channel: 'Direct / Email Marketing', percent: 5, color: 'bg-amber-500' },
-              { channel: 'Pinterest / Referral', percent: 2, color: 'bg-purple-500' },
-            ].map((t, idx) => (
-              <div key={idx} className="space-y-1">
-                <div className="flex justify-between text-xs font-medium">
-                  <span className="text-zinc-300">{t.channel}</span>
-                  <span className="font-mono text-purple-300 font-bold">{t.percent}%</span>
+          {trafficChannels.length > 0 ? (
+            <div className="space-y-3 pt-1">
+              <p className="text-[10px] text-zinc-500 -mt-1">Nguồn: {revenueEstimate?.source}</p>
+              {trafficChannels.map((t, idx) => (
+                <div key={idx} className="space-y-1">
+                  <div className="flex justify-between text-xs font-medium">
+                    <span className="text-zinc-300">{t.channel}</span>
+                    <span className="font-mono text-purple-300 font-bold">{t.percent}%</span>
+                  </div>
+                  <div className="w-full h-2 bg-zinc-950 rounded-full overflow-hidden border border-zinc-800">
+                    <div style={{ width: `${t.percent}%` }} className={cn("h-full rounded-full", TRAFFIC_CHANNEL_COLORS[idx % TRAFFIC_CHANNEL_COLORS.length])} />
+                  </div>
                 </div>
-                <div className="w-full h-2 bg-zinc-950 rounded-full overflow-hidden border border-zinc-800">
-                  <div style={{ width: `${t.percent}%` }} className={cn("h-full rounded-full", t.color)} />
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-xs text-zinc-500 p-4 text-center">
+              Không có dữ liệu nguồn traffic thật cho store này (cần APIFY_API_TOKEN, hoặc actor không trả về traffic_sources cho domain này).
+            </div>
+          )}
         </Card>
 
         <Card className="lg:col-span-6 bg-zinc-900 border-zinc-800 p-6 rounded-2xl space-y-4">

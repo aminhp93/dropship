@@ -16,7 +16,8 @@ Tài liệu này tổng hợp toàn bộ nguồn gốc dữ liệu (Data Sources
 | **Meta Facebook Pixel ID** | **Real Live Data** | Regex quét thẻ script `fbq('init', 'PIXEL_ID')` trên DOM trang chủ | **100% Thực tế** |
 | **TikTok Pixel ID** | **Real Live Data** | Regex quét thẻ script `ttq.load('PIXEL_ID')` trên DOM trang chủ | **100% Thực tế** |
 | **Danh sách Apps cài đặt** | **Real Live Data** | Nhận diện dấu vết Script bên thứ ba (Loox, Klaviyo, PageFly, DSers, Judge.me...) | **100% Thực tế** |
-| **Doanh thu 12 tháng & Traffic** | **Estimated Model** | Thuật toán mô hình hóa Benchmark dựa trên AOV, sản phẩm On-sale & CR 2.4% | **Ước tính Benchmark** |
+| **Doanh thu / Traffic / Global Rank** | **3rd-Party Estimate** | Gọi API Apify actor [`apivault_labs/shopify-store-analyzer`](https://apify.com/apivault_labs/shopify-store-analyzer) (~$0.007/store) | **Ước tính từ traffic panel bên thứ 3** — không phải số bán hàng thật của store, xem mục 4 |
+| **Cơ cấu nguồn Traffic (Search/Social/Paid/...)** | **3rd-Party Estimate** | Trường `traffic.traffic_sources` trong response của actor trên, theo từng domain | **Ước tính riêng theo domain** (trước đây là số cố định, đã sửa) |
 
 ---
 
@@ -28,23 +29,19 @@ $$\text{AOV} = \frac{\sum_{i=1}^{N} P_i}{N}$$
   * $P_i$: Giá bán thực tế của sản phẩm thứ $i$ trong danh mục `/products.json`.
   * $N$: Tổng số lượng sản phẩm quét được.
 
-### 2.2. Ước Tính Doanh Thu & Traffic 12 Tháng (Dynamic Benchmark Model)
-Mô hình sử dụng chỉ số mùa vụ thị trường E-commerce Mỹ ($S_m$) kết hợp với số lượng sản phẩm catalog và giá AOV thực tế:
+### 2.2. Ước Tính Doanh Thu & Traffic (Apify 3rd-Party Estimate)
 
-1. **Số lượng đơn hàng ước tính theo tháng ($O_m$)**:
-   $$O_m = \max\left(120, N \times 80 + \text{DomainSeed} \pmod{400}\right) \times S_m$$
+> ⚠️ **Lịch sử thay đổi**: Bản trước của tài liệu này mô tả một "Dynamic Benchmark Model" tự chế — doanh thu/traffic được tính bằng công thức dựa trên **checksum của tên domain** (`DomainSeed = tổng mã ký tự`) cộng với số lượng sản phẩm. Công thức đó **không có căn cứ dữ liệu thật nào cả** — hai store có cùng số sản phẩm sẽ luôn ra doanh thu gần giống nhau bất kể traffic/doanh số thực tế khác nhau ra sao. Mô hình này **đã bị gỡ bỏ**.
 
-2. **Doanh thu ước tính theo tháng ($R_m$)**:
-   $$R_m = O_m \times \text{AOV}$$
+Từ phiên bản hiện tại, doanh thu/traffic được lấy qua gọi API tới actor **[`apivault_labs/shopify-store-analyzer`](https://apify.com/apivault_labs/shopify-store-analyzer)** trên nền tảng Apify:
 
-3. **Lượt truy cập Traffic ước tính ($V_m$)**:
-   Với tỷ lệ chuyển đổi chuẩn E-commerce US (Conversion Rate $CR = 2.4\%$):
-   $$V_m = \frac{R_m}{\text{AOV} \times 0.024}$$
+- **Endpoint**: `POST https://api.apify.com/v2/actors/apivault_labs~shopify-store-analyzer/run-sync-get-dataset-items?token=<APIFY_API_TOKEN>`
+- **Input**: `{ mode: "analyze", storeUrls: ["https://<domain>"], conversionRate: 2.4, extractTraffic: true, extractRevenueEstimate: true }`
+- **Output dùng**: `revenue_estimate.monthly_revenue_usd_est`, `revenue_estimate.annualized_revenue_usd_est`, `traffic.monthly_visits`, `traffic.global_rank`, `traffic.traffic_sources`
+- **Giá**: ~$7 / 1.000 store phân tích (~$0.007/lượt quét)
+- **Nếu `APIFY_API_TOKEN` chưa cấu hình hoặc actor lỗi**: backend trả về `revenueEstimate.available = false` kèm lý do — **dashboard không bịa số thay thế**, chỉ hiển thị "Không khả dụng".
 
-4. **Chỉ số Mùa Vụ ($S_m$) qua 12 tháng**:
-   * **Tháng 11 (BFCM)**: $S_{11} = 1.60$
-   * **Tháng 12 (Giáng Sinh)**: $S_{12} = 1.85$
-   * **Các tháng bình thường**: $S_m \in [0.80, 1.45]$
+**Lưu ý quan trọng về độ tin cậy**: đây vẫn là **ước tính của bên thứ 3** (dựa trên traffic panel/clickstream + heuristic bán hàng), không phải doanh số thật của store — không có công cụ public nào biết chính xác doanh số của một store Shopify trừ khi họ tự công bố. Theo khảo sát ngành, các công cụ dạng này (StoreLeads, Koala Inspector, PPSPY.com...) tự nhận độ chính xác **70-85%**, và các nguồn "chuẩn" hơn như SimilarWeb/Semrush chỉ đáng tin với store >100k visits/tháng (sai số 15-25%; dưới ngưỡng đó sai số 30-50%). Nên dùng số này để **so sánh tương đối** giữa các store, không dùng làm căn cứ tuyệt đối khi quyết định sản phẩm.
 
 ---
 
@@ -59,4 +56,12 @@ Mô hình sử dụng chỉ số mùa vụ thị trường E-commerce Mỹ ($S_m
 2. **Backend Proxy**:
    * `fetch("https://govee.com")`: Phân tích HTML DOM bóc tách Theme, Pixels, Apps.
    * `fetch("https://govee.com/products.json?limit=50")`: Lấy danh sách sản phẩm thật, giá bán, ảnh 4K.
-3. **Dynamic Response**: Trả về dữ liệu JSON thực tế kết hợp chỉ số tính toán động cho Frontend hiển thị.
+   * `POST api.apify.com/.../apivault_labs~shopify-store-analyzer/run-sync-get-dataset-items`: Lấy ước tính doanh thu/traffic/nguồn traffic từ Apify (chỉ chạy nếu có `APIFY_API_TOKEN`).
+3. **Dynamic Response**: Trả về dữ liệu JSON gồm phần **Real Data** (products/theme/pixels/apps) và phần **`revenueEstimate`** (ước tính bên thứ 3, hoặc `available: false` nếu chưa cấu hình/lỗi) cho Frontend hiển thị đúng bản chất từng loại dữ liệu.
+
+### Cấu hình cần thiết
+Thêm vào `.env.local` của backend (`githubcoffee-api`):
+```
+APIFY_API_TOKEN="<token từ https://console.apify.com/account/integrations>"
+```
+Và "rent" (kích hoạt pay-per-event) actor tại [apify.com/apivault_labs/shopify-store-analyzer](https://apify.com/apivault_labs/shopify-store-analyzer) trước khi gọi được — đây là bước người dùng phải tự làm trên tài khoản Apify của mình.
