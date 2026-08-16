@@ -29,13 +29,6 @@ interface PlatformConfig {
 
 export function MarketResearchTool() {
   const [keyword, setKeyword] = useState<string>("Portable UV Toothbrush Sanitizer");
-  const [selectedPlatforms, setSelectedPlatforms] = useState<Record<string, boolean>>({
-    fbAds: true,
-    tiktok: true,
-    pinterest: true,
-    googleTrends: true,
-    aliExpress: true,
-  });
   const [lastLaunchedKeyword, setLastLaunchedKeyword] = useState<string | null>(null);
 
   const cleanQuery = keyword.trim() || "Portable UV Toothbrush Sanitizer";
@@ -93,20 +86,9 @@ export function MarketResearchTool() {
     }
   ];
 
-  const handleTogglePlatform = (id: string) => {
-    setSelectedPlatforms(prev => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const handleSelectAll = (select: boolean) => {
-    const updated: Record<string, boolean> = {};
-    platforms.forEach(p => { updated[p.id] = select; });
-    setSelectedPlatforms(updated);
-  };
-
   const handleLaunchAll = (targetQuery?: string) => {
     const q = targetQuery || cleanQuery;
-    const activeList = platforms.filter(p => selectedPlatforms[p.id]);
-    activeList.forEach(p => {
+    platforms.forEach(p => {
       window.open(p.getUrl(q), '_blank');
     });
     setLastLaunchedKeyword(q);
@@ -120,9 +102,16 @@ export function MarketResearchTool() {
     <Card className="bg-zinc-900/90 border-purple-500/30 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
       {/* Input Section */}
       <div className="space-y-4 bg-zinc-950/70 p-5 rounded-2xl border border-zinc-800/80">
-        <label className="text-xs font-bold text-zinc-300 uppercase tracking-wider block">
-          Nhập Từ Khóa Sản Phẩm (Keyword):
-        </label>
+        <div className="flex items-center justify-between">
+          <label className="text-xs font-bold text-zinc-300 uppercase tracking-wider block">
+            Nhập Từ Khóa Sản Phẩm (Keyword):
+          </label>
+          {lastLaunchedKeyword && (
+            <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+              <CheckCircle2 className="w-3.5 h-3.5" /> Đã mở từ khóa "{lastLaunchedKeyword}"
+            </span>
+          )}
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
@@ -146,85 +135,44 @@ export function MarketResearchTool() {
         </div>
       </div>
 
-      {/* Controls Bar & Checkboxes */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between text-xs text-zinc-400">
-          <div className="flex items-center gap-3">
-            <span className="font-bold text-zinc-300 uppercase tracking-wider text-[11px]">Danh Sách 5 Nền Tảng Sẽ Mở:</span>
-            <button
-              onClick={() => handleSelectAll(true)}
-              className="text-purple-400 hover:underline font-semibold text-[11px] cursor-pointer"
-            >
-              Chọn tất cả (5)
-            </button>
-            <span className="text-zinc-600">•</span>
-            <button
-              onClick={() => handleSelectAll(false)}
-              className="text-zinc-500 hover:underline font-medium text-[11px] cursor-pointer"
-            >
-              Bỏ chọn
-            </button>
-          </div>
-          {lastLaunchedKeyword && (
-            <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" /> Đã mở từ khóa "{lastLaunchedKeyword}"
-            </span>
-          )}
-        </div>
-
-        {/* Platform Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {platforms.map((p) => {
-            const isChecked = !!selectedPlatforms[p.id];
-            return (
-              <div
-                key={p.id}
-                onClick={() => handleTogglePlatform(p.id)}
-                className={cn(
-                  "p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between space-y-3",
-                  isChecked
-                    ? "bg-zinc-900/80 border-purple-500/40 shadow-xs"
-                    : "bg-zinc-950/40 border-zinc-800/60 opacity-60 hover:opacity-100"
-                )}
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className={cn("p-1.5 rounded-lg border", p.color)}>
-                        <p.icon className="w-4 h-4" />
-                      </div>
-                      <span className="text-xs font-bold text-white">{p.name}</span>
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => {}}
-                      className="accent-purple-500 w-4 h-4 cursor-pointer"
-                    />
+      {/* Platform Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {platforms.map((p) => (
+          <div
+            key={p.id}
+            onClick={() => handleLaunchSingle(p)}
+            className="p-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/60 hover:bg-zinc-900 hover:border-purple-500/40 transition-all cursor-pointer flex flex-col justify-between space-y-3 group shadow-xs"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className={cn("p-1.5 rounded-lg border", p.color)}>
+                    <p.icon className="w-4 h-4" />
                   </div>
-                  <Badge variant="outline" className="text-[9px] font-mono text-zinc-400 border-zinc-800">
-                    {p.badge}
-                  </Badge>
-                  <p className="text-[11px] text-zinc-400 line-clamp-2 leading-relaxed">
-                    {p.description}
-                  </p>
+                  <span className="text-xs font-bold text-white group-hover:text-purple-400 transition-colors">{p.name}</span>
                 </div>
-
-                <Button
-                  size="sm"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleLaunchSingle(p);
-                  }}
-                  className="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-[11px] font-semibold py-1.5 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  <span>Mở riêng tab này</span>
-                  <ExternalLink className="w-3 h-3 text-zinc-400" />
-                </Button>
               </div>
-            );
-          })}
-        </div>
+              <Badge variant="outline" className="text-[9px] font-mono text-zinc-400 border-zinc-800">
+                {p.badge}
+              </Badge>
+              <p className="text-[11px] text-zinc-400 line-clamp-2 leading-relaxed">
+                {p.description}
+              </p>
+            </div>
+
+            <Button
+              size="sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleLaunchSingle(p);
+              }}
+              className="w-full bg-zinc-800 hover:bg-purple-600 text-zinc-200 hover:text-white text-[11px] font-semibold py-1.5 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+            >
+              <span>Mở tab này</span>
+              <ExternalLink className="w-3 h-3 text-zinc-400 group-hover:text-white" />
+            </Button>
+          </div>
+        ))}
       </div>
     </Card>
   );
