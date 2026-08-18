@@ -12,10 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DropshipRouteImport } from './routes/dropship'
 import { Route as DropshipIndexRouteImport } from './routes/dropship/index'
-import { Route as DropshipBlogRouteImport } from './routes/dropship/blog'
-import { Route as DropshipPlaybookRouteImport } from './routes/dropship/playbook'
-import { Route as DropshipSanphamRouteImport } from './routes/dropship/sanpham'
-import { Route as DropshipSopChiTietRouteImport } from './routes/dropship/sop-chi-tiet'
 import { Route as DropshipQuyTrinh2026IndexRouteImport } from './routes/dropship/quy-trinh-2026/index'
 import { Route as DropshipQuyTrinh2026StepSlugRouteImport } from './routes/dropship/quy-trinh-2026/$stepSlug'
 import { Route as DropshipReadingIndexRouteImport } from './routes/dropship/reading/index'
@@ -34,26 +30,6 @@ const DropshipRoute = DropshipRouteImport.update({
 const DropshipIndexRoute = DropshipIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => DropshipRoute,
-} as any)
-const DropshipBlogRoute = DropshipBlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => DropshipRoute,
-} as any)
-const DropshipPlaybookRoute = DropshipPlaybookRouteImport.update({
-  id: '/playbook',
-  path: '/playbook',
-  getParentRoute: () => DropshipRoute,
-} as any)
-const DropshipSanphamRoute = DropshipSanphamRouteImport.update({
-  id: '/sanpham',
-  path: '/sanpham',
-  getParentRoute: () => DropshipRoute,
-} as any)
-const DropshipSopChiTietRoute = DropshipSopChiTietRouteImport.update({
-  id: '/sop-chi-tiet',
-  path: '/sop-chi-tiet',
   getParentRoute: () => DropshipRoute,
 } as any)
 const DropshipQuyTrinh2026IndexRoute =
@@ -82,10 +58,6 @@ const DropshipReadingSlugRoute = DropshipReadingSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dropship': typeof DropshipRouteWithChildren
-  '/dropship/blog': typeof DropshipBlogRoute
-  '/dropship/playbook': typeof DropshipPlaybookRoute
-  '/dropship/sanpham': typeof DropshipSanphamRoute
-  '/dropship/sop-chi-tiet': typeof DropshipSopChiTietRoute
   '/dropship/': typeof DropshipIndexRoute
   '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
   '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
@@ -94,10 +66,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dropship/blog': typeof DropshipBlogRoute
-  '/dropship/playbook': typeof DropshipPlaybookRoute
-  '/dropship/sanpham': typeof DropshipSanphamRoute
-  '/dropship/sop-chi-tiet': typeof DropshipSopChiTietRoute
   '/dropship': typeof DropshipIndexRoute
   '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
   '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
@@ -108,10 +76,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dropship': typeof DropshipRouteWithChildren
-  '/dropship/blog': typeof DropshipBlogRoute
-  '/dropship/playbook': typeof DropshipPlaybookRoute
-  '/dropship/sanpham': typeof DropshipSanphamRoute
-  '/dropship/sop-chi-tiet': typeof DropshipSopChiTietRoute
   '/dropship/': typeof DropshipIndexRoute
   '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
   '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
@@ -123,10 +87,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dropship'
-    | '/dropship/blog'
-    | '/dropship/playbook'
-    | '/dropship/sanpham'
-    | '/dropship/sop-chi-tiet'
     | '/dropship/'
     | '/dropship/quy-trinh-2026/$stepSlug'
     | '/dropship/reading/$slug'
@@ -135,10 +95,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/dropship/blog'
-    | '/dropship/playbook'
-    | '/dropship/sanpham'
-    | '/dropship/sop-chi-tiet'
     | '/dropship'
     | '/dropship/quy-trinh-2026/$stepSlug'
     | '/dropship/reading/$slug'
@@ -148,10 +104,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dropship'
-    | '/dropship/blog'
-    | '/dropship/playbook'
-    | '/dropship/sanpham'
-    | '/dropship/sop-chi-tiet'
     | '/dropship/'
     | '/dropship/quy-trinh-2026/$stepSlug'
     | '/dropship/reading/$slug'
@@ -187,34 +139,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DropshipIndexRouteImport
       parentRoute: typeof DropshipRoute
     }
-    '/dropship/blog': {
-      id: '/dropship/blog'
-      path: '/blog'
-      fullPath: '/dropship/blog'
-      preLoaderRoute: typeof DropshipBlogRouteImport
-      parentRoute: typeof DropshipRoute
-    }
-    '/dropship/playbook': {
-      id: '/dropship/playbook'
-      path: '/playbook'
-      fullPath: '/dropship/playbook'
-      preLoaderRoute: typeof DropshipPlaybookRouteImport
-      parentRoute: typeof DropshipRoute
-    }
-    '/dropship/sanpham': {
-      id: '/dropship/sanpham'
-      path: '/sanpham'
-      fullPath: '/dropship/sanpham'
-      preLoaderRoute: typeof DropshipSanphamRouteImport
-      parentRoute: typeof DropshipRoute
-    }
-    '/dropship/sop-chi-tiet': {
-      id: '/dropship/sop-chi-tiet'
-      path: '/sop-chi-tiet'
-      fullPath: '/dropship/sop-chi-tiet'
-      preLoaderRoute: typeof DropshipSopChiTietRouteImport
-      parentRoute: typeof DropshipRoute
-    }
     '/dropship/quy-trinh-2026/': {
       id: '/dropship/quy-trinh-2026/'
       path: '/quy-trinh-2026'
@@ -247,10 +171,6 @@ declare module '@tanstack/react-router' {
 }
 
 interface DropshipRouteChildren {
-  DropshipBlogRoute: typeof DropshipBlogRoute
-  DropshipPlaybookRoute: typeof DropshipPlaybookRoute
-  DropshipSanphamRoute: typeof DropshipSanphamRoute
-  DropshipSopChiTietRoute: typeof DropshipSopChiTietRoute
   DropshipIndexRoute: typeof DropshipIndexRoute
   DropshipQuyTrinh2026StepSlugRoute: typeof DropshipQuyTrinh2026StepSlugRoute
   DropshipReadingSlugRoute: typeof DropshipReadingSlugRoute
@@ -259,10 +179,6 @@ interface DropshipRouteChildren {
 }
 
 const DropshipRouteChildren: DropshipRouteChildren = {
-  DropshipBlogRoute: DropshipBlogRoute,
-  DropshipPlaybookRoute: DropshipPlaybookRoute,
-  DropshipSanphamRoute: DropshipSanphamRoute,
-  DropshipSopChiTietRoute: DropshipSopChiTietRoute,
   DropshipIndexRoute: DropshipIndexRoute,
   DropshipQuyTrinh2026StepSlugRoute: DropshipQuyTrinh2026StepSlugRoute,
   DropshipReadingSlugRoute: DropshipReadingSlugRoute,

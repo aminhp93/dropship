@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, Link, useLocation } from "@tanstack/react-router";
-import { BookOpen, Sparkles, ClipboardList, Newspaper, Video, FolderOpen } from "lucide-react";
+import { Sparkles, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dropship")({
@@ -10,21 +10,14 @@ export function DropshipLayout() {
   const location = useLocation();
 
   const navItems = [
-    { to: "/dropship", label: "Tổng quan", icon: BookOpen, exact: true },
     { to: "/dropship/quy-trinh-2026", label: "Quy trình 2026", icon: Sparkles },
-    { to: "/dropship/sop-chi-tiet", label: "SOP Chi Tiết", icon: ClipboardList },
-    { to: "/dropship/blog", label: "Blog", icon: Newspaper },
     { to: "/dropship/reading", label: "Blog Linh Thạch", icon: Video },
-    { to: "/dropship/sanpham", label: "Sản phẩm", icon: FolderOpen },
   ];
 
   return (
     <div className="flex flex-col h-full bg-zinc-50 dark:bg-zinc-950 font-sans">
       <header className="h-14 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex items-center px-6 shrink-0 z-10 justify-between">
         <div className="flex items-center gap-6 overflow-x-auto py-2 scrollbar-none">
-          <span className="font-bold text-sm text-purple-600 dark:text-purple-400 tracking-tight shrink-0">
-            Dropship Suite 2026
-          </span>
           <nav className="flex items-center gap-1 shrink-0">
             {navItems.map((item) => {
               const isActive = item.exact
