@@ -41,6 +41,7 @@ interface RawPerspective {
   score: number;
   verdict: "WINNER" | "HIGH_RISK" | "CONDITIONAL" | "EXCELLENT";
   verdictLabel: string;
+  dataConfidence?: "estimated" | "sourced";
   summary: string;
   bulletPoints: string[];
   recommendations: string[];
@@ -87,6 +88,7 @@ export function ProductLabPage() {
             score: 8.1,
             verdict: "WINNER",
             verdictLabel: "High Viral Demand",
+            dataConfidence: "estimated" as const,
             summary: `Đánh giá nhanh cho '${queryName}': Sản phẩm có thị hiếu thị trường tốt. Tỷ lệ Margin gộp dự kiến > 81%.`,
             bulletPoints: [
               `Google Trends: Chỉ số tìm kiếm duy trì tốt cho nhóm từ khóa liên quan đến '${queryName}'`,
@@ -106,6 +108,7 @@ export function ProductLabPage() {
             score: 7.5,
             verdict: "EXCELLENT",
             verdictLabel: "Solid Unit Economics",
+            dataConfidence: "estimated" as const,
             summary: `Mô hình Unit Economics cho '${queryName}': Giá vốn $6.50 $\\rightarrow$ Giá bán $34.99 tạo khoảng đệm Break-even CAC $28.49.`,
             bulletPoints: [
               "Break-even CAC: $28.49 giúp tài khoản quảng cáo Meta/TikTok hoạt động an toàn",
@@ -124,6 +127,7 @@ export function ProductLabPage() {
             score: 8.6,
             verdict: "EXCELLENT",
             verdictLabel: "Strong Visual Hook",
+            dataConfidence: "estimated" as const,
             summary: `Kịch bản video cho '${queryName}': Tương phản thị giác 3s đầu tiên giúp tăng tỷ lệ xem tiếp (Hold Rate).`,
             bulletPoints: [
               `3s Hook: 'Stop using traditional products! Look at how ${queryName} changes your routine...'`,
@@ -142,6 +146,7 @@ export function ProductLabPage() {
             score: 8.0,
             verdict: "CONDITIONAL",
             verdictLabel: "Logistics Checked",
+            dataConfidence: "estimated" as const,
             summary: `Logistics '${queryName}': Trọng lượng đóng gói ước tính < 350g, phù hợp tuyến giao hàng nhanh 8-12 ngày.`,
             bulletPoints: [
               "Phí ship Air Line ước tính: $3.50 - $4.80 tới US/EU",
@@ -160,6 +165,7 @@ export function ProductLabPage() {
             score: 7.8,
             verdict: "EXCELLENT",
             verdictLabel: "Scalable Campaign Structure",
+            dataConfidence: "estimated" as const,
             summary: `Chiến dịch Ads cho '${queryName}': Cấu trúc CBO Broad Targeting mang lại chi phí CPM tối ưu.`,
             bulletPoints: [
               "Target ROAS hòa vốn: 1.23x",
@@ -298,11 +304,21 @@ export function ProductLabPage() {
             <div className="flex items-center gap-2">
               <Zap className="w-4 h-4 text-amber-500 shrink-0" />
               <span>
-                <strong>Cách hoạt động:</strong> Nhập tên sản phẩm trên thanh tìm kiếm để <strong>xem ngay kết quả mô phỏng UI</strong>. Bấm nút <strong>"Gửi Request Tới AI Agent"</strong> để copy câu lệnh <code className="bg-zinc-200 dark:bg-zinc-700 px-1 py-0.5 rounded font-mono text-[10px]">/product-lab [tên sản phẩm]</code> dán vào chat để AI thẩm định chuyên sâu & lưu trữ vào hệ thống!
+                <strong>Cách hoạt động:</strong> Nhập tên sản phẩm trên thanh tìm kiếm để xem <strong>khung xem trước dựng sẵn (mock preview, KHÔNG phải AI vừa phân tích)</strong>. Bấm nút <strong>"Gửi Request Tới AI Agent"</strong> để copy câu lệnh <code className="bg-zinc-200 dark:bg-zinc-700 px-1 py-0.5 rounded font-mono text-[10px]">/product-lab [tên sản phẩm]</code> dán vào chat — đây mới là bước AI thật sự chạy 5 agent độc lập, thẩm định và lưu kết quả vào hệ thống.
               </span>
             </div>
           </div>
         </div>
+
+        {/* Dynamic Mode Warning — the preview below is a static template, not a live AI evaluation */}
+        {isDynamicMode && (
+          <div className="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-300/60 dark:border-amber-800 text-[11px] text-amber-800 dark:text-amber-300 flex items-center gap-2">
+            <Sparkles className="w-4 h-4 shrink-0" />
+            <span>
+              <strong>Demo Preview:</strong> Các số liệu và nhận định bên dưới là mẫu dựng sẵn (template) để minh hoạ giao diện, không do AI phân tích sản phẩm "{customSearch.trim()}" thật. Bấm <strong>"Gửi Request Tới AI Agent"</strong> phía trên để chạy đánh giá thật.
+            </span>
+          </div>
+        )}
 
         {/* Selected Product Banner */}
         {activeProduct && (
@@ -310,7 +326,7 @@ export function ProductLabPage() {
             <div className="flex flex-wrap justify-between items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">
-                  {activeProduct.category} {isDynamicMode && "· Real-time UI Engine"}
+                  {activeProduct.category} {isDynamicMode && "· Demo Preview (Chưa phải phân tích AI thật)"}
                 </span>
                 <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
                   {activeProduct.title}
@@ -382,18 +398,34 @@ export function ProductLabPage() {
                             <span className="text-[10px] text-zinc-500 block">{p.role}</span>
                           </div>
                         </div>
-                        <Badge
-                          variant="outline"
-                          className={`text-[10px] font-bold font-mono px-2 py-0.5 ${
-                            p.verdict === "WINNER" || p.verdict === "EXCELLENT"
-                              ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
-                              : p.verdict === "HIGH_RISK"
-                              ? "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20"
-                              : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
-                          }`}
-                        >
-                          {p.score} / 10 · {p.verdictLabel}
-                        </Badge>
+                        <div className="flex flex-col items-end gap-1">
+                          <Badge
+                            variant="outline"
+                            className={`text-[10px] font-bold font-mono px-2 py-0.5 ${
+                              p.verdict === "WINNER" || p.verdict === "EXCELLENT"
+                                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+                                : p.verdict === "HIGH_RISK"
+                                ? "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20"
+                                : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
+                            }`}
+                          >
+                            {p.score} / 10 · {p.verdictLabel}
+                          </Badge>
+                          <span
+                            className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${
+                              p.dataConfidence === "sourced"
+                                ? "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10"
+                                : "text-zinc-500 bg-zinc-100 dark:bg-zinc-800"
+                            }`}
+                            title={
+                              p.dataConfidence === "sourced"
+                                ? "Số liệu được tra cứu qua công cụ thật (web search)"
+                                : "Số liệu là ước tính suy luận của AI, chưa xác thực qua nguồn thật"
+                            }
+                          >
+                            {p.dataConfidence === "sourced" ? "✓ Đã tra cứu nguồn thật" : "~ Ước tính AI (chưa xác thực)"}
+                          </span>
+                        </div>
                       </div>
 
                       {/* Summary */}

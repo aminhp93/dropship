@@ -14,6 +14,7 @@
         "score": 7.85,
         "verdict": "WINNER",
         "verdictLabel": "Potential Viral Winner",
+        "dataConfidence": "estimated",
         "summary": "Sản phẩm đạt 4/4 Tiêu chí vàng. Dữ liệu đa nguồn: Google MSV 165,000 searches/mo, TikTok #fairylights đạt 1.2B views, Amazon Price Anchor $14-$24.",
         "bulletPoints": [
           "Google Trends: Chỉ số quan tâm duy trì 65/100 baseline, bùng nổ 100/100 vào tháng 11-12. Breakout: '+280% music sync fairy lights'",
@@ -34,6 +35,7 @@
         "score": 4.5,
         "verdict": "HIGH_RISK",
         "verdictLabel": "Commodity Trap Warning",
+        "dataConfidence": "estimated",
         "summary": "Bẫy sản phẩm phổ thông! Đèn Fairy Light bị cạnh tranh phá giá nặng nề trên Amazon/Temu ($4-$9). Rào cản phòng thủ = 0. Phải đổi vị thế sang gói Combo $49.99.",
         "bulletPoints": [
           "Break-even CAC thực tế: $20.51 (Dễ cháy tài khoản Ads khi CPM tăng)",
@@ -54,6 +56,7 @@
         "score": 8.5,
         "verdict": "EXCELLENT",
         "verdictLabel": "High Visual Engagement",
+        "dataConfidence": "estimated",
         "summary": "Tỷ lệ giữ chân 3s (Thumb-stop Rate) dự kiến > 35% nhờ tương phản ánh sáng phòng tối. Rất dễ viết kịch bản UGC cho Creator.",
         "bulletPoints": [
           "3s Hook: 'Stop scrolling if your room looks depressing at night...'",
@@ -74,6 +77,7 @@
         "score": 9.5,
         "verdict": "EXCELLENT",
         "verdictLabel": "Optimal Logistics Tier",
+        "dataConfidence": "estimated",
         "summary": "Logistics cực kỳ thuận lợi. Trọng lượng <150g giúp phí ship thấp nhất. Nguồn USB 5V thông dụng không lo cháy nổ hay kiểm định phức tạp.",
         "bulletPoints": [
           "Landed COGS: $2.50 dây LED + $1.70 ship Special Line = $4.20",
@@ -94,6 +98,7 @@
         "score": 6.0,
         "verdict": "CONDITIONAL",
         "verdictLabel": "Conditional Ad Scalability",
+        "dataConfidence": "estimated",
         "summary": "Chỉ chạy paid ads hiệu quả khi AOV > $45 (Gói Combo). Chạy dây đơn $27.99 sẽ bị CAC ăn mòn hết lợi nhuận ròng.",
         "bulletPoints": [
           "Target ROAS hòa vốn: 1.36 (Dây đơn) / 1.25 (Gói Combo $49.99)",
@@ -123,6 +128,7 @@
         "score": 9.05,
         "verdict": "WINNER",
         "verdictLabel": "Top 1 Winning Product 2026",
+        "dataConfidence": "estimated",
         "summary": "Sản phẩm giải quyết nỗi đau vi khuẩn cực mạnh. Dữ liệu đa nguồn: Google MSV 246,000 searches/mo, TikTok #toothbrushsanitizer đạt 89M views.",
         "bulletPoints": [
           "Google Trends: Chỉ số tăng trưởng +145% trong 12 tháng qua. Top thị trường: US (100), UK (85), CA (79). Breakout: '+310% uv c toothbrush sanitizer'",
@@ -142,6 +148,7 @@
         "score": 8.5,
         "verdict": "EXCELLENT",
         "verdictLabel": "Strong Brand Potential",
+        "dataConfidence": "estimated",
         "summary": "Sản phẩm giải quyết nỗi đau sức khỏe gia đình rõ ràng. Rất dễ xây dựng Brand lâu dài trong ngách Bathroom Hygiene.",
         "bulletPoints": [
           "AOV tốt: $39.99 -> Break-even CAC $31.50 cho phép chạy Meta Ads tự tin",
@@ -160,6 +167,7 @@
         "score": 9.0,
         "verdict": "EXCELLENT",
         "verdictLabel": "High Shock Factor Hooks",
+        "dataConfidence": "estimated",
         "summary": "Yếu tố gây sốc (Shock Factor) về vi khuẩn trong bồn cầu tạo Hook tỷ lệ giữ chân > 40%.",
         "bulletPoints": [
           "Hook: 'Did you know your toothbrush has more bacteria than a toilet seat?'",
@@ -177,6 +185,7 @@
         "score": 8.0,
         "verdict": "CONDITIONAL",
         "verdictLabel": "Check Battery Compliance",
+        "dataConfidence": "estimated",
         "summary": "Cần kiểm tra loại pin sạc Li-ion tích hợp bên trong để chọn tuyến ship air đặc thù.",
         "bulletPoints": [
           "Cần chứng nhận UN38.3 & MSDS cho pin sạc sấy khô",
@@ -194,6 +203,7 @@
         "score": 8.8,
         "verdict": "EXCELLENT",
         "verdictLabel": "Scalable Ad Funnel",
+        "dataConfidence": "estimated",
         "summary": "Biên lợi nhuận $34.50 cho phép đấu giá keyword Google Shopping & Meta Ads hiệu quả.",
         "bulletPoints": [
           "Break-even ROAS: 1.16",
@@ -220,6 +230,7 @@
         "score": 8.2,
         "verdict": "EXCELLENT",
         "verdictLabel": "High Emotional Gift Value",
+        "dataConfidence": "estimated",
         "summary": "Phân tích đa nguồn: Google MSV 301,000 searches/mo, Google Trends bùng nổ 100/100 mùa quà tặng Q4, TikTok #digitalphotoframe đạt 68.5M views.",
         "bulletPoints": [
           "Google Trends Analytics: Chỉ số quan tâm baseline 45/100, bùng nổ 100/100 vào tháng 11-12 (Mother's Day & Christmas). Top Geo: US (100), UK (82), CA (78). Breakout: '+350% smart cloud photo frame', '+220% frameo wifi picture frame'",
@@ -239,6 +250,7 @@
         "score": 7.6,
         "verdict": "WINNER",
         "verdictLabel": "High AOV Emotional Business",
+        "dataConfidence": "estimated",
         "summary": "AOV cao ($89.99) tạo Break-even CAC rộng ($60.50). Tránh được bẫy phá giá vì sản phẩm bán bằng cảm xúc kết nối gia đình chứ không bán phần cứng.",
         "bulletPoints": [
           "AOV tốt ($89.99) -> Break-even CAC $60.50 cho phép chạy Meta Video Ads tự tin",
@@ -258,6 +270,7 @@
         "score": 9.2,
         "verdict": "EXCELLENT",
         "verdictLabel": "Tear-Jerker Reaction Hooks",
+        "dataConfidence": "estimated",
         "summary": "Video quay phản ứng người già/ông bà xúc động bật khóc khi nhận được ảnh cháu nhỏ gửi từ xa có tỷ lệ lan truyền (Virality) cực cao.",
         "bulletPoints": [
           "3s Hook: 'I sent a photo from Paris and watched my grandma cry on FaceTime...'",
@@ -276,6 +289,7 @@
         "score": 7.5,
         "verdict": "CONDITIONAL",
         "verdictLabel": "Screen Protection Required",
+        "dataConfidence": "estimated",
         "summary": "Trọng lượng 450g nằm trong ngưỡng ship Air Line. Cần kiểm định kết nối WiFi 2.4GHz & chứng nhận FCC/CE cho thiết bị màn hình cảm ứng.",
         "bulletPoints": [
           "Nguồn 5V/2A DC Adapter + Màn hình Touchscreen IPS 10.1 inch",
@@ -294,6 +308,7 @@
         "score": 8.4,
         "verdict": "EXCELLENT",
         "verdictLabel": "High Margin ROAS Buffer",
+        "dataConfidence": "estimated",
         "summary": "Lãi gộp $65.49 cho phép mua lượt click từ Meta Ads & Google Search Ads với ROAS hòa vốn thấp (1.38x).",
         "bulletPoints": [
           "Break-even CAC: $60.50",
@@ -321,6 +336,7 @@
         "score": 8.85,
         "verdict": "WINNER",
         "verdictLabel": "Top Viral Home Essential",
+        "dataConfidence": "estimated",
         "summary": "Phân tích đa nguồn: Google MSV 450,000 searches/mo cho 'essential oil diffuser', TikTok #essentialoildiffuser đạt 820M views, #flamediffuser đạt 145M views.",
         "bulletPoints": [
           "Google Trends Analytics: Chỉ số quan tâm duy trì 60/100 baseline, bùng nổ 100/100 vào tháng 10-12 (Mùa đông & Giáng sinh). Top Geo: US (100), UK (88), DE (76), FR (70). Breakout: '+420% flame aroma diffuser', '+250% volcanic flame diffuser'",
@@ -340,6 +356,7 @@
         "score": 6.5,
         "verdict": "CONDITIONAL",
         "verdictLabel": "Commodity Market - Bundle Required",
+        "dataConfidence": "estimated",
         "summary": "Cạnh tranh giá gắt gao trên Temu/Amazon ($12-$18). Bắt buộc phải đóng gói Offer 'Aromatherapy Relaxation Suite' (Máy + 3 chai tinh dầu hữu cơ) giá $49.99 để nâng AOV & LTV bán lại tinh dầu.",
         "bulletPoints": [
           "Break-even CAC: $29.19 (Bán máy lẻ $35.99) vs $38.50 (Bán gói Combo $49.99)",
@@ -359,6 +376,7 @@
         "score": 9.4,
         "verdict": "EXCELLENT",
         "verdictLabel": "Insane Visual Aesthetic Hooks",
+        "dataConfidence": "estimated",
         "summary": "Video phun sương hiệu ứng ngọn lửa LED bùng rực trong phòng tối tạo hiệu ứng thị giác giữ chân xem video vượt trội.",
         "bulletPoints": [
           "3s Hook: 'My room smelled like a 5-star luxury spa for under $40...'",
@@ -378,6 +396,7 @@
         "score": 8.2,
         "verdict": "EXCELLENT",
         "verdictLabel": "Lightweight USB 5V Device",
+        "dataConfidence": "estimated",
         "summary": "Trọng lượng <380g, cắm cổng USB-C 5V thông dụng. Phí ship Air Line rất cạnh tranh.",
         "bulletPoints": [
           "Landed COGS: $4.20 máy + $2.60 ship Special Line = $6.80",
@@ -397,6 +416,7 @@
         "score": 8.0,
         "verdict": "EXCELLENT",
         "verdictLabel": "Broad Audience Scalability",
+        "dataConfidence": "estimated",
         "summary": "Tệp đối tượng siêu rộng (Home Decor, Wellness, Spa, Self Care, Work from home) cho phép chạy Broad Targeting không giới hạn.",
         "bulletPoints": [
           "Break-even CAC: $29.19 (Máy lẻ) / $38.50 (Gói Combo $49.99)",

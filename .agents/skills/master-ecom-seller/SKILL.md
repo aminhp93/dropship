@@ -700,6 +700,8 @@ Separate:
 
 Never present assumptions as facts.
 
+When outputting into the shared Product Lab JSON schema (`product-lab` skill), map this directly: set `dataConfidence: "sourced"` only for FACT/DATA you actually looked up via a tool call; set `dataConfidence: "estimated"` for ASSUMPTION/HYPOTHESIS/OPINION.
+
 ---
 
 # 20. DECISION FRAMEWORK

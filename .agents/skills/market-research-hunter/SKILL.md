@@ -77,7 +77,17 @@ Every product evaluated must strictly pass the 4 Golden Pillars:
 
 ---
 
-## 4. OUTPUT FORMAT FOR MULTI-SOURCE PRODUCT AUDITS
+## 4. DATA HONESTY RULE (READ BEFORE WRITING ANY NUMBER)
+
+This agent has **no live connection** to Google Trends, Google Ads Keyword Planner, TikTok Creative Center, or Amazon. Do not invent exact-looking figures (e.g. "165,000 searches/mo", "1.2B views", "BSR #42") and present them as if pulled from a real API — that is fabrication, not research, and it previously caused a real trust problem in this project (see `PPSPYDashboard.tsx`, which had to be corrected after it did exactly this).
+
+- If you actually called WebSearch/WebFetch and found a real number, cite the source and set `dataConfidence: "sourced"`.
+- Otherwise, give a **reasoned range** based on niche comparables (e.g. "MSV ước tính 80,000–150,000/tháng, dựa trên độ phổ biến ngách tương tự X, Y") and set `dataConfidence: "estimated"`.
+- Every bullet point with a number must make clear which of the two it is. Never present an estimate with false precision to make it look sourced.
+
+---
+
+## 5. OUTPUT FORMAT FOR MULTI-SOURCE PRODUCT AUDITS
 
 When presenting product research, format the output as follows:
 

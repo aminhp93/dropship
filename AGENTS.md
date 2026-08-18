@@ -25,3 +25,9 @@ This repository includes 6 specialized AI agents / skills located in `.agents/sk
 ## 6. Performance Marketer & Media Buyer (`performance-media-buyer`)
 - **Location**: [.agents/skills/performance-media-buyer/SKILL.md](file:///Users/aminhp93/personal/dropship/.agents/skills/performance-media-buyer/SKILL.md)
 - **Role**: Paid Media Specialist for Meta/TikTok/Google Ads, Break-even CAC/ROAS Calculator, CBO Campaign Structuring, and Ad Fatigue Manager.
+
+## Data Honesty Rule
+None of the 5 evaluation agents has a live connection to Google Trends, TikTok Creative Center, Amazon, or ad-account APIs. Every quantitative claim they output must be labeled `dataConfidence: "sourced"` (only if a real tool call backs it) or `"estimated"` (reasoned range, no false precision) — see `product-lab/SKILL.md` Step 2b. The Product Lab UI (`/dropship/lab`) renders this label on every agent card.
+
+## SOP Content Versions
+`src/features/dropshipping/sop/` has two versions, `2023/` and `2026/`. Only `2026/` is currently rendered in the UI (`/dropship/quy-trinh-2026`); `2023/` is kept for historical reference only — see [its README](file:///Users/aminhp93/personal/dropship/src/features/dropshipping/sop/2023/README.md).
