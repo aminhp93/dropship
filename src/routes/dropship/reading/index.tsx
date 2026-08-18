@@ -37,12 +37,12 @@ export function ReadingListPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <Badge className="bg-purple-600 text-white font-bold text-[10px]">
+              <Badge variant="outline" className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700 font-semibold text-[10px]">
                 179 Bài Học
               </Badge>
             </div>
             <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-              <Video className="w-6 h-6 text-purple-500" />
+              <Video className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
               Blog Linh Thạch
             </h1>
             <p className="text-xs text-zinc-500 leading-relaxed max-w-2xl">
@@ -60,16 +60,16 @@ export function ReadingListPage() {
                 setSearchTerm(e.target.value);
                 setActiveIndex(0);
               }}
-              className="w-full text-xs pl-9 pr-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+              className="w-full text-xs pl-9 pr-3 py-2 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-400 focus:border-zinc-400 dark:focus:border-zinc-500 transition-all"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[320px_minmax(0,1fr)] gap-8 items-start">
-          <Card className="p-4 border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-3 shadow-xs">
+          <Card className="p-4 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl space-y-3 shadow-2xs">
             <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 px-2 flex justify-between items-center">
               <span>Danh sách bài học</span>
-              <span className="text-purple-500 font-mono">
+              <span className="font-mono text-zinc-700 dark:text-zinc-300 font-semibold">
                 {filteredReadings.length} bài
               </span>
             </div>
@@ -81,17 +81,17 @@ export function ReadingListPage() {
                     key={r.num}
                     onClick={() => setActiveIndex(i)}
                     className={cn(
-                      "w-full text-left px-3 py-2.5 rounded-xl transition-all flex flex-col gap-0.5 border cursor-pointer",
+                      "w-full text-left px-3 py-2.5 rounded-lg transition-all flex flex-col gap-0.5 border cursor-pointer",
                       i === activeIndex
-                        ? "bg-purple-500/10 border-purple-500/30 text-purple-600 dark:text-purple-400 font-semibold"
-                        : "border-transparent text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 hover:text-zinc-800 dark:hover:text-zinc-200",
+                        ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 font-semibold"
+                        : "border-transparent text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 hover:text-zinc-900 dark:hover:text-zinc-100",
                     )}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[9px] font-bold tracking-widest opacity-70">
                         READING {r.num}
                       </span>
-                      <span className="text-[10px] font-mono text-zinc-400">
+                      <span className="text-[10px] font-mono text-zinc-400 opacity-80">
                         {r.duration}
                       </span>
                     </div>
@@ -105,12 +105,12 @@ export function ReadingListPage() {
           </Card>
 
           {active && (
-            <Card className="p-8 border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-8 rounded-2xl">
+            <Card className="p-8 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xs space-y-8 rounded-xl">
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-500">
                   <Badge
                     variant="outline"
-                    className="bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 font-bold"
+                    className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700 font-semibold"
                   >
                     Reading {active.num}
                   </Badge>
@@ -127,7 +127,7 @@ export function ReadingListPage() {
                     href={active.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:underline font-semibold"
+                    className="flex items-center gap-1 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline font-semibold"
                   >
                     Xem nguồn gốc <ExternalLink className="w-3 h-3" />
                   </a>
@@ -137,7 +137,7 @@ export function ReadingListPage() {
                   <Link
                     to="/dropship/reading/$slug"
                     params={{ slug: slugify(active.title) }}
-                    className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors inline-flex items-center gap-2 group"
+                    className="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors inline-flex items-center gap-2 group"
                   >
                     <span>{active.title}</span>
                     <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-purple-500 shrink-0" />

@@ -41,7 +41,7 @@ export function QuyTrinh2026DetailPage() {
         <div className="space-y-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
           <Link
             to="/dropship/quy-trinh-2026"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Quay lại danh sách 3 bước Quy Trình 2026
           </Link>
@@ -49,15 +49,14 @@ export function QuyTrinh2026DetailPage() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <Badge variant="outline" className={`font-bold text-[10px] ${currentStep.badgeColor}`}>
+                <Badge variant="outline" className="font-bold text-[10px] text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800">
                   {currentStep.step}
                 </Badge>
-                <Badge className="bg-purple-600 text-white font-bold text-[10px]">
+                <Badge variant="outline" className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700 font-bold text-[10px]">
                   Ecom Blueprint 2026 Detail
                 </Badge>
               </div>
-              <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-                <Sparkles className="w-6 h-6 text-purple-500" />
+              <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                 {currentStep.slideTitle}
               </h1>
             </div>
@@ -68,7 +67,7 @@ export function QuyTrinh2026DetailPage() {
                 <Button
                   variant="outline"
                   onClick={() => setIsToolOpen(true)}
-                  className="text-xs font-semibold px-4 py-2 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-2xs"
+                  className="text-xs font-semibold px-3.5 py-2 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg flex items-center gap-2 transition-all cursor-pointer shadow-2xs"
                 >
                   <Search className="w-3.5 h-3.5 text-zinc-500" />
                   <span>Công Cụ Tra Cứu Thị Trường</span>
@@ -76,9 +75,9 @@ export function QuyTrinh2026DetailPage() {
 
                 <Button
                   onClick={() => setIsPPSPYOpen(true)}
-                  className="text-xs font-bold px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-xs"
+                  className="text-xs font-semibold px-3.5 py-2 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-zinc-200 dark:text-zinc-900 rounded-lg flex items-center gap-2 transition-all cursor-pointer shadow-2xs"
                 >
-                  <Eye className="w-3.5 h-3.5 text-amber-300" />
+                  <Eye className="w-3.5 h-3.5" />
                   <span>PPSPY Dashboard</span>
                 </Button>
               </div>
@@ -87,15 +86,15 @@ export function QuyTrinh2026DetailPage() {
         </div>
 
         {/* Detail Content Card */}
-        <Card className="p-8 border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-6 shadow-sm">
+        <Card className="p-8 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl space-y-6 shadow-2xs">
           {/* Key Metrics Banner */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-zinc-50 dark:bg-zinc-800/60 rounded-xl border border-zinc-100 dark:border-zinc-800">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-zinc-50 dark:bg-zinc-800/40 rounded-lg border border-zinc-100 dark:border-zinc-800">
             {currentStep.metrics.map((m, idx) => (
               <div key={idx} className="text-center space-y-0.5">
                 <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">
                   {m.label}
                 </span>
-                <span className="text-sm font-bold text-purple-600 dark:text-purple-400 font-mono">
+                <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100 font-mono">
                   {m.value}
                 </span>
               </div>

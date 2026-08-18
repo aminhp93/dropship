@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, Link, useLocation } from "@tanstack/react-router";
-import { Sparkles, Video } from "lucide-react";
+import { Bot, Sparkles, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dropship")({
@@ -10,6 +10,7 @@ export function DropshipLayout() {
   const location = useLocation();
 
   const navItems = [
+    { to: "/dropship", label: "AI Agents", icon: Bot, exact: true },
     { to: "/dropship/quy-trinh-2026", label: "Quy trình 2026", icon: Sparkles },
     { to: "/dropship/reading", label: "Blog Linh Thạch", icon: Video },
   ];
@@ -29,10 +30,10 @@ export function DropshipLayout() {
                   key={item.to}
                   to={item.to}
                   className={cn(
-                    "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap",
+                    "flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs transition-all whitespace-nowrap",
                     isActive
-                      ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 shadow-2xs"
-                      : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-semibold shadow-xs"
+                      : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/60"
                   )}
                 >
                   <item.icon className="w-3.5 h-3.5" />

@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NGO_THANH_STEPS } from "@/features/dropshipping/components/QuyTrinh2026Tab";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Layers } from "lucide-react";
 
 export const Route = createFileRoute("/dropship/quy-trinh-2026/")({
   component: QuyTrinh2026MainPage,
@@ -12,20 +12,20 @@ export const Route = createFileRoute("/dropship/quy-trinh-2026/")({
 export function QuyTrinh2026MainPage() {
   return (
     <ScrollArea className="h-full">
-      <div className="p-8 max-w-7xl mx-auto space-y-10">
+      <div className="p-6 md:p-8 max-w-6xl mx-auto space-y-8">
         {/* Header */}
-        <div className="space-y-2 border-b border-zinc-200 dark:border-zinc-800 pb-4">
+        <div className="space-y-3 border-b border-zinc-200 dark:border-zinc-800 pb-5">
           <div className="flex items-center gap-2">
-            <Badge className="bg-purple-600 text-white font-bold text-[10px]">
+            <Badge variant="outline" className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700 font-semibold text-[11px] px-2.5 py-0.5">
               Ecom Blueprint 2026
             </Badge>
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-purple-500" />
+            <Layers className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
             Quy Trình 3 Bước Vận Hành Dropshipping 2026
           </h1>
-          <p className="text-xs text-zinc-500 max-w-3xl leading-relaxed">
-            Hệ thống 3 bước chuẩn hóa từ tư duy chọn ngách, kỹ thuật săn sản phẩm WIN định lượng đến vận hành Shopify Store & TikTok Organic Traffic. Click vào từng bước để xem hướng dẫn chi tiết.
+          <p className="text-xs text-zinc-500 max-w-2xl leading-relaxed">
+            Hệ thống 3 bước chuẩn hóa từ chọn ngách, kỹ thuật săn sản phẩm WIN định lượng đến vận hành Shopify Store & TikTok Organic Traffic.
           </p>
         </div>
 
@@ -37,20 +37,20 @@ export function QuyTrinh2026MainPage() {
             return (
               <Card
                 key={stepItem.id}
-                className="p-6 border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-5 shadow-xs hover:border-purple-500/50 hover:shadow-lg transition-all flex flex-col justify-between group"
+                className="p-6 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl space-y-5 shadow-2xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <Badge variant="outline" className={`font-bold text-[10px] ${stepItem.badgeColor}`}>
+                    <Badge variant="outline" className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 border-zinc-200 dark:border-zinc-800">
                       {stepItem.step}
                     </Badge>
-                    <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${stepItem.color} text-white flex items-center justify-center shadow-xs`}>
+                    <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold">
                       <stepItem.icon className="w-4 h-4" />
                     </div>
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100">
                       {stepItem.slideTitle}
                     </h3>
                     <p className="text-xs text-zinc-500 leading-relaxed line-clamp-3">
@@ -58,11 +58,11 @@ export function QuyTrinh2026MainPage() {
                     </p>
                   </div>
 
-                  <div className="space-y-2 pt-2 border-t border-zinc-100 dark:border-zinc-800/80">
+                  <div className="space-y-2 pt-2 border-t border-zinc-100 dark:border-zinc-800">
                     {stepItem.metrics.map((m, idx) => (
                       <div key={idx} className="flex justify-between items-center text-[11px]">
-                        <span className="text-zinc-400 font-medium">{m.label}:</span>
-                        <span className="font-bold text-purple-600 dark:text-purple-400 font-mono">{m.value}</span>
+                        <span className="text-zinc-500">{m.label}:</span>
+                        <span className="font-semibold text-zinc-900 dark:text-zinc-100 font-mono">{m.value}</span>
                       </div>
                     ))}
                   </div>
@@ -71,10 +71,10 @@ export function QuyTrinh2026MainPage() {
                 <Link
                   to="/dropship/quy-trinh-2026/$stepSlug"
                   params={{ stepSlug }}
-                  className="w-full py-2.5 px-4 bg-purple-600/10 hover:bg-purple-600 text-purple-600 hover:text-white dark:text-purple-400 dark:hover:text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 group-hover:shadow-md"
+                  className="w-full py-2 px-3 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-zinc-200 dark:text-zinc-900 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-2 shadow-2xs"
                 >
                   <span>Xem Chi Tiết Quy Trình</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </Card>
             );
