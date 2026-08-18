@@ -1,0 +1,309 @@
+[
+  {
+    "id": "fairy-lights",
+    "title": "Smart RGBIC Music-Sync Fairy String Lights",
+    "category": "Home & Bedroom Decor",
+    "cogs": 4.2,
+    "retailPrice": 27.99,
+    "perspectives": [
+      {
+        "agentId": "market-research-hunter",
+        "agentName": "Market Research Hunter",
+        "role": "Săn Sản Phẩm WIN & Multi-Source Intelligence",
+        "iconName": "Target",
+        "score": 7.85,
+        "verdict": "WINNER",
+        "verdictLabel": "Potential Viral Winner",
+        "summary": "Sản phẩm đạt 4/4 Tiêu chí vàng. Dữ liệu đa nguồn: Google MSV 165,000 searches/mo, TikTok #fairylights đạt 1.2B views, Amazon Price Anchor $14-$24.",
+        "bulletPoints": [
+          "Google Trends: Chỉ số quan tâm duy trì 65/100 baseline, bùng nổ 100/100 vào tháng 11-12. Breakout: '+280% music sync fairy lights'",
+          "Google Ads: Search Volume (MSV) = 165,000 lượt tìm kiếm/tháng. CPC Bid range: $0.45 - $0.95",
+          "TikTok Creative Center: Hashtag #fairylights = 1.2B views. Benchmark 3s Hook rate = 32.5%, Outbound CTR = 1.95%",
+          "Amazon Benchmark: BSR #42 Home Decor. Giá bán Amazon $14.99-$24.99 (Đòi hỏi phải tạo Offer $49.99 để cạnh tranh)"
+        ],
+        "recommendations": [
+          "Tập trung quay video TikTok Organic dạng Before/After biến đổi phòng ngủ 5 giây.",
+          "Chỉ chọn nhà cung cấp có bản RGBIC App Control, tránh bản hạt LED màu vàng mỏng cũ."
+        ]
+      },
+      {
+        "agentId": "master-ecom-seller",
+        "agentName": "Master E-Com Seller",
+        "role": "Chiến Lược Gia Kinh Doanh & Mentor",
+        "iconName": "Crown",
+        "score": 4.5,
+        "verdict": "HIGH_RISK",
+        "verdictLabel": "Commodity Trap Warning",
+        "summary": "Bẫy sản phẩm phổ thông! Đèn Fairy Light bị cạnh tranh phá giá nặng nề trên Amazon/Temu ($4-$9). Rào cản phòng thủ = 0. Phải đổi vị thế sang gói Combo $49.99.",
+        "bulletPoints": [
+          "Break-even CAC thực tế: $20.51 (Dễ cháy tài khoản Ads khi CPM tăng)",
+          "Zero LTV: Khách mua 1 dây dùng 2 năm, không thể bán lại sản phẩm phụ",
+          "Temu & Amazon Benchmark: Khách xem Ads của bạn rồi sang Temu mua giá $4.50",
+          "Tái định vị: Đóng gói 'The 5-Min Bedroom Sanctuary Bundle' giá $49.99"
+        ],
+        "recommendations": [
+          "KHÔNG bán dây đơn lẻ giá $27.99. Bán gói Combo 20m + Tặng móc 3M giá $49.99.",
+          "Dùng kênh TikTok Shop Affiliate (20% hoa hồng) thay vì đốt tiền Meta Ads."
+        ]
+      },
+      {
+        "agentId": "creative-ugc-director",
+        "agentName": "Creative & UGC Director",
+        "role": "Đạo Diễn Video Kịch Bản & Hooks",
+        "iconName": "Video",
+        "score": 8.5,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "High Visual Engagement",
+        "summary": "Tỷ lệ giữ chân 3s (Thumb-stop Rate) dự kiến > 35% nhờ tương phản ánh sáng phòng tối. Rất dễ viết kịch bản UGC cho Creator.",
+        "bulletPoints": [
+          "3s Hook: 'Stop scrolling if your room looks depressing at night...'",
+          "Visual Contrast: Góc quay phòng u tối lột xác lung linh trong 1 giây",
+          "UGC Brief: Hướng dẫn creator cuộn dây quanh giường/TV tạo góc chill",
+          "Format: 9:16 vertical video, 15-20s duration, trending lofi/EDM audio"
+        ],
+        "recommendations": [
+          "Gửi 10 sample sản phẩm cho Micro-Creators ngách Dorm Room / Cozy Aesthetic.",
+          "Thử nghiệm 3 góc Hook: Transformation, Music Sync Party, và Gifting Idea."
+        ]
+      },
+      {
+        "agentId": "supply-chain-auditor",
+        "agentName": "Supply Chain Auditor",
+        "role": "Kiểm Toán Logistics & 3PL",
+        "iconName": "Truck",
+        "score": 9.5,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "Optimal Logistics Tier",
+        "summary": "Logistics cực kỳ thuận lợi. Trọng lượng <150g giúp phí ship thấp nhất. Nguồn USB 5V thông dụng không lo cháy nổ hay kiểm định phức tạp.",
+        "bulletPoints": [
+          "Landed COGS: $2.50 dây LED + $1.70 ship Special Line = $4.20",
+          "Thời gian giao hàng: 8-12 ngày US/EU với YunExpress / Selection Standard",
+          "Bao bì: Cuộn dẻo chống sốc, tỷ lệ hàng vỡ hỏng < 0.2%",
+          "Chứng nhận: CE, RoHS, FCC đầy đủ cho adapter USB 5V"
+        ],
+        "recommendations": [
+          "Yêu cầu nhà cung cấp dán tem Barcode SKU rõ ràng để dễ chuyển sang kho 3PL Mỹ.",
+          "Đặt mua thử 2 sample kiểm tra chất lượng mối nối dây đồng trước khi vít ads."
+        ]
+      },
+      {
+        "agentId": "performance-media-buyer",
+        "agentName": "Performance Media Buyer",
+        "role": "Chuyên Gia Mua Quảng Cáo & Scale Ads",
+        "iconName": "DollarSign",
+        "score": 6.0,
+        "verdict": "CONDITIONAL",
+        "verdictLabel": "Conditional Ad Scalability",
+        "summary": "Chỉ chạy paid ads hiệu quả khi AOV > $45 (Gói Combo). Chạy dây đơn $27.99 sẽ bị CAC ăn mòn hết lợi nhuận ròng.",
+        "bulletPoints": [
+          "Target ROAS hòa vốn: 1.36 (Dây đơn) / 1.25 (Gói Combo $49.99)",
+          "Break-even CAC: $20.51 (Dây đơn) vs $36.00 (Gói Combo)",
+          "CBO Testing: 1 Campaign → 3 Ad Sets (Broad, Bedroom Decor, College Dorm)",
+          "Tỷ lệ chuyển đổi mục tiêu (CVR): > 2.2%"
+        ],
+        "recommendations": [
+          "Cài đặt Retargeting TikTok Pixel & Meta CAPI ngay từ ngày đầu.",
+          "Tắt Campaign ngay nếu tiêu hết $60 mà không phát sinh đơn hàng nào (Kill Rule)."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uv-toothbrush",
+    "title": "UV-C Toothbrush Sanitizer & Holder",
+    "category": "Health & Hygiene",
+    "cogs": 5.5,
+    "retailPrice": 39.99,
+    "perspectives": [
+      {
+        "agentId": "market-research-hunter",
+        "agentName": "Market Research Hunter",
+        "role": "Săn Sản Phẩm WIN & Multi-Source Intelligence",
+        "iconName": "Target",
+        "score": 9.05,
+        "verdict": "WINNER",
+        "verdictLabel": "Top 1 Winning Product 2026",
+        "summary": "Sản phẩm giải quyết nỗi đau vi khuẩn cực mạnh. Dữ liệu đa nguồn: Google MSV 246,000 searches/mo, TikTok #toothbrushsanitizer đạt 89M views.",
+        "bulletPoints": [
+          "Google Trends: Chỉ số tăng trưởng +145% trong 12 tháng qua. Top thị trường: US (100), UK (85), CA (79). Breakout: '+310% uv c toothbrush sanitizer'",
+          "Google Ads: MSV = 246,000 lượt tìm kiếm/tháng. CPC Bid range: $0.95 - $2.10 (Ý định mua hàng cao)",
+          "TikTok Creative Center: Hashtag #toothbrushsanitizer = 89.2M views. 3s Hook rate = 38.6%, Outbound CTR = 2.45%",
+          "Amazon Benchmark: BSR #18 Bathroom Accessories. Price Anchor $34.99-$49.99. Đánh giá trung bình 4.5/5 (3,100+ reviews)"
+        ],
+        "recommendations": [
+          "Nhấn mạnh góc quay vi khuẩn phát triển trên bàn chải thường dưới kính hiển vi."
+        ]
+      },
+      {
+        "agentId": "master-ecom-seller",
+        "agentName": "Master E-Com Seller",
+        "role": "Chiến Lược Gia Kinh Doanh & Mentor",
+        "iconName": "Crown",
+        "score": 8.5,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "Strong Brand Potential",
+        "summary": "Sản phẩm giải quyết nỗi đau sức khỏe gia đình rõ ràng. Rất dễ xây dựng Brand lâu dài trong ngách Bathroom Hygiene.",
+        "bulletPoints": [
+          "AOV tốt: $39.99 -> Break-even CAC $31.50 cho phép chạy Meta Ads tự tin",
+          "Thị trường ngách sức khỏe gia đình có độ nhạy cảm giá thấp hơn decor",
+          "Dễ mở rộng dải sản phẩm: Kem đánh răng hữu cơ, đầu bàn chải thay thế (LTV)"
+        ],
+        "recommendations": [
+          "Xây dựng nhãn hiệu Private Label sau khi đạt 50 đơn/ngày."
+        ]
+      },
+      {
+        "agentId": "creative-ugc-director",
+        "agentName": "Creative & UGC Director",
+        "role": "Đạo Diễn Video Kịch Bản & Hooks",
+        "iconName": "Video",
+        "score": 9.0,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "High Shock Factor Hooks",
+        "summary": "Yếu tố gây sốc (Shock Factor) về vi khuẩn trong bồn cầu tạo Hook tỷ lệ giữ chân > 40%.",
+        "bulletPoints": [
+          "Hook: 'Did you know your toothbrush has more bacteria than a toilet seat?'",
+          "Demo: Cho thấy quy trình diệt khuẩn UV-C 3 phút tự động khi đậy nắp"
+        ],
+        "recommendations": [
+          "Sử dụng giọng đọc đùa giỡn hoặc giật gân để gây tò mò trong 3s đầu."
+        ]
+      },
+      {
+        "agentId": "supply-chain-auditor",
+        "agentName": "Supply Chain Auditor",
+        "role": "Kiểm Toán Logistics & 3PL",
+        "iconName": "Truck",
+        "score": 8.0,
+        "verdict": "CONDITIONAL",
+        "verdictLabel": "Check Battery Compliance",
+        "summary": "Cần kiểm tra loại pin sạc Li-ion tích hợp bên trong để chọn tuyến ship air đặc thù.",
+        "bulletPoints": [
+          "Cần chứng nhận UN38.3 & MSDS cho pin sạc sấy khô",
+          "Thời gian ship US: 10-14 ngày tuyến Special Line Battery"
+        ],
+        "recommendations": [
+          "Yêu cầu supplier gửi chứng chỉ MSDS trước khi chạy ads hàng loạt."
+        ]
+      },
+      {
+        "agentId": "performance-media-buyer",
+        "agentName": "Performance Media Buyer",
+        "role": "Chuyên Gia Mua Quảng Cáo & Scale Ads",
+        "iconName": "DollarSign",
+        "score": 8.8,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "Scalable Ad Funnel",
+        "summary": "Biên lợi nhuận $34.50 cho phép đấu giá keyword Google Shopping & Meta Ads hiệu quả.",
+        "bulletPoints": [
+          "Break-even ROAS: 1.16",
+          "Khuyên dùng Meta Advantage+ Shopping Campaign (ASC)"
+        ],
+        "recommendations": [
+          "Chạy kết hợp Meta Broad Ads + Google Shopping Chuyển đổi."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "digital-photo-frame",
+    "title": "Smart WiFi Cloud Digital Photo Frame (10.1 Inch IPS)",
+    "category": "Home Tech & Gifting",
+    "cogs": 24.5,
+    "retailPrice": 89.99,
+    "perspectives": [
+      {
+        "agentId": "market-research-hunter",
+        "agentName": "Market Research Hunter",
+        "role": "Săn Sản Phẩm WIN & Multi-Source Intelligence",
+        "iconName": "Target",
+        "score": 8.2,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "High Emotional Gift Value",
+        "summary": "Phân tích đa nguồn: Google MSV 301,000 searches/mo, Google Trends bùng nổ 100/100 mùa quà tặng Q4, TikTok #digitalphotoframe đạt 68.5M views.",
+        "bulletPoints": [
+          "Google Trends Analytics: Chỉ số quan tâm baseline 45/100, bùng nổ 100/100 vào tháng 11-12 (Mother's Day & Christmas). Top Geo: US (100), UK (82), CA (78). Breakout: '+350% smart cloud photo frame', '+220% frameo wifi picture frame'",
+          "Google Ads Keyword Planner: Search Volume (MSV) = 301,000 lượt tìm kiếm/tháng. CPC Bid range: $0.85 - $1.75 (Search intent mua quà tặng rất cao)",
+          "TikTok Creative Center: Hashtag #digitalphotoframe = 68.5M views. Benchmark 3s Hook rate = 34.2%, Outbound CTR = 2.15%",
+          "Amazon Benchmark: BSR #14 in Digital Picture Frames. Price Anchor $79.99 - $129.99. Rating 4.6/5 stars (2,400+ reviews)"
+        ],
+        "recommendations": [
+          "Định vị góc Marketing tập trung làm Quà tặng Ngày của Mẹ (Mother's Day), Giáng Sinh."
+        ]
+      },
+      {
+        "agentId": "master-ecom-seller",
+        "agentName": "Master E-Com Seller",
+        "role": "Chiến Lược Gia Kinh Doanh & Mentor",
+        "iconName": "Crown",
+        "score": 7.6,
+        "verdict": "WINNER",
+        "verdictLabel": "High AOV Emotional Business",
+        "summary": "AOV cao ($89.99) tạo Break-even CAC rộng ($60.50). Tránh được bẫy phá giá vì sản phẩm bán bằng cảm xúc kết nối gia đình chứ không bán phần cứng.",
+        "bulletPoints": [
+          "AOV tốt ($89.99) -> Break-even CAC $60.50 cho phép chạy Meta Video Ads tự tin",
+          "Positioning: 'Bảo tàng kỷ niệm gia đình kết nối từ xa' thay vì 'Màn hình hiển thị ảnh'",
+          "Upsell Strategy: Bán gói lưu trữ Cloud 50GB / Khung gỗ thủ công bọc ngoài",
+          "Rủi ro: Khách so sánh giá với iPad cũ nếu không truyền tải tốt câu chuyện cảm xúc"
+        ],
+        "recommendations": [
+          "Xây dựng Thương hiệu chuyên về Quà tặng Kỷ niệm Gia đình (Family Memory Brand)."
+        ]
+      },
+      {
+        "agentId": "creative-ugc-director",
+        "agentName": "Creative & UGC Director",
+        "role": "Đạo Diễn Video Kịch Bản & Hooks",
+        "iconName": "Video",
+        "score": 9.2,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "Tear-Jerker Reaction Hooks",
+        "summary": "Video quay phản ứng người già/ông bà xúc động bật khóc khi nhận được ảnh cháu nhỏ gửi từ xa có tỷ lệ lan truyền (Virality) cực cao.",
+        "bulletPoints": [
+          "3s Hook: 'I sent a photo from Paris and watched my grandma cry on FaceTime...'",
+          "UGC Format: Reaction Video (Cảnh mở quà + cảm xúc thật của người nhận)",
+          "Target Audience: Phụ nữ 25-45 tuổi mua quà tặng cha mẹ / ông bà"
+        ],
+        "recommendations": [
+          "Hợp tác với UGC Creator quay cảnh gia đình mở quà dịp lễ ấm áp."
+        ]
+      },
+      {
+        "agentId": "supply-chain-auditor",
+        "agentName": "Supply Chain Auditor",
+        "role": "Kiểm Toán Logistics & 3PL",
+        "iconName": "Truck",
+        "score": 7.5,
+        "verdict": "CONDITIONAL",
+        "verdictLabel": "Screen Protection Required",
+        "summary": "Trọng lượng 450g nằm trong ngưỡng ship Air Line. Cần kiểm định kết nối WiFi 2.4GHz & chứng nhận FCC/CE cho thiết bị màn hình cảm ứng.",
+        "bulletPoints": [
+          "Nguồn 5V/2A DC Adapter + Màn hình Touchscreen IPS 10.1 inch",
+          "Phải bọc xốp bọt khí Air Column Bag chống vỡ màn hình",
+          "Chứng nhận bắt buộc: FCC (Mỹ), CE (Châu Âu), RoHS"
+        ],
+        "recommendations": [
+          "Đặt thử mẫu test ứng dụng Frameo xem có bị giật lag không trước khi vít đơn."
+        ]
+      },
+      {
+        "agentId": "performance-media-buyer",
+        "agentName": "Performance Media Buyer",
+        "role": "Chuyên Gia Mua Quảng Cáo & Scale Ads",
+        "iconName": "DollarSign",
+        "score": 8.4,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "High Margin ROAS Buffer",
+        "summary": "Lãi gộp $65.49 cho phép mua lượt click từ Meta Ads & Google Search Ads với ROAS hòa vốn thấp (1.38x).",
+        "bulletPoints": [
+          "Break-even CAC: $60.50",
+          "Target ROAS: > 1.5x",
+          "Audience Targeting: Gifting, Parents, Long-distance relationships, Family Memory"
+        ],
+        "recommendations": [
+          "Vít Ads mạnh vào các dịp lễ lớn (Mother's Day, Thanksgiving, Christmas)."
+        ]
+      }
+    ]
+  }
+]

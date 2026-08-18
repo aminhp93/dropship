@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, Link, useLocation } from "@tanstack/react-router";
-import { Bot, Sparkles, Video } from "lucide-react";
+import { Bot, FlaskConical, Sparkles, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dropship")({
@@ -11,6 +11,7 @@ export function DropshipLayout() {
 
   const navItems = [
     { to: "/dropship", label: "AI Agents", icon: Bot, exact: true },
+    { to: "/dropship/lab", label: "Product Lab", icon: FlaskConical },
     { to: "/dropship/quy-trinh-2026", label: "Quy trình 2026", icon: Sparkles },
     { to: "/dropship/reading", label: "Blog Linh Thạch", icon: Video },
   ];
