@@ -57,7 +57,7 @@
         "summary": "Tỷ lệ giữ chân 3s (Thumb-stop Rate) dự kiến > 35% nhờ tương phản ánh sáng phòng tối. Rất dễ viết kịch bản UGC cho Creator.",
         "bulletPoints": [
           "3s Hook: 'Stop scrolling if your room looks depressing at night...'",
-          "Visual Contrast: Góc quay phòng u tối lột xác lung linh trong 1 giây",
+          "Visual Contrast: Góc quay phòng u tối l lột xác lung linh trong 1 giây",
           "UGC Brief: Hướng dẫn creator cuộn dây quanh giường/TV tạo góc chill",
           "Format: 9:16 vertical video, 15-20s duration, trending lofi/EDM audio"
         ],
@@ -302,6 +302,110 @@
         ],
         "recommendations": [
           "Vít Ads mạnh vào các dịp lễ lớn (Mother's Day, Thanksgiving, Christmas)."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "essential-oil-diffuser",
+    "title": "Flame Effect Essential Oil Diffuser & Humidifier",
+    "category": "Home Wellness & Aromatherapy",
+    "cogs": 6.8,
+    "retailPrice": 35.99,
+    "perspectives": [
+      {
+        "agentId": "market-research-hunter",
+        "agentName": "Market Research Hunter",
+        "role": "Săn Sản Phẩm WIN & Multi-Source Intelligence",
+        "iconName": "Target",
+        "score": 8.85,
+        "verdict": "WINNER",
+        "verdictLabel": "Top Viral Home Essential",
+        "summary": "Phân tích đa nguồn: Google MSV 450,000 searches/mo cho 'essential oil diffuser', TikTok #essentialoildiffuser đạt 820M views, #flamediffuser đạt 145M views.",
+        "bulletPoints": [
+          "Google Trends Analytics: Chỉ số quan tâm duy trì 60/100 baseline, bùng nổ 100/100 vào tháng 10-12 (Mùa đông & Giáng sinh). Top Geo: US (100), UK (88), DE (76), FR (70). Breakout: '+420% flame aroma diffuser', '+250% volcanic flame diffuser'",
+          "Google Ads Keyword Planner: Search Volume (MSV) = 450,000 lượt tìm kiếm/tháng. CPC Bid range: $0.65 - $1.45 (Ý định mua hàng decor & thư giãn cao)",
+          "TikTok Creative Center: Hashtag #essentialoildiffuser = 820M views, #flamediffuser = 145M views. Benchmark 3s Hook rate = 36.8%, Outbound CTR = 2.35%",
+          "Amazon Benchmark: BSR #8 in Aromatherapy Products. Price Anchor $29.99 - $49.99. Rating 4.5/5 stars (8,500+ reviews)"
+        ],
+        "recommendations": [
+          "Tập trung quay video TikTok 3s Hook hiệu ứng ngọn lửa LED bùng cháy trong đêm tối."
+        ]
+      },
+      {
+        "agentId": "master-ecom-seller",
+        "agentName": "Master E-Com Seller",
+        "role": "Chiến Lược Gia Kinh Doanh & Mentor",
+        "iconName": "Crown",
+        "score": 6.5,
+        "verdict": "CONDITIONAL",
+        "verdictLabel": "Commodity Market - Bundle Required",
+        "summary": "Cạnh tranh giá gắt gao trên Temu/Amazon ($12-$18). Bắt buộc phải đóng gói Offer 'Aromatherapy Relaxation Suite' (Máy + 3 chai tinh dầu hữu cơ) giá $49.99 để nâng AOV & LTV bán lại tinh dầu.",
+        "bulletPoints": [
+          "Break-even CAC: $29.19 (Bán máy lẻ $35.99) vs $38.50 (Bán gói Combo $49.99)",
+          "LTV Monetization: Bán lại tinh dầu định kỳ (Consumable Refills) mỗi 30-45 ngày",
+          "Temu & Amazon Defense: Không bán máy trần giá rẻ; bán trải nghiệm spa 5 sao tại nhà",
+          "Tái định vị: 'The 5-Star Home Spa Relaxation Kit' kèm 3 chai tinh dầu cao cấp"
+        ],
+        "recommendations": [
+          "Bán gói Combo $49.99 và xây dựng hệ thống Email Follow-up tự động chăm sóc mua lại tinh dầu."
+        ]
+      },
+      {
+        "agentId": "creative-ugc-director",
+        "agentName": "Creative & UGC Director",
+        "role": "Đạo Diễn Video Kịch Bản & Hooks",
+        "iconName": "Video",
+        "score": 9.4,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "Insane Visual Aesthetic Hooks",
+        "summary": "Video phun sương hiệu ứng ngọn lửa LED bùng rực trong phòng tối tạo hiệu ứng thị giác giữ chân xem video vượt trội.",
+        "bulletPoints": [
+          "3s Hook: 'My room smelled like a 5-star luxury spa for under $40...'",
+          "Visual Contrast: Cận cảnh ngọn lửa khói sương bùng cháy trong không gian u tối",
+          "UGC Format: Cozy Bedroom Transformation / Night Time Routine / Stress Relief",
+          "Format: Vertical 9:16, 15-20s duration, nhạc nền Chill Lofi / Relaxing ASMR"
+        ],
+        "recommendations": [
+          "Hợp tác với các Creator chuyên ngách Room Decor & Aesthetic Study Vlogs."
+        ]
+      },
+      {
+        "agentId": "supply-chain-auditor",
+        "agentName": "Supply Chain Auditor",
+        "role": "Kiểm Toán Logistics & 3PL",
+        "iconName": "Truck",
+        "score": 8.2,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "Lightweight USB 5V Device",
+        "summary": "Trọng lượng <380g, cắm cổng USB-C 5V thông dụng. Phí ship Air Line rất cạnh tranh.",
+        "bulletPoints": [
+          "Landed COGS: $4.20 máy + $2.60 ship Special Line = $6.80",
+          "Thời gian giao hàng: 8-12 ngày làm việc US/EU với YunExpress",
+          "Lưu ý chất lỏng: Không đóng kèm chai tinh dầu dạng lỏng dung tích >10ml cùng kiện máy để tránh hải quan",
+          "Chứng nhận: CE, RoHS, FCC đầy đủ cho mạch nguồn USB 5V"
+        ],
+        "recommendations": [
+          "Tinh dầu đóng từ kho 3PL nội địa US hoặc chọn nhà cung cấp có giấy chứng nhận MSDS."
+        ]
+      },
+      {
+        "agentId": "performance-media-buyer",
+        "agentName": "Performance Media Buyer",
+        "role": "Chuyên Gia Mua Quảng Cáo & Scale Ads",
+        "iconName": "DollarSign",
+        "score": 8.0,
+        "verdict": "EXCELLENT",
+        "verdictLabel": "Broad Audience Scalability",
+        "summary": "Tệp đối tượng siêu rộng (Home Decor, Wellness, Spa, Self Care, Work from home) cho phép chạy Broad Targeting không giới hạn.",
+        "bulletPoints": [
+          "Break-even CAC: $29.19 (Máy lẻ) / $38.50 (Gói Combo $49.99)",
+          "Target ROAS hòa vốn: 1.23x (Gói Combo)",
+          "Audience Targeting: Broad (No Interest), Home Decor, Yoga & Wellness, Sleep Improvement",
+          "Ad Fatigue: Cần thay mới 2-3 mẫu video Ads mỗi 14 ngày"
+        ],
+        "recommendations": [
+          "Chạy TikTok Ads Broad Interest + Meta Advantage+ Shopping Campaign."
         ]
       }
     ]
