@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DropshipRouteImport } from './routes/dropship'
 import { Route as DropshipIndexRouteImport } from './routes/dropship/index'
+import { Route as DropshipAiAgentRouteImport } from './routes/dropship/ai-agent'
 import { Route as DropshipLabRouteImport } from './routes/dropship/lab'
 import { Route as DropshipQuyTrinh2026IndexRouteImport } from './routes/dropship/quy-trinh-2026/index'
 import { Route as DropshipQuyTrinh2026StepSlugRouteImport } from './routes/dropship/quy-trinh-2026/$stepSlug'
@@ -31,6 +32,11 @@ const DropshipRoute = DropshipRouteImport.update({
 const DropshipIndexRoute = DropshipIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => DropshipRoute,
+} as any)
+const DropshipAiAgentRoute = DropshipAiAgentRouteImport.update({
+  id: '/ai-agent',
+  path: '/ai-agent',
   getParentRoute: () => DropshipRoute,
 } as any)
 const DropshipLabRoute = DropshipLabRouteImport.update({
@@ -64,6 +70,7 @@ const DropshipReadingSlugRoute = DropshipReadingSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dropship': typeof DropshipRouteWithChildren
+  '/dropship/ai-agent': typeof DropshipAiAgentRoute
   '/dropship/lab': typeof DropshipLabRoute
   '/dropship/': typeof DropshipIndexRoute
   '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dropship/ai-agent': typeof DropshipAiAgentRoute
   '/dropship/lab': typeof DropshipLabRoute
   '/dropship': typeof DropshipIndexRoute
   '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dropship': typeof DropshipRouteWithChildren
+  '/dropship/ai-agent': typeof DropshipAiAgentRoute
   '/dropship/lab': typeof DropshipLabRoute
   '/dropship/': typeof DropshipIndexRoute
   '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dropship'
+    | '/dropship/ai-agent'
     | '/dropship/lab'
     | '/dropship/'
     | '/dropship/quy-trinh-2026/$stepSlug'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/dropship/ai-agent'
     | '/dropship/lab'
     | '/dropship'
     | '/dropship/quy-trinh-2026/$stepSlug'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dropship'
+    | '/dropship/ai-agent'
     | '/dropship/lab'
     | '/dropship/'
     | '/dropship/quy-trinh-2026/$stepSlug'
@@ -149,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/dropship/'
       preLoaderRoute: typeof DropshipIndexRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/ai-agent': {
+      id: '/dropship/ai-agent'
+      path: '/ai-agent'
+      fullPath: '/dropship/ai-agent'
+      preLoaderRoute: typeof DropshipAiAgentRouteImport
       parentRoute: typeof DropshipRoute
     }
     '/dropship/lab': {
@@ -190,6 +209,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface DropshipRouteChildren {
+  DropshipAiAgentRoute: typeof DropshipAiAgentRoute
   DropshipLabRoute: typeof DropshipLabRoute
   DropshipIndexRoute: typeof DropshipIndexRoute
   DropshipQuyTrinh2026StepSlugRoute: typeof DropshipQuyTrinh2026StepSlugRoute
@@ -199,6 +219,7 @@ interface DropshipRouteChildren {
 }
 
 const DropshipRouteChildren: DropshipRouteChildren = {
+  DropshipAiAgentRoute: DropshipAiAgentRoute,
   DropshipLabRoute: DropshipLabRoute,
   DropshipIndexRoute: DropshipIndexRoute,
   DropshipQuyTrinh2026StepSlugRoute: DropshipQuyTrinh2026StepSlugRoute,

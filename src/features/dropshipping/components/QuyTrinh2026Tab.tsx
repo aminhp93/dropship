@@ -82,52 +82,77 @@ export const NGO_THANH_STEPS = [
     color: "from-purple-600 to-pink-600",
     borderColor: "border-purple-500/30",
     badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-    summary: "Khung tiêu chí sản phẩm WIN (Wow Factor, Problem-Solving, High Margin 3x-4x, Ship-friendly) và kỹ thuật TikTok Organic / AliExpress Spy.",
+    summary: "Kim chỉ nam kiếm tiền, không lan man: loại ngay sản phẩm đang trend và sản phẩm đã có sẵn ở local. Chọn khách hàng trước, sản phẩm sau, research đủ nhiều rồi mới chốt.",
     metrics: [
-      { label: "Biên Lợi Nhuận", value: ">= 3x - 4x Margin" },
-      { label: "Trọng Lượng Hàng", value: "< 500g (Easy Ship)" },
-      { label: "TikTok Spy Window", value: "Lọc 1 Tháng Gần Nhất" }
+      { label: "Tiêu Chí Loại Trừ", value: "Không Trend, Không Local Brand" },
+      { label: "Giá Bán Mục Tiêu", value: "Giá Vốn x3, $50-100" },
+      { label: "Research Trước Khi Chốt", value: "~50 Sản Phẩm Để Có Gu" }
     ],
     markdown: `
-# BƯỚC 2: TÌM KIẾM & TIÊU CHÍ LỰA CHỌN SẢN PHẨM WIN
+# BƯỚC 2: TIÊU CHÍ CHỌN SẢN PHẨM (BẢN CHO NGƯỜI MỚI)
 
-*(Nội dung trích xuất từ Slide Bài 2 — Khoá Học Ngô Thành Ecom)*
-
----
-
-## 1. Khung Tiêu Chí Sản Phẩm WIN (Winning Product Framework)
-
-Để một sản phẩm có thể thu hút lượt xem tự nhiên (Organic Traffic) và chuyển đổi tốt trên TikTok / Reels / Shorts, sản phẩm bắt buộc phải đáp ứng **4 tiêu chuẩn vàng**:
-
-1. **Wow Factor (Yếu tố thu hút thị giác 3 giây đầu)**:
-   - Gây tò mò, ấn tượng ngay lập tức khi cuộn màn hình (Ví dụ: Đèn chiếu hành tinh phi hành gia, cốc tự khuấy thông minh, máy in nhiệt không mực...).
-2. **Problem-Solving (Giải quyết nỗi đau cụ thể)**:
-   - Giúp khách hàng tiết kiệm thời gian, công sức hoặc giải quyết phiền ngoái đời thực (Ví dụ: Đầu chải khe hở bàn chải điện, máy hút lông thú cưng quần áo...).
-3. **Biên Lợi Nhuận Cao (High Profit Margin >= 3x - 4x)**:
-   - **Công thức giá**: Giá bán = Giá nhập (gồm ship) x 3 đến 4.
-   - *Ví dụ*: Giá nhập AliExpress $7 -> Giá bán trên Shopify $24.99 - $29.99 (Lãi gộp $17 - $22 để bù chi phí vận hành, hoàn tiền và duy trì phần mềm).
-4. **Thân Thiện Khi Vận Chuyển (Ship-Friendly)**:
-   - Trọng lượng **< 500g**, kích thước nhỏ gọn.
-   - Không chứa pin dung lượng lớn, không có chất lỏng/gel/bột, không thủy tinh/gốm sứ dễ vỡ.
+*(Tổng hợp từ Slide Bài 2 — Khoá Học Ngô Thành Ecom, viết lại đơn giản cho người mới)*
 
 ---
 
-## 2. Các Phương Pháp Săn Sản Phẩm Miễn Phí (Free Product Research)
+## 0. Kim chỉ nam: kiếm tiền, không lan man
 
-### Phương pháp 1: TikTok Organic Spy
-- **Hashtag tìm kiếm**: \`#tiktokmademebuyit\`, \`#viralproduct\`, \`#amazonfinds\`, \`#unboxing\`.
-- **Bộ lọc tìm kiếm**: Lọc video trong **1 tháng gần nhất**, xếp theo lượt thích (Most Liked).
-- **Dấu hiệu nhận biết WIN**: Đo lường bình luận có ý định mua hàng cao (VD: *"Where can I buy this?"*, *"Drop the link!"*, *"How much?"*).
+Ở giai đoạn này mục tiêu duy nhất là **chọn được 1 sản phẩm để bắt tay vào làm**, không phải đi tìm sản phẩm hay nhất thế giới. Mỗi lần đổi ý sang sản phẩm khác là một lần bắt đầu lại từ số 0 — chọn xong theo đúng tiêu chí dưới thì bắt tay vào làm luôn, không tìm thêm nữa.
 
-### Phương pháp 2: AliExpress Dropshipping Center
-- Vào phần **Find Products**, chọn ngách sản phẩm mong muốn.
-- Lọc theo **Sales Volume** có mức tăng trưởng ổn định trong 7 ngày gần nhất.
-- Chọn nhà cung cấp có rating **> 95%** và thời gian ship đi Mỹ **< 15 ngày**.
+**2 tiêu chí loại ngay từ đầu** (dính 1 trong 2 điều này thì bỏ, tìm sản phẩm khác):
+- **Không phải sản phẩm đang trend**: hàng trend (quà tặng theo mùa, hot dịp lễ...) chỉ bán được thời gian ngắn rồi phải liên tục tìm sản phẩm mới thay thế. Ưu tiên sản phẩm **niche** — bán được lâu dài, doanh thu ổn định, xây được thương hiệu, khách quay lại mua tiếp.
+- **Không phải sản phẩm đã có sẵn ở local**: nếu khách mua được ngay tại cửa hàng gần nhà (kiểu BigW, Kmart...) hoặc đã có brand nội địa làm sẵn (ở VN có Nail Handy, Lush Nail, Tikhub — nhìn các brand này để biết loại sản phẩm nào coi như "hết cửa"), thì họ không có lý do gì đợi ship 1-2 tuần để mua online của mình.
 
 ---
 
-## 3. Checklist Thực Hành Sản Phẩm
-- [ ] Chọn ra Top 3 sản phẩm tiềm năng nhất theo đúng 4 tiêu chí.
+## 1. Chọn khách hàng trước, chọn sản phẩm sau
+
+Không lạm dụng tool spy để đi tìm sản phẩm ngay từ đầu. Thứ tự đúng:
+1. Chọn 1 nhóm khách hàng cụ thể.
+2. Tìm hiểu nhu cầu, nỗi đau của nhóm đó.
+3. Từ đó chọn nhóm sản phẩm phù hợp.
+4. Chọn 1 sản phẩm cụ thể trong nhóm đó.
+5. Chọn kênh marketing phù hợp với sản phẩm.
+
+## 2. Thị trường nên nhắm
+
+| Thị trường | Dân số | Ghi chú cho người mới |
+| :--- | :--- | :--- |
+| Úc (AU) | ~16 triệu | Cạnh tranh thấp, ship nhanh hơn Mỹ — dễ bắt đầu |
+| Anh (UK) | ~60 triệu | Cạnh tranh thấp, ship nhanh |
+| Mỹ (US) | ~300 triệu | Thị trường lớn nhất nhưng cạnh tranh cao hơn |
+| Canada, New Zealand | — | Để sau, chưa cần quan tâm giai đoạn này |
+
+## 3. Tiêu chí sản phẩm (đầy đủ)
+
+- Nhu cầu cao, **không phải hàng trend** — dùng được quanh năm, vòng đời sản phẩm rõ ràng.
+- Không điện, không pin (dễ ship, ít rủi ro).
+- Dễ sử dụng, tối ưu được phí ship, tối ưu được lợi nhuận.
+- **Không phải sản phẩm đã bán sẵn ở local** và không trùng với sản phẩm brand nội địa đã làm.
+- Có khả năng upsell về sau.
+- Giá bán = giá vốn x 3 (case tốt có thể x4.5), rơi vào khoảng **$50-100/đơn**.
+- Khi đặt hàng sản xuất, chỉ cần trả trước 30% cho xưởng.
+
+## 4. Cách research 1 sản phẩm (quy trình lặp lại)
+
+1. Tìm từ khoá của dòng sản phẩm trên **Google Trends** — xem nhu cầu 12 tháng gần nhất (hoặc 5 năm để chắc không phải trend nhất thời).
+2. Kiểm tra lượt tìm kiếm từ khoá đó qua **Google Ads/Keyword Planner**.
+3. Xem sản phẩm đang được quảng cáo thế nào trên **TikTok** và **Facebook Ads Library**.
+4. Ghi lại kết quả, đánh giá — kể cả sản phẩm không đạt cũng note lại để đối chiếu về sau.
+
+> **Trung bình phải research qua khoảng 50 sản phẩm thì kỹ năng chọn sản phẩm mới bắt đầu rõ ràng.** Đừng kỳ vọng sản phẩm đầu tiên tìm được đã đúng — đây là kỹ năng cần lặp lại nhiều lần mới quen.
+
+## 5. Cách đọc Facebook Ads Library để đánh giá độ cạnh tranh
+
+- Search tên sản phẩm trên Facebook Ads Library, xem số ad đang active vs inactive.
+- **Inactive nhiều hơn active** → nhiều người đang chạy sản phẩm này bị lỗ, cẩn thận.
+- Ưu tiên sản phẩm có **tỷ lệ active > 80%** và tổng số quảng cáo còn ít — nghĩa là còn "cửa" cho người mới.
+- Theo dõi thêm 2-3 tháng xem có biến động không. Nếu ổn định → tập trung làm tốt hơn đối thủ ở những điểm họ đang làm chưa tốt, không sao chép y hệt.
+
+---
+
+## 6. Checklist thực hành
+- [ ] Chọn ra Top 3 sản phẩm tiềm năng nhất, không dính 2 tiêu chí loại trừ ở mục 0.
 - [ ] Kiểm tra giá vốn + phí ship trên AliExpress / DSers.
 - [ ] Đặt ngay 1 mẫu sản phẩm thử nghiệm về Việt Nam để phục vụ quay phim UGC.
 `
@@ -141,53 +166,74 @@ export const NGO_THANH_STEPS = [
     color: "from-emerald-600 to-teal-600",
     borderColor: "border-emerald-500/30",
     badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-    summary: "Quy trình thiết lập Shopify One-Product Store chuẩn Dawn Theme, cài đặt App DSers/Loox, nuôi nick TikTok US và sản xuất Video 12-20s.",
+    summary: "Store không cần đẹp trước — ưu tiên đủ trải nghiệm khách hàng (chính sách, review thật, follow-up, upsell). Làm 1 store hoàn chỉnh làm mẫu rồi nhân bản nhanh khi đổi sản phẩm.",
     metrics: [
-      { label: "Shopify Theme", value: "Dawn (Fast & Mobile)" },
-      { label: "Tần Suất Đăng Bài", value: "2 - 3 Video / Ngày" },
-      { label: "Thời Lượng Video", value: "12 - 20 Giây (Standard)" }
+      { label: "Số Sản Phẩm/Store", value: "8 - 12 Sản Phẩm" },
+      { label: "Checklist Đủ Dùng", value: "5 Mục Trước Khi Làm Đẹp" },
+      { label: "AOV Tăng Thêm", value: "+20% Nhờ Upsell/Cross-sell" }
     ],
     markdown: `
-# BƯỚC 3: THIẾT LẬP STORE & VẬN HÀNH CONTENT ADS
+# BƯỚC 3: DỰNG STORE (BẢN CHO NGƯỜI MỚI)
 
-*(Nội dung trích xuất từ Slide Bài 3 — Khoá Học Ngô Thành Ecom)*
-
----
-
-## 1. Thiết Lập Shopify Store Tối Ưu Chuyển Đổi (One-Product Store)
-
-### Cấu hình cơ bản
-- **Nền tảng**: Shopify (dùng gói trải nghiệm $1/tháng).
-- **Tên miền (Domain)**: Bắt buộc mua tên miền \`.com\` ngắn gọn, chuyên nghiệp (tránh \`.xyz\`, \`.info\`).
-- **Giao diện (Theme)**: Sử dụng **Dawn Theme** miễn phí, tốc độ tải trang cực nhanh và tối ưu tuyệt đối trên điện thoại di động.
-
-### Thành phần bắt buộc trên Trang Sản Phẩm (Product Page)
-- **Tiêu đề sản phẩm**: Ngắn gọn, đặt tên theo thương hiệu (tránh copy tiêu đề dài ngoằng từ AliExpress).
-- **Giá bán & Giảm giá**: Hiển thị giá khuyến mãi (VD: $29.99) bên cạnh giá gốc gạch ngang ($49.99) để tạo cảm giác tiết kiệm.
-- **Nút Mua Hàng (CTA)**: Nút **Add to Cart / Buy Now** to nổi bật, màu sắc tương phản rõ rệt.
-- **Hình ảnh & GIF**: 3-5 ảnh phông trắng chất lượng cao + 2 GIF minh họa sản phẩm đang hoạt động thực tế.
-- **Cam kết & Đánh giá**: Tích hợp cam kết "30-Day Money Back Guarantee" và import 5-10 đánh giá 5 sao từ Loox/Judge.me.
+*(Tổng hợp từ Slide Bài 3 — Khoá Học Ngô Thành Ecom, viết lại đơn giản + bổ sung cách làm nhanh)*
 
 ---
 
-## 2. Hệ Thống Ứng Dụng Bắt Buộc (App Stack)
-1. **DSers**: Kết nối Shopify với AliExpress để tự động hóa đặt hàng và đồng bộ mã vận đơn (Tracking).
-2. **Loox / Judge.me**: Import đánh giá thật kèm hình ảnh từ người mua trên AliExpress.
-3. **Geolocation**: Tự động chuyển đổi tiền tệ theo quốc gia của khách truy cập.
+## 0. Kim chỉ nam: store không cần đẹp, cần đủ
+
+Đừng dành quá nhiều thời gian chỉnh sửa store cho thật đẹp ngay từ đầu. Ưu tiên số 1 là **đủ trải nghiệm khách hàng** — khách vào store phải tin tưởng để mua và biết chuyện gì xảy ra sau khi bấm mua. Làm đẹp là việc để sau, khi còn thời gian.
 
 ---
 
-## 3. Sản Xuất Content & Đăng Bài Organic (TikTok / Reels / Shorts)
+## 1. Checklist "đủ trải nghiệm khách hàng" — làm TRƯỚC khi lo làm đẹp
 
-### Môi trường đăng bài TikTok US từ Việt Nam
-- **Thao tác thiết bị**: Tháo SIM Việt Nam -> Lắp SIM Mỹ trả trước -> Tắt định vị GPS -> Đổi múi giờ điện thoại sang Mỹ (GMT-5).
-- **Mạng kết nối**: Sử dụng Proxy tĩnh Mỹ / Antidetect Browser hoặc WiFi chuẩn hóa.
-- **Tần suất**: Đăng đều đặn **2-3 video/ngày** trong suốt 1-2 tuần đầu tiên.
+- [ ] **Trang chính sách đầy đủ**: Return Policy, FAQ, chính sách vận chuyển, trang liên hệ — thiếu là khách không tin tưởng để mua.
+- [ ] **Trang sản phẩm trung thực**: hạn chế dùng ảnh/nội dung AI, ưu tiên thể hiện đúng sản phẩm thật — khách cần cảm thấy sản phẩm "đang ở rất gần" chứ không mơ hồ.
+- [ ] **Review thật**: gắn review Trustpilot hoặc app review (Loox/Judge.me).
+- [ ] **Email follow-up khi ship**: báo khách đơn đã gửi để họ yên tâm chờ hàng.
+- [ ] **Upsell / cross-sell**: gợi ý mua thêm ngay trên trang sản phẩm — có thể tăng AOV (giá trị đơn hàng trung bình) thêm khoảng **20%**.
 
-### Cấu trúc Video Ngắn Chuẩn Chuyển Đổi (12-20 Giây)
-- **0 - 3 giây (Hook)**: Gây chú ý bằng hình ảnh đột ngột + Câu hỏi/Text hook giật gân (VD: *"Stop scrolling if you have dirty shoes!"*).
-- **3 - 15 giây (Body)**: Trình diễn tính năng nổi bật, cho thấy hiệu quả trước và sau khi dùng (Before / After).
-- **15 - 20 giây (CTA)**: Hướng dẫn khách truy cập mua hàng (VD: *"Link in bio to get yours with 50% OFF today!"*).
+---
+
+## 2. Hoàn thiện 1 store làm chuẩn, sau đó dùng Claude để nhân bản nhanh
+
+Chiến lược cho người mới: đừng làm nhiều store cùng lúc, và đừng design lại từ đầu mỗi lần đổi sản phẩm. Làm **1 store thật hoàn chỉnh** theo đúng checklist ở mục 1, rồi dùng nó làm khuôn mẫu — nhờ Claude nhân bản khi đổi sang sản phẩm/ngách mới.
+
+### Tiêu chí để coi 1 store là "đã hoàn chỉnh, sẵn sàng làm mẫu"
+- [ ] Đủ 5 mục trong checklist "đủ trải nghiệm khách hàng" ở mục 1.
+- [ ] Theme, màu, font đã chốt — không còn sửa qua sửa lại.
+- [ ] Đã cài đủ 3 app cố định (xem mục 4).
+- [ ] Email template (xác nhận đơn, thông báo ship) đã viết sẵn.
+
+### Cách nhân bản nhanh khi có sản phẩm/ngách mới
+- **Giao diện**: xuất theme từ store gốc và đẩy sang store mới bằng Shopify CLI, thay vì tự set lại từng cài đặt bằng tay.
+- **App**: Shopify chưa hỗ trợ tự động sao chép app giữa các store — vẫn phải cài tay theo đúng danh sách app cố định (mục 4).
+- **Nội dung** (mô tả sản phẩm, trang chính sách, collection): đây là phần nhờ Claude làm nhanh nhất — đưa nội dung của store mẫu, đổi lại theo sản phẩm/ngách mới, rồi tạo thẳng trên store thay vì gõ tay từng ô.
+- **Tên miền**: mỗi sản phẩm/ngách vẫn cần tên miền riêng, không dùng chung.
+
+---
+
+## 3. Thiết lập cơ bản (theo đúng slide gốc)
+
+- **Nền tảng**: Shopify (gói trải nghiệm $1/tháng để tiết kiệm chi phí ban đầu).
+- **Tên miền**: đuôi liên quan quốc gia đang nhắm (\`.com\`, \`.co\`, \`.uk\`, \`.store\`...) và liên quan sản phẩm.
+- **Theme**: dùng **Dawn Theme** (miễn phí, tải nhanh, tối ưu mobile).
+- **Đồng bộ nhận diện**: logo, font, màu theme giống nhau xuyên suốt store và mạng xã hội.
+- **Xây theo đúng chân dung khách hàng** đã chọn ở Bước 2.
+- **Số lượng sản phẩm: 8-12 sản phẩm/store** — không cần nhiều hơn ở giai đoạn đầu.
+- **Banner linh hoạt, update thường xuyên** — không để banner cũ/hết khuyến mãi.
+
+## 4. App bắt buộc phải cài (không cài thêm để tránh chậm trang)
+1. **DSers**: kết nối Shopify với AliExpress, tự động đặt hàng và đồng bộ mã vận đơn.
+2. **Loox / Judge.me**: import review thật kèm ảnh từ người mua trên AliExpress.
+3. **Geolocation**: tự đổi tiền tệ theo quốc gia của khách truy cập.
+
+---
+
+## 5. Đăng bài kéo traffic (organic)
+- Đăng đồng thời TikTok, Instagram Reels, YouTube Shorts.
+- Tần suất 2-3 video/ngày, đều đặn — thuật toán cần sự đều đặn để phân phối tốt.
+- Gắn link store vào bio, nhắc khách bấm vào bio để mua.
 `
   }
 ];

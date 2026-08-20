@@ -14,10 +14,17 @@ import {
   Search,
   Zap,
   Calculator,
-  Copy,
   Check,
   Sparkles,
-  Bot
+  Bot,
+  BarChart3,
+  LayoutGrid,
+  Table,
+  TrendingUp,
+  AlertTriangle,
+  ArrowRight,
+  ShieldCheck,
+  PieChart
 } from "lucide-react";
 
 export const Route = createFileRoute("/dropship/lab")({
@@ -61,6 +68,7 @@ export function ProductLabPage() {
   const [selectedProductId, setSelectedProductId] = useState<string>(products[0]?.id || "fairy-lights");
   const [customSearch, setCustomSearch] = useState<string>("");
   const [activeAgentTab, setActiveAgentTab] = useState<string>("all");
+  const [viewMode, setViewMode] = useState<"grid" | "matrix" | "financial">("grid");
   const [copied, setCopied] = useState<boolean>(false);
   const [isDynamicMode, setIsDynamicMode] = useState<boolean>(false);
 
@@ -182,6 +190,24 @@ export function ProductLabPage() {
     return presetProduct;
   }, [customSearch, isDynamicMode, presetProduct]);
 
+  // Overall Average Score calculation across 5 agents
+  const averageScore = useMemo(() => {
+    if (!activeProduct || !activeProduct.perspectives.length) return 0;
+    const sum = activeProduct.perspectives.reduce((acc, curr) => acc + curr.score, 0);
+    return (sum / activeProduct.perspectives.length).toFixed(2);
+  }, [activeProduct]);
+
+  // Find top strength agent & top risk agent
+  const topAgent = useMemo(() => {
+    if (!activeProduct?.perspectives.length) return null;
+    return [...activeProduct.perspectives].sort((a, b) => b.score - a.score)[0];
+  }, [activeProduct]);
+
+  const riskAgent = useMemo(() => {
+    if (!activeProduct?.perspectives.length) return null;
+    return [...activeProduct.perspectives].sort((a, b) => a.score - b.score)[0];
+  }, [activeProduct]);
+
   // Calculator State initialized from active product
   const [calcPrice, setCalcPrice] = useState<number>(activeProduct?.retailPrice || 27.99);
   const [calcCogs, setCalcCogs] = useState<number>(activeProduct?.cogs || 4.5);
@@ -206,23 +232,56 @@ export function ProductLabPage() {
   return (
     <ScrollArea className="h-full">
       <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-8">
-        {/* Header Section */}
-        <div className="space-y-3 border-b border-zinc-200 dark:border-zinc-800 pb-5">
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="outline" className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700 font-semibold text-[11px] px-2.5 py-0.5">
-              Multi-Agent Product Lab
-            </Badge>
-            <span className="text-xs text-zinc-400 font-mono">5 Specialized AI Perspectives · AI Trigger Command System</span>
-          </div>
-
+        {/* Top Navigation & Mode Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
           <div className="space-y-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="outline" className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700 font-semibold text-[11px] px-2.5 py-0.5">
+                Multi-Agent Product Lab
+              </Badge>
+              <span className="text-xs text-zinc-400 font-mono">5 Specialized AI Perspectives · Visual Matrix Engine</span>
+            </div>
             <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
               <FlaskConical className="w-6 h-6 text-zinc-700 dark:text-zinc-300" />
-              Phòng Thí Nghiệm Đánh Giá Sản Phẩm Đa Góc Nhìn (Product Evaluation Lab)
+              Phòng Thí Nghiệm Đánh Giá Sản Phẩm Đa Góc Nhìn
             </h1>
-            <p className="text-xs text-zinc-500 max-w-3xl leading-relaxed">
-              Phân tích sản phẩm dưới 5 góc nhìn chuyên biệt: Săn sản phẩm WIN, Master Seller phản biện, Đạo diễn Video Ads, Kiểm toán Logistics và Media Buyer.
-            </p>
+          </div>
+
+          {/* View Mode Switcher */}
+          <div className="flex items-center gap-1 p-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-lg border border-zinc-200 dark:border-zinc-700">
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-all ${
+                viewMode === "grid"
+                  ? "bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 shadow-2xs"
+                  : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200"
+              }`}
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span>Thẻ Agent (Grid)</span>
+            </button>
+            <button
+              onClick={() => setViewMode("matrix")}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-all ${
+                viewMode === "matrix"
+                  ? "bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 shadow-2xs"
+                  : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200"
+              }`}
+            >
+              <Table className="w-3.5 h-3.5" />
+              <span>Ma Trận Bảng (Matrix)</span>
+            </button>
+            <button
+              onClick={() => setViewMode("financial")}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-all ${
+                viewMode === "financial"
+                  ? "bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 shadow-2xs"
+                  : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200"
+              }`}
+            >
+              <Calculator className="w-3.5 h-3.5" />
+              <span>Unit Economics</span>
+            </button>
           </div>
         </div>
 
@@ -230,10 +289,10 @@ export function ProductLabPage() {
         <div className="space-y-4 p-5 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-2xs">
           <div className="flex flex-wrap justify-between items-center gap-2">
             <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
-              Sản Phẩm Đã Thẩm Định Hoặc Nhập Sản Phẩm Mới Cần Đánh Giá
+              Sản Phẩm Đã Thẩm Định Hoặc Nhập Tên Sản Phẩm Mới
             </span>
             <span className="text-xs text-zinc-500 font-mono flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Nhập tên sản phẩm bất kỳ & chạy đánh giá
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Nhập tên sản phẩm bất kỳ để xem giao diện trực quan
             </span>
           </div>
 
@@ -260,7 +319,7 @@ export function ProductLabPage() {
             ))}
           </div>
 
-          {/* Custom Search & Interactive Evaluation Controls */}
+          {/* Custom Search & Interactive AI Command Bar */}
           <div className="flex flex-col sm:flex-row items-stretch gap-2 pt-1">
             <div className="relative flex-1">
               <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -298,82 +357,130 @@ export function ProductLabPage() {
               )}
             </button>
           </div>
-
-          {/* Instruction Helper Banner */}
-          <div className="p-3 bg-zinc-50 dark:bg-zinc-800/40 rounded-lg border border-zinc-200/60 dark:border-zinc-800 text-[11px] text-zinc-600 dark:text-zinc-400 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-amber-500 shrink-0" />
-              <span>
-                <strong>Cách hoạt động:</strong> Nhập tên sản phẩm trên thanh tìm kiếm để xem <strong>khung xem trước dựng sẵn (mock preview, KHÔNG phải AI vừa phân tích)</strong>. Bấm nút <strong>"Gửi Request Tới AI Agent"</strong> để copy câu lệnh <code className="bg-zinc-200 dark:bg-zinc-700 px-1 py-0.5 rounded font-mono text-[10px]">/product-lab [tên sản phẩm]</code> dán vào chat — đây mới là bước AI thật sự chạy 5 agent độc lập, thẩm định và lưu kết quả vào hệ thống.
-              </span>
-            </div>
-          </div>
         </div>
 
-        {/* Dynamic Mode Warning — the preview below is a static template, not a live AI evaluation */}
+        {/* Dynamic Mode Warning Banner */}
         {isDynamicMode && (
           <div className="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-300/60 dark:border-amber-800 text-[11px] text-amber-800 dark:text-amber-300 flex items-center gap-2">
-            <Sparkles className="w-4 h-4 shrink-0" />
+            <Sparkles className="w-4 h-4 shrink-0 text-amber-500" />
             <span>
-              <strong>Demo Preview:</strong> Các số liệu và nhận định bên dưới là mẫu dựng sẵn (template) để minh hoạ giao diện, không do AI phân tích sản phẩm "{customSearch.trim()}" thật. Bấm <strong>"Gửi Request Tới AI Agent"</strong> phía trên để chạy đánh giá thật.
+              <strong>DEMO PREVIEW:</strong> Các số liệu và nhận định bên dưới là mẫu dựng sẵn (template) để minh hoạ giao diện, không do AI phân tích sản phẩm "{customSearch.trim()}" thật. Bấm <strong>"Gửi Request Tới AI Agent"</strong> phía trên để chạy đánh giá thật trong chat.
             </span>
           </div>
         )}
 
-        {/* Selected Product Banner */}
+        {/* Executive Overview Dashboard & Score Balance Meter */}
         {activeProduct && (
-          <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-3">
-            <div className="flex flex-wrap justify-between items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
+          <Card className="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-6 shadow-2xs">
+            <div className="flex flex-wrap justify-between items-start gap-4 border-b border-zinc-100 dark:border-zinc-800 pb-4">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">
-                  {activeProduct.category} {isDynamicMode && "· Demo Preview (Chưa phải phân tích AI thật)"}
+                  {activeProduct.category} {isDynamicMode && "· Demo Preview"}
                 </span>
                 <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
                   {activeProduct.title}
                 </h2>
               </div>
-              <div className="flex items-center gap-4 text-xs font-mono">
-                <span className="text-zinc-500">COGS: <strong className="text-zinc-900 dark:text-zinc-100">${activeProduct.cogs}</strong></span>
-                <span className="text-zinc-500">Retail Price: <strong className="text-zinc-900 dark:text-zinc-100">${activeProduct.retailPrice}</strong></span>
-                <span className="text-zinc-500">Margin: <strong className="text-emerald-600 dark:text-emerald-400 font-bold">{(((activeProduct.retailPrice - activeProduct.cogs) / activeProduct.retailPrice) * 100).toFixed(0)}%</strong></span>
+
+              {/* Overall Score Gauge */}
+              <div className="flex items-center gap-4 bg-zinc-50 dark:bg-zinc-800/40 p-3 rounded-lg border border-zinc-200/60 dark:border-zinc-800">
+                <div className="text-right">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">Điểm Trung Bình 5 Agent</span>
+                  <span className="text-xl font-bold font-mono text-zinc-900 dark:text-zinc-100">{averageScore} <span className="text-xs text-zinc-400 font-normal">/ 10</span></span>
+                </div>
+                <div className="w-12 h-12 rounded-full border-4 border-zinc-900 dark:border-zinc-100 flex items-center justify-center font-bold font-mono text-xs text-zinc-900 dark:text-zinc-100 shadow-2xs">
+                  {((parseFloat(averageScore as string) / 10) * 100).toFixed(0)}%
+                </div>
               </div>
             </div>
 
-            {/* Perspective Filter Tabs */}
-            <div className="flex items-center gap-1 pt-1 overflow-x-auto">
-              <button
-                onClick={() => setActiveAgentTab("all")}
-                className={`px-3 py-1 rounded-lg text-xs font-semibold cursor-pointer border ${
-                  activeAgentTab === "all"
-                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900"
-                    : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-transparent hover:bg-zinc-200 dark:hover:bg-zinc-700"
-                }`}
-              >
-                Tất Cả 5 Agent
-              </button>
-              {activeProduct.perspectives.map((p) => {
-                const AgentIcon = ICON_MAP[p.iconName] || Target;
-                return (
-                  <button
-                    key={p.agentId}
-                    onClick={() => setActiveAgentTab(p.agentId)}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium cursor-pointer border flex items-center gap-1.5 whitespace-nowrap ${
-                      activeAgentTab === p.agentId
-                        ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900"
-                        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-transparent hover:bg-zinc-200 dark:hover:bg-zinc-700"
-                    }`}
-                  >
-                    <AgentIcon className="w-3.5 h-3.5" />
-                    <span>{p.agentName}</span>
-                  </button>
-                );
-              })}
+            {/* 5-Agent Visual Score Balance Bar */}
+            <div className="space-y-3">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
+                <BarChart3 className="w-4 h-4 text-zinc-600 dark:text-zinc-400" /> Bảng Cân Bằng Điểm Số 5 Góc Nhìn
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
+                {activeProduct.perspectives.map((p) => {
+                  const AgentIcon = ICON_MAP[p.iconName] || Target;
+                  const isTop = topAgent?.agentId === p.agentId;
+                  const isRisk = riskAgent?.agentId === p.agentId && p.score < 6.5;
+
+                  return (
+                    <div key={p.agentId} className={`p-3 rounded-lg border space-y-2 transition-all ${
+                      isTop
+                        ? "bg-emerald-500/5 border-emerald-500/30"
+                        : isRisk
+                        ? "bg-red-500/5 border-red-500/30"
+                        : "bg-zinc-50 dark:bg-zinc-800/40 border-zinc-200/60 dark:border-zinc-800"
+                    }`}>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <AgentIcon className="w-3.5 h-3.5 text-zinc-600 dark:text-zinc-400" />
+                          <span className="text-[11px] font-bold text-zinc-900 dark:text-zinc-100 truncate max-w-[100px]">{p.agentName.split(" ")[0]}</span>
+                        </div>
+                        <span className="text-xs font-bold font-mono text-zinc-900 dark:text-zinc-100">{p.score}</span>
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all ${
+                            p.score >= 8.0
+                              ? "bg-emerald-500"
+                              : p.score >= 6.0
+                              ? "bg-amber-500"
+                              : "bg-red-500"
+                          }`}
+                          style={{ width: `${(p.score / 10) * 100}%` }}
+                        />
+                      </div>
+
+                      <span className="text-[9px] font-mono block text-zinc-400 truncate">
+                        {p.verdictLabel}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+          </Card>
+        )}
+
+        {/* Perspective Filter Tabs */}
+        {activeProduct && (
+          <div className="flex items-center gap-1 overflow-x-auto pb-1">
+            <button
+              onClick={() => setActiveAgentTab("all")}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer border ${
+                activeAgentTab === "all"
+                  ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900"
+                  : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              }`}
+            >
+              Tất Cả 5 Agent
+            </button>
+            {activeProduct.perspectives.map((p) => {
+              const AgentIcon = ICON_MAP[p.iconName] || Target;
+              return (
+                <button
+                  key={p.agentId}
+                  onClick={() => setActiveAgentTab(p.agentId)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-medium cursor-pointer border flex items-center gap-1.5 whitespace-nowrap ${
+                    activeAgentTab === p.agentId
+                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900"
+                      : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  }`}
+                >
+                  <AgentIcon className="w-3.5 h-3.5" />
+                  <span>{p.agentName}</span>
+                </button>
+              );
+            })}
           </div>
         )}
 
-        {/* 5 Agent Perspectives Grid */}
-        {activeProduct && (
+        {/* MODE 1: GRID VIEW (AGENT CARDS) */}
+        {activeProduct && viewMode === "grid" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activeProduct.perspectives
               .filter((p) => activeAgentTab === "all" || activeAgentTab === p.agentId)
@@ -417,15 +524,20 @@ export function ProductLabPage() {
                                 ? "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10"
                                 : "text-zinc-500 bg-zinc-100 dark:bg-zinc-800"
                             }`}
-                            title={
-                              p.dataConfidence === "sourced"
-                                ? "Số liệu được tra cứu qua công cụ thật (web search)"
-                                : "Số liệu là ước tính suy luận của AI, chưa xác thực qua nguồn thật"
-                            }
                           >
-                            {p.dataConfidence === "sourced" ? "✓ Đã tra cứu nguồn thật" : "~ Ước tính AI (chưa xác thực)"}
+                            {p.dataConfidence === "sourced" ? "✓ Nguồn thật" : "~ Ước tính AI"}
                           </span>
                         </div>
+                      </div>
+
+                      {/* Visual Score Progress Meter */}
+                      <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all ${
+                            p.score >= 8.0 ? "bg-emerald-500" : p.score >= 6.0 ? "bg-amber-500" : "bg-red-500"
+                          }`}
+                          style={{ width: `${(p.score / 10) * 100}%` }}
+                        />
                       </div>
 
                       {/* Summary */}
@@ -464,104 +576,164 @@ export function ProductLabPage() {
           </div>
         )}
 
-        {/* Live Interactive Unit Economics Simulator */}
-        <Card className="p-6 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl space-y-5 shadow-2xs">
-          <div className="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-3">
-            <div className="flex items-center gap-2">
-              <Calculator className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
-              <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100">
-                Mô Phỏng Unit Economics & Điểm Hòa Vốn (Interactive Simulator)
+        {/* MODE 2: EXECUTIVE COMPARISON MATRIX TABLE */}
+        {activeProduct && viewMode === "matrix" && (
+          <Card className="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-4 shadow-2xs overflow-x-auto">
+            <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800 pb-3">
+              <h3 className="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+                <Table className="w-4 h-4 text-zinc-600 dark:text-zinc-400" /> Bảng Ma Trận So Sánh Trực Quan 5 Agent
               </h3>
-            </div>
-            <span className="text-xs text-zinc-500 font-mono">Real-time Margin Calculator</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Input Controls */}
-            <div className="space-y-4">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 block">
-                Thông Số Đầu Vào
-              </span>
-
-              <div className="space-y-1">
-                <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 flex justify-between">
-                  <span>Giá bán lẻ (Retail Price):</span>
-                  <span className="font-bold font-mono text-zinc-900 dark:text-zinc-100">${calcPrice}</span>
-                </label>
-                <input
-                  type="range"
-                  min="10"
-                  max="150"
-                  step="1"
-                  value={calcPrice}
-                  onChange={(e) => setCalcPrice(parseFloat(e.target.value))}
-                  className="w-full text-zinc-900 accent-zinc-900 cursor-pointer"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 flex justify-between">
-                  <span>Giá vốn COGS + Ship:</span>
-                  <span className="font-bold font-mono text-zinc-900 dark:text-zinc-100">${calcCogs}</span>
-                </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="50"
-                  step="0.5"
-                  value={calcCogs}
-                  onChange={(e) => setCalcCogs(parseFloat(e.target.value))}
-                  className="w-full accent-zinc-900 cursor-pointer"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 flex justify-between">
-                  <span>Chi phí mua 1 khách (Ad CAC):</span>
-                  <span className="font-bold font-mono text-zinc-900 dark:text-zinc-100">${calcCac}</span>
-                </label>
-                <input
-                  type="range"
-                  min="5"
-                  max="60"
-                  step="1"
-                  value={calcCac}
-                  onChange={(e) => setCalcCac(parseFloat(e.target.value))}
-                  className="w-full accent-zinc-900 cursor-pointer"
-                />
-              </div>
+              <span className="text-xs text-zinc-500 font-mono">Executive Comparison Matrix</span>
             </div>
 
-            {/* Calculated Metrics Display */}
-            <div className="lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-3 bg-zinc-50 dark:bg-zinc-800/40 p-4 rounded-xl border border-zinc-200/60 dark:border-zinc-800 items-center">
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Lợi Nhuận Gộp</span>
-                <span className="text-lg font-bold font-mono text-zinc-900 dark:text-zinc-100">${grossProfit.toFixed(2)}</span>
-                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 block font-semibold">{grossMargin}% Margin</span>
-              </div>
+            <table className="w-full text-left text-xs font-sans border-collapse">
+              <thead>
+                <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40 text-zinc-500 text-[10px] font-bold uppercase tracking-wider">
+                  <th className="p-3">Agent</th>
+                  <th className="p-3">Điểm số</th>
+                  <th className="p-3">Đánh giá (Verdict)</th>
+                  <th className="p-3">Tóm tắt góc nhìn</th>
+                  <th className="p-3">Khuyến nghị trọng tâm</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+                {activeProduct.perspectives.map((p) => {
+                  const AgentIcon = ICON_MAP[p.iconName] || Target;
+                  return (
+                    <tr key={p.agentId} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/20">
+                      <td className="p-3 font-semibold text-zinc-900 dark:text-zinc-100 whitespace-nowrap">
+                        <div className="flex items-center gap-2">
+                          <AgentIcon className="w-4 h-4 text-zinc-500" />
+                          <span>{p.agentName}</span>
+                        </div>
+                      </td>
+                      <td className="p-3 font-mono font-bold">{p.score} / 10</td>
+                      <td className="p-3 whitespace-nowrap">
+                        <Badge
+                          variant="outline"
+                          className={`text-[10px] font-bold font-mono ${
+                            p.verdict === "WINNER" || p.verdict === "EXCELLENT"
+                              ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+                              : p.verdict === "HIGH_RISK"
+                              ? "bg-red-500/10 text-red-600 border-red-500/20"
+                              : "bg-amber-500/10 text-amber-600 border-amber-500/20"
+                          }`}
+                        >
+                          {p.verdictLabel}
+                        </Badge>
+                      </td>
+                      <td className="p-3 max-w-xs leading-relaxed">{p.summary}</td>
+                      <td className="p-3 max-w-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {p.recommendations[0]}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </Card>
+        )}
 
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Break-Even CAC</span>
-                <span className="text-lg font-bold font-mono text-zinc-900 dark:text-zinc-100">${breakEvenCac.toFixed(2)}</span>
-                <span className="text-[10px] text-zinc-500 block">Tối đa chi trả ads</span>
+        {/* MODE 3 OR BOTTOM: LIVE UNIT ECONOMICS SIMULATOR */}
+        {(viewMode === "financial" || viewMode === "grid") && (
+          <Card className="p-6 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl space-y-5 shadow-2xs">
+            <div className="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-3">
+              <div className="flex items-center gap-2">
+                <Calculator className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
+                <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100">
+                  Mô Phỏng Unit Economics & Điểm Hòa Vốn (Interactive Simulator)
+                </h3>
               </div>
+              <span className="text-xs text-zinc-500 font-mono">Real-time Margin Calculator</span>
+            </div>
 
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Lãi Ròng (Per Unit)</span>
-                <span className={`text-lg font-bold font-mono ${contributionProfit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}>
-                  ${contributionProfit.toFixed(2)}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Input Controls */}
+              <div className="space-y-4">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 block">
+                  Thông Số Đầu Vào
                 </span>
-                <span className="text-[10px] text-zinc-500 block">{contributionProfit >= 0 ? "Có lời" : "Lỗ trên đơn"}</span>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 flex justify-between">
+                    <span>Giá bán lẻ (Retail Price):</span>
+                    <span className="font-bold font-mono text-zinc-900 dark:text-zinc-100">${calcPrice}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="10"
+                    max="150"
+                    step="1"
+                    value={calcPrice}
+                    onChange={(e) => setCalcPrice(parseFloat(e.target.value))}
+                    className="w-full text-zinc-900 accent-zinc-900 cursor-pointer"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 flex justify-between">
+                    <span>Giá vốn COGS + Ship:</span>
+                    <span className="font-bold font-mono text-zinc-900 dark:text-zinc-100">${calcCogs}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="1"
+                    max="50"
+                    step="0.5"
+                    value={calcCogs}
+                    onChange={(e) => setCalcCogs(parseFloat(e.target.value))}
+                    className="w-full accent-zinc-900 cursor-pointer"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 flex justify-between">
+                    <span>Chi phí mua 1 khách (Ad CAC):</span>
+                    <span className="font-bold font-mono text-zinc-900 dark:text-zinc-100">${calcCac}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="5"
+                    max="60"
+                    step="1"
+                    value={calcCac}
+                    onChange={(e) => setCalcCac(parseFloat(e.target.value))}
+                    className="w-full accent-zinc-900 cursor-pointer"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Target ROAS</span>
-                <span className="text-lg font-bold font-mono text-zinc-900 dark:text-zinc-100">{breakEvenRoas}x</span>
-                <span className="text-[10px] text-zinc-500 block">ROAS cần đạt</span>
+              {/* Calculated Metrics Display */}
+              <div className="lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-3 bg-zinc-50 dark:bg-zinc-800/40 p-4 rounded-xl border border-zinc-200/60 dark:border-zinc-800 items-center">
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Lợi Nhuận Gộp</span>
+                  <span className="text-lg font-bold font-mono text-zinc-900 dark:text-zinc-100">${grossProfit.toFixed(2)}</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 block font-semibold">{grossMargin}% Margin</span>
+                </div>
+
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Break-Even CAC</span>
+                  <span className="text-lg font-bold font-mono text-zinc-900 dark:text-zinc-100">${breakEvenCac.toFixed(2)}</span>
+                  <span className="text-[10px] text-zinc-500 block">Tối đa chi trả ads</span>
+                </div>
+
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Lãi Ròng (Per Unit)</span>
+                  <span className={`text-lg font-bold font-mono ${contributionProfit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}>
+                    ${contributionProfit.toFixed(2)}
+                  </span>
+                  <span className="text-[10px] text-zinc-500 block">{contributionProfit >= 0 ? "Có lời" : "Lỗ trên đơn"}</span>
+                </div>
+
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Target ROAS</span>
+                  <span className="text-lg font-bold font-mono text-zinc-900 dark:text-zinc-100">{breakEvenRoas}x</span>
+                  <span className="text-[10px] text-zinc-500 block">ROAS cần đạt</span>
+                </div>
               </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        )}
       </div>
     </ScrollArea>
   );
