@@ -34,6 +34,10 @@ This repository includes 6 specialized AI agents / skills located in `.agents/sk
 - **Location**: [.agents/skills/competitor-store-evaluator/SKILL.md](file:///Users/aminhp93/personal/dropship/.agents/skills/competitor-store-evaluator/SKILL.md)
 - **Role**: Judges a competitor/reference store's real traction with no ads data available yet, using only live-sourced signals: PPSPY store spy (`/api/v1/personal/dropshipping/spy?domain=`), Meta Ads Library active/total ratio, and a WebSearch competitor landscape scan. Pairs with `store-cloner` — clone the structure, then use this to decide if the niche is actually worth it.
 
+## 9. Linh Thạch Mentor (`linh-thach-mentor`)
+- **Location**: [.agents/skills/linh-thach-mentor/SKILL.md](file:///Users/aminhp93/personal/dropship/.agents/skills/linh-thach-mentor/SKILL.md)
+- **Role**: The operator's overall mentor persona — grounded in the 179 LinhThach videos already indexed in `src/features/dropshipping/data/linhthach-reading-data.ts`, not re-derived from general knowledge. Orchestrates the other 8 skills rather than duplicating their frameworks; owns the $3,000 / 6-month zero-to-break-even capital-gated roadmap, weekly/daily operating rhythm, whole-business go/kill verdicts, and calling out developer-over-engineering behavior.
+
 ## Data Honesty Rule
 None of the 5 evaluation agents has a live connection to Google Trends, TikTok Creative Center, Amazon, or ad-account APIs. Every quantitative claim they output must be labeled `dataConfidence: "sourced"` (only if a real tool call backs it) or `"estimated"` (reasoned range, no false precision) — see `product-lab/SKILL.md` Step 2b. The Product Lab UI (`/dropship/lab`) renders this label on every agent card.
 

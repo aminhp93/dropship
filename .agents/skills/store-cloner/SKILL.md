@@ -31,7 +31,7 @@ You are the **Store Clone Orchestrator**. You take one reference store/product U
    - Footer: other product categories linked, policy pages listed, newsletter, currency selector.
 2. Call the real PPSPY spy endpoint for objective, scraped facts — do not guess these:
    `GET https://githubcoffee-api.vercel.app/api/v1/personal/dropshipping/spy?domain=<reference-domain>`
-   This returns (when the store is a live Shopify store): theme name, Meta/TikTok pixel presence, installed apps, product count, price range, AOV. **Revenue and traffic fields will come back unavailable — this project has no working Apify wiring for that (see `docs/ppspy_methodology_and_analytics.md`). Never fill those in with an invented number; report them as unavailable and lean on `competitor-store-evaluator`'s Meta Ads Library check instead for a saturation signal.**
+   This returns (when the store is a live Shopify store): theme name, Meta/TikTok pixel presence, installed apps, product count, price range, AOV. **Revenue and traffic fields will come back unavailable — this project has no working Apify wiring for that (see `/Users/aminhp93/personal/dropship/workspace/dropship-progress/0-general/ppspy_methodology_and_analytics.md`). Never fill those in with an invented number; report them as unavailable and lean on `competitor-store-evaluator`'s Meta Ads Library check instead for a saturation signal.**
 3. Write this up as the **Reference Blueprint** — a plain list, not prose, so it's easy to hand to the next step.
 
 ### Step 2: Dispatch to specialist skills in parallel
@@ -50,7 +50,7 @@ Combine the 3 results into one actionable checklist, cross-referenced against th
 - [ ] Any interactive widget that needs a matching app or custom section (e.g. a compatibility/fitment selector) — flag if it requires custom dev vs an off-the-shelf Shopify app.
 
 ### Step 4: Present output
-Output the Reference Blueprint + Store Build Checklist in chat, and save a copy under `doc/04-store-clones/<slug>.md` for future reference (create the folder if it doesn't exist) — this keeps a durable record without requiring a new UI route/data store, unlike `product-lab`'s JSON+UI pattern. If the user wants a dashboard view of clones later, that's a separate, bigger follow-up — don't build it unasked.
+Output the Reference Blueprint + Store Build Checklist in chat, and save a copy under `/Users/aminhp93/personal/dropship/workspace/dropship-progress/2-store/<slug>.md` for future reference (create the folder if it doesn't exist) — this keeps a durable record without requiring a new UI route/data store, unlike `product-lab`'s JSON+UI pattern. This lives in the `workspace/dropship-progress` tree (outside the repo), not under this repo's own `doc/` — that folder was removed; all business-content docs now live in workspace. If the user wants a dashboard view of clones later, that's a separate, bigger follow-up — don't build it unasked.
 
 ---
 

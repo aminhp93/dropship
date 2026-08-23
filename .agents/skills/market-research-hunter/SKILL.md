@@ -139,3 +139,11 @@ When presenting product research, format the output as follows:
 - **Logistics & Supplier Audit**: COGS breakdown, shipping lead time, supplier rating.
 - **10 Marketing Angles**: Hook ideas for short-form video ads.
 - **Action Plan**: Sample ordering checklist & testing budget allocation.
+
+### 3. Persist the run so it can be improved next time
+Every run for a given niche gets saved as a **version**, so the operator can compare v1 → v2 → v3 instead of losing prior research. Write to `src/features/dropshipping/data/market-research-runs.json` (array of run objects — see existing entries for the exact shape: `id`, `niche`, `version`, `date`, `changeNote`, `candidates[]` with `status: "shortlisted" | "rejected"`, `exclusionFilters`, `metaAdsLibrary`, `sources[]`, `actionItems[]`).
+
+- If this is the first run for a niche, create a new entry with `version: 1`.
+- If prior versions exist for the same `niche`, create a new entry with `version` incremented by 1 and a `changeNote` explaining what's different this time (new candidates tried, a prior candidate re-checked, a filter re-applied) — **never overwrite or delete a prior version**, the whole point is to keep the history.
+- Rejected candidates (failed Section 0 filters) still get included with `status: "rejected"` and the reason in `exclusionFilters.notes` — this is what lets a future version avoid re-researching the same dead end.
+- Results render at **`/dropship/research`** in the UI (version switcher per niche). Link the user there after saving: [Xem Market Research Trên UI](file:///Users/aminhp93/personal/dropship/src/routes/dropship/research.tsx).

@@ -23,7 +23,7 @@ Call: `GET https://githubcoffee-api.vercel.app/api/v1/personal/dropshipping/spy?
 
 This scrapes the target's `/products.json` and homepage HTML directly — **real, not estimated**: Shopify theme, Meta/TikTok pixel presence, installed apps, product count, price range, AOV.
 
-**Revenue estimate and traffic estimate always come back unavailable in this project** (no Apify token wired — see `docs/ppspy_methodology_and_analytics.md`). Report them as `"unavailable"`, not as a guessed figure. Do not let the UI's old broken behavior (inventing a checksum-based revenue number) happen again — that's exactly the incident this project's Data Honesty Rule was written to prevent.
+**Revenue estimate and traffic estimate always come back unavailable in this project** (no Apify token wired — see `/Users/aminhp93/personal/dropship/workspace/dropship-progress/0-general/ppspy_methodology_and_analytics.md`). Report them as `"unavailable"`, not as a guessed figure. Do not let the UI's old broken behavior (inventing a checksum-based revenue number) happen again — that's exactly the incident this project's Data Honesty Rule was written to prevent.
 
 ### 2. Meta Ads Library — saturation & creative intel
 Follow the exact protocol in `market-research-hunter/SKILL.md` Section 1, Source 5:

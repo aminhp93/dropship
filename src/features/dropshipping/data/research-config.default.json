@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-08-20",
+  "marginTarget": { "min": 3, "max": 4, "unit": "x COGS" },
+  "aovTarget": { "min": 50, "max": 100, "unit": "$" },
+  "shipWeightLimitGadget": {
+    "value": 500,
+    "unit": "g",
+    "note": "Chỉ áp dụng cho gadget điện tử/nhỏ gọn. Hàng vải/textile dùng ngưỡng \"phí ship ≤ 15-20% giá vốn\" thay thế (xem supply-chain-auditor)."
+  },
+  "exclusionFilters": [
+    { "id": "not-trend", "label": "Không phải sản phẩm đang trend", "active": true },
+    { "id": "not-brand-equity", "label": "Không phải ngách brand cá nhân/local thống trị", "active": true },
+    { "id": "not-local-retail", "label": "Không phải sản phẩm đã bán sẵn ở retail local (BigW/Kmart...)", "active": true }
+  ],
+  "sources": [
+    { "id": "google-trends", "label": "Google Trends (5-year US)" },
+    { "id": "tiktok", "label": "TikTok Search Video" },
+    { "id": "meta-ads", "label": "Meta Ads Library" },
+    { "id": "google-shopping", "label": "Google Shopping US" },
+    { "id": "keyword-planner", "label": "Google Keyword Planner" },
+    { "id": "ppspy", "label": "PPSPY Store Spy (khi có domain đối thủ)" }
+  ]
+}

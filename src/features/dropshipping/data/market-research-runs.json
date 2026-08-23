@@ -1,0 +1,122 @@
+[
+  {
+    "id": "home-bedroom-v1",
+    "niche": "Home & Bedroom",
+    "version": 1,
+    "date": "2026-08-20",
+    "changeNote": "Lần chạy đầu tiên theo bộ tiêu chí newbie exclusion filters trong market-research-hunter/SKILL.md.",
+    "candidates": [
+      {
+        "name": "Đèn dây macrame/boho (fairy lights)",
+        "status": "shortlisted",
+        "cogs": "$5-12",
+        "retailPrice": "$25-45",
+        "margin": "~3-4x",
+        "dataConfidence": "estimated",
+        "strengths": "Wow factor cao (glow photography), nhu cầu quanh năm, thị trường phân mảnh nhiều seller nhỏ.",
+        "risks": "Dễ lẫn với đèn galaxy projector đang trend Q1/2026 — phải chọn đúng biến thể macrame/boho, không phải loại đang viral.",
+        "exclusionFilters": {
+          "results": [
+            { "id": "not-trend", "label": "Không phải sản phẩm đang trend", "passed": true },
+            { "id": "not-brand-equity", "label": "Không phải ngách brand cá nhân/local thống trị", "passed": true },
+            { "id": "not-local-retail", "label": "Không phải sản phẩm đã bán sẵn ở retail local (BigW/Kmart...)", "passed": true }
+          ],
+          "notes": "Evergreen decor, không phải 1 brand cá nhân độc chiếm."
+        },
+        "metaAdsLibrary": {
+          "checked": true,
+          "pages": [],
+          "note": "Search 'fairy lights'/'macrame fairy lights' không ra advertiser cụ thể đủ rõ để lấy ratio — cần thử lại với từ khoá hẹp hơn ở version sau."
+        }
+      },
+      {
+        "name": "Kệ treo tường dán không khoan (no-drill floating shelf)",
+        "status": "shortlisted",
+        "cogs": "$6-10",
+        "retailPrice": "$24-38",
+        "margin": "65-75%",
+        "dataConfidence": "estimated",
+        "strengths": "Giải quyết đúng nỗi đau lưu trữ, thân thiện người thuê nhà (no-drill), evergreen.",
+        "risks": "Gỗ/vật liệu có thể vượt 500g — cần hỏi supplier cân nặng thật trước khi chốt.",
+        "exclusionFilters": {
+          "results": [
+            { "id": "not-trend", "label": "Không phải sản phẩm đang trend", "passed": true },
+            { "id": "not-brand-equity", "label": "Không phải ngách brand cá nhân/local thống trị", "passed": true },
+            { "id": "not-local-retail", "label": "Không phải sản phẩm đã bán sẵn ở retail local (BigW/Kmart...)", "passed": true }
+          ],
+          "notes": "Thị trường phân mảnh nhiều store nhỏ, không bị 1 brand thống trị."
+        },
+        "metaAdsLibrary": {
+          "checked": true,
+          "pages": [
+            { "name": "Floating wall shelves", "followers": 7, "category": "Household supplies", "activeTotal": "0 ads hiển thị trong thư viện" },
+            { "name": "Set of 3 Floating Wall Shelf Floating Shelves Storage Lounge Wood Cube", "followers": 268, "category": "Furniture", "activeTotal": "0 ads hiển thị trong thư viện" }
+          ],
+          "note": "Cả 2 Page hiện 0 ads active lẫn inactive tại thời điểm check — Meta Ads Library không lưu trữ đáng tin cậy lịch sử ads inactive ngoài EU cho advertiser nhỏ, không phải họ chưa từng chạy ads."
+        }
+      },
+      {
+        "name": "Móc treo nhung tiết kiệm diện tích tủ đồ (velvet hangers)",
+        "status": "shortlisted",
+        "cogs": "thấp (chưa có báo giá supplier thật)",
+        "retailPrice": "~$20-35/bộ",
+        "margin": "estimated tốt, cần báo giá thật để xác nhận",
+        "dataConfidence": "estimated",
+        "strengths": "Ship cực nhẹ, không pin/chất lỏng/dễ vỡ, nhu cầu quanh năm tuyệt đối.",
+        "risks": "Giá trị đơn thấp nếu bán lẻ — cần bundle set 20-50 cái để đạt AOV mục tiêu $50-100.",
+        "exclusionFilters": {
+          "results": [
+            { "id": "not-trend", "label": "Không phải sản phẩm đang trend", "passed": true },
+            { "id": "not-brand-equity", "label": "Không phải ngách brand cá nhân/local thống trị", "passed": true },
+            { "id": "not-local-retail", "label": "Không phải sản phẩm đã bán sẵn ở retail local (BigW/Kmart...)", "passed": true }
+          ],
+          "notes": "Thị trường phân mảnh, không có 1 brand cá nhân độc chiếm."
+        },
+        "metaAdsLibrary": {
+          "checked": true,
+          "pages": [
+            { "name": "VelvetHangers.boutique", "followers": 149, "category": "Fashion accessories", "activeTotal": "0 ads hiển thị trong thư viện" }
+          ],
+          "note": "Cùng hạn chế công cụ như trên — 0 ads hiển thị không đồng nghĩa họ không chạy ads."
+        }
+      },
+      {
+        "name": "Đồng hồ báo thức ánh sáng bình minh (sunrise alarm clock)",
+        "status": "rejected",
+        "cogs": null,
+        "retailPrice": "$28-46 (thị trường chung, theo WebSearch)",
+        "margin": null,
+        "dataConfidence": "estimated",
+        "strengths": "Nhu cầu thị trường tăng 254%/24 tháng (WebSearch), giải quyết vấn đề giấc ngủ thật.",
+        "risks": "Bị loại khỏi top 3.",
+        "exclusionFilters": {
+          "results": [
+            { "id": "not-trend", "label": "Không phải sản phẩm đang trend", "passed": true },
+            { "id": "not-brand-equity", "label": "Không phải ngách brand cá nhân/local thống trị", "passed": false },
+            { "id": "not-local-retail", "label": "Không phải sản phẩm đã bán sẵn ở retail local (BigW/Kmart...)", "passed": true }
+          ],
+          "notes": "Candidate mạnh nhất trong ngách (Rise Centered) định vị rõ kiểu 'handcrafted, Himalayan Salt & Beech Wood, luxury of calm' — đúng mẫu brand-equity mà Filter 2 cảnh báo. Loại theo đúng tiêu chí, dù nhu cầu thị trường tốt."
+        },
+        "metaAdsLibrary": {
+          "checked": true,
+          "pages": [
+            { "name": "Rise Centered Sunrise Alarm Clock", "followers": 16800, "category": "Electronics (IG)", "activeTotal": "14/14 active (100%)" }
+          ],
+          "note": "100% active nhưng tổng số ít (14) — quy mô boutique, không phải saturation, rủi ro thật là brand-equity chứ không phải cạnh tranh ads."
+        }
+      }
+    ],
+    "sources": [
+      { "title": "Best Evergreen Dropshipping Products To Sell In 2026", "url": "https://alidropship.com/best-evergreen-dropshipping-products/" },
+      { "title": "Top 10 Evergreen Home & Living Products to Dropship in 2026", "url": "https://pbfulfill.com/blogs/product-recommendation/top-10-evergreen-home-living-products-to-dropship" },
+      { "title": "Storage Organizer Dropshipping Products", "url": "https://www.doba.com/dropshipping/storage-organizer_89.html" },
+      { "title": "Sunrise Alarm Clock Market Trends - SaleHoo", "url": "https://www.salehoo.com/trends/sunrise-alarm-clock" }
+    ],
+    "actionItems": [
+      "Đặt mẫu thử cả 3 sản phẩm shortlisted về VN để quay UGC.",
+      "Với kệ treo tường: hỏi supplier cân nặng thực tế trước khi chốt — điều kiện loại nếu vượt 500g.",
+      "Với móc nhung: thiết kế bundle set 20-50 cái để đạt AOV $50-100 thay vì bán lẻ.",
+      "Version sau: thử search Meta Ads Library với từ khoá hẹp hơn để lấy được active/total ratio thật cho fairy lights + floating shelf."
+    ]
+  }
+]

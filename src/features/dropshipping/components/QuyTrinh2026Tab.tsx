@@ -1,4 +1,3 @@
-import { MarketResearchTool } from './MarketResearchTool';
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -306,9 +305,6 @@ export function QuyTrinh2026Tab() {
           );
         })}
       </div>
-
-      {/* Market Research Tool embedded for Step 2 */}
-      <MarketResearchTool />
 
       {/* Active Step Content Card */}
       <Card className="bg-zinc-900/80 border-zinc-800 p-6 sm:p-8 rounded-3xl shadow-xl space-y-8">
