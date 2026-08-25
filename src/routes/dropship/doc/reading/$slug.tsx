@@ -19,7 +19,7 @@ import {
   type Reading,
 } from "@/features/dropshipping/data/linhthach-reading-data";
 
-export const Route = createFileRoute("/dropship/reading/$slug")({
+export const Route = createFileRoute("/dropship/doc/reading/$slug")({
   component: ReadingDetailPage,
 });
 
@@ -49,7 +49,7 @@ function ReadingDetailPage() {
         {/* Navigation Top */}
         <div className="flex items-center justify-between">
           <Link
-            to="/"
+            to="/dropship/doc/reading"
             className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -58,7 +58,7 @@ function ReadingDetailPage() {
           <div className="flex items-center gap-2">
             {prevItem && (
               <Link
-                to="/reading/$slug"
+                to="/dropship/doc/reading/$slug"
                 params={{ slug: slugify(prevItem.title) }}
                 className="inline-flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-purple-600 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors"
               >
@@ -67,7 +67,7 @@ function ReadingDetailPage() {
             )}
             {nextItem && (
               <Link
-                to="/reading/$slug"
+                to="/dropship/doc/reading/$slug"
                 params={{ slug: slugify(nextItem.title) }}
                 className="inline-flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-purple-600 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors"
               >
@@ -198,7 +198,7 @@ function ReadingDetailPage() {
           {/* Bottom Footer Navigation */}
           <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-xs text-zinc-500">
             <Link
-              to="/"
+              to="/dropship/doc/reading"
               className="text-purple-600 dark:text-purple-400 font-semibold hover:underline flex items-center gap-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Quay lại danh sách Blog Linh Thạch

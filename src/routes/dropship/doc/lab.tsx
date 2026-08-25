@@ -20,14 +20,9 @@ import {
   BarChart3,
   LayoutGrid,
   Table,
-  TrendingUp,
-  AlertTriangle,
-  ArrowRight,
-  ShieldCheck,
-  PieChart
 } from "lucide-react";
 
-export const Route = createFileRoute("/dropship/lab")({
+export const Route = createFileRoute("/dropship/doc/lab")({
   component: ProductLabPage,
 });
 

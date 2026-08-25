@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { NGO_THANH_STEPS } from "@/features/dropshipping/components/QuyTrinh2026Tab";
 import { ArrowRight, Layers } from "lucide-react";
 
-export const Route = createFileRoute("/dropship/quy-trinh-2026/")({
+export const Route = createFileRoute("/dropship/doc/quy-trinh-2026/")({
   component: QuyTrinh2026MainPage,
 });
 
@@ -69,7 +69,7 @@ export function QuyTrinh2026MainPage() {
                 </div>
 
                 <Link
-                  to="/dropship/quy-trinh-2026/$stepSlug"
+                  to="/dropship/doc/quy-trinh-2026/$stepSlug"
                   params={{ stepSlug }}
                   className="w-full py-2 px-3 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-zinc-200 dark:text-zinc-900 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-2 shadow-2xs"
                 >

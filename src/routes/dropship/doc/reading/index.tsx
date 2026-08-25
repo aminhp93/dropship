@@ -10,7 +10,7 @@ import {
   slugify,
 } from "@/features/dropshipping/data/linhthach-reading-data";
 
-export const Route = createFileRoute("/dropship/reading/")({
+export const Route = createFileRoute("/dropship/doc/reading/")({
   component: ReadingListPage,
 });
 
@@ -135,7 +135,7 @@ export function ReadingListPage() {
 
                 <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-snug">
                   <Link
-                    to="/dropship/reading/$slug"
+                    to="/dropship/doc/reading/$slug"
                     params={{ slug: slugify(active.title) }}
                     className="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors inline-flex items-center gap-2 group"
                   >
@@ -183,7 +183,7 @@ export function ReadingListPage() {
                   Bấm vào tiêu đề bài viết để tới trang chi tiết đầy đủ với video player.
                 </span>
                 <Link
-                  to="/dropship/reading/$slug"
+                  to="/dropship/doc/reading/$slug"
                   params={{ slug: slugify(active.title) }}
                   className="font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1"
                 >

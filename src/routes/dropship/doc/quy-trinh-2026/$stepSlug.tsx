@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export const Route = createFileRoute("/dropship/quy-trinh-2026/$stepSlug")({
+export const Route = createFileRoute("/dropship/doc/quy-trinh-2026/$stepSlug")({
   component: QuyTrinh2026DetailPage,
 });
 
@@ -26,7 +26,7 @@ export function QuyTrinh2026DetailPage() {
         {/* Navigation & Header */}
         <div className="space-y-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
           <Link
-            to="/dropship/quy-trinh-2026"
+            to="/dropship/doc/quy-trinh-2026"
             className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Quay lại danh sách 3 bước Quy Trình 2026
@@ -77,7 +77,7 @@ export function QuyTrinh2026DetailPage() {
             Đây là nội dung buổi học gốc — muốn thực hành các bước với sự hỗ
             trợ của agent, xem{" "}
             <Link
-              to="/dropship/ai-agent"
+              to="/dropship/doc/ai-agent"
               className="text-purple-500 font-semibold hover:underline"
             >
               Quy trình các bước + Agent hỗ trợ

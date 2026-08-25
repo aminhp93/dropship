@@ -8,7 +8,7 @@
     "candidates": [
       {
         "name": "Đèn dây macrame/boho (fairy lights)",
-        "status": "shortlisted",
+        "status": "selected",
         "cogs": "$5-12",
         "retailPrice": "$25-45",
         "margin": "~3-4x",
@@ -113,10 +113,16 @@
       { "title": "Sunrise Alarm Clock Market Trends - SaleHoo", "url": "https://www.salehoo.com/trends/sunrise-alarm-clock" }
     ],
     "actionItems": [
-      "Đặt mẫu thử cả 3 sản phẩm shortlisted về VN để quay UGC.",
-      "Với kệ treo tường: hỏi supplier cân nặng thực tế trước khi chốt — điều kiện loại nếu vượt 500g.",
-      "Với móc nhung: thiết kế bundle set 20-50 cái để đạt AOV $50-100 thay vì bán lẻ.",
+      "Đặt mẫu đèn dây macrame/boho (đã chốt 2026-08-23) về VN để quay UGC.",
+      "Với kệ treo tường (candidate #2, không loại hẳn): hỏi supplier cân nặng thực tế trước khi chốt — điều kiện loại nếu vượt 500g.",
+      "Với móc nhung (candidate #2): thiết kế bundle set 20-50 cái để đạt AOV $50-100 thay vì bán lẻ.",
       "Version sau: thử search Meta Ads Library với từ khoá hẹp hơn để lấy được active/total ratio thật cho fairy lights + floating shelf."
-    ]
+    ],
+    "decision": {
+      "date": "2026-08-23",
+      "selected": "Đèn dây macrame/boho (fairy lights)",
+      "reason": "Duy nhất sẵn sàng đặt mẫu ngay (2 candidate còn lại có action item chặn chưa xử lý); wow factor cao phù hợp organic TikTok 2-3 video/ngày; rủi ro chính là sourcing/creative (chọn đúng SKU), không phải rủi ro cấu trúc thị trường.",
+      "fallbackOrder": ["Kệ treo tường dán không khoan (no-drill floating shelf)", "Móc treo nhung tiết kiệm diện tích tủ đồ (velvet hangers)"]
+    }
   }
 ]

@@ -20,7 +20,7 @@ import { useCopyToClaude } from "@/features/dropshipping/hooks/useLocalStorageBa
 import { ResearchConfigPanel } from "@/features/dropshipping/components/ResearchConfigPanel";
 import { MarketResearchTool } from "@/features/dropshipping/components/MarketResearchTool";
 
-export const Route = createFileRoute("/dropship/research")({
+export const Route = createFileRoute("/dropship/doc/research")({
   component: MarketResearchPage,
 });
 

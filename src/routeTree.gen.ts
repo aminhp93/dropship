@@ -12,13 +12,21 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DropshipRouteImport } from './routes/dropship'
 import { Route as DropshipIndexRouteImport } from './routes/dropship/index'
-import { Route as DropshipAiAgentRouteImport } from './routes/dropship/ai-agent'
-import { Route as DropshipLabRouteImport } from './routes/dropship/lab'
-import { Route as DropshipResearchRouteImport } from './routes/dropship/research'
-import { Route as DropshipQuyTrinh2026IndexRouteImport } from './routes/dropship/quy-trinh-2026/index'
-import { Route as DropshipQuyTrinh2026StepSlugRouteImport } from './routes/dropship/quy-trinh-2026/$stepSlug'
-import { Route as DropshipReadingIndexRouteImport } from './routes/dropship/reading/index'
-import { Route as DropshipReadingSlugRouteImport } from './routes/dropship/reading/$slug'
+import { Route as DropshipDocRouteImport } from './routes/dropship/doc'
+import { Route as DropshipProgressRouteImport } from './routes/dropship/progress'
+import { Route as DropshipDocIndexRouteImport } from './routes/dropship/doc/index'
+import { Route as DropshipDocAiAgentRouteImport } from './routes/dropship/doc/ai-agent'
+import { Route as DropshipDocLabRouteImport } from './routes/dropship/doc/lab'
+import { Route as DropshipDocResearchRouteImport } from './routes/dropship/doc/research'
+import { Route as DropshipProgressIndexRouteImport } from './routes/dropship/progress/index'
+import { Route as DropshipProgress0TimelineRouteImport } from './routes/dropship/progress/0-timeline'
+import { Route as DropshipProgress1MarketResearchRouteImport } from './routes/dropship/progress/1-market-research'
+import { Route as DropshipProgress2StoreRouteImport } from './routes/dropship/progress/2-store'
+import { Route as DropshipProgress3VideoCreativeRouteImport } from './routes/dropship/progress/3-video-creative'
+import { Route as DropshipDocQuyTrinh2026IndexRouteImport } from './routes/dropship/doc/quy-trinh-2026/index'
+import { Route as DropshipDocQuyTrinh2026StepSlugRouteImport } from './routes/dropship/doc/quy-trinh-2026/$stepSlug'
+import { Route as DropshipDocReadingIndexRouteImport } from './routes/dropship/doc/reading/index'
+import { Route as DropshipDocReadingSlugRouteImport } from './routes/dropship/doc/reading/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -35,116 +43,203 @@ const DropshipIndexRoute = DropshipIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DropshipRoute,
 } as any)
-const DropshipAiAgentRoute = DropshipAiAgentRouteImport.update({
+const DropshipDocRoute = DropshipDocRouteImport.update({
+  id: '/doc',
+  path: '/doc',
+  getParentRoute: () => DropshipRoute,
+} as any)
+const DropshipProgressRoute = DropshipProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => DropshipRoute,
+} as any)
+const DropshipDocIndexRoute = DropshipDocIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DropshipDocRoute,
+} as any)
+const DropshipDocAiAgentRoute = DropshipDocAiAgentRouteImport.update({
   id: '/ai-agent',
   path: '/ai-agent',
-  getParentRoute: () => DropshipRoute,
+  getParentRoute: () => DropshipDocRoute,
 } as any)
-const DropshipLabRoute = DropshipLabRouteImport.update({
+const DropshipDocLabRoute = DropshipDocLabRouteImport.update({
   id: '/lab',
   path: '/lab',
-  getParentRoute: () => DropshipRoute,
+  getParentRoute: () => DropshipDocRoute,
 } as any)
-const DropshipResearchRoute = DropshipResearchRouteImport.update({
+const DropshipDocResearchRoute = DropshipDocResearchRouteImport.update({
   id: '/research',
   path: '/research',
-  getParentRoute: () => DropshipRoute,
+  getParentRoute: () => DropshipDocRoute,
 } as any)
-const DropshipQuyTrinh2026IndexRoute =
-  DropshipQuyTrinh2026IndexRouteImport.update({
+const DropshipProgressIndexRoute = DropshipProgressIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DropshipProgressRoute,
+} as any)
+const DropshipProgress0TimelineRoute =
+  DropshipProgress0TimelineRouteImport.update({
+    id: '/0-timeline',
+    path: '/0-timeline',
+    getParentRoute: () => DropshipProgressRoute,
+  } as any)
+const DropshipProgress1MarketResearchRoute =
+  DropshipProgress1MarketResearchRouteImport.update({
+    id: '/1-market-research',
+    path: '/1-market-research',
+    getParentRoute: () => DropshipProgressRoute,
+  } as any)
+const DropshipProgress2StoreRoute = DropshipProgress2StoreRouteImport.update({
+  id: '/2-store',
+  path: '/2-store',
+  getParentRoute: () => DropshipProgressRoute,
+} as any)
+const DropshipProgress3VideoCreativeRoute =
+  DropshipProgress3VideoCreativeRouteImport.update({
+    id: '/3-video-creative',
+    path: '/3-video-creative',
+    getParentRoute: () => DropshipProgressRoute,
+  } as any)
+const DropshipDocQuyTrinh2026IndexRoute =
+  DropshipDocQuyTrinh2026IndexRouteImport.update({
     id: '/quy-trinh-2026/',
     path: '/quy-trinh-2026/',
-    getParentRoute: () => DropshipRoute,
+    getParentRoute: () => DropshipDocRoute,
   } as any)
-const DropshipQuyTrinh2026StepSlugRoute =
-  DropshipQuyTrinh2026StepSlugRouteImport.update({
+const DropshipDocQuyTrinh2026StepSlugRoute =
+  DropshipDocQuyTrinh2026StepSlugRouteImport.update({
     id: '/quy-trinh-2026/$stepSlug',
     path: '/quy-trinh-2026/$stepSlug',
-    getParentRoute: () => DropshipRoute,
+    getParentRoute: () => DropshipDocRoute,
   } as any)
-const DropshipReadingIndexRoute = DropshipReadingIndexRouteImport.update({
+const DropshipDocReadingIndexRoute = DropshipDocReadingIndexRouteImport.update({
   id: '/reading/',
   path: '/reading/',
-  getParentRoute: () => DropshipRoute,
+  getParentRoute: () => DropshipDocRoute,
 } as any)
-const DropshipReadingSlugRoute = DropshipReadingSlugRouteImport.update({
+const DropshipDocReadingSlugRoute = DropshipDocReadingSlugRouteImport.update({
   id: '/reading/$slug',
   path: '/reading/$slug',
-  getParentRoute: () => DropshipRoute,
+  getParentRoute: () => DropshipDocRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dropship': typeof DropshipRouteWithChildren
-  '/dropship/ai-agent': typeof DropshipAiAgentRoute
-  '/dropship/lab': typeof DropshipLabRoute
-  '/dropship/research': typeof DropshipResearchRoute
+  '/dropship/doc': typeof DropshipDocRouteWithChildren
+  '/dropship/progress': typeof DropshipProgressRouteWithChildren
   '/dropship/': typeof DropshipIndexRoute
-  '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
-  '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
-  '/dropship/quy-trinh-2026/': typeof DropshipQuyTrinh2026IndexRoute
-  '/dropship/reading/': typeof DropshipReadingIndexRoute
+  '/dropship/doc/ai-agent': typeof DropshipDocAiAgentRoute
+  '/dropship/doc/lab': typeof DropshipDocLabRoute
+  '/dropship/doc/research': typeof DropshipDocResearchRoute
+  '/dropship/progress/0-timeline': typeof DropshipProgress0TimelineRoute
+  '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
+  '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
+  '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
+  '/dropship/doc/': typeof DropshipDocIndexRoute
+  '/dropship/progress/': typeof DropshipProgressIndexRoute
+  '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
+  '/dropship/doc/reading/$slug': typeof DropshipDocReadingSlugRoute
+  '/dropship/doc/quy-trinh-2026/': typeof DropshipDocQuyTrinh2026IndexRoute
+  '/dropship/doc/reading/': typeof DropshipDocReadingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dropship/ai-agent': typeof DropshipAiAgentRoute
-  '/dropship/lab': typeof DropshipLabRoute
-  '/dropship/research': typeof DropshipResearchRoute
   '/dropship': typeof DropshipIndexRoute
-  '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
-  '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
-  '/dropship/quy-trinh-2026': typeof DropshipQuyTrinh2026IndexRoute
-  '/dropship/reading': typeof DropshipReadingIndexRoute
+  '/dropship/doc/ai-agent': typeof DropshipDocAiAgentRoute
+  '/dropship/doc/lab': typeof DropshipDocLabRoute
+  '/dropship/doc/research': typeof DropshipDocResearchRoute
+  '/dropship/progress/0-timeline': typeof DropshipProgress0TimelineRoute
+  '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
+  '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
+  '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
+  '/dropship/doc': typeof DropshipDocIndexRoute
+  '/dropship/progress': typeof DropshipProgressIndexRoute
+  '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
+  '/dropship/doc/reading/$slug': typeof DropshipDocReadingSlugRoute
+  '/dropship/doc/quy-trinh-2026': typeof DropshipDocQuyTrinh2026IndexRoute
+  '/dropship/doc/reading': typeof DropshipDocReadingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dropship': typeof DropshipRouteWithChildren
-  '/dropship/ai-agent': typeof DropshipAiAgentRoute
-  '/dropship/lab': typeof DropshipLabRoute
-  '/dropship/research': typeof DropshipResearchRoute
+  '/dropship/doc': typeof DropshipDocRouteWithChildren
+  '/dropship/progress': typeof DropshipProgressRouteWithChildren
   '/dropship/': typeof DropshipIndexRoute
-  '/dropship/quy-trinh-2026/$stepSlug': typeof DropshipQuyTrinh2026StepSlugRoute
-  '/dropship/reading/$slug': typeof DropshipReadingSlugRoute
-  '/dropship/quy-trinh-2026/': typeof DropshipQuyTrinh2026IndexRoute
-  '/dropship/reading/': typeof DropshipReadingIndexRoute
+  '/dropship/doc/ai-agent': typeof DropshipDocAiAgentRoute
+  '/dropship/doc/lab': typeof DropshipDocLabRoute
+  '/dropship/doc/research': typeof DropshipDocResearchRoute
+  '/dropship/progress/0-timeline': typeof DropshipProgress0TimelineRoute
+  '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
+  '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
+  '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
+  '/dropship/doc/': typeof DropshipDocIndexRoute
+  '/dropship/progress/': typeof DropshipProgressIndexRoute
+  '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
+  '/dropship/doc/reading/$slug': typeof DropshipDocReadingSlugRoute
+  '/dropship/doc/quy-trinh-2026/': typeof DropshipDocQuyTrinh2026IndexRoute
+  '/dropship/doc/reading/': typeof DropshipDocReadingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/dropship'
-    | '/dropship/ai-agent'
-    | '/dropship/lab'
-    | '/dropship/research'
+    | '/dropship/doc'
+    | '/dropship/progress'
     | '/dropship/'
-    | '/dropship/quy-trinh-2026/$stepSlug'
-    | '/dropship/reading/$slug'
-    | '/dropship/quy-trinh-2026/'
-    | '/dropship/reading/'
+    | '/dropship/doc/ai-agent'
+    | '/dropship/doc/lab'
+    | '/dropship/doc/research'
+    | '/dropship/progress/0-timeline'
+    | '/dropship/progress/1-market-research'
+    | '/dropship/progress/2-store'
+    | '/dropship/progress/3-video-creative'
+    | '/dropship/doc/'
+    | '/dropship/progress/'
+    | '/dropship/doc/quy-trinh-2026/$stepSlug'
+    | '/dropship/doc/reading/$slug'
+    | '/dropship/doc/quy-trinh-2026/'
+    | '/dropship/doc/reading/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/dropship/ai-agent'
-    | '/dropship/lab'
-    | '/dropship/research'
     | '/dropship'
-    | '/dropship/quy-trinh-2026/$stepSlug'
-    | '/dropship/reading/$slug'
-    | '/dropship/quy-trinh-2026'
-    | '/dropship/reading'
+    | '/dropship/doc/ai-agent'
+    | '/dropship/doc/lab'
+    | '/dropship/doc/research'
+    | '/dropship/progress/0-timeline'
+    | '/dropship/progress/1-market-research'
+    | '/dropship/progress/2-store'
+    | '/dropship/progress/3-video-creative'
+    | '/dropship/doc'
+    | '/dropship/progress'
+    | '/dropship/doc/quy-trinh-2026/$stepSlug'
+    | '/dropship/doc/reading/$slug'
+    | '/dropship/doc/quy-trinh-2026'
+    | '/dropship/doc/reading'
   id:
     | '__root__'
     | '/'
     | '/dropship'
-    | '/dropship/ai-agent'
-    | '/dropship/lab'
-    | '/dropship/research'
+    | '/dropship/doc'
+    | '/dropship/progress'
     | '/dropship/'
-    | '/dropship/quy-trinh-2026/$stepSlug'
-    | '/dropship/reading/$slug'
-    | '/dropship/quy-trinh-2026/'
-    | '/dropship/reading/'
+    | '/dropship/doc/ai-agent'
+    | '/dropship/doc/lab'
+    | '/dropship/doc/research'
+    | '/dropship/progress/0-timeline'
+    | '/dropship/progress/1-market-research'
+    | '/dropship/progress/2-store'
+    | '/dropship/progress/3-video-creative'
+    | '/dropship/doc/'
+    | '/dropship/progress/'
+    | '/dropship/doc/quy-trinh-2026/$stepSlug'
+    | '/dropship/doc/reading/$slug'
+    | '/dropship/doc/quy-trinh-2026/'
+    | '/dropship/doc/reading/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -175,78 +270,169 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DropshipIndexRouteImport
       parentRoute: typeof DropshipRoute
     }
-    '/dropship/ai-agent': {
-      id: '/dropship/ai-agent'
+    '/dropship/doc': {
+      id: '/dropship/doc'
+      path: '/doc'
+      fullPath: '/dropship/doc'
+      preLoaderRoute: typeof DropshipDocRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/progress': {
+      id: '/dropship/progress'
+      path: '/progress'
+      fullPath: '/dropship/progress'
+      preLoaderRoute: typeof DropshipProgressRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/doc/': {
+      id: '/dropship/doc/'
+      path: '/'
+      fullPath: '/dropship/doc/'
+      preLoaderRoute: typeof DropshipDocIndexRouteImport
+      parentRoute: typeof DropshipDocRoute
+    }
+    '/dropship/doc/ai-agent': {
+      id: '/dropship/doc/ai-agent'
       path: '/ai-agent'
-      fullPath: '/dropship/ai-agent'
-      preLoaderRoute: typeof DropshipAiAgentRouteImport
-      parentRoute: typeof DropshipRoute
+      fullPath: '/dropship/doc/ai-agent'
+      preLoaderRoute: typeof DropshipDocAiAgentRouteImport
+      parentRoute: typeof DropshipDocRoute
     }
-    '/dropship/lab': {
-      id: '/dropship/lab'
+    '/dropship/doc/lab': {
+      id: '/dropship/doc/lab'
       path: '/lab'
-      fullPath: '/dropship/lab'
-      preLoaderRoute: typeof DropshipLabRouteImport
-      parentRoute: typeof DropshipRoute
+      fullPath: '/dropship/doc/lab'
+      preLoaderRoute: typeof DropshipDocLabRouteImport
+      parentRoute: typeof DropshipDocRoute
     }
-    '/dropship/research': {
-      id: '/dropship/research'
+    '/dropship/doc/research': {
+      id: '/dropship/doc/research'
       path: '/research'
-      fullPath: '/dropship/research'
-      preLoaderRoute: typeof DropshipResearchRouteImport
-      parentRoute: typeof DropshipRoute
+      fullPath: '/dropship/doc/research'
+      preLoaderRoute: typeof DropshipDocResearchRouteImport
+      parentRoute: typeof DropshipDocRoute
     }
-    '/dropship/quy-trinh-2026/': {
-      id: '/dropship/quy-trinh-2026/'
+    '/dropship/progress/': {
+      id: '/dropship/progress/'
+      path: '/'
+      fullPath: '/dropship/progress/'
+      preLoaderRoute: typeof DropshipProgressIndexRouteImport
+      parentRoute: typeof DropshipProgressRoute
+    }
+    '/dropship/progress/0-timeline': {
+      id: '/dropship/progress/0-timeline'
+      path: '/0-timeline'
+      fullPath: '/dropship/progress/0-timeline'
+      preLoaderRoute: typeof DropshipProgress0TimelineRouteImport
+      parentRoute: typeof DropshipProgressRoute
+    }
+    '/dropship/progress/1-market-research': {
+      id: '/dropship/progress/1-market-research'
+      path: '/1-market-research'
+      fullPath: '/dropship/progress/1-market-research'
+      preLoaderRoute: typeof DropshipProgress1MarketResearchRouteImport
+      parentRoute: typeof DropshipProgressRoute
+    }
+    '/dropship/progress/2-store': {
+      id: '/dropship/progress/2-store'
+      path: '/2-store'
+      fullPath: '/dropship/progress/2-store'
+      preLoaderRoute: typeof DropshipProgress2StoreRouteImport
+      parentRoute: typeof DropshipProgressRoute
+    }
+    '/dropship/progress/3-video-creative': {
+      id: '/dropship/progress/3-video-creative'
+      path: '/3-video-creative'
+      fullPath: '/dropship/progress/3-video-creative'
+      preLoaderRoute: typeof DropshipProgress3VideoCreativeRouteImport
+      parentRoute: typeof DropshipProgressRoute
+    }
+    '/dropship/doc/quy-trinh-2026/': {
+      id: '/dropship/doc/quy-trinh-2026/'
       path: '/quy-trinh-2026'
-      fullPath: '/dropship/quy-trinh-2026/'
-      preLoaderRoute: typeof DropshipQuyTrinh2026IndexRouteImport
-      parentRoute: typeof DropshipRoute
+      fullPath: '/dropship/doc/quy-trinh-2026/'
+      preLoaderRoute: typeof DropshipDocQuyTrinh2026IndexRouteImport
+      parentRoute: typeof DropshipDocRoute
     }
-    '/dropship/quy-trinh-2026/$stepSlug': {
-      id: '/dropship/quy-trinh-2026/$stepSlug'
+    '/dropship/doc/quy-trinh-2026/$stepSlug': {
+      id: '/dropship/doc/quy-trinh-2026/$stepSlug'
       path: '/quy-trinh-2026/$stepSlug'
-      fullPath: '/dropship/quy-trinh-2026/$stepSlug'
-      preLoaderRoute: typeof DropshipQuyTrinh2026StepSlugRouteImport
-      parentRoute: typeof DropshipRoute
+      fullPath: '/dropship/doc/quy-trinh-2026/$stepSlug'
+      preLoaderRoute: typeof DropshipDocQuyTrinh2026StepSlugRouteImport
+      parentRoute: typeof DropshipDocRoute
     }
-    '/dropship/reading/': {
-      id: '/dropship/reading/'
+    '/dropship/doc/reading/': {
+      id: '/dropship/doc/reading/'
       path: '/reading'
-      fullPath: '/dropship/reading/'
-      preLoaderRoute: typeof DropshipReadingIndexRouteImport
-      parentRoute: typeof DropshipRoute
+      fullPath: '/dropship/doc/reading/'
+      preLoaderRoute: typeof DropshipDocReadingIndexRouteImport
+      parentRoute: typeof DropshipDocRoute
     }
-    '/dropship/reading/$slug': {
-      id: '/dropship/reading/$slug'
+    '/dropship/doc/reading/$slug': {
+      id: '/dropship/doc/reading/$slug'
       path: '/reading/$slug'
-      fullPath: '/dropship/reading/$slug'
-      preLoaderRoute: typeof DropshipReadingSlugRouteImport
-      parentRoute: typeof DropshipRoute
+      fullPath: '/dropship/doc/reading/$slug'
+      preLoaderRoute: typeof DropshipDocReadingSlugRouteImport
+      parentRoute: typeof DropshipDocRoute
     }
   }
 }
 
+interface DropshipDocRouteChildren {
+  DropshipDocAiAgentRoute: typeof DropshipDocAiAgentRoute
+  DropshipDocLabRoute: typeof DropshipDocLabRoute
+  DropshipDocResearchRoute: typeof DropshipDocResearchRoute
+  DropshipDocIndexRoute: typeof DropshipDocIndexRoute
+  DropshipDocQuyTrinh2026StepSlugRoute: typeof DropshipDocQuyTrinh2026StepSlugRoute
+  DropshipDocReadingSlugRoute: typeof DropshipDocReadingSlugRoute
+  DropshipDocQuyTrinh2026IndexRoute: typeof DropshipDocQuyTrinh2026IndexRoute
+  DropshipDocReadingIndexRoute: typeof DropshipDocReadingIndexRoute
+}
+
+const DropshipDocRouteChildren: DropshipDocRouteChildren = {
+  DropshipDocAiAgentRoute: DropshipDocAiAgentRoute,
+  DropshipDocLabRoute: DropshipDocLabRoute,
+  DropshipDocResearchRoute: DropshipDocResearchRoute,
+  DropshipDocIndexRoute: DropshipDocIndexRoute,
+  DropshipDocQuyTrinh2026StepSlugRoute: DropshipDocQuyTrinh2026StepSlugRoute,
+  DropshipDocReadingSlugRoute: DropshipDocReadingSlugRoute,
+  DropshipDocQuyTrinh2026IndexRoute: DropshipDocQuyTrinh2026IndexRoute,
+  DropshipDocReadingIndexRoute: DropshipDocReadingIndexRoute,
+}
+
+const DropshipDocRouteWithChildren = DropshipDocRoute._addFileChildren(
+  DropshipDocRouteChildren,
+)
+
+interface DropshipProgressRouteChildren {
+  DropshipProgress0TimelineRoute: typeof DropshipProgress0TimelineRoute
+  DropshipProgress1MarketResearchRoute: typeof DropshipProgress1MarketResearchRoute
+  DropshipProgress2StoreRoute: typeof DropshipProgress2StoreRoute
+  DropshipProgress3VideoCreativeRoute: typeof DropshipProgress3VideoCreativeRoute
+  DropshipProgressIndexRoute: typeof DropshipProgressIndexRoute
+}
+
+const DropshipProgressRouteChildren: DropshipProgressRouteChildren = {
+  DropshipProgress0TimelineRoute: DropshipProgress0TimelineRoute,
+  DropshipProgress1MarketResearchRoute: DropshipProgress1MarketResearchRoute,
+  DropshipProgress2StoreRoute: DropshipProgress2StoreRoute,
+  DropshipProgress3VideoCreativeRoute: DropshipProgress3VideoCreativeRoute,
+  DropshipProgressIndexRoute: DropshipProgressIndexRoute,
+}
+
+const DropshipProgressRouteWithChildren =
+  DropshipProgressRoute._addFileChildren(DropshipProgressRouteChildren)
+
 interface DropshipRouteChildren {
-  DropshipAiAgentRoute: typeof DropshipAiAgentRoute
-  DropshipLabRoute: typeof DropshipLabRoute
-  DropshipResearchRoute: typeof DropshipResearchRoute
+  DropshipDocRoute: typeof DropshipDocRouteWithChildren
+  DropshipProgressRoute: typeof DropshipProgressRouteWithChildren
   DropshipIndexRoute: typeof DropshipIndexRoute
-  DropshipQuyTrinh2026StepSlugRoute: typeof DropshipQuyTrinh2026StepSlugRoute
-  DropshipReadingSlugRoute: typeof DropshipReadingSlugRoute
-  DropshipQuyTrinh2026IndexRoute: typeof DropshipQuyTrinh2026IndexRoute
-  DropshipReadingIndexRoute: typeof DropshipReadingIndexRoute
 }
 
 const DropshipRouteChildren: DropshipRouteChildren = {
-  DropshipAiAgentRoute: DropshipAiAgentRoute,
-  DropshipLabRoute: DropshipLabRoute,
-  DropshipResearchRoute: DropshipResearchRoute,
+  DropshipDocRoute: DropshipDocRouteWithChildren,
+  DropshipProgressRoute: DropshipProgressRouteWithChildren,
   DropshipIndexRoute: DropshipIndexRoute,
-  DropshipQuyTrinh2026StepSlugRoute: DropshipQuyTrinh2026StepSlugRoute,
-  DropshipReadingSlugRoute: DropshipReadingSlugRoute,
-  DropshipQuyTrinh2026IndexRoute: DropshipQuyTrinh2026IndexRoute,
-  DropshipReadingIndexRoute: DropshipReadingIndexRoute,
 }
 
 const DropshipRouteWithChildren = DropshipRoute._addFileChildren(
