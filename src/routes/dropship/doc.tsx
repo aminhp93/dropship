@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, Link, useLocation } from "@tanstack/react-router";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Bot, FlaskConical, Target, Sparkles, Video, BookOpen } from "lucide-react";
+import { Bot, FlaskConical, Target, Sparkles, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dropship/doc")({
@@ -21,19 +21,6 @@ export function DocLayout() {
   return (
     <ScrollArea className="h-full">
       <div className="p-6 md:p-8 max-w-6xl mx-auto space-y-6">
-        <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-500 text-xs font-bold uppercase tracking-wider">
-            <BookOpen className="w-3.5 h-3.5" />
-            Documentation & Tools
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-            Dropship — Documentation & AI Worksheets
-          </h1>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 max-w-2xl">
-            Tổng hợp quy trình, công cụ đánh giá sản phẩm, nghiên cứu thị trường và cẩm nang thực chiến.
-          </p>
-        </div>
-
         {/* Sub-route Tab Links inside Doc */}
         <div className="flex items-center gap-1.5 flex-wrap p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
           {DOC_TABS.map((tab) => {
@@ -58,7 +45,7 @@ export function DocLayout() {
         </div>
 
         {/* Sub-route Outlet Content */}
-        <div className="pt-2">
+        <div className="pt-1">
           <Outlet />
         </div>
       </div>

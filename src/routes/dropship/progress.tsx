@@ -20,23 +20,6 @@ export function ProgressLayout() {
   return (
     <ScrollArea className="h-full">
       <div className="p-6 md:p-8 max-w-5xl mx-auto space-y-6">
-        <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-500 text-xs font-bold uppercase tracking-wider">
-            <ListChecks className="w-3.5 h-3.5" />
-            Progress Tracker
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-            Dropship — Progress
-          </h1>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 max-w-2xl">
-            Nơi track chung 4 đầu mục. Nội dung gốc nằm ở{" "}
-            <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
-              workspace/dropship-progress/
-            </code>{" "}
-            — trang này là bản đọc nhanh, sửa tiến độ thì sửa file .md gốc rồi đồng bộ lại.
-          </p>
-        </div>
-
         {/* Sub-route Tab Links */}
         <div className="flex items-center gap-1.5 flex-wrap p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
           {PROGRESS_TABS.map((tab) => {
@@ -49,7 +32,7 @@ export function ProgressLayout() {
                 className={cn(
                   "flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all",
                   isActive
-                    ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-xs border border-zinc-200/80 dark:border-zinc-700/60"
+                    ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-xs border border-zinc-200/80 dark:border-zinc-700/60 font-bold"
                     : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/40",
                 )}
               >
@@ -61,7 +44,7 @@ export function ProgressLayout() {
         </div>
 
         {/* Sub-route Outlet Content */}
-        <div className="pt-2">
+        <div className="pt-1">
           <Outlet />
         </div>
       </div>
