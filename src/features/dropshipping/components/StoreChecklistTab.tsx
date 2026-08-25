@@ -307,9 +307,9 @@ export function StoreChecklistTab() {
             {selectedStoreId === "apex-auto-mats" && (
               <button
                 onClick={() => setShowJourneyDialog(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 hover:bg-purple-500/20 border border-purple-500/20 transition-all cursor-pointer shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold bg-purple-600 text-white hover:bg-purple-500 transition-all cursor-pointer shadow-xs"
               >
-                <Compass className="w-3.5 h-3.5" />
+                <Compass className="w-4 h-4" />
                 <span>Hành Trình Khách Hàng</span>
               </button>
             )}
@@ -503,29 +503,43 @@ export function StoreChecklistTab() {
         </div>
       )}
 
-      {/* CUSTOMER JOURNEY DIALOG MODAL */}
+      {/* EXPANDED LARGE CUSTOMER JOURNEY DIALOG MODAL */}
       {showJourneyDialog && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-            <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between bg-zinc-50 dark:bg-zinc-900/80">
-              <div className="flex items-center gap-2.5">
-                <Compass className="w-5 h-5 text-purple-500" />
-                <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100">
-                  Hành Trình Trải Nghiệm Khách Hàng — Apex Auto Mats
-                </h3>
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6">
+          <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-6xl w-full h-[94vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+            {/* Header */}
+            <div className="p-5 sm:p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between bg-zinc-50 dark:bg-zinc-900/90 shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold shrink-0">
+                  <Compass className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-[10px] font-mono uppercase text-purple-500 border-purple-500/30">
+                      Bản Đồ Điểm Chạm · Apex Auto Mats
+                    </Badge>
+                    <Badge className="text-[10px] bg-emerald-500/10 text-emerald-600 border-emerald-500/20 font-bold">
+                      Interactive Map
+                    </Badge>
+                  </div>
+                  <h3 className="font-bold text-lg sm:text-xl text-zinc-900 dark:text-zinc-100 mt-0.5">
+                    Customer Experience Journey Map (6 Giai Đoạn Điểm Chạm)
+                  </h3>
+                </div>
               </div>
 
               <button
                 onClick={() => setShowJourneyDialog(false)}
-                className="w-7 h-7 rounded-full bg-zinc-200/60 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-zinc-200/60 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer shrink-0"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="p-5 overflow-y-auto flex-1 space-y-5">
-              {/* 6 Stage Buttons */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+            {/* Content Body */}
+            <div className="p-6 sm:p-7 overflow-y-auto flex-1 space-y-6">
+              {/* 6 Stage Navigation Buttons */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {APEX_JOURNEY_STAGES.map((stg) => {
                   const Icon = stg.icon;
                   const isActive = stg.id === activeJourneyStageId;
@@ -535,19 +549,19 @@ export function StoreChecklistTab() {
                       key={stg.id}
                       onClick={() => setActiveJourneyStageId(stg.id)}
                       className={cn(
-                        "p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-1",
+                        "p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-2 min-h-[90px]",
                         isActive
-                          ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 shadow-sm"
+                          ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 shadow-md ring-2 ring-purple-500/30"
                           : "bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800",
                       )}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-bold uppercase font-mono opacity-80">
+                        <span className="text-[10px] font-bold uppercase font-mono opacity-80">
                           {stg.stageNumber}
                         </span>
-                        <Icon className="w-3.5 h-3.5" />
+                        <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-[11px] font-bold leading-tight line-clamp-2">
+                      <span className="text-xs font-bold leading-snug line-clamp-2">
                         {stg.title.split("(")[0]}
                       </span>
                     </button>
@@ -555,76 +569,120 @@ export function StoreChecklistTab() {
                 })}
               </div>
 
-              {/* Active Stage Details */}
-              <div className="p-4 border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 rounded-xl space-y-4">
+              {/* Active Stage Details Large Box */}
+              <div className="p-6 border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 rounded-2xl space-y-6">
                 <div>
-                  <h4 className="font-bold text-sm text-zinc-900 dark:text-zinc-100">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-[11px] font-bold font-mono text-purple-600 dark:text-purple-400 border-purple-500/30">
+                      {activeJourneyStage.stageNumber}
+                    </Badge>
+                  </div>
+                  <h4 className="font-bold text-xl text-zinc-900 dark:text-zinc-100 mt-1">
                     {activeJourneyStage.title}
                   </h4>
-                  <p className="text-[11px] text-zinc-500">{activeJourneyStage.subtitle}</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 font-medium">
+                    {activeJourneyStage.subtitle}
+                  </p>
                 </div>
 
-                <div className="p-3 bg-purple-500/5 border border-purple-500/20 rounded-lg space-y-0.5">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3" /> Tâm Lý Khách Hàng
+                {/* Mindset Quote Box */}
+                <div className="p-4 bg-purple-500/5 border border-purple-500/20 rounded-xl space-y-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-purple-500" /> Tâm Lý & Suy Nghĩ Cốt Lõi Khách Hàng (Customer Mindset)
                   </span>
-                  <p className="text-xs italic text-zinc-700 dark:text-zinc-300 font-medium">
+                  <p className="text-sm italic text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed">
                     {activeJourneyStage.customerMindset}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  <div className="space-y-1.5 p-3 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200/60 dark:border-zinc-800">
-                    <span className="text-[10px] font-bold uppercase text-zinc-400 block border-b pb-1">
+                {/* 3 Main Grid Columns */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  {/* Touchpoints */}
+                  <div className="space-y-3 p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-2xs">
+                    <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 block border-b border-zinc-100 dark:border-zinc-800 pb-2">
                       Điểm Chạm (Touchpoints)
                     </span>
-                    <ul className="space-y-1 text-xs text-zinc-700 dark:text-zinc-300">
+                    <ul className="space-y-2 text-xs text-zinc-700 dark:text-zinc-300">
                       {activeJourneyStage.touchpoints.map((tp, idx) => (
-                        <li key={idx} className="flex items-start gap-1">
-                          <span className="text-purple-500">•</span>
+                        <li key={idx} className="flex items-start gap-2 leading-relaxed">
+                          <span className="text-purple-500 font-bold text-sm">•</span>
                           <span>{tp}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="space-y-1.5 p-3 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200/60 dark:border-zinc-800">
-                    <span className="text-[10px] font-bold uppercase text-zinc-400 block border-b pb-1">
-                      Hạng Mục Cần Làm
+                  {/* Deliverables */}
+                  <div className="space-y-3 p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-2xs">
+                    <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 block border-b border-zinc-100 dark:border-zinc-800 pb-2">
+                      Hạng Mục Cần Thực Hiện
                     </span>
-                    <ul className="space-y-1 text-xs text-zinc-700 dark:text-zinc-300">
+                    <ul className="space-y-2 text-xs text-zinc-700 dark:text-zinc-300">
                       {activeJourneyStage.keyDeliverables.map((kd, idx) => (
-                        <li key={idx} className="flex items-start gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                        <li key={idx} className="flex items-start gap-2 leading-relaxed">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                           <span>{kd}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="space-y-1.5 p-3 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200/60 dark:border-zinc-800">
-                    <span className="text-[10px] font-bold uppercase text-zinc-400 block border-b pb-1">
-                      KPIs Đo Lường
+                  {/* Metrics & KPIs */}
+                  <div className="space-y-3 p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-2xs">
+                    <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 block border-b border-zinc-100 dark:border-zinc-800 pb-2">
+                      KPIs Đo Lường Mục Tiêu
                     </span>
-                    <ul className="space-y-1 text-xs font-mono text-zinc-700 dark:text-zinc-300">
+                    <ul className="space-y-2 text-xs font-mono font-medium text-zinc-800 dark:text-zinc-200">
                       {activeJourneyStage.metricsToTrack.map((mt, idx) => (
-                        <li key={idx} className="flex items-start gap-1">
-                          <ArrowRight className="w-3 h-3 text-purple-500 shrink-0 mt-0.5" />
+                        <li key={idx} className="flex items-start gap-2 leading-relaxed">
+                          <ArrowRight className="w-4 h-4 text-purple-500 shrink-0 mt-0.5" />
                           <span>{mt}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
+
+                {/* Risk Warnings & Checklist Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-xl border border-amber-300/60 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-300 space-y-1.5">
+                    <span className="font-bold flex items-center gap-1.5 text-amber-700 dark:text-amber-400 text-xs">
+                      <AlertCircle className="w-4 h-4 text-amber-500" /> Cảnh Báo Cần Tránh ở Giai Đoạn Này
+                    </span>
+                    <ul className="space-y-1 pl-5 list-disc text-xs leading-relaxed">
+                      {activeJourneyStage.riskWarnings.map((rw, idx) => (
+                        <li key={idx}>{rw}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200/80 dark:border-zinc-800 space-y-2 text-xs">
+                    <span className="font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5 text-xs">
+                      <ShieldCheck className="w-4 h-4 text-emerald-500" /> Checklist Đã Kiểm Tra
+                    </span>
+                    <div className="space-y-1.5">
+                      {activeJourneyStage.checklistItems.map((ci) => (
+                        <div key={ci.id} className="flex items-center gap-2 text-xs text-zinc-700 dark:text-zinc-300 font-medium">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                          <span>{ci.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="p-3 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 flex items-center justify-end text-xs">
+            {/* Footer */}
+            <div className="p-4 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/90 flex items-center justify-between text-xs shrink-0">
+              <span className="text-zinc-500 font-medium">
+                Khung trải nghiệm chuẩn cho thương hiệu phụ kiện ô tô Apex Auto Mats
+              </span>
               <button
                 onClick={() => setShowJourneyDialog(false)}
-                className="px-3.5 py-1.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-lg font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors cursor-pointer"
+                className="px-5 py-2.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-xl font-bold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors cursor-pointer shadow-xs"
               >
-                Đóng
+                Đóng Bản Đồ
               </button>
             </div>
           </div>
