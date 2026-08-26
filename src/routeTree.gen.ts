@@ -24,7 +24,6 @@ import { Route as DropshipProgress0TimelineRouteImport } from './routes/dropship
 import { Route as DropshipProgress1MarketResearchRouteImport } from './routes/dropship/progress/1-market-research'
 import { Route as DropshipProgress2StoreRouteImport } from './routes/dropship/progress/2-store'
 import { Route as DropshipProgress3VideoCreativeRouteImport } from './routes/dropship/progress/3-video-creative'
-import { Route as DropshipProgress4NomnaDashboardRouteImport } from './routes/dropship/progress/4-nomna-dashboard'
 import { Route as DropshipDocQuyTrinh2026IndexRouteImport } from './routes/dropship/doc/quy-trinh-2026/index'
 import { Route as DropshipDocQuyTrinh2026StepSlugRouteImport } from './routes/dropship/doc/quy-trinh-2026/$stepSlug'
 import { Route as DropshipDocReadingIndexRouteImport } from './routes/dropship/doc/reading/index'
@@ -108,12 +107,6 @@ const DropshipProgress3VideoCreativeRoute =
     path: '/3-video-creative',
     getParentRoute: () => DropshipProgressRoute,
   } as any)
-const DropshipProgress4NomnaDashboardRoute =
-  DropshipProgress4NomnaDashboardRouteImport.update({
-    id: '/4-nomna-dashboard',
-    path: '/4-nomna-dashboard',
-    getParentRoute: () => DropshipProgressRoute,
-  } as any)
 const DropshipDocQuyTrinh2026IndexRoute =
   DropshipDocQuyTrinh2026IndexRouteImport.update({
     id: '/quy-trinh-2026/',
@@ -151,7 +144,6 @@ export interface FileRoutesByFullPath {
   '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
   '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
   '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
-  '/dropship/progress/4-nomna-dashboard': typeof DropshipProgress4NomnaDashboardRoute
   '/dropship/doc/': typeof DropshipDocIndexRoute
   '/dropship/progress/': typeof DropshipProgressIndexRoute
   '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
@@ -170,7 +162,6 @@ export interface FileRoutesByTo {
   '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
   '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
   '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
-  '/dropship/progress/4-nomna-dashboard': typeof DropshipProgress4NomnaDashboardRoute
   '/dropship/doc': typeof DropshipDocIndexRoute
   '/dropship/progress': typeof DropshipProgressIndexRoute
   '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
@@ -193,7 +184,6 @@ export interface FileRoutesById {
   '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
   '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
   '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
-  '/dropship/progress/4-nomna-dashboard': typeof DropshipProgress4NomnaDashboardRoute
   '/dropship/doc/': typeof DropshipDocIndexRoute
   '/dropship/progress/': typeof DropshipProgressIndexRoute
   '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
@@ -217,7 +207,6 @@ export interface FileRouteTypes {
     | '/dropship/progress/1-market-research'
     | '/dropship/progress/2-store'
     | '/dropship/progress/3-video-creative'
-    | '/dropship/progress/4-nomna-dashboard'
     | '/dropship/doc/'
     | '/dropship/progress/'
     | '/dropship/doc/quy-trinh-2026/$stepSlug'
@@ -236,7 +225,6 @@ export interface FileRouteTypes {
     | '/dropship/progress/1-market-research'
     | '/dropship/progress/2-store'
     | '/dropship/progress/3-video-creative'
-    | '/dropship/progress/4-nomna-dashboard'
     | '/dropship/doc'
     | '/dropship/progress'
     | '/dropship/doc/quy-trinh-2026/$stepSlug'
@@ -258,7 +246,6 @@ export interface FileRouteTypes {
     | '/dropship/progress/1-market-research'
     | '/dropship/progress/2-store'
     | '/dropship/progress/3-video-creative'
-    | '/dropship/progress/4-nomna-dashboard'
     | '/dropship/doc/'
     | '/dropship/progress/'
     | '/dropship/doc/quy-trinh-2026/$stepSlug'
@@ -379,13 +366,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DropshipProgress3VideoCreativeRouteImport
       parentRoute: typeof DropshipProgressRoute
     }
-    '/dropship/progress/4-nomna-dashboard': {
-      id: '/dropship/progress/4-nomna-dashboard'
-      path: '/4-nomna-dashboard'
-      fullPath: '/dropship/progress/4-nomna-dashboard'
-      preLoaderRoute: typeof DropshipProgress4NomnaDashboardRouteImport
-      parentRoute: typeof DropshipProgressRoute
-    }
     '/dropship/doc/quy-trinh-2026/': {
       id: '/dropship/doc/quy-trinh-2026/'
       path: '/quy-trinh-2026'
@@ -448,7 +428,6 @@ interface DropshipProgressRouteChildren {
   DropshipProgress1MarketResearchRoute: typeof DropshipProgress1MarketResearchRoute
   DropshipProgress2StoreRoute: typeof DropshipProgress2StoreRoute
   DropshipProgress3VideoCreativeRoute: typeof DropshipProgress3VideoCreativeRoute
-  DropshipProgress4NomnaDashboardRoute: typeof DropshipProgress4NomnaDashboardRoute
   DropshipProgressIndexRoute: typeof DropshipProgressIndexRoute
 }
 
@@ -457,7 +436,6 @@ const DropshipProgressRouteChildren: DropshipProgressRouteChildren = {
   DropshipProgress1MarketResearchRoute: DropshipProgress1MarketResearchRoute,
   DropshipProgress2StoreRoute: DropshipProgress2StoreRoute,
   DropshipProgress3VideoCreativeRoute: DropshipProgress3VideoCreativeRoute,
-  DropshipProgress4NomnaDashboardRoute: DropshipProgress4NomnaDashboardRoute,
   DropshipProgressIndexRoute: DropshipProgressIndexRoute,
 }
 

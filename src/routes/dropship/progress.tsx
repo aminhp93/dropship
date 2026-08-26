@@ -12,7 +12,6 @@ const PROGRESS_TABS = [
   { to: "/dropship/progress/1-market-research", label: "1. Market Research", icon: Target },
   { to: "/dropship/progress/2-store", label: "2. Store Shopify", icon: ShoppingBag },
   { to: "/dropship/progress/3-video-creative", label: "3. Video Creative", icon: Video },
-  { to: "/dropship/progress/4-nomna-dashboard", label: "4. Nomna Dashboard (Buổi 4)", icon: LayoutGrid },
 ];
 
 export function ProgressLayout() {

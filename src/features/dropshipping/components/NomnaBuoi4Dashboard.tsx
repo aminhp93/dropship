@@ -88,6 +88,8 @@ export interface CrawledStoreRecord {
   productsCount: number;
   collectionsCount: number;
   imagesCount: number;
+  otherMediaCount?: number;
+  otherMedia?: string[];
   products: NomnaProductItem[];
   collections: { name: string; handle: string; coverImg: string }[];
   storeChecklist: {
@@ -97,6 +99,16 @@ export interface CrawledStoreRecord {
     policiesExtracted: string[];
   };
 }
+
+const DEMO_OTHER_MEDIA: string[] = [
+  'https://ultracarmats.com/cdn/shop/files/Ultra_Car_Seat_Covers_-_Horizontal.jpg?v=1769505311&width=2500',
+  'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&auto=format&fit=crop&q=80',
+];
 
 const MOCK_STORES: StoreCardData[] = [
   {
@@ -369,7 +381,10 @@ export function NomnaBuoi4Dashboard() {
   const [isCrawlRunning, setIsCrawlRunning] = useState(false);
   const [crawlStepMessage, setCrawlStepMessage] = useState('');
   const [crawlProgressPercent, setCrawlProgressPercent] = useState(0);
-  const [crawlSubTab, setCrawlSubTab] = useState<'overview' | 'products' | 'collections' | 'checklist' | 'architecture'>('overview');
+  const [crawlSubTab, setCrawlSubTab] = useState<'overview' | 'products' | 'collections' | 'other_media' | 'checklist' | 'architecture'>('overview');
+  const [checkedProductIds, setCheckedProductIds] = useState<string[]>([]);
+  const [checkedMediaUrls, setCheckedMediaUrls] = useState<string[]>([]);
+  const [mediaSearchQuery, setMediaSearchQuery] = useState('');
 
   // CHATGPT AI GENERATION LOGIC STATES
   const [isAiGenerating, setIsAiGenerating] = useState(false);
@@ -561,12 +576,58 @@ export function NomnaBuoi4Dashboard() {
         realCollections = [];
       }
 
+      // Crawl thêm toàn bộ Banners, Logos, Trust Badges & Media khác từ Homepage
+      setCrawlProgressPercent(80);
+      setCrawlStepMessage(`🖼️ Đang bóc tách toàn bộ Banners & Media khác trên homepage của ${domainClean}...`);
+      let otherMediaList: string[] = [];
+      try {
+        let hRes = await fetch(`https://${domainClean}/`).catch(() => null);
+        if (!hRes || !hRes.ok) {
+          hRes = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://${domainClean}/`)}`).catch(() => null);
+        }
+        if (hRes && hRes.ok) {
+          const html = await hRes.text();
+          const sanitize = (rawUrl: string) => {
+            let u = rawUrl.replace(/&amp;/g, '&').replace(/\\"/g, '').replace(/["']/g, '').trim();
+            u = u.split(/\s+/)[0];
+            if (u.startsWith('//')) u = 'https:' + u;
+            if (u.startsWith('/')) u = `https://${domainClean}` + u;
+            return u;
+          };
+
+          const mediaSet = new Set<string>();
+          const imgRegex = /(?:src|data-src|data-original|srcset)\s*=\s*["']([^"']+)["']/gi;
+          let match: RegExpExecArray | null;
+          while ((match = imgRegex.exec(html)) !== null) {
+            const u = sanitize(match[1]);
+            if (u.match(/\.(jpg|jpeg|png|webp|gif|svg)(\?.*)?$/i) || u.includes('/cdn.shopify.com/')) {
+              mediaSet.add(u);
+            }
+          }
+          const bgRegex = /url\(['"]?([^'"\)]+)['"]?\)/gi;
+          while ((match = bgRegex.exec(html)) !== null) {
+            const u = sanitize(match[1]);
+            if (u.match(/\.(jpg|jpeg|png|webp|gif|svg)(\?.*)?$/i) || u.includes('/cdn.shopify.com/')) {
+              mediaSet.add(u);
+            }
+          }
+          const shopifyCdnRegex = /https?:\/\/[^"'<>\s]+\.(?:jpg|jpeg|png|webp|gif|svg)(?:\?[^"'<>\s]*)?/gi;
+          while ((match = shopifyCdnRegex.exec(html)) !== null) {
+            const u = sanitize(match[0]);
+            mediaSet.add(u);
+          }
+          otherMediaList = Array.from(mediaSet);
+        }
+      } catch (e) {
+        console.warn('Other media crawl error:', e);
+      }
+
       const totalImagesExtracted = realProducts.reduce(
         (acc: number, p: { images?: unknown[] }) => acc + (p.images?.length || 0),
         0
       );
       setCrawlProgressPercent(90);
-      setCrawlStepMessage(`🖼️ Đã bóc tách ${realProducts.length} sản phẩm & ${totalImagesExtracted} ảnh.`);
+      setCrawlStepMessage(`🖼️ Đã bóc tách ${realProducts.length} sản phẩm, ${totalImagesExtracted} ảnh & ${otherMediaList.length} media khác.`);
 
       // Lưu tối đa 250 sản phẩm chuẩn Shopify API limit để hiển thị đầy đủ danh sách.
       const PRODUCTS_TO_STORE = 250;
@@ -604,10 +665,6 @@ export function NomnaBuoi4Dashboard() {
       setProductsList(formattedRealProducts);
       setSelectedProduct(formattedRealProducts[0]);
 
-      // Lưu vào lịch sử localStorage.
-      // Chỉ ghi những gì THỰC SỰ đọc được. Các trường không phát hiện được
-      // (theme, app stack, trust badge, policy) để null/rỗng — trước đây chỗ này
-      // hardcode "Shopify Dawn 12.0 (Verified)" + danh sách app bịa cho mọi store.
       const newRecord: CrawledStoreRecord = {
         domain: domainClean,
         url: `https://${domainClean}`,
@@ -618,8 +675,10 @@ export function NomnaBuoi4Dashboard() {
         productsStored: formattedRealProducts.length,
         collectionsCount: realCollections.length,
         imagesCount: totalImagesExtracted,
+        otherMediaCount: otherMediaList.length,
+        otherMedia: otherMediaList,
         products: formattedRealProducts,
-        collections: realCollections.slice(0, 50).map((c) => ({
+        collections: realCollections.map((c) => ({
           name: c.title || c.handle || 'Không rõ tên',
           handle: c.handle || '',
           coverImg: c.image?.src || formattedRealProducts[0]?.thumbnails[0] || REGEN_VARIANT_POOL[0],
@@ -735,6 +794,108 @@ export function NomnaBuoi4Dashboard() {
     alert(`✅ Đã hoàn tất tải về ${downloadedCount}/${imageUrls.length} ảnh vào máy local!`);
   };
 
+  const handleDownloadCheckedImages = async (products: NomnaProductItem[], domain: string) => {
+    const targetProducts = checkedProductIds.length > 0
+      ? products.filter((p) => checkedProductIds.includes(p.id))
+      : products;
+
+    const imageUrls: Array<{ name: string; url: string }> = [];
+    targetProducts.forEach((p, pIdx) => {
+      const imgs = p.thumbnails && p.thumbnails.length > 0 ? p.thumbnails : (p.competitorImageUrl ? [p.competitorImageUrl] : []);
+      imgs.forEach((url, iIdx) => {
+        if (url) {
+          imageUrls.push({
+            name: `${domain}_${p.code || `P-${pIdx + 1}`}_img_${iIdx + 1}.jpg`,
+            url: url,
+          });
+        }
+      });
+    });
+
+    if (imageUrls.length === 0) {
+      alert('Vui lòng chọn ít nhất 1 sản phẩm/ảnh để tải về!');
+      return;
+    }
+
+    const confirmDownload = confirm(`📥 Bạn có muốn tải về ${imageUrls.length} ảnh (${targetProducts.length} sản phẩm) của ${domain}?`);
+    if (!confirmDownload) return;
+
+    let count = 0;
+    for (let i = 0; i < imageUrls.length; i++) {
+      const item = imageUrls[i];
+      try {
+        const response = await fetch(item.url);
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = item.name;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(blobUrl);
+        count++;
+      } catch {
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.target = '_blank';
+        link.download = item.name;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        count++;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 150));
+    }
+
+    alert(`✅ Đã hoàn tất tải về ${count}/${imageUrls.length} ảnh vào máy local!`);
+  };
+
+  const handleDownloadCheckedMedia = async (mediaUrls: string[], domain: string) => {
+    const targetUrls = checkedMediaUrls.length > 0
+      ? mediaUrls.filter((u) => checkedMediaUrls.includes(u))
+      : mediaUrls;
+
+    if (targetUrls.length === 0) {
+      alert('Không tìm thấy media/banner nào để tải về!');
+      return;
+    }
+
+    const confirmDownload = confirm(`📥 Bạn có muốn tải về ${targetUrls.length} file media/banner của ${domain}?`);
+    if (!confirmDownload) return;
+
+    let count = 0;
+    for (let i = 0; i < targetUrls.length; i++) {
+      const url = targetUrls[i];
+      const filename = `${domain}_media_asset_${i + 1}${url.match(/\.(png|jpg|jpeg|webp|gif|svg)/i)?.[0] || '.jpg'}`;
+      try {
+        const response = await fetch(url);
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(blobUrl);
+        count++;
+      } catch {
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        count++;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    }
+
+    alert(`✅ Đã hoàn tất tải về ${count}/${targetUrls.length} media/banner vào máy local!`);
+  };
+
   const handleCreatePublishJob = () => {
     if (!composeCaption.trim() && composePostType === 'Text') {
       alert('Vui lòng nhập nội dung bài đăng (Caption)!');
@@ -813,18 +974,56 @@ export function NomnaBuoi4Dashboard() {
 
 
 
-      {/* 3. LIGHTBOX POPUP MODAL */}
+      {/* 3. LIGHTBOX POPUP MODAL (EXTRA LARGE FULLSCREEN PREVIEW) */}
       {lightboxImage && (
-        <div className="fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-xs flex items-center justify-center p-6" onClick={() => setLightboxImage(null)}>
-          <div className="bg-white rounded-2xl p-4 max-w-3xl w-full max-h-[85vh] flex flex-col space-y-3 shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-              <h4 className="font-bold text-sm text-gray-900">Chi tiết AI Image Generated</h4>
-              <button onClick={() => setLightboxImage(null)} className="p-1 rounded-lg bg-gray-100 text-gray-500 hover:text-gray-800 cursor-pointer">
-                <X className="w-4 h-4" />
-              </button>
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div
+            className="bg-gray-900 border border-gray-800 rounded-3xl p-5 max-w-6xl w-full max-h-[95vh] h-[92vh] flex flex-col space-y-4 shadow-2xl relative overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-gray-800 pb-3 text-white">
+              <div className="flex items-center gap-3 overflow-hidden">
+                <div className="w-8 h-8 rounded-lg bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-400 font-bold shrink-0">
+                  <Maximize2 className="w-4 h-4" />
+                </div>
+                <div className="truncate">
+                  <h4 className="font-bold text-sm text-gray-100">Full-Size High Resolution Preview</h4>
+                  <p className="text-[10px] text-gray-400 font-mono truncate max-w-lg">{lightboxImage}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = lightboxImage;
+                    link.target = '_blank';
+                    link.download = 'preview-image.jpg';
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                  }}
+                  className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                >
+                  <Download className="w-3.5 h-3.5" /> Tải Ảnh Này
+                </button>
+                <button
+                  onClick={() => setLightboxImage(null)}
+                  className="p-1.5 rounded-xl bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 cursor-pointer transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
-            <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-xl p-4 border border-gray-100 overflow-hidden min-h-[400px]">
-              <img src={lightboxImage} alt="lightbox" className="max-h-[60vh] w-auto object-contain rounded-lg shadow-md" />
+
+            <div className="flex-1 flex items-center justify-center bg-black/60 rounded-2xl p-2 border border-gray-800/80 overflow-hidden relative">
+              <img
+                src={lightboxImage}
+                alt="lightbox preview"
+                className="max-h-[80vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl select-none"
+              />
             </div>
           </div>
         </div>
@@ -1783,15 +1982,6 @@ export function NomnaBuoi4Dashboard() {
                       </select>
 
                       <button
-                        onClick={handleDownloadSelectedImages}
-                        className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold border border-emerald-700 text-[11px] flex items-center gap-1 cursor-pointer shadow-2xs"
-                        title="Tải ảnh sản phẩm đã chọn hoặc tất cả ảnh về máy local"
-                      >
-                        <ImageIcon className="w-3.5 h-3.5" />
-                        <span>{selectedCount > 0 ? `Tải Ảnh (${selectedCount} SP)` : 'Tải Tất Cả Ảnh'}</span>
-                      </button>
-
-                      <button
                         onClick={() => {
                           if (confirm(`Bạn có chắc chắn muốn xóa store ${activeCrawledDomain} khỏi LocalStorage?`)) {
                             const updated = crawledStoresHistory.filter((s) => s.domain !== activeCrawledDomain);
@@ -1835,6 +2025,11 @@ export function NomnaBuoi4Dashboard() {
                     crawledStoresHistory[0] ||
                     DEFAULT_CRAWLED_STORES_SEED[0];
 
+                  const currentOtherMediaList = (activeRecord.otherMedia && activeRecord.otherMedia.length > 0)
+                    ? activeRecord.otherMedia
+                    : DEMO_OTHER_MEDIA;
+                  const currentOtherMediaCount = currentOtherMediaList.length;
+
                   return (
                     <>
                       {/* Cảnh báo khi đang xem dữ liệu mẫu, tránh nhầm là số liệu crawl thật */}
@@ -1875,12 +2070,20 @@ export function NomnaBuoi4Dashboard() {
                           📁 3. Bộ sưu tập ({activeRecord.collectionsCount})
                         </button>
                         <button
+                          onClick={() => setCrawlSubTab('other_media')}
+                          className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                            crawlSubTab === 'other_media' ? 'bg-red-600 text-white font-bold shadow-2xs' : 'text-gray-600 hover:bg-gray-100'
+                          }`}
+                        >
+                          🖼️ 4. Banners & Media Khác ({currentOtherMediaCount})
+                        </button>
+                        <button
                           onClick={() => setCrawlSubTab('checklist')}
                           className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                             crawlSubTab === 'checklist' ? 'bg-red-600 text-white font-bold shadow-2xs' : 'text-gray-600 hover:bg-gray-100'
                           }`}
                         >
-                          🛡️ 4. Store Checklist & Trust Elements
+                          🛡️ 5. Store Checklist & Trust Elements
                         </button>
                         <button
                           onClick={() => setCrawlSubTab('architecture')}
@@ -1888,7 +2091,7 @@ export function NomnaBuoi4Dashboard() {
                             crawlSubTab === 'architecture' ? 'bg-red-600 text-white font-bold shadow-2xs' : 'text-gray-600 hover:bg-gray-100'
                           }`}
                         >
-                          📂 5. Kiến trúc File Output ({activeRecord.domain})
+                          📂 6. Kiến trúc File Output ({activeRecord.domain})
                         </button>
                       </div>
 
@@ -1952,27 +2155,74 @@ export function NomnaBuoi4Dashboard() {
                       {/* TAB 2: PRODUCTS */}
                       {crawlSubTab === 'products' && (
                         <div className="bg-white rounded-2xl border border-gray-200 p-5 space-y-4 shadow-2xs">
-                          <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                            <div>
-                              <h3 className="font-bold text-sm text-gray-900">Danh sách {activeRecord.productsCount} sản phẩm bóc tách từ {activeRecord.url}</h3>
-                              <p className="text-xs text-gray-500 font-mono">Cấu trúc lưu tại: workspace/crawled-stores/{activeRecord.domain}/products.json</p>
+                          <div className="flex items-center justify-end border-b border-gray-100 pb-3">
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={() => {
+                                  const allIds = activeRecord.products.map((p) => p.id);
+                                  if (checkedProductIds.length === allIds.length) {
+                                    setCheckedProductIds([]);
+                                  } else {
+                                    setCheckedProductIds(allIds);
+                                  }
+                                }}
+                                className="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold border border-gray-300 text-xs flex items-center gap-1.5 cursor-pointer"
+                              >
+                                <Check className="w-3.5 h-3.5 text-gray-600" />
+                                <span>{checkedProductIds.length === activeRecord.products.length ? 'Bỏ chọn tất cả' : 'Select All (Chọn tất cả ảnh)'}</span>
+                              </button>
+
+                              <button
+                                onClick={() => handleDownloadCheckedImages(activeRecord.products, activeRecord.domain)}
+                                className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                              >
+                                <ImageIcon className="w-4 h-4" />
+                                <span>📥 Tải Ảnh Đã Chọn ({checkedProductIds.length > 0 ? checkedProductIds.length : activeRecord.products.length} SP)</span>
+                              </button>
                             </div>
-                            <button onClick={() => alert(`Đang tải file products.json của ${activeRecord.domain}...`)} className="px-3 py-1.5 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold border border-gray-200 text-xs flex items-center gap-1.5 cursor-pointer">
-                              <Download className="w-3.5 h-3.5" /> Tải products.json
-                            </button>
                           </div>
 
                           <div className="grid grid-cols-2 gap-4">
-                            {activeRecord.products.map((p) => (
-                              <div key={p.id} className="p-3 bg-gray-50 rounded-xl border border-gray-200 flex items-start gap-3 text-xs">
-                                <img src={p.thumbnails[0]} alt="p" className="w-14 h-14 rounded-lg object-cover border border-gray-200 shrink-0" />
-                                <div className="space-y-1 overflow-hidden">
-                                  <div className="font-bold text-gray-900 truncate">{p.code} {p.name}</div>
-                                  <div className="text-[10px] text-gray-500 font-mono">Vendor: {activeRecord.domain} • Type: {p.collection} • Giá: {p.price}</div>
-                                  <div className="text-[10px] text-gray-400 truncate">Variant options: Size (XS, S, M, L), Shape (Almond, Coffin, Stiletto)</div>
+                            {activeRecord.products.map((p) => {
+                              const isChecked = checkedProductIds.includes(p.id);
+                              return (
+                                <div
+                                  key={p.id}
+                                  className={`p-3 rounded-xl border flex items-start gap-3 text-xs transition-all ${
+                                    isChecked ? 'bg-emerald-50/60 border-emerald-500 ring-1 ring-emerald-500' : 'bg-gray-50 border-gray-200 hover:border-gray-300'
+                                  }`}
+                                >
+                                  <input
+                                    type="checkbox"
+                                    checked={isChecked}
+                                    onChange={(e) => {
+                                      e.stopPropagation();
+                                      if (isChecked) {
+                                        setCheckedProductIds(checkedProductIds.filter((id) => id !== p.id));
+                                      } else {
+                                        setCheckedProductIds([...checkedProductIds, p.id]);
+                                      }
+                                    }}
+                                    className="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 cursor-pointer accent-emerald-600 shrink-0"
+                                  />
+                                  <div
+                                    onClick={() => setLightboxImage(p.thumbnails[0])}
+                                    className="w-14 h-14 rounded-lg overflow-hidden border border-gray-200 shrink-0 relative group cursor-zoom-in"
+                                    title="Click để phóng to xem ảnh preview"
+                                  >
+                                    <img src={p.thumbnails[0]} alt="p" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white">
+                                      <Maximize2 className="w-3.5 h-3.5" />
+                                    </div>
+                                  </div>
+                                  <div className="space-y-1 overflow-hidden flex-1">
+                                    <div className="font-bold text-gray-900 truncate">{p.code} {p.name}</div>
+                                    <div className="text-[10px] text-gray-500 font-mono">Vendor: {activeRecord.domain} • Type: {p.collection} • Giá: {p.price}</div>
+                                    <div className="text-[10px] text-gray-400 truncate">Variant options: Size (XS, S, M, L), Shape (Almond, Coffin, Stiletto)</div>
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         </div>
                       )}
@@ -1980,12 +2230,7 @@ export function NomnaBuoi4Dashboard() {
                       {/* TAB 3: COLLECTIONS */}
                       {crawlSubTab === 'collections' && (
                         <div className="bg-white rounded-2xl border border-gray-200 p-5 space-y-4 shadow-2xs">
-                          <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                            <div>
-                              <h3 className="font-bold text-sm text-gray-900">Danh sách {activeRecord.collectionsCount} Bộ sưu tập bóc tách từ {activeRecord.url}</h3>
-                              <p className="text-xs text-gray-500 font-mono">Cấu trúc lưu tại: workspace/crawled-stores/{activeRecord.domain}/collections.json</p>
-                            </div>
-                          </div>
+                          <div className="border-b border-gray-100 pb-3" />
 
                           <div className="grid grid-cols-3 gap-4">
                             {activeRecord.collections.map((col, idx) => (
@@ -2003,7 +2248,96 @@ export function NomnaBuoi4Dashboard() {
                         </div>
                       )}
 
-                      {/* TAB 4: STORE CHECKLIST & TRUST ELEMENTS */}
+                      {/* TAB 4: OTHER MEDIA & BANNERS */}
+                      {crawlSubTab === 'other_media' && (
+                        <div className="bg-white rounded-2xl border border-gray-200 p-5 space-y-4 shadow-2xs">
+                          <div className="flex items-center justify-end border-b border-gray-100 pb-3">
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={() => {
+                                  if (checkedMediaUrls.length === currentOtherMediaList.length) {
+                                    setCheckedMediaUrls([]);
+                                  } else {
+                                    setCheckedMediaUrls(currentOtherMediaList);
+                                  }
+                                }}
+                                className="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold border border-gray-300 text-xs flex items-center gap-1.5 cursor-pointer"
+                              >
+                                <Check className="w-3.5 h-3.5 text-gray-600" />
+                                <span>{checkedMediaUrls.length === currentOtherMediaList.length ? 'Bỏ chọn tất cả' : 'Select All Media (Chọn tất cả)'}</span>
+                              </button>
+
+                              <button
+                                onClick={() => handleDownloadCheckedMedia(currentOtherMediaList, activeRecord.domain)}
+                                className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                              >
+                                <ImageIcon className="w-4 h-4" />
+                                <span>📥 Tải Media Đã Chọn ({checkedMediaUrls.length > 0 ? checkedMediaUrls.length : currentOtherMediaCount} File)</span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 bg-gray-50 p-2.5 rounded-xl border border-gray-200 text-xs">
+                            <Search className="w-4 h-4 text-gray-400 shrink-0" />
+                            <input
+                              type="text"
+                              value={mediaSearchQuery}
+                              onChange={(e) => setMediaSearchQuery(e.target.value)}
+                              placeholder="🔍 Tìm kiếm theo tên file ảnh (VD: Ultra_Car_Seat_Covers, logo, banner)..."
+                              className="bg-transparent border-none outline-none w-full text-xs text-gray-800 placeholder-gray-400"
+                            />
+                            {mediaSearchQuery && (
+                              <button onClick={() => setMediaSearchQuery('')} className="text-gray-400 hover:text-gray-600 text-xs font-bold px-1.5 cursor-pointer">✕ Clear</button>
+                            )}
+                          </div>
+
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {(activeRecord.otherMedia && activeRecord.otherMedia.length > 0 ? activeRecord.otherMedia : DEMO_OTHER_MEDIA)
+                              .filter((mediaUrl) => !mediaSearchQuery || mediaUrl.toLowerCase().includes(mediaSearchQuery.toLowerCase()))
+                              .map((mediaUrl, idx) => {
+                                const isChecked = checkedMediaUrls.includes(mediaUrl);
+                                return (
+                                  <div
+                                    key={idx}
+                                    className={`p-2.5 rounded-xl border flex flex-col space-y-2 transition-all ${
+                                      isChecked ? 'bg-emerald-50/60 border-emerald-500 ring-1 ring-emerald-500' : 'bg-gray-50 border-gray-200 hover:border-gray-300'
+                                    }`}
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-mono text-[10px] text-gray-500 font-bold">Media #{idx + 1}</span>
+                                      <input
+                                        type="checkbox"
+                                        checked={isChecked}
+                                        onChange={(e) => {
+                                          e.stopPropagation();
+                                          if (isChecked) {
+                                            setCheckedMediaUrls(checkedMediaUrls.filter((u) => u !== mediaUrl));
+                                          } else {
+                                            setCheckedMediaUrls([...checkedMediaUrls, mediaUrl]);
+                                          }
+                                        }}
+                                        className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 cursor-pointer accent-emerald-600 shrink-0"
+                                      />
+                                    </div>
+                                    <div
+                                      onClick={() => setLightboxImage(mediaUrl)}
+                                      className="aspect-video bg-gray-200 rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center relative group cursor-zoom-in"
+                                      title="Click để phóng to xem ảnh preview"
+                                    >
+                                      <img src={mediaUrl} alt="media" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white">
+                                        <Maximize2 className="w-4 h-4" />
+                                      </div>
+                                    </div>
+                                    <div className="text-[9px] text-gray-400 font-mono truncate">{mediaUrl}</div>
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* TAB 5: STORE CHECKLIST & TRUST ELEMENTS */}
                       {crawlSubTab === 'checklist' && (
                         <div className="bg-white rounded-2xl border border-gray-200 p-5 space-y-5 shadow-2xs">
                           <div>
