@@ -4,7 +4,7 @@ import {
   Link,
   useLocation,
 } from "@tanstack/react-router";
-import { ListChecks, BookOpen } from "lucide-react";
+import { LayoutGrid, ListChecks, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dropship")({
@@ -15,6 +15,7 @@ export function DropshipLayout() {
   const location = useLocation();
 
   const navItems = [
+    { to: "/dropship/dashboard", label: "Dashboard (Buổi 4)", icon: LayoutGrid },
     { to: "/dropship/progress", label: "Progress", icon: ListChecks },
     { to: "/dropship/doc", label: "Doc", icon: BookOpen },
   ];

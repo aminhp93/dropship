@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, Link, useLocation } from "@tanstack/react-router";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ListChecks, Target, ShoppingBag, Video } from "lucide-react";
+import { ListChecks, Target, ShoppingBag, Video, LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dropship/progress")({
@@ -12,6 +12,7 @@ const PROGRESS_TABS = [
   { to: "/dropship/progress/1-market-research", label: "1. Market Research", icon: Target },
   { to: "/dropship/progress/2-store", label: "2. Store Shopify", icon: ShoppingBag },
   { to: "/dropship/progress/3-video-creative", label: "3. Video Creative", icon: Video },
+  { to: "/dropship/progress/4-nomna-dashboard", label: "4. Nomna Dashboard (Buổi 4)", icon: LayoutGrid },
 ];
 
 export function ProgressLayout() {
@@ -19,7 +20,7 @@ export function ProgressLayout() {
 
   return (
     <ScrollArea className="h-full">
-      <div className="p-6 md:p-8 max-w-5xl mx-auto space-y-6">
+      <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-6">
         {/* Sub-route Tab Links */}
         <div className="flex items-center gap-1.5 flex-wrap p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
           {PROGRESS_TABS.map((tab) => {
