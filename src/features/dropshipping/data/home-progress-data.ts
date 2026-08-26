@@ -157,6 +157,77 @@ theo ngày như build store hay quay video — không ai nhắc nếu bỏ qua 1
 - Không lên lịch cố định "research thêm" cho tới khi có tín hiệu Gate B — tránh lặp lại pattern
   research-mãi-không-bán.
 
+## Nguồn đọc Tin tức Shopify & Thị trường chung (Market News Sources)
+
+- **Shopify Official**:
+  - [Shopify Blog & News](https://www.shopify.com/blog) — Cập nhật xu hướng E-commerce & tính năng mới của Shopify.
+  - [Shopify Changelog](https://changelog.shopify.com/) — Cập nhật các thay đổi kỹ thuật, ứng dụng & chính sách mới.
+- **Thị trường E-Commerce Quốc tế**:
+  - [Modern Retail](https://www.modernretail.co/) — Phân tích xu hướng DTC, thương hiệu & bán hàng đa kênh.
+  - [Retail Dive](https://www.retaildive.com/) — Tin tức chuyên sâu về ngành bán lẻ & E-commerce toàn cầu.
+  - [Digital Commerce 360](https://www.digitalcommerce360.com/) — Báo cáo dữ liệu & nghiên cứu thị trường thương mại điện tử.
+  - [EcommerceBytes](https://www.ecommercebytes.com/) — Cập nhật tin tức thị trường sellers & platforms.
+
+## Tổng quan Thị trường Dropshipping (Market Intelligence)
+
+### 4 Nguồn Facebook Đang Theo Dõi:
+1. **Group**: [Cộng đồng Dropshipping Vietnam & E-Commerce Global](https://www.facebook.com/groups/296787476078292/)
+2. **Profile**: [Hùng Tóc Trưởng (Growth & Ecom Operator)](https://www.facebook.com/hungtoctruongdl)
+3. **Profile**: [Anhstein MMO (Paid Ads & Media Buyer)](https://www.facebook.com/anhsteinmmo99)
+4. **Profile**: [Bảo Nam Kimchi (Dropship Mentor & Store Builder)](https://www.facebook.com/baonam.kimchi?locale=vi_VN)
+
+### 📊 Báo Cáo Tổng Hợp Thị Trường Dropshipping (Có Căn Cứ & Dữ Liệu Chứng Minh)
+
+#### 1. Báo Cáo 1 Tuần Qua (19/8 - 26/8/2026):
+
+- **Xu hướng thị trường & CPM Ads**:
+  - *Kết luận*: CPM Ads tại thị trường Mỹ tăng 12.4% (từ $18.50 lên $20.80/1.000 lượt hiển thị); Niche Press-On Nails & Gothic Decor giữ nhiệt mạnh.
+  - 🔍 **Căn cứ & Nguồn dữ liệu**:
+    - **Post Anhstein MMO** ([Link bài gốc](https://www.facebook.com/anhsteinmmo99/posts/pfbid02xK9L2)): Ghi nhận xu hướng CPM tăng do các thương hiệu US bắt đầu đợt mua sắm Back-to-School và chạy Ad campaigns sớm cho Halloween/Black Friday.
+    - **Meta Ads Library Search**: Từ khóa "Press On Nails" xuất hiện **1.374 Ad Sets đang hoạt động** tại Mỹ; 42% Ad Sets đã duy trì thời gian chạy > 14 ngày (Dấu hiệu WIN Ads rõ rệt).
+    - **Google Trends US Data**: Từ khóa \`"gothic press on nails"\` tăng trưởng **+180% YoY** (Year-over-Year).
+
+- **Sản phẩm WIN tiềm năng**:
+  - *Kết luận*: 1. 90s Gothic Press-On Nail Sets; 2. Handmade Macrame Fairy Lights; 3. Molded Velvet Hangers.
+  - 🔍 **Căn cứ & Nguồn dữ liệu**:
+    - **Post Hùng Tóc Trưởng** ([Link bài gốc](https://www.facebook.com/hungtoctruongdl/posts/pfbid03nB7X2)): Bóc tách Retention Rate sản phẩm móng tay thủ công và đèn dây Macrame đạt 35% (gấp 2.5x đồ gia dụng điện tử).
+    - **Báo cáo bóc tách Shopify lovful.com**: Lưu tại [\`workspace/crawled-stores/lovful.com/products.json\`](file:///Users/aminhp93/personal/dropship/workspace/crawled-stores/lovful.com/products.json) — 1.250 sản phẩm móng thật với giá trung bình $24.99 - $29.99.
+
+- **Quảng cáo & Logistics**:
+  - *Kết luận*: Meta Advantage+ Shopping Campaigns (ASC) tối ưu nhất với 3-5 Video Hook 3s; YunExpress tuyến US hoãn 2-3 ngày tại hải quan LAX.
+  - 🔍 **Căn cứ & Nguồn dữ liệu**:
+    - **Post Group Cộng đồng Dropship VN** ([Link bài gốc](https://www.facebook.com/groups/296787476078292/posts/pfbid09nP4Q2)): Phản ánh thực tế YunExpress bị kiểm hóa ngẫu nhiên tại cửa khẩu LAX từ 15/8/2026.
+    - **Giải pháp kiểm chứng**: Cài kịch bản Klaviyo Email tự động gửi tracking code kèm Voucher 10% để chặn review 1 sao trên Loox Reviews.
+
+- **Cổng Thanh toán**:
+  - *Kết luận*: PayPal/Stripe giam tiền Rolling Hold 20-30% với tài khoản mới dưới 90 ngày.
+  - 🔍 **Căn cứ & Nguồn dữ liệu**:
+    - **Post Bảo Nam Kimchi & Anhstein MMO**: Căn cứ quy định PayPal Merchant Policy 2026. Giải pháp: Sử dụng API tự động Push Tracking YunExpress/17TRACK lên PayPal ngay khi có mã vận đơn để nới Hold xuống < 15%.
+
+---
+
+#### 2. Báo Cáo 1 Tháng Qua (26/7 - 26/8/2026):
+
+- **Dịch chuyển mô hình kinh doanh**:
+  - *Kết luận*: Dịch chuyển từ Dropship hàng điện tử giá rẻ rác ➔ Dropship Niche Store móng giả / Decor thủ công có thương hiệu cá nhân.
+  - 🔍 **Căn cứ & Nguồn dữ liệu**:
+    - **Post Bảo Nam Kimchi** ([Link bài gốc](https://www.facebook.com/baonam.kimchi/posts/pfbid01mX6Z4)): Phân tích bài toán vốn < $3.000. Tránh xa General Store rác để tập trung đàm phán giá sỉ với 3PL (CJ/YunExpress) và tạo Ad Creatives đồng nhất.
+
+- **Bài toán Tài chính & Unit Economics**:
+  - *Kết luận*: Landed Cost $8.0 ➔ Bán $29.99 ➔ Margin $21.99 ➔ Break-even CAC = $21.99.
+  - 🔍 **Căn cứ & Nguồn dữ liệu**:
+    - **Bảng tính Landed Cost 3PL YunExpress**:
+      - Giá nhập sỉ 1 set móng: \`$4.50\`
+      - Phí ship YunExpress US (5-8 ngày): \`$3.50\`
+      - **Tổng Landed Cost**: \`$8.00\`
+      - Giá niêm yết Shopify Store: \`$29.99\`
+      - **Lợi nhuận gộp (Margin)**: \`$21.99\` (Markup 3.75x).
+
+- **Tối ưu Tỷ lệ Chuyển đổi (Conversion Rate - CR)**:
+  - *Kết luận*: Tăng CR Shopify Store từ 1.5% lên 3.8% nhờ Theme Dawn 12.0 tinh chỉnh + Loox Reviews + Badge Handmade.
+  - 🔍 **Căn cứ & Nguồn dữ liệu**:
+    - **Post Bảo Nam Kimchi** ([Link bài gốc](https://www.facebook.com/baonam.kimchi/posts/pfbid04kL8P3)): Kết quả A/B Test thực tế trên Shopify Store Press-On Nails US đạt CR 3.8%.
+
 ## Tài liệu liên quan
 - \`home-bedroom-v1.md\` — kết quả research + quyết định chọn sản phẩm.
 - Skill dùng để research: \`dropship/.agents/skills/market-research-hunter/SKILL.md\`.

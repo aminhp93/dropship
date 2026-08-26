@@ -16,9 +16,16 @@ function MarkdownCard({ tabId }: { tabId: string }) {
   return (
     <Card className="p-6 sm:p-8 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl shadow-2xs">
       <p className="text-[10px] font-mono text-zinc-400 mb-4">{tab.sourcePath}</p>
-      <div className="prose dark:prose-invert max-w-none text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{tab.markdown}</ReactMarkdown>
-      </div>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            a: ({ node, ...props }) => (
+              <a {...props} target="_blank" rel="noopener noreferrer" className="text-red-600 underline hover:text-red-700 font-medium" />
+            ),
+          }}
+        >
+          {tab.markdown}
+        </ReactMarkdown>
     </Card>
   );
 }

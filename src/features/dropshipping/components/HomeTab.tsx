@@ -53,7 +53,14 @@ export function HomeTab() {
                     {tab.sourcePath}
                   </p>
                   <div className="prose dark:prose-invert max-w-none text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        a: ({ node, ...props }) => (
+                          <a {...props} target="_blank" rel="noopener noreferrer" className="text-red-600 underline hover:text-red-700 font-medium" />
+                        ),
+                      }}
+                    >
                       {tab.markdown}
                     </ReactMarkdown>
                   </div>

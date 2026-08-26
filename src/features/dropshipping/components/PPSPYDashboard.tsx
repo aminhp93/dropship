@@ -102,7 +102,7 @@ export function PPSPYDashboard() {
       } else {
         setErrorMsg('Không thể quét dữ liệu store. Hãy đảm bảo tên miền là một Shopify Store hợp lệ.');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Error fetching live store spy:', err);
       setErrorMsg('Không thể kết nối đến backend API để quét store.');
     } finally {
@@ -110,8 +110,12 @@ export function PPSPYDashboard() {
     }
   };
 
+  // Nạp sẵn 1 store demo khi mount. handleInspectStore là async và tự quản lý
+  // loading/error state của nó, nên gọi 1 lần lúc mount là đúng ý đồ ở đây.
   useEffect(() => {
-    handleInspectStore('govee.com');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void handleInspectStore('govee.com');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const revenueEstimate = liveData?.revenueEstimate;

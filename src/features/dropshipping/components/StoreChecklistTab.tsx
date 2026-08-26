@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import type { LucideIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -40,7 +41,7 @@ interface JourneyStage {
   stageNumber: string;
   title: string;
   subtitle: string;
-  icon: any;
+  icon: LucideIcon;
   customerMindset: string;
   touchpoints: string[];
   keyDeliverables: string[];
@@ -270,7 +271,8 @@ export function StoreChecklistTab() {
   const toggleSection = (id: string) => {
     setOpenSections((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
   };

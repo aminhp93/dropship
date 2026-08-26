@@ -7,7 +7,7 @@ export const Route = createFileRoute("/dropship/dashboard")({
 
 export function DropshipDashboardPage() {
   return (
-    <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-6">
+    <div className="w-full h-full flex flex-col overflow-hidden bg-gray-100 dark:bg-gray-100 text-gray-900">
       <NomnaBuoi4Dashboard />
     </div>
   );

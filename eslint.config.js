@@ -20,6 +20,24 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": "off",
+      // `({ node, ...props }) => ...` là cách chuẩn để loại 1 prop ra khỏi spread
+      // (react-markdown truyền `node` xuống, spread thẳng vào DOM sẽ warning).
+      // Bỏ qua biến bị destructure ra chỉ để loại trừ, và biến đặt tên _prefix.
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          ignoreRestSiblings: true,
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
+    },
+  },
+  {
+    // File cấu hình + serverless function chạy trong Node, không phải browser.
+    files: ['vite.config.ts', 'api/**/*.ts'],
+    languageOptions: {
+      globals: globals.node,
     },
   }
 );
