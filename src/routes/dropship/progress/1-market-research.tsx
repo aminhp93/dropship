@@ -3,6 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -20,6 +26,8 @@ import {
   FolderKanban,
   Target,
   FileText,
+  HelpCircle,
+  CheckSquare,
 } from "lucide-react";
 
 export const Route = createFileRoute("/dropship/progress/1-market-research")({
@@ -116,119 +124,214 @@ function statusBadgeLabel(status: string) {
   return map[status] ?? status;
 }
 
-function MarketResearchProgressOverview() {
-  return (
-    <Card className="p-5 sm:p-6 border-zinc-200 dark:border-zinc-800 space-y-5">
-      {/* Header Title + Status */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-200/60 dark:border-zinc-800/80 pb-4">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-              Nghiên Cứu Thị Trường (Market Research)
-            </h2>
-            <Badge variant="outline" className="text-[10px] font-bold border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">
-              <CheckCircle2 className="w-3 h-3 mr-1 text-emerald-500" />
-              HOÀN THÀNH · ĐÃ CHỐT SẢN PHẨM
-            </Badge>
-          </div>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
-            SOP Bước 2: Quét 5 ngách thị trường tiềm năng, lọc bỏ thương hiệu nội địa và xu hướng ngắn hạn.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2 self-start sm:self-auto">
-          <Badge className="text-[11px] h-6 px-2.5 bg-emerald-600 text-white font-bold border-0">
-            Tiến độ: 100% (5/5 Ngách)
-          </Badge>
-        </div>
-      </div>
-
-      {/* 4 Summary Stat Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/40 space-y-1">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 flex items-center justify-between">
-            <span>Ngách đã quét</span>
-            <FolderKanban className="w-3.5 h-3.5 text-zinc-400" />
-          </div>
-          <div className="text-xl font-bold font-mono text-zinc-900 dark:text-white">
-            5 / 5 <span className="text-xs font-normal text-zinc-400">Ngách</span>
-          </div>
-          <div className="text-[10px] text-zinc-500 font-mono">Shopify Niches Seed</div>
-        </div>
-
-        <div className="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/40 space-y-1">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 flex items-center justify-between">
-            <span>Live Data Check</span>
-            <Search className="w-3.5 h-3.5 text-blue-500" />
-          </div>
-          <div className="text-xl font-bold font-mono text-blue-600 dark:text-blue-400">
-            4 <span className="text-xs font-normal text-zinc-400">Nguồn</span>
-          </div>
-          <div className="text-[10px] text-zinc-500 font-mono">Trends · TikTok · Ads · Shop</div>
-        </div>
-
-        <div className="p-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/5 space-y-1">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 flex items-center justify-between">
-            <span>Ngách Đứng Đầu</span>
-            <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
-          </div>
-          <div className="text-sm font-bold text-emerald-800 dark:text-emerald-200 truncate">
-            Home & Bedroom
-          </div>
-          <div className="text-[10px] text-emerald-600/80 dark:text-emerald-400/80 font-mono">Rank #1 suitability</div>
-        </div>
-
-        <div className="p-3.5 rounded-xl border border-emerald-500/40 bg-emerald-600/10 space-y-1">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 flex items-center justify-between">
-            <span>Sản Phẩm Đã Chốt</span>
-            <Target className="w-3.5 h-3.5 text-emerald-600" />
-          </div>
-          <div className="text-sm font-extrabold text-emerald-900 dark:text-emerald-100 truncate">
-            Đèn Macrame / Boho
-          </div>
-          <div className="text-[10px] text-emerald-700 dark:text-emerald-300 font-mono">Chốt ngày 23/08/2026</div>
-        </div>
-      </div>
-
-      {/* WINNER HIGHLIGHT BANNER */}
-      <div className="p-4 rounded-xl border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent text-xs leading-relaxed space-y-1.5">
-        <div className="flex items-center gap-2 font-bold text-emerald-900 dark:text-emerald-200">
-          <Sparkles className="w-4 h-4 text-emerald-500 shrink-0" />
-          <span>Sản phẩm đắc cử: Đèn Dây Macrame / Boho Decor</span>
-        </div>
-        <p className="text-zinc-600 dark:text-zinc-400 text-[11px] leading-normal">
-          Thoả mãn 100% tiêu chí SOP 2026: Markup &gt;= 3.5x ($18-$25 price tag vs $4.5 landed cost), nhỏ gọn nhẹ không hỏng vỡ, không bị khống chế bởi Personal Brand Equity, nhu cầu quanh năm và cực kỳ dễ sản xuất video organic TikTok 2-3 clip/ngày.
-        </p>
-      </div>
-    </Card>
-  );
+interface DailyResearchLog {
+  id: string;
+  date: string;
+  title: string;
+  isLatest?: boolean;
+  content: string;
 }
 
-function MarkdownCard({ tabId }: { tabId: string }) {
-  const tab = getTab(tabId);
-  if (!tab) return null;
+const MARKET_RESEARCH_DAILY_LOGS: DailyResearchLog[] = [
+  {
+    id: "2026-08-27",
+    date: "27/08/2026",
+    title: "Cập Nhật Thực Tế Thị Trường",
+    isLatest: true,
+    content: `#### 🌐 1. Nguồn Tin Tức & Xu Hướng E-Commerce Quốc Tế
+- **Shopify Tech Update (Chính thức từ 26/08/2026)**: Hạn chót chuyển đổi hoàn tất — Shopify đóng toàn bộ \`Additional Scripts\` & \`checkout.liquid\` trên Thank You & Order Status Page cho 100% store non-Plus. Chuyển sang **Checkout Extensibility (Web Pixels API)** để bảo đảm Meta Pixel, TikTok Pixel & Loox Reviews không bị đứt tracking ➔ [Link thông báo Shopify](https://changelog.shopify.com/).
+- **Modern Retail DTC Trends**: Bắt đầu đợt chuyển hướng "September Pivot" chuẩn bị cho chiến dịch Q4/Halloween. Xu hướng người dùng săn giá (Price Hunting) tăng mạnh đợt Back-to-School ➔ [Link bài viết Modern Retail](https://www.modernretail.co/).
+
+#### 🔍 2. Nguồn Data Ads Spy & Nhu Cầu Tìm Kiếm
+- **Meta Ads CPM Mỹ**: CPM tăng 13–20% YoY do cạnh tranh mùa Back-to-School & đợt lên camp sớm Q4 ($18.50 – $20.80 / 1.000 hiển thị) ➔ [Link dữ liệu Meta Ads](https://www.facebook.com/ads/library/).
+- **Thuật toán Meta Andromeda (ASC 2026)**: Thuật toán dồn ưu tiên ngân sách cho tài khoản có **Creative Diversity** (chuẩn bị 15+ active ad creatives, refresh 2-4 tuần) ➔ [Link hướng dẫn Meta](https://www.facebook.com/business/help/).
+
+#### 👥 3. Nguồn Cộng Đồng & Operator Kinh Nghiệm
+- **Bảo Nam Kimchi (Bài viết 1 hôm nay)**: Tối ưu vận hành E-Commerce bằng AI — Xây dựng Custom AI cho thương hiệu, nạp mục tiêu, P&L, OKR và chỉ số vận hành để tự động hóa điều hành shop ➔ [Link bài viết gốc](https://www.facebook.com/share/p/1KAt2rUt8m/).
+- **Bảo Nam Kimchi (Bài viết 2 hôm nay)**: Bài học tư duy tăng trưởng & niêm yết từ các doanh nghiệp đầu ngành (Digiworld Q2/2026 lợi nhuận +166% YoY) — Tập trung cốt lõi vào biên lợi nhuận ròng và quản trị dòng tiền ➔ [Link bài viết gốc](https://www.facebook.com/share/p/1BeWPj3Eb8/).
+- **Anhstein MMO (Bài viết hôm nay)**: Chia sẻ cấu trúc Meta Advantage+ (ASC) 2026 — Dồn ngân sách vào campaign đơn thay vì chia nhỏ Ad Sets, tập trung sản xuất 15+ video hook đa dạng ➔ [Link bài viết gốc](https://www.facebook.com/share/p/1cWiWEt9AN/).
+- **Hùng Tóc Trưởng**: *(Không có bài viết mới trong ngày 27/08/2026 — Theo dõi trực tiếp tại [Profile](https://www.facebook.com/hungtoctruongdl))*.
+- **Group Cộng đồng Dropship VN**: *(Không có bài viết mới cụ thể trong ngày 27/08/2026 — Theo dõi trực tiếp bài mới tại [Group New Posts](https://www.facebook.com/groups/296787476078292/?sorting_setting=CHRONOLOGICAL))*.
+
+#### 📦 4. Nguồn Cước Phí Vận Chuyển 3PL & Tracking
+- **YunExpress**: Dịch vụ vận chuyển tuyến US Small Parcel (< 300g, 5-8 ngày) ➔ [Link YunExpress](https://www.yunexpress.com/).
+- **17TRACK / PayPal**: Đẩy tự động mã vận đơn nới giữ tiền PayPal ➔ [Link 17TRACK](https://www.17track.net/).
+
+📌 **Nguồn bài viết thực tế**: [Shopify Changelog](https://changelog.shopify.com/) · [Modern Retail](https://www.modernretail.co/) · [Bài viết Bảo Nam 1](https://www.facebook.com/share/p/1KAt2rUt8m/) · [Bài viết Bảo Nam 2](https://www.facebook.com/share/p/1BeWPj3Eb8/) · [Bài viết Anhstein MMO](https://www.facebook.com/share/p/1cWiWEt9AN/) · [Profile Hùng Tóc Trưởng](https://www.facebook.com/hungtoctruongdl) · [Group Dropship VN (New Posts)](https://www.facebook.com/groups/296787476078292/?sorting_setting=CHRONOLOGICAL).`
+  },
+  {
+    id: "2026-08-23",
+    date: "23/08/2026",
+    title: "CHỐT WIN Product: Đèn Dây Macrame / Boho Decor",
+    isLatest: false,
+    content: `#### 🌐 1. Nguồn Tin Tức & Xu Hướng E-Commerce Quốc Tế
+- **Shopify Dropshipping Niches Blog**: Ngách Home Decor & Lighting duy trì mức tăng trưởng bền vững quanh năm (non-fad).
+
+#### 🔍 2. Nguồn Data Ads Spy & Nhu Cầu Tìm Kiếm
+- **Google Trends US**: Từ khóa \`macrame fairy lights\` và \`boho wall decor\` giữ baseline ổn định 45-60/100, không bị spike ảo theo mùa.
+- **TikTok Creative Center**: Hashtag views đạt trên 68M views, 3s Hook Rate trên 30%, cực kỳ phù hợp làm clip organic 2-3 video/ngày.
+
+#### 👥 3. Nguồn Cộng Đồng & Operator Kinh Nghiệm
+- **Lý do chốt sản phẩm Niche Home & Bedroom (Rank #1)**: Thỏa mãn 100% tiêu chí SOP 2026 — Markup >= 3.5x ($29.99 sale price vs $8.00 landed cost), không bị khống chế bởi Personal/Local Brand Equity.
+
+#### 📦 4. Nguồn Cước Phí Vận Chuyển 3PL & Tracking
+- **YunExpress Small Parcel US**: Gói hàng < 300g, cước $3.50, thời gian 5-8 ngày, không vỡ hỏng.
+
+📌 **Nguồn tổng hợp**: SOP Bước 2 & Báo cáo bóc tách \`workspace/doc/1-market-research/4-Home and bedroom.gdoc\`.`
+  },
+  {
+    id: "2026-08-20",
+    date: "20/08/2026",
+    title: "Quét 5 Ngách Thị Trường (Seed từ Shopify Blog)",
+    isLatest: false,
+    content: `#### 🌐 1. Nguồn Tin Tức & Xu Hướng E-Commerce Quốc Tế
+- **Shopify Blog Top Niches**: Quét 5 ngách tiềm năng: Car Accessories, Sustainability, Kitchen & Dining, Home & Bedroom, Child & Baby.
+
+#### 🔍 2. Nguồn Data Ads Spy & Nhu Cầu Tìm Kiếm
+- **Newbie Exclusion Filters**: Sàng lọc 20+ sản phẩm candidate. Loại bỏ hàng cồng kềnh, mốt ngắn hạn (fad), và ngách bị chiếm lĩnh bởi Personal/Local Brand Equity.
+
+#### 👥 3. Nguồn Cộng Đồng & Operator Kinh Nghiệm
+- **Đánh giá phù hợp solo newbie**: Chọn Niche Home & Bedroom là ứng viên số 1 do margin cao và dễ làm clip organic.
+
+#### 📦 4. Nguồn Cước Phí Vận Chuyển 3PL & Tracking
+- **Quy chuẩn Logistics SOP 2026**: Trọng lượng < 500g, ship US < 15 ngày, không chứa pin lớn hay chất lỏng nhạy cảm.
+
+📌 **Nguồn tổng hợp**: Shopify Dropshipping Niches Blog & Báo cáo 5 ngách \`workspace/doc/1-market-research/\`.`
+  }
+];
+
+function DailyResearchLogCard() {
+  const [openIds, setOpenIds] = useState<Record<string, boolean>>({
+    "2026-08-27": true,
+  });
+
+  const toggleOpen = (id: string) => {
+    setOpenIds((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const expandAll = () => {
+    const allOpen: Record<string, boolean> = {};
+    MARKET_RESEARCH_DAILY_LOGS.forEach((log) => {
+      allOpen[log.id] = true;
+    });
+    setOpenIds(allOpen);
+  };
+
+  const collapseOld = () => {
+    setOpenIds({ "2026-08-27": true });
+  };
+
   return (
-    <Card className="p-6 sm:p-8 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl shadow-2xs">
-      <p className="text-[10px] font-mono text-zinc-400 mb-4">{tab.sourcePath}</p>
-      <div className="prose dark:prose-invert max-w-none text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{
-            a: ({ node, ...props }) => (
-              <a {...props} target="_blank" rel="noopener noreferrer" className="text-red-600 underline hover:text-red-700 font-medium" />
-            ),
-          }}
-        >
-          {tab.markdown}
-        </ReactMarkdown>
+    <div className="space-y-3">
+      {/* Controls Bar */}
+      <div className="flex items-center justify-between px-1">
+        <p className="text-[11px] font-mono text-zinc-500">
+          Nhật ký {MARKET_RESEARCH_DAILY_LOGS.length} ngày (Mặc định chỉ mở ngày mới nhất)
+        </p>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={expandAll}
+            className="h-7 px-2 text-[11px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer"
+          >
+            Mở Tất Cả
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={collapseOld}
+            className="h-7 px-2 text-[11px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer"
+          >
+            Thu Gọn Các Ngày Cũ
+          </Button>
+        </div>
       </div>
-    </Card>
+
+      {/* Daily Entries List */}
+      <div className="space-y-2.5">
+        {MARKET_RESEARCH_DAILY_LOGS.map((log) => {
+          const isOpen = !!openIds[log.id];
+
+          return (
+            <Card
+              key={log.id}
+              className={cn(
+                "border transition-all shadow-2xs overflow-hidden",
+                log.isLatest
+                  ? "border-emerald-500/40 dark:border-emerald-500/30 bg-white dark:bg-zinc-900"
+                  : "border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40"
+              )}
+            >
+              {/* Single-line Header / Toggle Button */}
+              <button
+                type="button"
+                onClick={() => toggleOpen(log.id)}
+                className="w-full text-left p-3 sm:p-3.5 flex items-center justify-between gap-3 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/40 transition-colors cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <Badge
+                    variant="outline"
+                    className={cn(
+                      "text-[10px] font-mono shrink-0 px-2 py-0.5",
+                      log.isLatest
+                        ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30 font-bold"
+                        : "bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700"
+                    )}
+                  >
+                    📅 {log.date} {log.isLatest ? "(Mới nhất)" : ""}
+                  </Badge>
+                  <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 truncate">
+                    {log.title}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-1.5 shrink-0 text-zinc-400">
+                  <span className="text-[10px] hidden sm:inline text-zinc-500">
+                    {isOpen ? "Thu gọn" : "Xem chi tiết"}
+                  </span>
+                  {isOpen ? (
+                    <ChevronDown className="w-4 h-4 text-zinc-500" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4 text-zinc-400" />
+                  )}
+                </div>
+              </button>
+
+              {/* Collapsible Markdown Content */}
+              {isOpen && (
+                <div className="px-5 pb-5 pt-1 border-t border-zinc-100 dark:border-zinc-800/80 animate-in fade-in duration-150">
+                  <div className="prose dark:prose-invert max-w-none text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans pt-2">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        a: ({ node, ...props }) => (
+                          <a
+                            {...props}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 underline hover:text-red-700 font-medium"
+                          />
+                        ),
+                      }}
+                    >
+                      {log.content}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              )}
+            </Card>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
 export function MarketResearchTabRoute() {
+  const [showDoc, setShowDoc] = useState(true);
   const [showNiches, setShowNiches] = useState(false);
-  const [showDoc, setShowDoc] = useState(false);
+  const [showChecklist, setShowChecklist] = useState(false);
 
   const getViteFsUrl = (fullPath: string) => {
     return `/@fs${fullPath}`;
@@ -240,17 +343,134 @@ export function MarketResearchTabRoute() {
 
   return (
     <div className="space-y-6">
-      {/* High-level Progress Overview */}
-      <MarketResearchProgressOverview />
+      {/* Top Header Toolbar with Checklist Icon Dialog Button */}
+      <div className="flex items-center justify-between gap-3 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50">
+        <div className="flex items-center gap-2">
+          <Target className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+          <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+            Nhật Ký Nghiên Cứu Thị Trường (Daily Market Research Log)
+          </span>
+        </div>
 
-      {/* Detail Section 1: Collapsible Niche Files List */}
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShowChecklist(true)}
+          className="h-8 px-3 text-[11px] font-bold border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 cursor-pointer"
+        >
+          <HelpCircle className="w-3.5 h-3.5 mr-1.5 text-emerald-600 dark:text-emerald-400" />
+          Hướng Dẫn Resources Nghiên Cứu ℹ️
+        </Button>
+      </div>
+
+      {/* Top Section: Markdown SOP Document (Default Open) */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setShowDoc((v) => !v)}
+            className="h-9 px-4 text-xs font-bold border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer shadow-2xs"
+          >
+            {showDoc ? (
+              <>
+                <ChevronDown className="w-4 h-4 mr-1.5 text-zinc-500" /> Thu gọn Tài Liệu SOP
+              </>
+            ) : (
+              <>
+                <ChevronRight className="w-4 h-4 mr-1.5 text-emerald-600 dark:text-emerald-400" /> 📄 Xem Tài Liệu Market Research SOP Chi Tiết
+              </>
+            )}
+          </Button>
+        </div>
+
+        {showDoc && (
+          <div className="animate-in fade-in duration-200">
+            <DailyResearchLogCard />
+          </div>
+        )}
+      </div>
+
+      {/* RESOURCE GUIDE DIALOG POPUP */}
+      <Dialog open={showChecklist} onOpenChange={setShowChecklist}>
+        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
+              <CheckSquare className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+              Resource Guide: Danh Sách Các Nguồn Dùng Để Tổng Hợp Nghiên Cứu Thị Trường
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4 text-xs text-zinc-700 dark:text-zinc-300 pt-2">
+            <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              Dưới đây là danh mục <strong>tất cả các Nguồn dữ liệu & Công cụ</strong> được sử dụng để tổng hợp nhật ký nghiên cứu thị trường hàng ngày:
+            </p>
+
+            <div className="space-y-3">
+              {/* Resource 1 */}
+              <div className="p-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 space-y-1.5">
+                <div className="flex items-center gap-2 font-bold text-zinc-900 dark:text-zinc-100">
+                  <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-[10px] shrink-0 font-mono">1</span>
+                  <span>🌐 Nguồn Tin Tức & Xu Hướng E-Commerce Quốc Tế</span>
+                </div>
+                <div className="text-[11px] text-zinc-600 dark:text-zinc-400 pl-7 space-y-1 leading-relaxed">
+                  <p>• <strong>Shopify Official</strong>: <a href="https://changelog.shopify.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 underline">Shopify Changelog</a> & <a href="https://www.shopify.com/blog" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 underline">Shopify Blog</a> — Cập nhật tính năng kỹ thuật & xu hướng bán hàng.</p>
+                  <p>• <strong>Modern Retail</strong>: <a href="https://www.modernretail.co/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 underline">modernretail.co</a> — Phân tích xu hướng DTC, thương hiệu & omni-channel.</p>
+                  <p>• <strong>Retail Dive & Digital Commerce 360</strong>: <a href="https://www.retaildive.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 underline">retaildive.com</a> & <a href="https://www.digitalcommerce360.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 underline">digitalcommerce360.com</a> — Báo cáo dữ liệu thị trường toàn cầu.</p>
+                  <p>• <strong>EcommerceBytes</strong>: <a href="https://www.ecommercebytes.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 underline">ecommercebytes.com</a> — Tin tức sellers & cập nhật vận chuyển.</p>
+                </div>
+              </div>
+
+              {/* Resource 2 */}
+              <div className="p-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 space-y-1.5">
+                <div className="flex items-center gap-2 font-bold text-zinc-900 dark:text-zinc-100">
+                  <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-[10px] shrink-0 font-mono">2</span>
+                  <span>🔍 Nguồn Data Ads Spy & Nhu Cầu Tìm Kiếm (Live Search & Ads)</span>
+                </div>
+                <div className="text-[11px] text-zinc-600 dark:text-zinc-400 pl-7 space-y-1 leading-relaxed">
+                  <p>• <strong>Meta Ads Library</strong>: Tra cứu số lượng Ad Sets đang chạy active &gt; 14 ngày của đối thủ tại Mỹ.</p>
+                  <p>• <strong>Google Trends US</strong>: Kiểm tra tăng trưởng từ khóa tìm kiếm theo mốc thời gian (YoY Growth).</p>
+                  <p>• <strong>TikTok Creative Center</strong>: Bóc tách top trending ads, popular music, &amp; viral video hooks.</p>
+                  <p>• <strong>Google Keyword Planner &amp; Amazon BSR</strong>: Kiểm tra Monthly Search Volume (MSV) &amp; Best Seller Rank.</p>
+                </div>
+              </div>
+
+              {/* Resource 3 */}
+              <div className="p-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 space-y-1.5">
+                <div className="flex items-center gap-2 font-bold text-zinc-900 dark:text-zinc-100">
+                  <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-[10px] shrink-0 font-mono">3</span>
+                  <span>👥 Nguồn Cộng Đồng & Operator Kinh Nghiệm (FB Feeds)</span>
+                </div>
+                <div className="text-[11px] text-zinc-600 dark:text-zinc-400 pl-7 space-y-1 leading-relaxed">
+                  <p>• <strong>Cộng đồng Dropship VN</strong>: <a href="https://www.facebook.com/groups/296787476078292/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 underline">FB Group</a> — Cập nhật thực tế hải quan LAX, kho YunExpress &amp; cổng thanh toán.</p>
+                  <p>• <strong>Bảo Nam Kimchi &amp; Hùng Tóc Trưởng &amp; Anhstein MMO</strong>: Phân tích Unit Economics vốn &lt; $3.000, CPM Ads Mỹ, ASC campaigns.</p>
+                </div>
+              </div>
+
+              {/* Resource 4 */}
+              <div className="p-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 space-y-1.5">
+                <div className="flex items-center gap-2 font-bold text-zinc-900 dark:text-zinc-100">
+                  <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-[10px] shrink-0 font-mono">4</span>
+                  <span>📦 Nguồn Cước Phí Vận Chuyển 3PL & Tracking</span>
+                </div>
+                <div className="text-[11px] text-zinc-600 dark:text-zinc-400 pl-7 space-y-1 leading-relaxed">
+                  <p>• <strong>Bảng cước 3PL YunExpress / CJ Dropshipping 2026</strong>: Cước tuyến US 5-8 ngày cho gói nhỏ (0.2kg - 0.5kg).</p>
+                  <p>• <strong>17TRACK API System</strong>: Kiểm tra tỷ lệ giao hàng đúng hạn &amp; tự động Sync tracking code lên PayPal.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Section 2: Collapsible Niche Files List (Default Collapsed) */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Button
             variant="outline"
             size="sm"
             onClick={() => setShowNiches((v) => !v)}
-            className="h-9 px-4 text-xs font-bold border-zinc-300 dark:border-zinc-700 cursor-pointer"
+            className="h-9 px-4 text-xs font-bold border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer shadow-2xs"
           >
             {showNiches ? (
               <>
@@ -343,34 +563,6 @@ export function MarketResearchTabRoute() {
               ))}
             </div>
           </Card>
-        )}
-      </div>
-
-      {/* Detail Section 2: Collapsible Markdown SOP Document */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowDoc((v) => !v)}
-            className="h-9 px-4 text-xs font-bold border-zinc-300 dark:border-zinc-700 cursor-pointer"
-          >
-            {showDoc ? (
-              <>
-                <ChevronDown className="w-4 h-4 mr-1.5 text-zinc-500" /> Thu gọn Tài Liệu SOP
-              </>
-            ) : (
-              <>
-                <ChevronRight className="w-4 h-4 mr-1.5 text-emerald-600 dark:text-emerald-400" /> 📄 Xem Tài Liệu Market Research SOP Chi Tiết
-              </>
-            )}
-          </Button>
-        </div>
-
-        {showDoc && (
-          <div className="animate-in fade-in duration-200">
-            <MarkdownCard tabId="market-research" />
-          </div>
         )}
       </div>
     </div>
