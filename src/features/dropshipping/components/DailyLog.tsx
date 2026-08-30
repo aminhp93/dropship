@@ -29,6 +29,7 @@ import {
   useCopyToClaude,
 } from '@/features/dropshipping/hooks/useLocalStorageBackedState';
 import {
+  GOAL,
   DAILY_LOG_SEED,
   LOG_CATEGORIES,
   LOG_ALIGNMENTS,
@@ -137,7 +138,7 @@ export function DailyLog() {
       (e) =>
         `- ${e.date} | ${LOG_CATEGORIES[e.category].label} | ${LOG_ALIGNMENTS[e.alignment].label} | ${e.summary}`,
     );
-    return `Đây là daily log dự án dropship (${stats.total} ngày, ${stats.directPct}% trực tiếp / ${stats.detourPct}% lệch hướng). Đánh giá giúp mình có đang đi đúng hướng tới mục tiêu $500-1.000/tháng không, và việc nên làm tiếp theo là gì:\n\n${lines.join('\n')}`;
+    return `Đây là daily log dự án dropship (${stats.total} ngày, ${stats.directPct}% trực tiếp / ${stats.detourPct}% lệch hướng). Đánh giá giúp mình có đang đi đúng hướng tới mục tiêu "${GOAL.target}" (${GOAL.targetDeadline}, đến ${GOAL.reviewDate}) không, và việc nên làm tiếp theo là gì:\n\n${lines.join('\n')}`;
   });
 
   const addEntry = () => {

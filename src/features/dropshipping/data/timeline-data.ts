@@ -9,13 +9,22 @@
 /* ─────────────────────────  MỤC TIÊU  ───────────────────────── */
 
 export const GOAL = {
-  /** Đích cuối, đo được. */
-  target: '$500 – $1.000',
-  targetUnit: 'lợi nhuận / tháng',
-  targetDeadline: 'trong 12 tháng',
+  /**
+   * Đích cuối. Trước đây ghi "$500 – $1.000 lợi nhuận / tháng" — sửa lại
+   * 29/08 theo đúng nội dung thật của mục tiêu: không lỗ, không phải một
+   * mốc lợi nhuận cụ thể.
+   */
+  target: 'Không lỗ',
+  /**
+   * Deadline thật = mốc cuối roadmap (xem ROADMAP bên dưới, dừng ở tháng 5-6
+   * = 1/2027). Trước đây ghi "trong 12 tháng" trong khi roadmap + reviewDate
+   * đều chỉ đi tới 1/2027 (6 tháng) — 2 con số không khớp nhau. Sửa lại cho
+   * đúng 1 deadline duy nhất, không lố quá 1/2027.
+   */
+  targetDeadline: 'trong 6 tháng',
   capital: 3000,
   startDate: '2026-08-01',
-  /** Mốc review 6 tháng (nửa đường). */
+  /** Deadline cuối — trùng với điểm kết thúc ROADMAP. */
   reviewDate: '2027-01-31',
 };
 

@@ -57,18 +57,19 @@ của người dùng. Mỗi mảng có file theo dõi riêng, xem link bên dư�
 |---|---|---|---|
 | 1 | Lý thuyết Ngô Thanh Ecom | Đã học 3 buổi (Giới thiệu dropship vs POD, Sản phẩm, Store) | \`theory-ngo-thanh-ecom.md\` |
 | 2 | Build & setup store | Clone thủ công ultracarmats.com để học kỹ thuật dựng Shopify — **chỉ là bài tập học, không phải hướng đi sản phẩm thật** (đã xác nhận 2026-08-24). Tiến độ chậm nếu làm tay, đang tìm cách chia nhỏ task giao cho Claude | \`../2-store/progress.md\` |
-| 3 | Nghiên cứu thị trường | Chạy được 1-2 buổi (ra kết quả \`home-bedroom-v1.md\`, đã chốt fairy lights) rồi **dừng lại, mất momentum** — chưa có workflow/lịch cố định | \`../1-market-research/progress.md\` |
+| 3 | Nghiên cứu thị trường | Chạy được 1-2 buổi (ra kết quả \`home-bedroom-v1.md\`, fairy lights là candidate ưu tiên #1 — CHƯA chốt) rồi **dừng lại, mất momentum**, sau đó mở lại ngày 27-28/08 sang ngách Nails (so sánh 3 store) | \`../1-market-research/progress.md\` |
 | 4 | Video AI | Có thử clone 1 video TikTok bằng CapCut + ElevenLabs nhưng nội dung/workflow **chưa rõ ràng, cần xem lại từ đầu** trước khi tiếp tục | \`../3-video-creative/progress.md\` |
 
-**Lưu ý quan trọng**: sản phẩm thật đang theo đuổi là **đèn dây macrame/boho (fairy lights)**,
-ngách Home & Bedroom (xem quyết định ở \`../1-market-research/home-bedroom-v1.md\`). Store
-"Apex Auto Mats" / Car Mats ở mục 2-store chỉ là môi trường luyện tập kỹ thuật, khi build store
-thật (Ngày 3 trong bảng 7 ngày) sẽ dùng branding + sản phẩm fairy lights, không phải Car Mats.
+**Đính chính 2026-08-28**: dòng này trước ghi "sản phẩm thật đang theo đuổi là đèn dây
+macrame/boho" — RÚT LẠI theo xác nhận của user, **chưa có sản phẩm nào được chốt**. Fairy lights
+(Home & Bedroom) và Handmade Press-On Nails (Nails, benchmark NailHandy/Lovful/KISS USA) đang là
+2 hướng research song song, chưa hướng nào được chọn cuối. Store "Apex Auto Mats" / Car Mats ở
+mục 2-store vẫn chỉ là môi trường luyện tập kỹ thuật, không gắn với sản phẩm nào ở trên.
 
 ## 7 ngày đầu tiên
 | Ngày | TOP 1 | Deliverable | Trạng thái |
 |---|---|---|---|
-| 1 | Chọn 1 trong 3 ứng viên Home & Bedroom | Quyết định + lý do | ✅ 2026-08-23 — chốt **đèn dây macrame/boho**, xem lý do ở \`../1-market-research/home-bedroom-v1.md\` |
+| 1 | Chọn 1 trong 3 ứng viên Home & Bedroom | Quyết định + lý do | ⏳ Chưa xong — 2026-08-23 từng ghi "chốt đèn dây macrame/boho", đã RÚT LẠI 2026-08-28 (chưa chốt sản phẩm cuối), xem \`../1-market-research/home-bedroom-v1.md\` |
 | 2 | Đặt mẫu sản phẩm đã chọn | Đơn hàng mẫu đã đặt | Chưa làm |
 | 3 | Tạo Shopify store trống + domain | Store tồn tại |
 | 4 | Viết policy pages (template Shopify) | 4 trang policy live |
@@ -80,8 +81,9 @@ thật (Ngày 3 trong bảng 7 ngày) sẽ dùng branding + sản phẩm fairy l
 Tại thời điểm gom file này (2026-08-23): **$0 đã chi, 0 mẫu đã đặt, 0 video đã đăng, 0 store đã
 tồn tại.** Phần lớn thời gian là research/tooling/planning, chưa có hành động bán hàng thật.
 
-**Cập nhật 2026-08-23**: Ngày 1 đã xong (chốt sản phẩm). Ngày 2 (đặt mẫu thật, tốn tiền) vẫn
-chưa làm — đây vẫn là hành động bán hàng thật đầu tiên còn thiếu, không phải research thêm.
+**Cập nhật 2026-08-23** (đã đính chính 2026-08-28): Ngày 1 thực ra CHƯA xong — mới chọn được
+candidate ưu tiên #1, chưa chốt sản phẩm cuối. Ngày 2 (đặt mẫu thật, tốn tiền) vẫn chưa làm — đây
+vẫn là hành động bán hàng thật đầu tiên còn thiếu, không phải research thêm.
 
 **Cập nhật 2026-08-24**: Rà lại toàn bộ hoạt động thật từ 1/8 tới nay, phát hiện 2/4 mảng việc
 (nghiên cứu thị trường, video AI) đang **mất momentum hoặc mất phương hướng** dù có khởi động —
@@ -132,7 +134,47 @@ Không rõ có buổi học tiếp theo (Buổi 4+) hay khoá đã dừng ở bu
     sourcePath: "workspace/dropship-progress/1-market-research/progress.md",
     markdown: `# Nhật Ký Nghiên Cứu Thị Trường (Daily Market Research Log)
 
-Danh sách ghi chép nghiên cứu thị trường theo từng ngày. Mỗi ngày được tổng hợp theo đúng 4 nhóm nguồn dữ liệu chuẩn trong Resource Checklist Guide.
+> ⚠️ **2026-08-28**: nội dung chi tiết ngày-theo-ngày (bao gồm bản có SỐ LIỆU ĐÃ ĐÍNH CHÍNH cho
+> 3 store NailHandy/Lovful/KISS USA sau khi live-check qua PPSPY) giờ chỉ maintain 1 nơi duy nhất
+> để tránh 2 bản dữ liệu lệch nhau: xem trực tiếp trong app tại \`/dropship/progress/1-market-research\`
+> (nguồn: \`src/routes/dropship/progress/1-market-research.tsx\`, mảng \`MARKET_RESEARCH_DAILY_LOGS\`).
+> Bản dưới đây GIỮ LẠI 2 mốc cũ chỉ để tham khảo lịch sử — **đã lỗi thời, có số liệu sai**, đừng
+> dùng để ra quyết định.
+
+### 📅 Ngày 28/08/2026 — TOP 2: Bóc Tách & Nghiên Cứu Chi Tiết 3 Store Mẫu (Lovful, KISS USA, NailHandy) — [BẢN CŨ, XEM ĐÍNH CHÍNH Ở APP]
+
+#### 🎯 Mục tiêu: Reverse-engineering cấu trúc Offer, Layout Product Page, Pricing, và Ads Hook của các Store hàng đầu ngách Press-On Nails & Beauty E-Commerce để chuẩn bị hoàn thiện Product Detail Page và kế hoạch test Ads.
+
+#### 💅 1. Store 1: NailHandy® (https://nailhandy.com/) — Top 1 Benchmark Dropship to Brand
+- **Định vị & Mô hình**: *Handmade Press-On Nails | Salon-Quality Nails at Home*. Chuyển dịch từ Dropshipping thuần túy sang Micro-Brand cao cấp.
+- **Tech Stack**: [Theme Shrine PRO v1.4.3](https://shrinetheme.com/) (Bản cập nhật *NailHandy Clean 2026-08*), \`970g7v-ur.myshopify.com\`.
+- **Offer & Unit Economics**: Giá $24.99 – $34.99/bộ (COGS: ~$3.50 – $5.00 ước tính theo giá sỉ xưởng handmade 1688/CJ) ➔ Bundle Mua 2 Tặng 1 + Free Sizing Kit ➔ AOV $48 – $65 ➔ Break-even CAC ~$40 (Biên gộp > 75%).
+- **Product Page UX**: **Nail Sizing Guide** (Bảng đo kích thước móng tay chuẩn mm) tích hợp trực tiếp, Sticky ATC bar, 100% review kèm ảnh thực tế.
+- **Traffic & Creative Hook**: **83 kết quả Ads thực tế trên Meta Ads Library** (tập trung Advantage+ ASC). TikTok/Reels UGC so sánh *"Spending $120 at salon vs $25 NailHandy in 5 mins"* ➔ [Meta Ads Library (83 Ads)](https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&is_targeted_country=false&media_type=all&q=nailhandy&search_type=keyword_unordered&sort_data[mode]=total_impressions&sort_data[direction]=desc) · [TikTok Clips](https://www.tiktok.com/search?q=nailhandy%20press%20on%20nails) · [Instagram](https://www.instagram.com/nailhandy_official/).
+- **Supply & Shipping**: Xưởng thủ công Yiwu/Guangzhou, đóng hộp cứng kèm logo. Ship YunExpress US 7–10 ngày.
+
+#### 🌸 2. Store 2: Lovful (https://lovful.com/) — Fast-Fashion Acrylic Press-on Nails
+- **Định vị & Mô hình**: *Trendy & Aesthetic Acrylic Nails*. Danh mục mẫu mã thời trang cực rộng, bắt trend TikTok/Pinterest siêu nhanh.
+- **Tech Stack**: **Beae Page Builder** (Typography Jost & Poppins), GTM (\`GTM-K86N3VHB\`) & Meta Web Pixels API.
+- **Offer & Unit Economics**: Giá $14.99 – $22.99/bộ (COGS: $1.80 – $2.50) ➔ Free Ship từ $50+, Giảm giá bậc thang (Mua 3 giảm 15%, Mua 5 giảm 25%) ➔ AOV $38 – $52 ➔ Break-even CAC ~$32.
+- **Product Page UX**: Bộ lọc theo Shape (Almond, Coffin, Square, Oval, Stiletto) và Length (Short, Medium, Long, Extra Long). Cross-sell phụ kiện keo dán.
+- **Traffic & Ads**: **0 Ads trên Meta Ads Library** (Không chạy Meta Ads). Kéo traffic 100% qua **TikTok Shop, Creator Affiliates & Video Organic Swatch** (OOTD) ➔ [Meta Ads Library (0 kết quả)](https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&is_targeted_country=false&media_type=all&q=lovful&search_type=keyword_unordered&sort_data[mode]=total_impressions&sort_data[direction]=desc) · [TikTok Clips](https://www.tiktok.com/search?q=lovful%20nails).
+
+#### 👑 3. Store 3: KISS USA (https://www.kissusa.com/) — Chuẩn Mực Retail Toàn Cầu
+- **Định vị & Mô hình**: *Bring the Salon Home*. Thương hiệu dẫn đầu thị trường toàn cầu (Omni-channel: Bán online + Phủ sóng Target, Walmart, Ulta, CVS).
+- **Tech Stack**: Theme **Be Yours** (v8.3.3), \`kissproductsinc.myshopify.com\`, FigPii CRO testing, PriceSpider ("Find in Store" locator).
+- **Offer & Unit Economics**: Giá $8.99 – $13.99/hộp (imPRESS & Gel Fantasy) ➔ Subscribe & Save 10%, Free Ship $30+ ➔ AOV $30 – $40 (Combo móng + Lashes).
+- **Product Page UX**: Bằng sáng chế công nghệ Press On & Go, tính năng "Find in Store" tích hợp.
+- **Traffic & Ads**: Chạy Meta Ads qua Page chính thức [Kiss Nails (fb.com/KissNails)](https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&q=Kiss%20Nails) và [imPRESS Manicure](https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&q=imPRESS%20Manicure), kết hợp [TikTok @kissproducts](https://www.tiktok.com/@kissproducts) & Google Search Ads.
+- **Logistics**: Hệ thống kho nội địa Mỹ (NY/NJ/CA) giao hỏa tốc 2-4 ngày.
+
+#### 💡 BÀI HỌC ÁP DỤNG TRỰC TIẾP CHO STORE CỦA CHÚNG TA:
+1. **Product Detail Page Layout**: Bắt chước **NailHandy (Shrine PRO)**: Tích hợp **Bảng đo kích thước móng (Sizing Guide)** & **Bundle Tier Selector** (Mua 2 Tặng 1 / Mua 3 Free Ship).
+2. **Creative & Ad Hooks**: Học hỏi kịch bản UGC của NailHandy: *"Stop paying $100+ at the nail salon every 2 weeks"* & *"How I put salon-quality acrylics in 3 mins"*.
+3. **Logistics & CSKH**: Sử dụng line ship **YunExpress Small Parcel US (< 200g, 5-8 business days)** + Klaviyo Auto-email gửi cẩm nang đo móng & hướng dẫn gỡ móng.
+
+📌 **Nguồn tham khảo trực tiếp**: [NailHandy Store](https://nailhandy.com/) · [Lovful Store](https://lovful.com/) · [KISS USA Store](https://www.kissusa.com/).  
+📑 **Báo cáo chi tiết ngách Nails**: [Bản HTML Báo Cáo](file:///Users/aminhp93/personal/dropship/workspace/doc/1-market-research/6-press-on-nails-niche-report.html) · [Bản Markdown Tóm Tắt](file:///Users/aminhp93/personal/dropship/workspace/doc/1-market-research/6-press-on-nails.md).
 
 ---
 
@@ -161,7 +203,7 @@ Danh sách ghi chép nghiên cứu thị trường theo từng ngày. Mỗi ngà
 
 ---
 
-### 📅 Ngày 23/08/2026 — CHỐT WIN Product: Đèn Dây Macrame / Boho Decor
+### 📅 Ngày 23/08/2026 — Candidate ưu tiên #1: Đèn Dây Macrame / Boho Decor (CHƯA chốt — tiêu đề gốc "CHỐT WIN Product" đã rút lại 2026-08-28)
 
 #### 🌐 1. Nguồn Tin Tức & Xu Hướng E-Commerce Quốc Tế
 - **Shopify Dropshipping Niches Blog**: Ngách Home Decor & Lighting duy trì mức tăng trưởng bền vững quanh năm (non-fad).
@@ -230,10 +272,12 @@ Cập nhật: 2026-08-24. File này theo dõi tiến độ build store, tách kh
 tài liệu tĩnh khác trong \`2-store/\` (task gốc, data skeleton, blueprint reference).
 
 **Xác nhận 2026-08-24**: đây là bài tập học kỹ thuật dựng Shopify (theme, collection, product,
-policy pages...), KHÔNG phải hướng sản phẩm thật. Sản phẩm thật đã chốt là **đèn dây
-macrame/boho**, ngách Home & Bedroom (xem \`../1-market-research/home-bedroom-v1.md\`). Khi build
-store thật (Ngày 3 trong \`../0-general/timeline-6-thang.md\`), dùng branding/data fairy lights,
-không dùng data skeleton "Apex Auto Mats" ở dưới — data đó chỉ để luyện thao tác.
+policy pages...), KHÔNG phải hướng sản phẩm thật. **Đính chính 2026-08-28**: dòng cũ ghi "sản
+phẩm thật đã chốt là đèn dây macrame/boho" — RÚT LẠI, chưa có sản phẩm nào được chốt (xem
+\`../1-market-research/home-bedroom-v1.md\` và \`../1-market-research/progress.md\`, cả Home &
+Bedroom lẫn Nails đều đang là candidate, chưa hướng nào final). Khi build store thật (Ngày 3
+trong \`../0-general/timeline-6-thang.md\`), sẽ dùng branding/data theo sản phẩm nào được chốt sau
+cùng — không dùng data skeleton "Apex Auto Mats" ở dưới, data đó chỉ để luyện thao tác.
 
 **Checklist chi tiết A→Z giờ nằm ở [store-setup-checklist.md](store-setup-checklist.md)** — dùng
 file đó để giao việc/tick tiến độ theo từng hạng mục. File này (\`progress.md\`) chỉ giữ vai trò
