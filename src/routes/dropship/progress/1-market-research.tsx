@@ -321,10 +321,37 @@ interface DailyResearchLog {
 
 const MARKET_RESEARCH_DAILY_LOGS: DailyResearchLog[] = [
   {
+    id: "2026-08-31",
+    date: "31/08/2026",
+    title: "Đóng gap Handmade Press-On Nails: research thật (Trends/Meta Ads/Amazon) + đánh giá Car Mats",
+    isLatest: true,
+    content: `#### 🎯 Nguồn: phiên chat 31/08/2026 — trả lời trực tiếp 3 câu hỏi đánh giá (Car Mats có fit không? Nails đào sâu thế nào? Ngách nào khác giống Nails?). Đây chính là gap đã note tồn đọng từ 29/08 ("chưa search tay lại Meta Ads Library/Trends cho Nails") — hôm nay đóng lại bằng data sống, đúng chuẩn 4 báo cáo verified khác.
+
+---
+
+#### 🚗 1. Car Mats (Apex Auto Mats) — đánh giá fit, KHÔNG có data mới cần thêm
+Grep lại toàn bộ \`store-clone-data-skeleton.md\` + \`store-setup-checklist.md\`: **chưa từng có chỗ nào tính trọng lượng ship** cho thảm/bọc ghế/lót cốp đang live. Về cấu trúc, nhóm hàng này nặng nhiều kg/bộ → fail cứng Pillar 4 (<500g), không phải fail biên. Kết luận: giữ nguyên vai trò *bài tập dựng Shopify* như đã chốt trước đây, không đầu tư thêm để tìm sản phẩm thật trong ngách này.
+
+#### 💅 2. Press-On Nails — research sống, có nguồn (dataConfidence: sourced)
+- **Google Trends thật** (đọc thẳng data feed \`widgetdata/multiline\`, US, 5 năm, "press on nails"): sàn tăng liên tục 18 (2021) → 44+ (cuối 2025), hiện tại (30/08/2026) = **54**. Có 1 đợt tăng vọt bất thường 29/3 → 12/4/2026 (chạm đỉnh 100/100) do breakout query **"olive and june"** / **"nail reformation"** — xác nhận đây là hiệu ứng 1 campaign của brand Olive & June, không phải nhu cầu nền tự nhiên; sàn thực tế nên tính là ~45-50, không phải 100.
+- **Meta Ads Library thật**: từ khoá "press on nails" (country=All) ra **>50.000 kết quả**. 2 brand nhỏ/vừa đáng chú ý: **Doonails** (doonails.de + us.doonails.com, chạy campaign liên tục 8 tháng 12/2025→7/2026, sản phẩm generic không founder cá nhân → pass Filter 2) và **Theonlynailsofficial** (góc fandom BTS, "handmade", 5 tuần — góc hẹp, rủi ro dùng tên nghệ sĩ không xin phép).
+- **Amazon thật**: **20.000+ kết quả**. Glamnetic 24pc kit — 13.4K reviews, 4.1★, "7K+ bought in past month", ~$14, Amazon tự gắn nhãn AI **"Positively reviewed for ease of application"**. 1 seller "Handmade" 10pc bán ~$16 — cao hơn kit hãng lớn → xác nhận góc "handmade/premium" bán được thật, không chỉ là suy đoán.
+- **Ứng viên cụ thể rút ra**: không phải "press on nails" chung chung (Olive & June đang thống trị) mà là **handmade/hand-painted, định vị thay thế đi nail salon** (pain thật: $40-60 + 1-2h/lần ở salon vs 7 phút tại nhà). COGS ~$2-5/kit landed → bán $15-20 (dataConfidence: **estimated**, chưa có báo giá supplier thật — việc tiếp theo).
+
+#### 🧭 3. Phương pháp: product-first hay customer-first?
+Chốt **product-first trước, customer-need sau — chỉ áp trên top 1-2 ứng viên đã lọt vòng**, không phải khảo sát khách hàng song song cho cả 6 ngách (không đủ nguồn lực cho 1 người làm một mình). Đúng thứ tự vừa áp dụng cho Nails ở trên.
+
+#### 🌱 4. Ngách khác giống Nails (sàn Trends ổn định + nhẹ)
+Từ báo cáo verified đã có: **Teething Toys** — sàn 5 năm chưa từng dưới ~54/100, ổn định hơn cả Nails. **Vegan Snacks** — sàn chưa dưới ~45/100 nhưng CPG dễ hỏng, phản diện tốt (Trends ổn định không đủ, phải khớp cả 4 Pillar). Phương pháp chung để tìm thêm: bám "nhu cầu tất yếu theo vòng đời" (không phải trend theo mùa) + luôn xem **sàn** Trends 5 năm (không phải đỉnh 12 tháng) + verify chéo Meta Ads + Amazon trước khi tin.
+
+#### ⚠️ Việc chưa làm
+TikTok Creative Center (bị chặn không render), Google Shopping (Google chặn captcha, không cố bypass theo đúng nguyên tắc), báo giá supplier thật cho Nails, và customer review sâu (đọc review thật trên NailHandy/Amazon) — vẫn còn ở mức estimated/chưa làm.`,
+  },
+  {
     id: "2026-08-29",
     date: "29/08/2026",
     title: "Mở rộng khung benchmark store + bắt đầu tự động hoá quét tin tức",
-    isLatest: true,
+    isLatest: false,
     content: `#### 🎯 Nguồn: \`~/personal/daily-log/2026-08-29.md\` (mục Dropship) — ngày làm việc còn dở dang, chưa có data mới đã verify, chỉ ghi lại đúng những gì đã làm.
 
 ---
