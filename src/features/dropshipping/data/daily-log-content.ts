@@ -12,7 +12,7 @@
 
 /** Nội dung markdown nguyên văn, key = ngày (YYYY-MM-DD). */
 export const REAL_LOG_CONTENT: Record<string, string> = {
-  '2026-08-19': `## Core
+  "2026-08-19": `## Core
 
 1. Fix loi kien truc frontend
    - Dung github copilot co ve kha cham va cung chua tot bang claude. Duoc khoang 80%
@@ -48,7 +48,7 @@ export const REAL_LOG_CONTENT: Record<string, string> = {
 4. Tap the duc
    - khong
 `,
-  '2026-08-20': `## Dropship
+  "2026-08-20": `## Dropship
 
 1. Tieu chi: kiem tien, k lan man. Bo sung tieu chi chon san pham o giai doan nay: khong phai la local brand, khong phai san pham trend,
 
@@ -73,7 +73,7 @@ export const REAL_LOG_CONTENT: Record<string, string> = {
 3. Tim cach kiem tien ben vung
    - co tuc tra co phieu deu dan. Truy tim lai lich su 5 nam tu 2020-2025
 `,
-  '2026-08-24': `## Core
+  "2026-08-24": `## Core
 
 
 ## Dropship
@@ -105,7 +105,7 @@ export const REAL_LOG_CONTENT: Record<string, string> = {
 - Section 58: Partition Database, Rất quan trọng (1)
 - Section 59: Partition Database dành cho Level cao, DBA | Phần 2
 `,
-  '2026-08-25': `## Core
+  "2026-08-25": `## Core
 
 1. Lam phan data viewer model
 2. Chua giai quyet duoc van de sync datapoint tu building nhu nao?
@@ -142,7 +142,7 @@ export const REAL_LOG_CONTENT: Record<string, string> = {
     - ngoai viec hoc truc tiep tu Ngo Thanh Ecom, co cach nao tham gia vao qua trinh san xuat truc tiep khi lam k? Cong ty ho dang van hanh tron tru r, vai tro cua minh se la gi? Cac cong viec lien quan den ky thuat thi da bi toi uu va loai bo dan
     - ke hoach sau 6 thang. truong hop lo, hoa von, lai 10tr/thang thi se lam gi tiep?
 `,
-  '2026-08-26': `## Core
+  "2026-08-26": `## Core
 
 1. 
 
@@ -163,5 +163,60 @@ export const REAL_LOG_CONTENT: Record<string, string> = {
 
 2. AI Engineering
    - [https://www.youtube.com/watch?v=OYvlznJ4IZQ&t=1543s](20 AI Concepts Explained in 40 Minutes)
+`,
+  "2026-08-27": `## Dropship
+
+1. Cập nhật thị trường thực tế
+   - Shopify chốt migration Checkout Extensibility (Additional Scripts cũ đã đóng).
+   - Meta CPM mùa Back-to-School/Q4 tăng; cần chuẩn bị creative diversity.
+
+2. Market research
+   - Rút lại candidate fairy lights, không xem là sản phẩm chốt.
+   - Mở hướng so sánh ngách Nails và bóc tách 3 store benchmark.
+
+3. Vận hành
+   - Tiếp tục ghi nguồn có link thật, tránh ghi số không trích dẫn.
+`,
+  "2026-08-28": `## Dropship
+
+1. Bóc tách 3 store Nails (NailHandy / Lovful / KISS)
+   - Live-check lại qua PPSPY.
+   - Sửa các claim sai ở bản trước (theme, giá, số ads không nguồn).
+
+2. Data honesty
+   - Các field không lấy được từ tool đánh dấu "chưa xác minh".
+   - Không suy margin/CAC từ công thức mặc định khi chưa có supplier quote thật.
+
+3. Kết luận trong ngày
+   - Dữ liệu benchmark store dùng được.
+   - Dữ liệu nhu cầu thị trường ngách Nails vẫn cần kiểm chứng thêm.
+`,
+  "2026-08-29": `## Dropship
+
+1. Mở rộng benchmark
+   - Lên khung thêm nhóm store ngoài ngách Nails (chưa có live-check hoàn chỉnh).
+
+2. Tự động hoá nguồn tin
+   - Bắt đầu thử workflow quét tin ecom mỗi sáng trước 6h.
+   - Chưa xem là nguồn "sourced" cho quyết định cho tới khi review lại.
+
+3. Trạng thái
+   - Chưa đóng gap cuối cho market-demand của ngách Nails.
+`,
+  "2026-08-31": `## Dropship
+
+1. Market research — quyết định sản phẩm
+   - Đóng gap data cho Nails/Teething bằng nguồn live (Trends, Meta Ads Library, Amazon).
+   - Loại 2 candidate video Facebook không còn fit.
+   - Chốt sản phẩm chính: **Teething Toys**.
+
+2. Supplier & asset thật
+   - Tìm supplier thật: Newsun Silicone Products.
+   - Lấy ảnh sản phẩm thật, xử lý 6 ảnh để dùng cho store.
+
+3. Video & store execution
+   - Dựng xong video preview 15s cho Snuglet Teether.
+   - Dựng theme Snuglet + tạo product + collection trong cùng store Shopify.
+   - Apex chuyển về bài tập cũ: 10 product chuyển Draft + tag \`apex-test\`.
 `,
 };

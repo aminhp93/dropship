@@ -28,6 +28,7 @@ import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
+  SNUGLET_STORE_CHECKLIST,
   APEX_STORE_CHECKLIST,
   ULTRACARMATS_STORE_CHECKLIST,
   STORE_LIST,
@@ -199,7 +200,7 @@ const APEX_JOURNEY_STAGES: JourneyStage[] = [
 ];
 
 export function StoreChecklistTab() {
-  const [selectedStoreId, setSelectedStoreId] = useState<string>("apex-auto-mats");
+  const [selectedStoreId, setSelectedStoreId] = useState<string>("snuglet");
   const [searchQuery, setSearchQuery] = useState("");
   const [openSections, setOpenSections] = useState<Set<string>>(
     new Set(["A", "B", "C", "H", "N", "U_A", "U_B", "U_C", "U_D"]),
@@ -217,9 +218,9 @@ export function StoreChecklistTab() {
 
   // Active Store Checklist
   const activeRawChecklist = useMemo(() => {
-    return selectedStoreId === "ultra-car-mats"
-      ? ULTRACARMATS_STORE_CHECKLIST
-      : APEX_STORE_CHECKLIST;
+    if (selectedStoreId === "ultra-car-mats") return ULTRACARMATS_STORE_CHECKLIST;
+    if (selectedStoreId === "apex-auto-mats") return APEX_STORE_CHECKLIST;
+    return SNUGLET_STORE_CHECKLIST;
   }, [selectedStoreId]);
 
   const allItems = useMemo(
@@ -310,9 +311,10 @@ export function StoreChecklistTab() {
               <button
                 onClick={() => setShowJourneyDialog(true)}
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold bg-purple-600 text-white hover:bg-purple-500 transition-all cursor-pointer shadow-xs"
+                title="Bản đồ khung mẫu dựng lúc học Apex — car mats, giữ làm tham khảo khung 6 giai đoạn, không phải hành trình khách hàng của Snuglet"
               >
                 <Compass className="w-4 h-4" />
-                <span>Hành Trình Khách Hàng</span>
+                <span>Hành Trình Khách Hàng (khung mẫu — Apex)</span>
               </button>
             )}
 
@@ -335,6 +337,21 @@ export function StoreChecklistTab() {
             <span>
               <strong>Dữ liệu bóc tách từ ultracarmats.com</strong> — Lưu ý không copy claim rủi ro (Airbag, ship 5 ngày).
             </span>
+          </div>
+        )}
+
+        {/* Per-store notice (vd: theme chưa publish, store đã archive) */}
+        {activeStore.notice && (
+          <div
+            className={cn(
+              "p-2.5 rounded-lg border text-[11px] flex items-center gap-2",
+              activeStore.isActive
+                ? "bg-sky-50 dark:bg-sky-950/30 border-sky-300/60 dark:border-sky-800 text-sky-800 dark:text-sky-300"
+                : "bg-zinc-100 dark:bg-zinc-900 border-zinc-300/60 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400",
+            )}
+          >
+            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+            <span>{activeStore.notice}</span>
           </div>
         )}
       </Card>

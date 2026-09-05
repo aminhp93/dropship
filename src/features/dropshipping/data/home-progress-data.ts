@@ -97,7 +97,8 @@ không lặp lại tình trạng "làm 1-2 buổi rồi dừng".
   {
     id: "theory",
     label: "Lý thuyết Ngô Thanh Ecom",
-    sourcePath: "workspace/dropship-progress/0-general/theory-ngo-thanh-ecom.md",
+    sourcePath:
+      "workspace/dropship-progress/0-general/theory-ngo-thanh-ecom.md",
     markdown: `# Theo dõi — Lý thuyết Ngô Thanh Ecom
 
 Cập nhật: 2026-08-24.
@@ -227,39 +228,33 @@ Không rõ có buổi học tiếp theo (Buổi 4+) hay khoá đã dừng ở bu
     sourcePath: "workspace/dropship-progress/3-video-creative/progress.md",
     markdown: `# Progress — Video AI
 
-Cập nhật: 2026-08-24.
+Cập nhật: 2026-08-31.
 
 ## Trạng thái
 
-Có thử 1 lần (xem \`create-video-task.md\`): mục tiêu là clone 1 video TikTok cụ thể (giọng "Adam")
-bằng workflow CapCut (auto caption → lấy script) → ChatGPT (gắn tag cảm xúc vào script) →
-ElevenLabs (text-to-speech giọng Adam). Ghi chú hiện tại là bản thoại thô, chưa có video kết quả,
-chưa rõ bước ghép hình/visual sau khi có giọng đọc.
+Đã rời flow clone giọng "Adam" cũ. Sản phẩm chính đã chốt là **Teething Toys** (brand **Snuglet**),
+và đã có bản video preview dọc **15s** dựng từ ảnh thật supplier Newsun.
 
-**Tự đánh giá của người dùng**: "chưa đâu vào đâu, nội dung lẫn workflow đều chưa chín chu" —
-đúng, file \`create-video-task.md\` chỉ có 1 nửa quy trình (audio), thiếu phần hình ảnh/edit cuối,
-và mục tiêu ban đầu ("agent/quy trình tạo video hoàn chỉnh trong 3-4 tiếng") chưa được xác nhận
-khả thi.
+Asset hiện có:
+- Video: \`videos/snuglet-teether-preview/renders/video.mp4\`
+- Ảnh nguồn: \`snuglet-store/product-photos/01-06\` (ảnh thật, không AI-generate)
+- Trạng thái: đã render xong preview, chưa thêm nhạc nền, chưa xuất bản kênh organic.
 
 ## Vấn đề
 
-- Đang nhắm tới việc clone/tái tạo 1 video cụ thể trước khi có sản phẩm thật để quay — thứ tự
-  ngược: nội dung tháng 2 cần là organic UGC về fairy lights, không phải video giọng AI dạng
-  storytelling như trong \`create-video-task.md\`. Cách làm video AI (nếu vẫn muốn dùng) nên gắn
-  với sản phẩm thật, không phải luyện kỹ thuật rời rạc.
-- Chưa rõ workflow phần hình ảnh (chỉ có audio/script).
+- Chưa có nhạc nền (đang chặn ở setup/login HeyGen CLI).
+- Chưa có bản quay tay UGC thật (tay cầm sản phẩm/bé dùng sản phẩm) để test hook organic.
+- Chưa log bộ chỉ số sau đăng (3s hold, CTR hồ sơ, comment hỏi mua).
 
 ## Việc tiếp theo đề xuất
 
-- Tạm gác việc luyện voice-clone kiểu "Adam" — không nằm trên đường găng tới Ngày 5-6 (kịch bản +
-  quay 2 video đầu, xem \`../0-general/timeline-6-thang.md\`).
-- Khi tới Ngày 5, ưu tiên format organic đơn giản trước (mặt người/tay cầm sản phẩm quay bằng
-  điện thoại, không cần AI voice) để không bị chặn bởi workflow AI chưa hoàn thiện.
-- Nếu vẫn muốn dùng AI voice sau này: viết lại toàn bộ workflow từ đầu (script → hình ảnh →
-  ghép) gắn với nội dung fairy lights thật, không tiếp tục clone video mẫu không liên quan.
+- Ưu tiên xuất bản 1-2 video organic đầu tiên cho Teething Toys bằng asset thật hiện có.
+- Bổ sung nhạc nền + caption CTA cho bản 15s trước khi đăng.
+- Chỉ quay lại voice-clone sau khi có tín hiệu organic ban đầu (tránh over-engineering).
 
 ## Tài liệu liên quan
-- \`create-video-task.md\` — ghi chú thô, nửa quy trình (chỉ phần audio).
+- \`workspace/doc/2-store/snuglet-data-skeleton.md\`
+- \`videos/snuglet-teether-preview/renders/video.mp4\`
 `,
   },
   {

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import type { ComponentProps } from "react";
 import { Card } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -10,54 +11,64 @@ export const Route = createFileRoute("/dropship/progress/3-video-creative")({
 
 const getTab = (id: string) => HOME_PROGRESS_TABS.find((t) => t.id === id);
 
+const MARKDOWN_COMPONENTS = {
+  a: ({ node: _node, ...props }: ComponentProps<"a"> & { node?: unknown }) => (
+    <a
+      {...props}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-red-600 underline hover:text-red-700 font-medium"
+    />
+  ),
+};
+
 const VIDEO_DRAFT_FLOW = [
   {
     step: 1,
-    label: "Chọn angle",
+    label: "Khóa angle theo sản phẩm đã chốt",
     detail:
-      "Dùng creative-ugc-director chọn 1 góc (pain point/before-after/demo) cho fairy lights — sản phẩm thật đã chốt, không phải video mẫu đang clone thử.",
+      "Sản phẩm chính đã chốt là Teething Toys (Snuglet). Ưu tiên angle sensory/cooling + BPA-free + giảm đau mọc răng, không quay lại flow fairy lights cũ.",
   },
   {
     step: 2,
-    label: "Viết hook 3 giây + script ngắn",
+    label: "Viết hook 3 giây + script 15s",
     detail:
-      "Không cần AI voice ngay — quay mặt/tay cầm sản phẩm bằng điện thoại trước, theo đúng khuyến nghị hiện có ở phần Video AI bên dưới.",
+      "Hook tập trung pain point thật của cha mẹ có bé mọc răng. Script ngắn theo nhịp video dọc đã dựng từ ảnh thật Newsun.",
   },
   {
     step: 3,
-    label: "Quay 12-20 giây",
-    detail: "Ánh sáng tự nhiên, không cần dựng cầu kỳ — ưu tiên ra video thật hơn video đẹp.",
+    label: "Asset trạng thái hiện tại",
+    detail:
+      "Đã có video preview 15s (1080x1920) dựng từ 6 ảnh thật sản phẩm. Chưa có bản quay tay UGC và chưa thêm nhạc nền.",
   },
   {
     step: 4,
-    label: "Edit CapCut cơ bản",
+    label: "Hoàn thiện bản đăng organic",
     detail:
-      "Cắt, caption tự động, nhạc nền — hoãn bước AI voice clone (giọng Adam) tới khi có vài video organic đơn giản trước.",
+      "Thêm nhạc nền, caption ngắn, CTA mềm (xem sản phẩm/đăng ký nhận ưu đãi). Hoãn voice-clone cho tới khi có tín hiệu organic đầu tiên.",
   },
   {
     step: 5,
-    label: "Đăng + log kết quả",
+    label: "Đăng + log tín hiệu",
     detail:
-      "Đăng TikTok, ghi view/like/comment vào phần Market Research để đối chiếu tín hiệu Gate B.",
+      "Đăng TikTok/Reels và log view/hold-rate/comment hỏi mua về tab Progress để đối chiếu Gate B (validate organic).",
   },
 ];
 
-function MarkdownCard({ tabId }: { tabId: string }) {
+function MarkdownCard({ tabId }: Readonly<{ tabId: string }>) {
   const tab = getTab(tabId);
   if (!tab) return null;
   return (
     <Card className="p-6 sm:p-8 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl shadow-2xs">
-      <p className="text-[10px] font-mono text-zinc-400 mb-4">{tab.sourcePath}</p>
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{
-            a: ({ node, ...props }) => (
-              <a {...props} target="_blank" rel="noopener noreferrer" className="text-red-600 underline hover:text-red-700 font-medium" />
-            ),
-          }}
-        >
-          {tab.markdown}
-        </ReactMarkdown>
+      <p className="text-[10px] font-mono text-zinc-400 mb-4">
+        {tab.sourcePath}
+      </p>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={MARKDOWN_COMPONENTS}
+      >
+        {tab.markdown}
+      </ReactMarkdown>
     </Card>
   );
 }
@@ -67,7 +78,7 @@ export function VideoCreativeTabRoute() {
     <div className="space-y-6">
       <Card className="p-5 border-amber-500/20 bg-amber-500/5 space-y-3">
         <h3 className="text-xs font-bold uppercase text-amber-700 dark:text-amber-500">
-          Draft flow (chưa có flow hoàn chỉnh — bản nháp đầu tiên)
+          Video execution flow (Snuglet · Teething Toys)
         </h3>
         <div className="space-y-2.5">
           {VIDEO_DRAFT_FLOW.map((f) => (

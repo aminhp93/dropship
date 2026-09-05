@@ -1,5 +1,11 @@
-// Nguồn: workspace/dropship-progress/2-store/store-setup-checklist.md & ultra-car-mats-car-seat-covers.md
-// Data cho Store Switcher: Store Apex Auto Mats (Của bạn) vs Ultra Car Mats (Đối thủ tham chiếu)
+// Nguồn: workspace/doc/2-store/snuglet-data-skeleton.md (Snuglet — store đang làm thật),
+// workspace/dropship-progress/2-store/store-setup-checklist.md (Apex — bài tập cũ),
+// ultra-car-mats-car-seat-covers.md (đối thủ tham chiếu).
+//
+// LƯU Ý QUAN TRỌNG (31/08/2026): Apex Auto Mats KHÔNG còn là store đang phát triển.
+// Nó là bài tập học thao tác Shopify — 10 product đã chuyển Draft + gắn tag
+// `apex-test`. Sản phẩm thật đã chốt là Teething Toys, brand Snuglet, nằm CÙNG
+// 1 store Shopify (1 account = 1 live theme), phân biệt bằng tag + theme riêng.
 
 export type StoreChecklistItem = {
   id: string;
@@ -26,9 +32,27 @@ export type StoreListEntry = {
   status: string;
   badgeText: string;
   isCompetitor?: boolean;
+  /** Store đang phát triển thật — chỉ 1 store duy nhất được gắn cờ này. */
+  isActive?: boolean;
+  /** Cảnh báo hiện ngay dưới dropdown (vd: store này đã archive, đừng nhầm). */
+  notice?: string;
 };
 
 export const STORE_LIST: StoreListEntry[] = [
+  {
+    id: "snuglet",
+    name: "Snuglet",
+    niche: "Teething Toys / Sensory Silicone Teether",
+    domain: "t5e41i-5q.myshopify.com",
+    storeUrl:
+      "https://t5e41i-5q.myshopify.com/?preview_theme_id=191145410877",
+    plan: "Basic ($39/mo) — dùng chung store với Apex",
+    status: "Đang dựng — theme + product + collection xong, CHƯA publish",
+    badgeText: "Store Đang Làm (Active)",
+    isActive: true,
+    notice:
+      "Theme Snuglet đang ở trạng thái UNPUBLISHED — link ở trên là link preview. Khách vào domain chính vẫn thấy theme cũ (Apex). Muốn đổi phải tự bấm Publish trong Shopify Admin → Online Store → Themes.",
+  },
   {
     id: "apex-auto-mats",
     name: "Apex Auto Mats",
@@ -36,9 +60,11 @@ export const STORE_LIST: StoreListEntry[] = [
     domain: "t5e41i-5q.myshopify.com",
     storeUrl: "https://t5e41i-5q.myshopify.com/",
     plan: "Basic ($39/mo)",
-    status: "Đang setup — theo checklist A→N bên dưới",
-    badgeText: "Store Của Bạn (Your Store)",
+    status: "Đã archive 31/08 — 10 product Draft + tag `apex-test`",
+    badgeText: "Bài Tập Cũ (Archived)",
     isCompetitor: false,
+    notice:
+      "Đây là bài tập học thao tác Shopify, KHÔNG phải sản phẩm thật. Checklist dưới đây giữ lại làm tư liệu (những việc này đã thực sự làm), không phải việc đang chạy. Theme Apex hiện vẫn là theme live vì Snuglet chưa publish.",
   },
   {
     id: "ultra-car-mats",
@@ -50,6 +76,164 @@ export const STORE_LIST: StoreListEntry[] = [
     status: "Store Live — 100,000+ Customers, Est. 2021",
     badgeText: "Đối Thủ Tham Chiếu (Reference Store)",
     isCompetitor: true,
+  },
+];
+
+/**
+ * Checklist THẬT của Snuglet — sản phẩm đã chốt (Teething Toys), đang chạy.
+ * Tất cả mục `done: true` dưới đây đã thực hiện thật qua Shopify Admin GraphQL
+ * (không phải dự định) — verify được bằng link Live Web / Preview ở trên.
+ */
+export const SNUGLET_STORE_CHECKLIST: StoreChecklistSection[] = [
+  {
+    id: "S_A",
+    title: "A. Sản phẩm & Supplier",
+    items: [
+      {
+        id: "SA1",
+        done: true,
+        label: "Chốt sản phẩm: Teething Toys (silicone sensory teether) — điểm evergreen nhất trong 4 báo cáo verified.",
+        howTo: "Xem tab 1. Market Research → card ưu tiên Teething Toys.",
+        previewTitle: "Vì Sao Chốt Teething Toys",
+        previewContent: `### Lý do chốt Teething Toys
+- Trends 5 năm chưa từng dưới 54/100 — sàn ổn định nhất trong mọi ngách đã nghiên cứu.
+- Amazon top seller 20K+ bought/tháng, ~130 active ads (chưa brand nào độc chiếm — khác Nails có >50.000 ads).
+- Nhu cầu evergreen theo vòng đời sinh học (bé mọc răng 0-18 tháng), không phụ thuộc trend/mùa.`
+      },
+      {
+        id: "SA2",
+        done: true,
+        label: "Tìm & xác nhận supplier thật: Newsun Silicone Products Co., Limited (Made-in-China.com).",
+        howTo: "newsunsilicone.en.made-in-china.com",
+        previewTitle: "Thông Số Supplier Thật (Newsun)",
+        previewContent: `### Newsun Silicone Products — Thông Số Sản Phẩm
+- **Kích thước**: 77mm / 3.0 inch
+- **Chất liệu**: 100% Food Grade Silicone
+- **Trọng lượng**: 25g
+- **Độ tuổi**: 3-18 tháng
+- **Màu**: Y2 / Y10 / Y19 / Y21 / Y24 / Y26
+- **Ước tính ship**: chưa chốt hãng vận chuyển/giá — cần báo giá thật trước khi launch ads.`
+      },
+      {
+        id: "SA3",
+        done: false,
+        label: "Đặt mẫu vật lý thật từ Newsun để tự kiểm tra chất lượng trước khi tin tưởng hoàn toàn.",
+        howTo: "Liên hệ supplier qua Made-in-China, đặt mẫu test.",
+      },
+      {
+        id: "SA4",
+        done: false,
+        label: "Báo giá vận chuyển & MOQ thật từ Newsun (hiện chỉ có thông số sản phẩm, chưa có giá ship/MOQ).",
+        howTo: "Liên hệ trực tiếp supplier.",
+      },
+    ],
+  },
+  {
+    id: "S_B",
+    title: "B. Ảnh & Video (31/08)",
+    items: [
+      {
+        id: "SB1",
+        done: true,
+        label: "Lấy 6 ảnh thật từ listing Newsun, xoá chữ overlay của supplier (Pillow crop).",
+        howTo: "workspace/doc/2-store/snuglet-data-skeleton.md § 4b.",
+        previewTitle: "6 Ảnh Sản Phẩm Thật",
+        previewContent: `### Ảnh Thật Đã Xử Lý (snuglet-store/product-photos/)
+1. **01-hero-colors.jpg** — 6 màu lên hình cùng lúc, không chữ (ảnh chính Shopify).
+2. **02-baby-lifestyle-square.jpg** — bé thật đang gặm sản phẩm, crop vuông.
+3. **03-flex-detail.jpg** — chi tiết độ mềm dẻo silicone.
+4. **04-water-splash.jpg** — chống nước.
+5. **05-texture-macro.jpg** — bề mặt texture cận cảnh.
+6. **06-spec-sheet.jpg** — bảng thông số supplier gốc (giữ nguyên, không crop).`
+      },
+      {
+        id: "SB2",
+        done: true,
+        label: "Dựng video preview 15s từ ảnh thật (HyperFrames), Ken Burns + brand color sage/terracotta.",
+        howTo: "videos/snuglet-teether-preview/renders/video.mp4 — 7.2MB, 1080x1920, WCAG AA pass.",
+        previewTitle: "Video Preview 15 Giây",
+        previewContent: `### Video Preview Snuglet Teether (15s)
+- 6 cảnh: brand-open → baby lifestyle → color lineup → texture macro → water splash → closing card.
+- Dựng từ ảnh sản phẩm thật của Newsun, không phải ảnh AI-generate.
+- **Chưa có nhạc nền** — cần cài/đăng nhập HeyGen CLI (việc của bạn, chưa làm).`
+      },
+      {
+        id: "SB3",
+        done: false,
+        label: "Thêm nhạc nền cho video 15s (chặn ở việc cài/đăng nhập HeyGen CLI).",
+        howTo: "Cần bạn tự cài & login HeyGen CLI trước.",
+      },
+    ],
+  },
+  {
+    id: "S_C",
+    title: "C. Store, Theme & Product (Shopify Admin — cùng account với Apex)",
+    items: [
+      {
+        id: "SC1",
+        done: true,
+        label: "Archive Apex: 10 product cũ → Draft + gắn tag `apex-test` (không xoá, chỉ ẩn khỏi khách).",
+        howTo: "Đã làm qua GraphQL bulk-update-product-status + tagsAdd.",
+      },
+      {
+        id: "SC2",
+        done: true,
+        label: "Duplicate theme Dawn → theme mới \"Snuglet\", tuỳ biến màu/font/button theo brand, sửa 8 lỗi schema (chỉ lộ khi upload thật, `theme check` không bắt được).",
+        howTo: "Admin → Online Store → Themes → Snuglet (UNPUBLISHED).",
+        previewTitle: "8 Lỗi Đã Sửa Khi Deploy Theme",
+        previewContent: `### Lỗi Schema Thật Gặp Khi Deploy (không phải lỗi lint tĩnh)
+1. Range setting vượt max cho phép (radius_button).
+2. 2 range setting <3 bước (products_per_row_mobile, columns_mobile).
+3. Label setting >70 ký tự (video block, hero.liquid).
+4. Header content schema >50 ký tự (reviews.liquid).
+5. Text setting default:"" không hợp lệ (short_benefit).
+6. \`font_face\` filter không tự bọc \`<style>\` — CSS hiện ra như text thô.
+7. \`| t\` filter dùng sai trên giá trị thật → hiện "Translation missing".
+8. 2 lỗi dây chuyền từ (2)+(3) ở trên.
+
+Đã sửa cả ở \`snuglet-store/\` lẫn \`shopify-theme-starter/\` (theme gốc dùng lại cho store sau).`
+      },
+      {
+        id: "SC3",
+        done: true,
+        label: "Tạo product thật: \"3-Piece Sensory Teether Set\" — Draft, vendor Snuglet, $19.99 (compare-at $27.99), 6 ảnh thật đính kèm.",
+        howTo: "Admin → Products → 3-Piece Sensory Teether Set.",
+      },
+      {
+        id: "SC4",
+        done: true,
+        label: "Tạo collection \"Sensory Teethers\" — smart collection, rule tag = snuglet.",
+        howTo: "Admin → Products → Collections → Sensory Teethers.",
+      },
+      {
+        id: "SC5",
+        done: false,
+        label: "Publish theme Snuglet làm theme live (hiện vẫn UNPUBLISHED, khách vào domain chính vẫn thấy Apex/Dawn cũ).",
+        howTo: "Việc CẦN BẠN TỰ BẤM: Admin → Online Store → Themes → Snuglet → Publish.",
+        previewTitle: "⚠️ Việc Cần Bạn Tự Làm",
+        previewContent: `### Publish Theme — Không Tự Động Làm Thay
+Đây là hành động ảnh hưởng trực tiếp tới khách hàng thật (đổi giao diện store live) nên
+để bạn tự quyết định thời điểm bấm Publish, không tự ý làm thay.`
+      },
+      {
+        id: "SC6",
+        done: false,
+        label: "Đổi product Draft → Active khi sẵn sàng bán thật.",
+        howTo: "Admin → Products → 3-Piece Sensory Teether Set → Set Active.",
+      },
+      {
+        id: "SC7",
+        done: false,
+        label: "Trang pháp lý (Privacy/Refund/Shipping/Terms) riêng cho Snuglet — hiện các trang cũ vẫn là nội dung Apex Auto Mats.",
+        howTo: "Admin → Online Store → Pages — cần viết lại theo brand + supplier Snuglet.",
+      },
+      {
+        id: "SC8",
+        done: false,
+        label: "Domain riêng, currency/market cho Snuglet — hiện vẫn dùng domain mặc định t5e41i-5q.myshopify.com dùng chung với Apex.",
+        howTo: "Admin → Settings → Domains / Markets.",
+      },
+    ],
   },
 ];
 

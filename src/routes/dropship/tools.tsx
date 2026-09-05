@@ -5,45 +5,28 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ListChecks, Target, ShoppingBag, Video } from "lucide-react";
+import { Image as ImageIcon, Video, Store } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/dropship/progress")({
-  component: ProgressLayout,
+export const Route = createFileRoute("/dropship/tools")({
+  component: ToolsLayout,
 });
 
-const PROGRESS_TABS = [
-  {
-    to: "/dropship/progress/0-timeline",
-    label: "0. Timeline",
-    icon: ListChecks,
-  },
-  {
-    to: "/dropship/progress/1-market-research",
-    label: "1. Market Research",
-    icon: Target,
-  },
-  {
-    to: "/dropship/progress/2-store",
-    label: "2. Store (Snuglet)",
-    icon: ShoppingBag,
-  },
-  {
-    to: "/dropship/progress/3-video-creative",
-    label: "3. Video Creative",
-    icon: Video,
-  },
+const TOOLS_TABS = [
+  { to: "/dropship/tools/1-image", label: "1. Ảnh", icon: ImageIcon },
+  { to: "/dropship/tools/2-video", label: "2. Video", icon: Video },
+  { to: "/dropship/tools/3-store", label: "3. Store", icon: Store },
 ];
 
-export function ProgressLayout() {
+export function ToolsLayout() {
   const location = useLocation();
 
   return (
     <ScrollArea className="h-full">
-      <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-6">
+      <div className="p-6 md:p-8 max-w-6xl mx-auto space-y-6">
         {/* Sub-route Tab Links */}
         <div className="flex items-center gap-1.5 flex-wrap p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
-          {PROGRESS_TABS.map((tab) => {
+          {TOOLS_TABS.map((tab) => {
             const isActive = location.pathname.startsWith(tab.to);
 
             return (

@@ -4,7 +4,7 @@ import {
   Link,
   useLocation,
 } from "@tanstack/react-router";
-import { LayoutGrid, ListChecks, BookOpen } from "lucide-react";
+import { Radar, ListChecks, BookOpen, Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dropship")({
@@ -14,9 +14,13 @@ export const Route = createFileRoute("/dropship")({
 export function DropshipLayout() {
   const location = useLocation();
 
+  // "Dashboard (Buổi 4)" cũ gây hiểu nhầm là trang theo dõi tiến độ store của
+  // mình. Thực chất đó là tool quét store đối thủ + gen ảnh + đăng bài, không
+  // đọc dữ liệu store thật (Apex/Snuglet) lần nào. Tiến độ store nằm ở Progress.
   const navItems = [
-    { to: "/dropship/dashboard", label: "Dashboard (Buổi 4)", icon: LayoutGrid },
     { to: "/dropship/progress", label: "Progress", icon: ListChecks },
+    { to: "/dropship/dashboard", label: "Tool: Quét đối thủ", icon: Radar },
+    { to: "/dropship/tools", label: "Tools", icon: Wrench },
     { to: "/dropship/doc", label: "Doc", icon: BookOpen },
   ];
 

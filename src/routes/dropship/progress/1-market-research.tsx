@@ -31,6 +31,7 @@ import {
   TrendingUp,
   Table as TableIcon,
   LayoutGrid,
+  Users,
 } from "lucide-react";
 
 export const Route = createFileRoute("/dropship/progress/1-market-research")({
@@ -133,15 +134,15 @@ const MARKET_RESEARCH_NICHES: NicheItem[] = [
   {
     num: 5,
     title: "Child and Baby",
-    status: "done",
+    status: "done-decided",
     path: "workspace/doc/1-market-research/5-Child and baby.html",
     fullPath:
       "/Users/aminhp93/personal/dropship/workspace/doc/1-market-research/5-Child and baby.html",
-    note: "5 sản phẩm, cùng chuẩn live-check (Trends đọc thẳng từ JSON feed của Google, có ngày giờ cụ thể).",
+    note: "5 sản phẩm, cùng chuẩn live-check (Trends đọc thẳng từ JSON feed của Google, có ngày giờ cụ thể). Teething Toys đã CHỐT làm sản phẩm chính 31/08 — xem card ưu tiên đầu trang + tab 2. Store Snuglet.",
     dataQuality: "verified",
     topCandidate:
-      "Baby Bottles — nhưng Teething Toys (7/10) evergreen nhất trong CẢ 4 báo cáo verified",
-    topScore: "8/10",
+      "Teething Toys (7/10) — ĐÃ CHỐT 31/08, đang triển khai store Snuglet (Baby Bottles từng điểm cao hơn nhưng không evergreen bằng)",
+    topScore: "7/10 · đã chốt",
   },
   {
     num: 6,
@@ -154,10 +155,11 @@ const MARKET_RESEARCH_NICHES: NicheItem[] = [
     altFullPath:
       "/Users/aminhp93/personal/dropship/workspace/doc/1-market-research/6-press-on-nails-niche-report.html",
     altLabel: "Bản HTML Báo Cáo (còn số liệu sai, đừng dùng)",
-    note: 'Điểm 9.4/10 cao nhất toàn bộ 6 ngách NHƯNG không có trích dẫn Trends/TikTok live — bản HTML gốc đã bị bắt bịa số 1 lần ("83 Ads", theme "Shrine PRO") ngày 28/08. Chưa ai search tay lại Meta Ads Library/Trends cho ngách này theo đúng chuẩn 3 báo cáo verified.',
-    dataQuality: "unverified",
-    topCandidate: "Handmade Press-On Nails",
-    topScore: "9.4/10 (chưa verified)",
+    note: 'Điểm 9.4/10 gốc dựa trên số bịa ("83 Ads", theme "Shrine PRO", ngày 28/08) — đã đóng gap 31/08: search tay lại Trends (data feed live, 5 năm) + Meta Ads Library + Amazon, đúng chuẩn 3 báo cáo verified kia. Chi tiết & nghiên cứu khách hàng ở phần "Sản phẩm tiềm năng" đầu trang.',
+    dataQuality: "verified",
+    topCandidate: "Handmade Press-On Nails — định vị thay thế đi nail salon",
+    topScore:
+      "Pass Filter 1 & 2 (report gốc 9.4/10 chưa chấm lại đúng ma trận)",
   },
 ];
 
@@ -323,7 +325,8 @@ const MARKET_RESEARCH_DAILY_LOGS: DailyResearchLog[] = [
   {
     id: "2026-08-31",
     date: "31/08/2026",
-    title: "Đóng gap Handmade Press-On Nails: research thật (Trends/Meta Ads/Amazon) + đánh giá Car Mats",
+    title:
+      "Đóng gap Handmade Press-On Nails: research thật (Trends/Meta Ads/Amazon) + đánh giá Car Mats",
     isLatest: true,
     content: `#### 🎯 Nguồn: phiên chat 31/08/2026 — trả lời trực tiếp 3 câu hỏi đánh giá (Car Mats có fit không? Nails đào sâu thế nào? Ngách nào khác giống Nails?). Đây chính là gap đã note tồn đọng từ 29/08 ("chưa search tay lại Meta Ads Library/Trends cho Nails") — hôm nay đóng lại bằng data sống, đúng chuẩn 4 báo cáo verified khác.
 
@@ -344,8 +347,37 @@ Chốt **product-first trước, customer-need sau — chỉ áp trên top 1-2 �
 #### 🌱 4. Ngách khác giống Nails (sàn Trends ổn định + nhẹ)
 Từ báo cáo verified đã có: **Teething Toys** — sàn 5 năm chưa từng dưới ~54/100, ổn định hơn cả Nails. **Vegan Snacks** — sàn chưa dưới ~45/100 nhưng CPG dễ hỏng, phản diện tốt (Trends ổn định không đủ, phải khớp cả 4 Pillar). Phương pháp chung để tìm thêm: bám "nhu cầu tất yếu theo vòng đời" (không phải trend theo mùa) + luôn xem **sàn** Trends 5 năm (không phải đỉnh 12 tháng) + verify chéo Meta Ads + Amazon trước khi tin.
 
+#### 🎯 5. Đưa lên trang + nghiên cứu khách hàng cho Teething Toys (bổ sung cùng ngày)
+Theo yêu cầu tiếp theo — đưa toàn bộ nội dung trên vào chính trang này thay vì chỉ nằm trong chat, và đặt 2 sản phẩm tiềm năng nhất (Nails, Teething Toys) lên đầu trang thành phần riêng "🎯 2 Sản Phẩm Tiềm Năng Đang Ưu Tiên". Đồng thời research thêm **Amazon thật cho Teething Toys** (chưa có trong log lúc sáng): 8.000+ kết quả, "Overall Pick" Montessori Sensory Teether 4.7★/11.9K review/**20K+ bought-tháng** (velocity cao nhất trong 2 sản phẩm), Frida Baby 4-in-1 4.6★/11.6K review, nhãn AI "Positively reviewed for teething time" — không có 1 brand thắng tuyệt đối, thị trường phân mảnh thật.
+
+#### 🛒 6. Bước tiếp theo: supplier trước, dựng store sau
+Nếu chọn 1 trong 2 sản phẩm trên, thứ tự đúng là **tìm supplier thật trước, dựng/chỉnh store sau** — không phải ngược lại. Lý do: COGS cả 2 sản phẩm hiện vẫn chỉ là *estimated*, chưa biết margin thật có đạt 3-4x/75-80% không; cần có mẫu vật lý trong tay để quay content/kiểm tra wow-factor thật; và phần dựng store không phải nút thắt — đã có sẵn theme starter tái dùng được (\`shopify-theme-starter\`), dựng nhanh được sau khi chốt sản phẩm. Lặp lại đúng bài học từ Apex Auto Mats: dựng store trước rồi mới phát hiện sản phẩm sai (nặng >500g) là thứ tự ngược, tốn công vô ích.
+
+#### 📰 7. Check tin tức thật hôm nay (Nhóm 1 — Tin tức & chính sách nền tảng)
+Automation setup 29/08 vẫn chưa cho ra kết quả xem được — nên check tay trực tiếp lại đúng 4 nguồn đã liệt kê trong Resource Guide, thay vì tin automation:
+- **Shopify Changelog**: mục mới nhất là 24/08 ("US tax calculation accuracy improvements") — 7 ngày rồi chưa có gì mới, không có gì khẩn.
+- **Meta for Business News**: bài mới nhất là 11/06/2026 — feed này gần như không cập nhật, không phải nguồn đáng xem hàng ngày/hàng tuần.
+- **TikTok Newsroom**: toàn tin PR nghệ sĩ/creator (Bella Kay, Alex Warren...), không có tin chính sách ads/business — nguồn này bị chọn sai mục đích trong Resource Guide, cần thay bằng TikTok for Business Help Center nếu cần tin chính sách ads.
+- **Modern Retail** (nguồn mới, ngoài 3 cái trên): có 1 tin thật đáng chú ý, đúng ngày hôm nay — **"Rising raw material costs are hitting everything from stickers to foil"** (31/08/2026): giá vinyl tăng ~6% trong 2026 (sau khi tăng 2.9% năm ngoái), PVC/resin cũng tăng theo giá dầu — nguyên liệu nhựa/silicone dùng cho cả press-on nails lẫn teething toys đều có nguy cơ COGS tăng nhẹ trong các tháng tới. Đáng nhắc supplier khi hỏi báo giá.
+- **Kết luận**: xác nhận lại đúng điều đã nói trong chat — phần lớn ngày sẽ KHÔNG có gì mới để đọc từ 3 nguồn chính sách (Shopify/Meta/TikTok), nên không cần biến việc đọc tin thành thói quen hàng ngày; chỉ Modern Retail (ngành bán lẻ nói chung) có nhịp ra tin hàng ngày thật.
+
+#### 📰 8. Bổ sung tin tức — quét rộng hơn qua tổng hợp ngành (khác nguồn với điểm 7)
+Điểm 7 chỉ check trực tiếp 3 trang chính sách gốc (thường ít cập nhật) — quét thêm qua bài tổng hợp ngành ra vài tin thật đáng chú ý và actionable hơn:
+- **Shopify — deadline 26/08 đã thật sự diễn ra**: Shopify tự động nâng cấp Thank You/Order Status page cho toàn bộ store non-Plus (đúng như log 27/08 đã cảnh báo trước) — Additional Scripts cũ bị đóng, phải qua Web Pixels API. **Việc cần làm**: xác nhận Apex Auto Mats (theme đang live) không có custom script nào từng gắn ở Additional Scripts bị rớt tracking Meta/TikTok Pixel.
+- **Meta — advertiser verification giờ bắt buộc ở 38 nước** (tăng từ 12 nước năm 2024), AI-generated ad content phải công khai gắn nhãn rõ hơn. Nếu sau này chạy Meta Ads cho Nails/Teething Toys, cần verify tài khoản advertiser TRƯỚC khi launch, không làm song song lúc gấp.
+- **TikTok Shop — 2 quy định mới nếu sau này mở kênh này** (hiện chưa dùng, nhưng đáng biết trước khi cân nhắc): (1) cọc an toàn $1.500/store bắt buộc từ 15/12/2025 cho merchant US cross-border, (2) từ 6/1/2026 nhãn vận đơn USPS bắt buộc mua qua hệ thống TikTok Shipping (4PL) — nhãn tự mua/tự in ngoài có thể bị từ chối.
+- **Lưu ý nguồn**: 3 tin trên lấy từ bài tổng hợp/phân tích bên thứ 3 (không phải trang chính sách gốc) — đủ tin để nắm hướng, nhưng nếu cần ra quyết định lớn (VD mở TikTok Shop) thì đọc lại đúng trang chính sách gốc trước khi làm theo. Nguồn: [Shopify Updates August 2026 — fudge.ai](https://www.fudge.ai/blog/shopify-updates-august-2026/) · [Meta Ads Policy Update 2026 — denote.net](https://denote.net/blog/meta-ads-policy-update-2026) · [TikTok Shop Dropshipping Policy 2026 — AutoDS](https://www.autods.com/blog/does-tiktok-shop-allow-dropshipping/).
+
+#### 🍼 9. CHỐT sản phẩm: Teething Toys — bắt đầu giai đoạn thực thi (supplier, giá, store)
+User chốt **Teething Toys** làm sản phẩm chính thức để triển khai. Bắt đầu đúng thứ tự đã note ở mục 6 (supplier trước, store sau):
+- **Supplier thật** (Made-in-China.com, sourced): sensory silicone teether $0.35-2.00 FOB/cái, MOQ thấp nhất chỉ 1-20 pcs. Ứng viên đầu: **Newsun Silicone Products Co., Limited** (Guangdong, Diamond Member) — xuất hiện nhiều nhất, MOQ 10-20pcs phù hợp đặt sample.
+- **Margin lần đầu tính được từ COGS thật**: landed ước tính $3-6/cái (unit $0.45-1.60 + ship ~$2-4/đơn, ship vẫn estimated). Đề xuất bán **bộ 3 cái $19.99** thay vì bán lẻ — margin rộng hơn, khớp cách Frida Baby/competitor đã làm.
+- **Thị trường**: giữ US — toàn bộ data verified đều US.
+- **Brand & store**: đặt tên **Snuglet**. User chọn tạo Shopify store MỚI (không tái dùng Apex Auto Mats). Đã copy \`shopify-theme-starter/\` → \`snuglet-store/\` (bản riêng, không đụng bản gốc dùng chung), set màu/layout brand (sage \`#3F6B5A\` + terracotta \`#D97757\`), viết lại toàn bộ copy trang chủ (hero/trust-bar/benefits/how-it-works/FAQ) bằng nội dung thật — **bỏ hẳn section Testimonials** vì chưa có review thật, đúng pattern honest-copy đã dùng ở Apex Auto Mats. \`shopify theme check\` → 0 offenses. Data đầy đủ ở [snuglet-data-skeleton.md](file:///Users/aminhp93/personal/dropship/workspace/doc/2-store/snuglet-data-skeleton.md).
+- **Ảnh/video**: chưa làm được — cần mẫu vật lý trong tay trước, không dùng ảnh AI giả làm ảnh sản phẩm thật.
+
 #### ⚠️ Việc chưa làm
-TikTok Creative Center (bị chặn không render), Google Shopping (Google chặn captcha, không cố bypass theo đúng nguyên tắc), báo giá supplier thật cho Nails, và customer review sâu (đọc review thật trên NailHandy/Amazon) — vẫn còn ở mức estimated/chưa làm.`,
+TikTok Creative Center (bị chặn không render), Google Shopping (Google chặn captcha, không cố bypass theo đúng nguyên tắc), báo giá supplier thật cho Nails và Teething Toys, MSV/CPC cho Teething Toys, đọc review text thật từng cái (hiện mới có rating/review-count/nhãn AI tổng hợp, chưa đọc từng review) — vẫn còn ở mức estimated/chưa làm. Riêng Snuglet: đặt sample từ Newsun, chờ user tạo Shopify trial mới để kết nối MCP + deploy theme + set shipping zones thật (không lặp lại lỗi để trống zones như Apex Auto Mats).`,
   },
   {
     id: "2026-08-29",
@@ -491,7 +523,7 @@ const NICHE_VERDICTS: NicheVerdict[] = [
     score: "7/10",
     quality: "verified",
     fit: "Floor Trends KHÔNG BAO GIỜ dưới ~54/100 suốt 5 năm — evergreen nhất trong toàn bộ 4 báo cáo verified. Nhẹ, không pin không chất lỏng. TikTok viral 933K likes. Thị trường ads còn nhỏ (~130 active) — chưa bị 1 brand độc chiếm như Baby Bottles (Tommee Tippee/Philips Avent) hay Diapers (Pampers/Huggies).",
-    risk: "Chưa từng được cân nhắc làm sản phẩm chính trong toàn bộ quá trình nghiên cứu — cần đặt mẫu test trước khi tin tưởng hoàn toàn.",
+    risk: "Đã chốt làm sản phẩm chính (31/08) và đang triển khai store Snuglet; phần còn thiếu là mẫu vật lý + báo giá ship/MOQ thật để khóa margin/compliance trước khi launch ads.",
   },
   {
     niche: "Car Accessories",
@@ -520,12 +552,705 @@ const NICHE_VERDICTS: NicheVerdict[] = [
   {
     niche: "Press-On Nails",
     candidate: "Handmade Press-On Nails",
-    score: "9.4/10 (report gốc)",
-    quality: "unverified",
-    fit: "Điểm cao nhất trong TOÀN BỘ 6 ngách, margin rất dày (>78%), 3 store benchmark (NailHandy/Lovful/KISS) đã được live-check thật qua PPSPY — phần benchmark store là tin được.",
-    risk: 'Nhưng phần NHU CẦU THỊ TRƯỜNG (Trends +18% YoY, 2.8B TikTok views) hoàn toàn không có trích dẫn nguồn — đúng dạng số liệu đã bị bắt bịa 1 lần trong report này (theme sai, "83 Ads" không nguồn). Sản phẩm cũng là hàng thủ công (vẽ tay), COGS $3.5-5 cho hàng handmade nghe khó tin — chuỗi cung ứng phức tạp hơn 1 SKU nhà máy thường.',
+    score: "Pass Filter 1 & 2 (report gốc 9.4/10 chưa chấm lại)",
+    quality: "verified",
+    fit: 'Đóng gap 31/08 bằng data sourced thật: Trends 5 năm sàn tăng liên tục 18→44+, hiện tại 54 (đỉnh 100 chỉ do 1 breakout campaign "olive and june", không tính baseline). Meta Ads Library >50.000 kết quả, có brand nhỏ/vừa generic (Doonails, 8 tháng liên tục) chứng minh ngách KHÔNG bị khoá bởi brand cá nhân. Amazon 20.000+ kết quả, top seller 13.4K review/7K+ bought-tháng — nhu cầu thật, lớn. Xem chi tiết & nghiên cứu khách hàng ở phần "Sản phẩm tiềm năng" đầu trang.',
+    risk: "COGS vẫn chỉ estimated ($2-5/kit, chưa có báo giá supplier thật), TikTok Creative Center bị chặn và Google Shopping bị Google chặn captcha nên 2 nguồn này chưa lấy được. Nếu đi hướng thủ công (vẽ tay) thật, chuỗi cung ứng phức tạp hơn 1 SKU nhà máy thường — cần xác nhận supplier trước khi tin margin.",
   },
 ];
+
+interface PriorityProduct {
+  id: string;
+  emoji: string;
+  name: string;
+  subtitle: string;
+  scoreLabel: string;
+  quality: NicheItem["dataQuality"];
+  accent: "pink" | "sky";
+  /** 1-2 câu tóm tắt — phần LUÔN hiện, không cần bấm expand mới thấy. */
+  quickSummary: string;
+  trends: string;
+  metaAds: string;
+  marketplace: string;
+  customerProfile: string;
+  customerSignal: string;
+  recommendedAngle: string;
+  nextSteps: string[];
+  /** Link thật để backup số liệu khi cần verify lại — mở live được, không phải trích dẫn suông. */
+  sourceLinks: { label: string; url: string }[];
+  /** Đánh giá store đối thủ cụ thể (live-check thật: trang sản phẩm + Meta Ads Library + video ad + sourcing) — optional, chỉ điền khi đã thực sự bóc tách 1 store. */
+  competitorReviews?: CompetitorStoreReview[];
+}
+
+interface CompetitorStoreReview {
+  id: string;
+  storeName: string;
+  url: string;
+  checkedDate: string;
+  /** 1 câu nhận diện nhanh: đây có phải cùng sản phẩm hay chỉ cùng khách hàng mục tiêu. */
+  productNote: string;
+  copyAndOffer: string;
+  visualsAndTheme: string;
+  adsLibraryFindings: string;
+  sourcingCost: string;
+  strengths: string[];
+  weaknesses: string[];
+  takeaways: string;
+}
+
+/**
+ * 2 sản phẩm đang được ưu tiên xem xét nhất, theo yêu cầu 31/08 ("đặt lên đầu").
+ * Cả 2 đều đã pass Filter 1 & 2 (Section 0, SKILL.md) VÀ có data sourced thật
+ * (Trends live data feed + Meta Ads Library + Amazon) — không phải suy diễn.
+ * Phần "customer research" trong mỗi mục là tín hiệu THẬT lấy từ chính
+ * marketplace (nhãn AI-highlight của Amazon, cấu trúc giá/positioning đang bán
+ * được) — không phải review text đọc tay từng cái (đó vẫn là việc chưa làm,
+ * ghi rõ trong nextSteps).
+ */
+const PRIORITY_PRODUCTS: PriorityProduct[] = [
+  {
+    id: "nails",
+    emoji: "💅",
+    name: "Handmade Press-On Nails",
+    subtitle: "Press-On Nails · verified live 31/08/2026",
+    scoreLabel: "Pass Filter 1 & 2 · report gốc 9.4/10 (chưa chấm lại)",
+    quality: "verified",
+    accent: "pink",
+    quickSummary:
+      "Trends hiện 54 (sàn tăng liên tục từ 18), Meta Ads >50K kết quả, Amazon top seller 7K+ bought/tháng — nhu cầu lớn, nhưng phần trung tâm đã có brand lớn (Olive & June) chiếm. Góc đề xuất: handmade, định vị thay đi salon.",
+    trends:
+      'US, 5 năm — sàn tăng liên tục **18 (2021) → 44+ (cuối 2025)**, hiện tại (30/08) = **54**. Có đỉnh bất thường **100** (12/4/2026) do breakout *"olive and june"* / *"nail reformation"* — hiệu ứng 1 campaign của brand Olive & June, không tính là baseline thật.',
+    metaAds:
+      "**>50.000 kết quả** cho từ khoá gốc trên Meta Ads Library. 2 brand nhỏ/vừa còn sống khỏe: **Doonails** (doonails.de + us.doonails.com, chạy liên tục 8 tháng, sản phẩm generic không founder cá nhân → pass Filter 2) và **Theonlynailsofficial** (góc fandom BTS, 5 tuần — rủi ro dùng tên nghệ sĩ không xin phép).",
+    marketplace:
+      '**20.000+ kết quả** trên Amazon. Glamnetic 24pc: **13.4K review / 4.1★ / 7K+ bought-tháng / ~$14**, Amazon tự gắn nhãn AI *"Positively reviewed for ease of application"*. 1 set Handmade 10pc từ seller nhỏ bán **~$16** — cao hơn kit hãng lớn → định vị cao cấp bán được thật, không chỉ là suy đoán.',
+    customerProfile:
+      "Người muốn nail đẹp kiểu salon nhưng không có thời gian/tiền đi salon đều — 1 lần làm gel ở salon Mỹ tốn **~$40-60 + 1-2 tiếng**, press-on chỉ mất **~7 phút** tại nhà.",
+    customerSignal:
+      'Nhãn AI-highlight của chính Amazon xác nhận **"ease of application"** là điều khách thực sự khen — không phải mẫu mã đẹp nhất. Olive & June bán được nhờ *"no glue needed, easy on-off, non-damaging"*. → 2 trục khách thật sự trả tiền: (1) dễ tự dán / không hại móng thật, (2) mẫu thủ công độc bản (định vị cao hơn kit đại trà).',
+    recommendedAngle:
+      "**Handmade/hand-painted, định vị thay thế đi nail salon** — nhấn dễ tự dán + không hại móng thật. KHÔNG đi hướng fandom/IP nghệ sĩ (rủi ro pháp lý) và không cạnh tranh trực diện với brand lớn Olive & June.",
+    nextSteps: [
+      "Báo giá supplier thật cho COGS (hiện chỉ estimated $2-5/kit, chưa sourced)",
+      "TikTok Creative Center — bị chặn hôm nay (không render), cần thử lại",
+      "Google Shopping — bị Google chặn captcha, không cố bypass, cần nguồn khác",
+      "Đọc review text thật (hiện mới có rating/review-count tổng hợp, chưa đọc từng review)",
+    ],
+    sourceLinks: [
+      {
+        label: "Google Trends — press on nails (US, 5yr)",
+        url: "https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=press%20on%20nails&hl=en",
+      },
+      {
+        label: "Meta Ads Library — press on nails (All)",
+        url: "https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=press%20on%20nails&search_type=keyword_unordered",
+      },
+      {
+        label: "Amazon — press on nails (20K+ kết quả)",
+        url: "https://www.amazon.com/s?k=press+on+nails",
+      },
+      {
+        label: "Doonails (Meta Ads, 8 tháng liên tục)",
+        url: "https://www.doonails.com",
+      },
+      {
+        label: "Olive & June — Instant Mani (breakout brand)",
+        url: "https://www.oliveandjune.com/",
+      },
+    ],
+  },
+  {
+    id: "teething",
+    emoji: "🦷",
+    name: "Teething Toys (Chew Toys for Infants)",
+    subtitle:
+      "Child & Baby · verified — báo cáo gốc + Amazon mới bổ sung 31/08",
+    scoreLabel: "7/10 · evergreen nhất trong 4 báo cáo verified",
+    quality: "verified",
+    accent: "sky",
+    quickSummary:
+      "Trends chưa từng dưới 54/100 suốt 5 năm — sàn ổn định nhất trong mọi ngách đã nghiên cứu. Amazon top seller 20K+ bought/tháng, chưa brand nào độc chiếm. Góc đề xuất: sensory/cooling silicone teether.",
+    trends:
+      'US, 5 năm ("teething toys") — sàn **chưa từng dưới 54/100** suốt 5 năm (bắt đầu 66, hiện tại 66), đỉnh **100** vào 29/3/2026. 12 tháng: sàn 54-83 mùa thu/đông, duy trì cao 73-92 tháng 4-6, hạ nhẹ còn 57-76 tháng 7-8. Sàn ổn định nhất trong cả 4 báo cáo verified — kể cả Nails.',
+    metaAds:
+      "**~130 active ads** (nhỏ hơn nhiều so với Nails >50.000 — thị trường ads CHƯA bị 1 brand độc chiếm). 2/3 quảng cáo top thật sự on-product: **Copa Calmer** (thiết bị giảm đau mọc răng chuyên dụng, ad testimonial) và **Lovevery** (đồ chơi phát triển) — cả hai đều brand nhỏ/vừa, không phải mega-retailer.",
+    marketplace:
+      "**8.000+ kết quả** trên Amazon. 'Overall Pick' Montessori Sensory Teether: **4.7★ / 11.9K review / 20K+ bought-tháng** — velocity cao nhất trong 2 sản phẩm đang so sánh. Frida Baby 4-in-1: 4.6★/11.6K review/7K+ bought-tháng, nhãn AI *\"Positively reviewed for teething time\"*. Giá trải $10-16/set, **không có 1 brand thắng tuyệt đối** — 5+ sản phẩm khác nhau đều >4.5★ review lớn → thị trường phân mảnh thật, còn chỗ cho SKU mới.",
+    customerProfile:
+      "Cha mẹ có em bé đang mọc răng (0-18 tháng) — nhu cầu tất yếu theo vòng đời sinh học, không phải gu thẩm mỹ hay trào lưu.",
+    customerSignal:
+      'Nhãn AI-highlight xác nhận **"positively reviewed for teething time"** — đúng công dụng giảm đau là yếu tố thắng review, không phải thiết kế đẹp. Gần như mọi listing đều nhấn **BPA-free / food-grade silicone / freezer-safe** — tiêu chí an toàn cha mẹ tra kỹ trước khi mua đồ cho trẻ sơ sinh, không phải yếu tố phụ.',
+    recommendedAngle:
+      "**Sensory/cooling silicone teether**, nhấn an toàn (BPA-free) + hiệu quả giảm đau thật — báo cáo gốc đã chỉ ra thị trường phân mảnh giữa silicone/gỗ/cooling, chưa brand nào độc chiếm sub-niche này.",
+    nextSteps: [
+      "ĐÃ CHỐT làm sản phẩm chính (31/08) và đang triển khai store Snuglet: theme/product/collection + video preview 15s đã dựng xong",
+      "Cần đặt mẫu vật lý từ Newsun + chốt báo giá ship/MOQ thật để khóa COGS/margin/compliance trước khi mở bán",
+      "MSV/CPC (Google Keyword Planner) và TikTok signal theo đúng góc sensory/cooling cụ thể vẫn cần bổ sung trước paid test",
+    ],
+    sourceLinks: [
+      {
+        label: "Google Trends — teething toys (US, 5yr)",
+        url: "https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=teething%20toys&hl=en",
+      },
+      {
+        label: "Meta Ads Library — teething toys (All)",
+        url: "https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=teething%20toys&search_type=keyword_unordered",
+      },
+      {
+        label: "Amazon — teething toys (8K+ kết quả)",
+        url: "https://www.amazon.com/s?k=teething+toys",
+      },
+      { label: "Copa Calmer", url: "https://copacalmer.com/" },
+      { label: "Lovevery", url: "https://lovevery.com/" },
+    ],
+    competitorReviews: [
+      {
+        id: "copacalmer",
+        storeName: "CopaCalmer™",
+        url: "https://www.copacalmer.com/products/copacalmer-teething-toller",
+        checkedDate: "02/09/2026 — live-check trực tiếp trang + PPSPY + Meta Ads Library + video ad + AliExpress",
+        productNote:
+          "⚠️ KHÔNG cùng loại sản phẩm với Snuglet — CopaCalmer bán **tinh dầu lăn bôi ngoài da** (roll-on essential oil, bôi jawline), Snuglet là **đồ chơi silicone để bé cắn**. Cùng khách hàng mục tiêu (cha mẹ có con mọc răng), khác cơ chế sản phẩm hoàn toàn — học cách bán hàng của họ, không copy sản phẩm.",
+        copyAndOffer:
+          '**Headline cảm xúc, không nói tính năng**: "Better Sleep — yes, for you too 💕" (ngủ ngon cho cả mẹ, không chỉ bé). Có mục "Science of Real Teething Relief" giải thích cơ chế ("targets the root cause — inflamed trigeminal nerve") — ⚠️ claim y khoa khá mạnh cho sản phẩm tinh dầu không kiểm định. Bảng so sánh "Us vs Others" có dòng **"Recommended By Pediatricians"** không kèm nguồn/logo bác sĩ nào — claim uy tín không có bằng chứng. FAQ rất đầy đủ, chủ động dập tắt lo ngại an toàn trước khi khách hỏi — phần này tốt, không rủi ro gì.',
+        visualsAndTheme:
+          'Ảnh hero: chai lăn đặt cạnh dừa tươi/hoa lavender (tông "organic spa"), không có ảnh em bé trong ảnh chính. Phát hiện 1 file ảnh tên `ChatGPT_Image_...png` trong code nguồn — xác nhận có ít nhất 1 graphic là ảnh AI. **Theme xác nhận qua PPSPY**: `Copy of shrine-theme-pro` (theme Shrine PRO thật, khác trường hợp NailHandy trước đó — ở đây xác nhận đúng) + app **GemPages** (page builder chuyên landing page bán 1 sản phẩm). Font Poppins, tông màu sage/lavender/kem.',
+        adsLibraryFindings:
+          '**Verify trực tiếp Meta Ads Library (Page ID 850508544816345)**: đúng **~53 ads**, **0 inactive** (50/50 đang load đều Active), ad cũ nhất chạy từ **13/02/2026** liên tục tới nay (~7 tháng không tắt camp) → tín hiệu ROAS dương thật, đúng nguyên tắc "duy trì ads liên tục = có lãi". Bóc video ad thật (frame-by-frame) phát hiện **chỉ 2 kịch bản script cốt lõi**, lặp lại bằng nhiều "diễn viên" khác nhau (Emily R. bản 21-31s, Amanda L. bản 1:03-1:05s, cùng 1 đoạn thoại) — không sáng tạo script mới mỗi ad, mà thuê nhiều UGC creator đọc gần như y nguyên lời thoại rồi cắt thành nhiều bản dài/ngắn để đủ số lượng creative. ⚠️ Trong video có đoạn "Dr Collins recommended a baby care brand" — cùng kiểu claim bác sĩ không xác minh như trên trang sản phẩm.',
+        sourcingCost:
+          'AliExpress (cùng dạng roll-on, thành phần khác chút): giá xác nhận được **~$2.70** (chưa áp mã), giá gốc niêm yết **$6.36** — mã giảm "$0.99" là giá cá nhân hoá 1 lần (flash-sale/coin), không phải giá chuẩn. Cước ship US **chưa xác minh được** (AliExpress chặn CAPTCHA, không cố bypass) — ước tính $1.5-3/đơn theo tham chiếu hàng nhẹ tương tự. **Landed cost ước tính $4-9/chai** so với giá bán $19.99 → margin thật ~55-75%, thấp hơn con số "78%" PPSPY tự tính (công thức đó không trừ ship) nhưng vẫn là mô hình có lãi thật.',
+        strengths: [
+          "Bán theo bundle 1/2/3 chai + quà tặng mở khoá theo số lượng (không giảm giá trực tiếp, giữ margin)",
+          "FAQ chủ động dập tắt lo ngại an toàn trước khi khách hỏi",
+          "Ads chạy liên tục 7 tháng không tắt — tín hiệu ROAS dương thật, verified qua Ads Library",
+          "Chỉ cần 2 script mạnh + vài bản quay là đủ chạy hàng chục ad biến thể — hiệu quả chi phí sản xuất creative",
+        ],
+        weaknesses: [
+          "Claim y khoa quá đà (dây thần kinh sinh ba) — rủi ro pháp lý/uy tín",
+          '"1143 Reviews" không có app review nào (Loox/Judge.me/Yotpo) xác nhận qua PPSPY — claim không kiểm chứng được',
+          '"Recommended By Pediatricians" + "Dr Collins" trong ad — claim bác sĩ không có nguồn',
+          'Đồng hồ đếm ngược "Anniversary Sale" gần như chắc chắn chạy quanh năm — khẩn cấp giả',
+          "Sản phẩm tinh dầu bôi mặt em bé — nhóm dễ bị phụ huynh/pediatrician nghi ngại nhất trong ngách teething",
+        ],
+        takeaways:
+          '**An toàn là lợi thế thật của Snuglet, không phải marketing**: silicone food-grade bé cắn trực tiếp minh bạch hơn nhiều so với "bôi tinh dầu lên mặt bé" — nói thẳng điều này thay vì né tránh, không cần claim y khoa nào. **Copy đúng**: cấu trúc bundle/quà mở khoá theo số lượng, FAQ chủ động (dựa đúng spec thật đã có trong Data Brief). **Không copy**: claim y khoa không nguồn, "reviews" không app xác thực, đếm ngược giả — Snuglet đã cam kết không bịa review trong data brief, giữ nguyên điều này vì đây là lợi thế uy tín dài hạn so với CopaCalmer.',
+      },
+    ],
+  },
+];
+
+function CompetitorReviewBlock({ review }: { review: CompetitorStoreReview }) {
+  return (
+    <div className="p-3.5 rounded-xl bg-rose-500/5 dark:bg-rose-950/10 border border-rose-500/20 space-y-2.5">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <a
+          href={review.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-bold text-zinc-900 dark:text-zinc-100 hover:underline inline-flex items-center gap-1"
+        >
+          {review.storeName}
+          <ExternalLink className="w-3 h-3 text-zinc-400" />
+        </a>
+        <span className="text-[10px] font-mono text-zinc-400">
+          {review.checkedDate}
+        </span>
+      </div>
+
+      <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {review.productNote}
+        </ReactMarkdown>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+        <div className="p-2.5 rounded-lg bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800 space-y-1">
+          <div className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+            Text / Offer
+          </div>
+          <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {review.copyAndOffer}
+            </ReactMarkdown>
+          </div>
+        </div>
+        <div className="p-2.5 rounded-lg bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800 space-y-1">
+          <div className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+            Hình ảnh / Theme
+          </div>
+          <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {review.visualsAndTheme}
+            </ReactMarkdown>
+          </div>
+        </div>
+        <div className="p-2.5 rounded-lg bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800 space-y-1">
+          <div className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+            Meta Ads Library + Video Ad
+          </div>
+          <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {review.adsLibraryFindings}
+            </ReactMarkdown>
+          </div>
+        </div>
+        <div className="p-2.5 rounded-lg bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800 space-y-1">
+          <div className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+            Nguồn hàng / Giá vốn
+          </div>
+          <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {review.sourcingCost}
+            </ReactMarkdown>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <div className="p-2.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1">
+          <p className="text-[10px] font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-400">
+            ✅ Ưu điểm
+          </p>
+          <ul className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed space-y-1 list-disc pl-4">
+            {review.strengths.map((s) => (
+              <li key={s}>{s}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="p-2.5 rounded-lg bg-amber-500/5 border border-amber-500/20 space-y-1">
+          <p className="text-[10px] font-bold uppercase tracking-wide text-amber-700 dark:text-amber-400">
+            ⚠️ Nhược điểm
+          </p>
+          <ul className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed space-y-1 list-disc pl-4">
+            {review.weaknesses.map((w) => (
+              <li key={w}>{w}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="p-2.5 rounded-lg bg-sky-500/5 border border-sky-500/20">
+        <p className="text-[10px] font-bold uppercase tracking-wide text-sky-700 dark:text-sky-400 mb-1">
+          💡 Snuglet có thể làm tốt hơn ở đâu
+        </p>
+        <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {review.takeaways}
+          </ReactMarkdown>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PriorityProductCard({ product }: { product: PriorityProduct }) {
+  const [expanded, setExpanded] = useState(false);
+  const q = dataQualityBadge(product.quality);
+  const accentCls =
+    product.accent === "pink"
+      ? {
+          border: "border-pink-500/30",
+          bg: "bg-pink-500/5 dark:bg-pink-950/10",
+          iconBg: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
+        }
+      : {
+          border: "border-sky-500/30",
+          bg: "bg-sky-500/5 dark:bg-sky-950/10",
+          iconBg: "bg-sky-500/10 text-sky-600 dark:text-sky-400",
+        };
+
+  return (
+    <Card
+      className={cn("p-4 sm:p-5 space-y-4", accentCls.border, accentCls.bg)}
+    >
+      <div className="flex items-start justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-2.5">
+          <span
+            className={cn(
+              "w-9 h-9 rounded-xl flex items-center justify-center text-lg shrink-0",
+              accentCls.iconBg,
+            )}
+          >
+            {product.emoji}
+          </span>
+          <div>
+            <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+              {product.name}
+            </h4>
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+              {product.subtitle}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <Badge
+            variant="outline"
+            className={cn("text-[10px] font-bold whitespace-nowrap", q.cls)}
+          >
+            {q.label}
+          </Badge>
+          <Badge
+            variant="outline"
+            className="text-[10px] font-semibold whitespace-nowrap border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400"
+          >
+            {product.scoreLabel}
+          </Badge>
+        </div>
+      </div>
+
+      {/* QUICK SUMMARY — luôn hiện, không cần bấm expand mới thấy nội dung chính */}
+      <p className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        {product.quickSummary}
+      </p>
+
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => setExpanded((v) => !v)}
+        className="h-8 px-3 text-[11px] font-semibold cursor-pointer"
+      >
+        {expanded ? (
+          <>
+            <ChevronDown className="w-3.5 h-3.5 mr-1.5" /> Thu gọn
+          </>
+        ) : (
+          <>
+            <ChevronRight className="w-3.5 h-3.5 mr-1.5" /> Xem chi tiết đầy đủ
+            (data + nghiên cứu khách hàng)
+          </>
+        )}
+      </Button>
+
+      {expanded && (
+        <div className="space-y-4 animate-in fade-in duration-150">
+          {/* 3 nguồn data sống: Trends / Meta Ads / Marketplace */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+            <div className="p-3 rounded-lg bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800 space-y-1">
+              <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+                <TrendingUp className="w-3.5 h-3.5" /> Google Trends
+              </div>
+              <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {product.trends}
+                </ReactMarkdown>
+              </div>
+            </div>
+            <div className="p-3 rounded-lg bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800 space-y-1">
+              <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+                <Search className="w-3.5 h-3.5" /> Meta Ads Library
+              </div>
+              <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {product.metaAds}
+                </ReactMarkdown>
+              </div>
+            </div>
+            <div className="p-3 rounded-lg bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800 space-y-1">
+              <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+                <ShoppingBag className="w-3.5 h-3.5" /> Amazon (Marketplace)
+              </div>
+              <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {product.marketplace}
+                </ReactMarkdown>
+              </div>
+            </div>
+          </div>
+
+          {/* Nghiên cứu khách hàng — trọng tâm yêu cầu 31/08 */}
+          <div className="p-3.5 rounded-xl bg-emerald-600/10 border border-emerald-500/25 space-y-2">
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">
+              <Users className="w-3.5 h-3.5" /> Nghiên cứu khách hàng
+            </div>
+            <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0 [&_p]:mb-1.5 [&_p:last-child]:mb-0">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {product.customerProfile}
+              </ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {product.customerSignal}
+              </ReactMarkdown>
+            </div>
+            <div className="pt-1 border-t border-emerald-500/20">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-400 mb-1">
+                Góc sản phẩm đề xuất
+              </p>
+              <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {product.recommendedAngle}
+                </ReactMarkdown>
+              </div>
+            </div>
+          </div>
+
+          {/* Việc còn thiếu — data honesty, không giấu gap */}
+          <div className="p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
+            <p className="text-[10px] font-bold uppercase tracking-wide text-amber-700 dark:text-amber-400 mb-1.5">
+              ⚠️ Việc còn thiếu trước khi chốt
+            </p>
+            <ul className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed space-y-1 list-disc pl-4">
+              {product.nextSteps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Đánh giá store đối thủ — live-check thật, đặt dưới cùng phần sản phẩm tiềm năng */}
+          {product.competitorReviews && product.competitorReviews.length > 0 && (
+            <div className="space-y-3 pt-1">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-rose-600 dark:text-rose-400">
+                🔍 Đánh giá store đối thủ (live-check thật)
+              </p>
+              {product.competitorReviews.map((c) => (
+                <CompetitorReviewBlock key={c.id} review={c} />
+              ))}
+            </div>
+          )}
+
+          {/* Link backup — mở live lại được để verify, không phải trích dẫn suông */}
+          <div className="pt-1">
+            <p className="text-[10px] font-bold uppercase tracking-wide text-zinc-500 mb-1.5">
+              🔗 Nguồn backup (mở live lại khi cần)
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {product.sourceLinks.map((l) => (
+                <a
+                  key={l.url}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+                >
+                  <ExternalLink className="w-2.5 h-2.5" /> {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </Card>
+  );
+}
+
+function PriorityProductsSection() {
+  return (
+    <Card className="p-5 border-zinc-200 dark:border-zinc-800 space-y-4">
+      <div>
+        <h2 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+          🎯 2 Sản Phẩm Tiềm Năng Đang Ưu Tiên
+        </h2>
+        <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+          Cả 2 đều đã pass Filter 1 &amp; 2 và có data sourced thật (Trends live
+          + Meta Ads Library + Amazon) — đặt lên đầu trang vì đây là nơi nên tập
+          trung nghiên cứu tiếp, thay vì dàn trải cả 6 ngách. Thứ tự đã dùng:
+          tín hiệu thị trường (product-first) trước, nghiên cứu khách hàng sau —
+          xem phần &quot;Nghiên cứu khách hàng&quot; trong mỗi thẻ bên dưới.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        {PRIORITY_PRODUCTS.map((p) => (
+          <PriorityProductCard key={p.id} product={p} />
+        ))}
+      </div>
+    </Card>
+  );
+}
+
+interface RejectedCandidate {
+  id: string;
+  emoji: string;
+  name: string;
+  niche: string;
+  dateChecked: string;
+  sourceVideo: string;
+  whatItIs: string;
+  whyRejected: string;
+  links: { label: string; url: string }[];
+}
+
+/**
+ * Sản phẩm user tự tìm thấy (video Facebook, không phải từ 6 ngách seed) rồi nhờ research —
+ * cả 2 đều bị loại sau khi check Trends/Meta Ads/Amazon thật 31/08/2026. Ghi lại đúng lý do
+ * bằng số liệu sourced để khỏi tốn công research lại nếu sau này gặp sản phẩm tương tự.
+ */
+const REJECTED_CANDIDATES: RejectedCandidate[] = [
+  {
+    id: "mane-tote",
+    emoji: "🦁",
+    name: "Lion-Mane Cat Carrier Tote Bag (ManeTote)",
+    niche: "Pet / phụ kiện mèo",
+    dateChecked: "31/08/2026",
+    sourceVideo: "https://www.facebook.com/watch/?ref=saved&v=1092090723389561",
+    whatItIs:
+      'Túi tote vải canvas đeo mèo/chó nhỏ, có lỗ ló đầu kèm 1 vòng lông giả kiểu "bờm sư tử" quanh lỗ — hiệu ứng "mèo hoá sư tử tí hon", rất viral-friendly trên short-form video.',
+    whyRejected:
+      'Google Trends thật ("cat carrier bag", US, 5 năm) phẳng gần 0 (0-11) suốt 4 năm → tăng vọt 22/3/2026 (22) → đỉnh 12/4/2026 (**100**) → **đã rơi thẳng về gần 0 (0-11) từ tháng 7-8/2026** — trọn 1 chu kỳ trend trong ~4 tháng, đúng Fail Filter 1 (SKILL.md Section 0). Amazon chỉ 68 kết quả cho đúng mẫu lion-design, top listing mới 6 review. Đã bị nhiều store dropship nhỏ nhái y hệt (Aberfields, Paws Love, CatCurio, Cat Lovers Boutique). Video ManeTote đăng "3-5 ngày trước" (684K-6M view) là dư âm xã hội của 1 làn sóng nhu cầu tìm kiếm thật đã nguội từ ~2 tháng trước — vào lúc này là đến sau khi tiệc đã tàn.',
+    links: [
+      {
+        label: "Google Trends — cat carrier bag (US, 5yr)",
+        url: "https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=cat%20carrier%20bag&hl=en",
+      },
+      {
+        label: "Amazon — Lion-Shaped Cat Carrier Bag",
+        url: "https://www.amazon.com/Carrier-Shoulder-Portable-Carrying-Supplies/dp/B0CD2F43TM",
+      },
+      {
+        label: "Walmart — Lion Shaped Cat Carrier Bag",
+        url: "https://www.walmart.com/ip/Lion-Shaped-Cat-Carrier-Bag-Cat-Carrier-Tote-Bag-with-Lion-Face-Head-Hole-Cute-Canvas-Pet-Shoulder-Bag-for-Small-Cats-and-Dogs/20909905543",
+      },
+      {
+        label: "Aberfields — Cat Lion Bag",
+        url: "https://aberfields.com/products/lionbag",
+      },
+      {
+        label: "Paws Love — Lion Pet Bag",
+        url: "https://pawslovestore.com/products/lion-cat-bag",
+      },
+      {
+        label: "CatCurio — Lion Cat Carrier Bag",
+        url: "https://catcurio.com/products/lion-cat-carrier-bag",
+      },
+      {
+        label: "Video gốc user gửi (ManeTote)",
+        url: "https://www.facebook.com/watch/?ref=saved&v=1092090723389561",
+      },
+    ],
+  },
+  {
+    id: "littlesnugco",
+    emoji: "🧥",
+    name: "Babywearing Pouch/Kangaroo Hoodie (Littlesnugco)",
+    niche: "Baby / Parenting",
+    dateChecked: "31/08/2026",
+    sourceVideo: "https://www.facebook.com/watch/?ref=saved&v=1481130147217562",
+    whatItIs:
+      "Hoodie fleece rộng, có túi zip-in phía trước để địu bé (đến ~12 tháng/10kg) áp ngực, tháo túi ra mặc như hoodie thường; mặc được cả lúc mang bầu.",
+    whyRejected:
+      'Nhu cầu nền ("babywearing") là thật, không phải bịa — Walmart đã bán bản mainstream (Infantino), Boba (hãng lớn có thương hiệu) cũng có bản riêng, và littlesnug.store gốc có 4.9★/217+ review, hiện sold out. NHƯNG check Meta Ads Library ngay 31/08/2026 phát hiện 1 cụm brand dropship nhỏ đang cùng lúc tung y hệt mẫu này chỉ trong 2-6 ngày gần đây (**MumSnug CA** 29-30/8, **Fllora** bắt đầu 30/8, **Crocsport** 29-30/8) — đúng tín hiệu "cả đám dropship đổ vào cùng lúc" mà Lion Cat Bag đã có hồi tháng 2-3/2026, NGAY TRƯỚC KHI Trends của nó bắt đầu tăng vọt. Vào đúng lúc này = trở thành bản sao thứ 5+ trong cùng 1 tuần.',
+    links: [
+      {
+        label: "Google Trends — babywearing hoodie (US, 5yr)",
+        url: "https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=babywearing%20hoodie&hl=en",
+      },
+      {
+        label: "Meta Ads Library — babywearing hoodie (All)",
+        url: "https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=babywearing%20hoodie&search_type=keyword_unordered",
+      },
+      {
+        label: "littlesnug.store — LittleSnug Fleece (gốc)",
+        url: "https://littlesnug.store/products/littlesnug-fleece",
+      },
+      {
+        label: "Walmart — Infantino Cuddle Up Hoodie Carrier",
+        url: "https://www.walmart.com/ip/Infantino-Cuddle-Up-Ergonomic-Hoodie-Carrier/178428164",
+      },
+      {
+        label: "MumSnug CA — CozyCarry (copycat mới)",
+        url: "https://www.mumsnug.shop/products/cozycarry-baby-carrier-hoodie",
+      },
+      {
+        label: "Video gốc user gửi (Littlesnugco)",
+        url: "https://www.facebook.com/watch/?ref=saved&v=1481130147217562",
+      },
+    ],
+  },
+];
+
+function RejectedCandidateCard({ item }: { item: RejectedCandidate }) {
+  return (
+    <div className="p-3.5 rounded-lg bg-white/60 dark:bg-zinc-900/40 border border-zinc-200/70 dark:border-zinc-800 space-y-2">
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="text-base">{item.emoji}</span>
+        <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+          {item.name}
+        </span>
+        <Badge
+          variant="outline"
+          className="text-[10px] font-semibold border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400"
+        >
+          {item.niche}
+        </Badge>
+        <Badge
+          variant="outline"
+          className="text-[10px] font-bold border-rose-500/30 text-rose-600 bg-rose-500/10"
+        >
+          ❌ Không đạt · {item.dateChecked}
+        </Badge>
+      </div>
+      <p className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        <strong className="text-zinc-700 dark:text-zinc-300">Là gì: </strong>
+        {item.whatItIs}
+      </p>
+      <div className="prose dark:prose-invert prose-sm max-w-none text-[11px] leading-relaxed text-zinc-700 dark:text-zinc-300 [&_p]:m-0">
+        <strong className="text-zinc-700 dark:text-zinc-300 not-prose text-[11px]">
+          Tại sao không đạt:{" "}
+        </strong>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {item.whyRejected}
+        </ReactMarkdown>
+      </div>
+      <div className="flex flex-wrap gap-1.5 pt-1">
+        {item.links.map((l) => (
+          <a
+            key={l.url}
+            href={l.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+          >
+            <ExternalLink className="w-2.5 h-2.5" /> {l.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RejectedCandidatesSection() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <Card className="p-5 border-zinc-200 dark:border-zinc-800 space-y-3">
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <div>
+          <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+            ❌ Sản phẩm đã research nhưng KHÔNG đạt
+          </h3>
+          <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+            Ghi lại để khỏi tốn công research lại — cả{" "}
+            {REJECTED_CANDIDATES.length} case đến từ video user tự tìm thấy trên
+            Facebook, không phải từ 6 ngách seed ban đầu.
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShow((v) => !v)}
+          className="h-8 px-3 text-[11px] font-semibold cursor-pointer shrink-0"
+        >
+          {show ? (
+            <>
+              <ChevronDown className="w-3.5 h-3.5 mr-1.5" /> Thu gọn
+            </>
+          ) : (
+            <>
+              <ChevronRight className="w-3.5 h-3.5 mr-1.5" /> Xem{" "}
+              {REJECTED_CANDIDATES.length} case đã loại
+            </>
+          )}
+        </Button>
+      </div>
+
+      {show && (
+        <div className="space-y-2.5 animate-in fade-in duration-150">
+          {REJECTED_CANDIDATES.map((item) => (
+            <RejectedCandidateCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
+    </Card>
+  );
+}
 
 /**
  * Nguồn gốc: `dropship-web/.agents/skills/market-research-hunter/SKILL.md`
@@ -719,9 +1444,11 @@ function NicheComparisonSection() {
           Snapshot:{" "}
         </span>
         <span className="text-zinc-700 dark:text-zinc-300">
-          Hiện nên ưu tiên xem lại 2 hướng đáng test nhất:{" "}
+          Cập nhật 31/08: 2 ứng viên đang ưu tiên nhất hiện tại là{" "}
           <strong>Teething Toys</strong> và{" "}
-          <strong>Seat Covers &amp; Organizers</strong>.
+          <strong>Handmade Press-On Nails</strong> — cả 2 đều đã có data sourced
+          thật + nghiên cứu khách hàng, xem chi tiết ở phần &quot;🎯 2 Sản Phẩm
+          Tiềm Năng Đang Ưu Tiên&quot; đầu trang.
         </span>
       </div>
 
@@ -789,25 +1516,28 @@ function NicheComparisonSection() {
             💡 Khuyến nghị
           </p>
           <p className="text-[11px] text-zinc-700 dark:text-zinc-300 leading-relaxed">
-            Nếu chấm đúng theo tiêu chí cũ (evergreen, nhẹ, không pin/lỏng, chưa
-            bị brand độc chiếm) trên riêng 4 báo cáo{" "}
-            <strong>đã verified</strong> (bỏ Home & Bedroom và Press-On Nails vì
-            data chưa kiểm chứng), <strong>Teething Toys</strong> khớp nhiều
-            tiêu chí nhất nhưng chưa từng được cân nhắc, còn{" "}
-            <strong>Seat Covers & Organizers</strong> có bằng chứng "đối thủ
-            đang có lãi" mạnh nhất (7.000 advertiser thật). Cả hai đều đáng cân
-            nhắc hơn 2 ngách đang tốn nhiều công sức nhất gần đây (Home &
-            Bedroom, Nails) — vì 2 ngách đó có data yếu hơn, chưa phải vì bản
-            thân sản phẩm tệ.
+            Cập nhật 31/08: gap "Nails có data yếu nhất" đã được đóng lại — đã
+            search tay lại Trends (live data feed 5 năm) + Meta Ads Library +
+            Amazon cho riêng "Handmade Press-On Nails", giống hệt chuẩn 3 báo
+            cáo verified kia (xem chi tiết & nghiên cứu khách hàng ở phần "🎯 2
+            Sản Phẩm Tiềm Năng Đang Ưu Tiên" đầu trang). Kết quả:{" "}
+            <strong>Teething Toys</strong> vẫn có sàn Trends ổn định nhất trong
+            tất cả các ngách (chưa từng dưới 54/100 suốt 5 năm), còn{" "}
+            <strong>Press-On Nails</strong> có nhu cầu thị trường lớn hơn nhiều
+            (Meta Ads &gt;50.000 kết quả, Amazon 20.000+ kết quả) nhưng đã bị 1
+            brand lớn (Olive & June) chiếm phần trung tâm — vẫn còn chỗ ở góc
+            handmade/hand-painted. <strong>Seat Covers & Organizers</strong>{" "}
+            (8/10, Meta Ads ~7.000 advertiser thật) vẫn là ứng viên tốt nếu 2
+            sản phẩm nhẹ ở trên không chốt được, nhưng hiện không còn là ưu tiên
+            hàng đầu như trước.
           </p>
           <p className="text-[11px] text-zinc-700 dark:text-zinc-300 leading-relaxed">
-            Nếu vẫn muốn đi tiếp Nails (đã đầu tư nhiều công sức benchmark 3
-            store) — việc cần làm trước khi chốt là lặp lại đúng quy trình 4
-            nguồn live (Trends/Shopping/TikTok/Meta Ads, có trích dẫn ngày giờ
-            cụ thể) cho riêng "Handmade Press-On Nails", giống hệt cách đã làm
-            cho Car Accessories/Sustainability/Child & Baby — hiện tại ngách này
-            là ngách duy nhất đang tốn công sức nhiều nhất mà data nhu cầu thị
-            trường lại yếu nhất.
+            Việc còn thiếu cho cả 2 ứng viên đang ưu tiên: báo giá supplier thật
+            (COGS vẫn estimated), TikTok Creative Center (bị chặn hôm 31/08, cần
+            thử lại) và Google Shopping (Google chặn captcha, không cố bypass) —
+            2 nguồn sau chưa lấy được cho Nails; Teething Toys thì MSV/CPC từ
+            Google Keyword Planner vẫn chưa có. Đây là việc cần làm tiếp theo,
+            không phải lý do để quay lại nghiên cứu dàn trải cả 6 ngách.
           </p>
         </div>
       )}
@@ -1813,6 +2543,13 @@ export function MarketResearchTabRoute() {
       {/* TIÊU CHÍ PHÙ HỢP — lên đầu trang, đọc trước khi xem bảng so sánh bên dưới */}
       <CriteriaSection />
 
+      {/* SẢN PHẨM TIỀM NĂNG — ưu tiên đặt lên đầu 31/08 (Nails + Teething Toys),
+          gồm cả nghiên cứu khách hàng cho từng sản phẩm, theo đúng yêu cầu. */}
+      <PriorityProductsSection />
+
+      {/* SẢN PHẨM ĐÃ LOẠI — 2 case user tự tìm (video FB) + research 31/08, thu gọn mặc định */}
+      <RejectedCandidatesSection />
+
       {/* Top Header Toolbar — gộp toggle Nhật Ký Hàng Ngày vào chung đây (trước đứng riêng,
           tách rời khỏi tiêu đề "Nhật Ký Nghiên Cứu Thị Trường" ở trên nó) */}
       <div className="space-y-3">
@@ -1935,21 +2672,37 @@ export function MarketResearchTabRoute() {
                     — chính sách Pixel/Ads thay đổi (vd Andromeda/ASC).
                   </p>
                   <p>
-                    • <strong>TikTok for Business Newsroom</strong>:{" "}
+                    • <strong>TikTok for Business Help Center</strong>{" "}
+                    <span className="text-amber-600 dark:text-amber-400 font-semibold">
+                      (đã sửa 31/08)
+                    </span>
+                    :{" "}
                     <a
-                      href="https://newsroom.tiktok.com/"
+                      href="https://ads.tiktok.com/business/en/blog"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-600 dark:text-emerald-400 underline"
                     >
-                      newsroom.tiktok.com
+                      ads.tiktok.com/business
                     </a>{" "}
-                    — chính sách creator/ads.
+                    — chính sách creator/ads. Link cũ{" "}
+                    <span className="font-mono text-[10px]">
+                      newsroom.tiktok.com
+                    </span>{" "}
+                    kiểm tra tay 31/08 thì toàn tin PR nghệ sĩ/creator, KHÔNG có
+                    tin chính sách ads/business — chọn sai nguồn, đã đổi.
                   </p>
                   <p>
                     • <strong>Fulfillment</strong>: trang tin YunExpress/CJ
                     Dropshipping — chỉ xem khi chuẩn bị chọn/đổi 3PL, không phải
                     nguồn đọc định kỳ.
+                  </p>
+                  <p className="pt-1 text-zinc-500 dark:text-zinc-400">
+                    Kiểm tra tay cả 3 nguồn chính sách trên 31/08:{" "}
+                    <strong>không có gì mới/khẩn</strong> ở cả 3 (Shopify mới
+                    nhất 24/08, Meta Business News mới nhất từ tháng 6). Phần
+                    lớn ngày sẽ không có tin mới — đừng biến việc đọc 3 nguồn
+                    này thành thói quen hàng ngày, 1×/tuần là đủ như đã ghi.
                   </p>
                 </div>
               </div>

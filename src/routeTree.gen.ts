@@ -15,6 +15,7 @@ import { Route as DropshipIndexRouteImport } from './routes/dropship/index'
 import { Route as DropshipDashboardRouteImport } from './routes/dropship/dashboard'
 import { Route as DropshipDocRouteImport } from './routes/dropship/doc'
 import { Route as DropshipProgressRouteImport } from './routes/dropship/progress'
+import { Route as DropshipToolsRouteImport } from './routes/dropship/tools'
 import { Route as DropshipDocIndexRouteImport } from './routes/dropship/doc/index'
 import { Route as DropshipDocAiAgentRouteImport } from './routes/dropship/doc/ai-agent'
 import { Route as DropshipDocLabRouteImport } from './routes/dropship/doc/lab'
@@ -24,6 +25,10 @@ import { Route as DropshipProgress0TimelineRouteImport } from './routes/dropship
 import { Route as DropshipProgress1MarketResearchRouteImport } from './routes/dropship/progress/1-market-research'
 import { Route as DropshipProgress2StoreRouteImport } from './routes/dropship/progress/2-store'
 import { Route as DropshipProgress3VideoCreativeRouteImport } from './routes/dropship/progress/3-video-creative'
+import { Route as DropshipToolsIndexRouteImport } from './routes/dropship/tools/index'
+import { Route as DropshipTools1ImageRouteImport } from './routes/dropship/tools/1-image'
+import { Route as DropshipTools2VideoRouteImport } from './routes/dropship/tools/2-video'
+import { Route as DropshipTools3StoreRouteImport } from './routes/dropship/tools/3-store'
 import { Route as DropshipDocQuyTrinh2026IndexRouteImport } from './routes/dropship/doc/quy-trinh-2026/index'
 import { Route as DropshipDocQuyTrinh2026StepSlugRouteImport } from './routes/dropship/doc/quy-trinh-2026/$stepSlug'
 import { Route as DropshipDocReadingIndexRouteImport } from './routes/dropship/doc/reading/index'
@@ -57,6 +62,11 @@ const DropshipDocRoute = DropshipDocRouteImport.update({
 const DropshipProgressRoute = DropshipProgressRouteImport.update({
   id: '/progress',
   path: '/progress',
+  getParentRoute: () => DropshipRoute,
+} as any)
+const DropshipToolsRoute = DropshipToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
   getParentRoute: () => DropshipRoute,
 } as any)
 const DropshipDocIndexRoute = DropshipDocIndexRouteImport.update({
@@ -107,6 +117,26 @@ const DropshipProgress3VideoCreativeRoute =
     path: '/3-video-creative',
     getParentRoute: () => DropshipProgressRoute,
   } as any)
+const DropshipToolsIndexRoute = DropshipToolsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DropshipToolsRoute,
+} as any)
+const DropshipTools1ImageRoute = DropshipTools1ImageRouteImport.update({
+  id: '/1-image',
+  path: '/1-image',
+  getParentRoute: () => DropshipToolsRoute,
+} as any)
+const DropshipTools2VideoRoute = DropshipTools2VideoRouteImport.update({
+  id: '/2-video',
+  path: '/2-video',
+  getParentRoute: () => DropshipToolsRoute,
+} as any)
+const DropshipTools3StoreRoute = DropshipTools3StoreRouteImport.update({
+  id: '/3-store',
+  path: '/3-store',
+  getParentRoute: () => DropshipToolsRoute,
+} as any)
 const DropshipDocQuyTrinh2026IndexRoute =
   DropshipDocQuyTrinh2026IndexRouteImport.update({
     id: '/quy-trinh-2026/',
@@ -136,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/dropship/dashboard': typeof DropshipDashboardRoute
   '/dropship/doc': typeof DropshipDocRouteWithChildren
   '/dropship/progress': typeof DropshipProgressRouteWithChildren
+  '/dropship/tools': typeof DropshipToolsRouteWithChildren
   '/dropship/': typeof DropshipIndexRoute
   '/dropship/doc/ai-agent': typeof DropshipDocAiAgentRoute
   '/dropship/doc/lab': typeof DropshipDocLabRoute
@@ -144,8 +175,12 @@ export interface FileRoutesByFullPath {
   '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
   '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
   '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
+  '/dropship/tools/1-image': typeof DropshipTools1ImageRoute
+  '/dropship/tools/2-video': typeof DropshipTools2VideoRoute
+  '/dropship/tools/3-store': typeof DropshipTools3StoreRoute
   '/dropship/doc/': typeof DropshipDocIndexRoute
   '/dropship/progress/': typeof DropshipProgressIndexRoute
+  '/dropship/tools/': typeof DropshipToolsIndexRoute
   '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
   '/dropship/doc/reading/$slug': typeof DropshipDocReadingSlugRoute
   '/dropship/doc/quy-trinh-2026/': typeof DropshipDocQuyTrinh2026IndexRoute
@@ -162,8 +197,12 @@ export interface FileRoutesByTo {
   '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
   '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
   '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
+  '/dropship/tools/1-image': typeof DropshipTools1ImageRoute
+  '/dropship/tools/2-video': typeof DropshipTools2VideoRoute
+  '/dropship/tools/3-store': typeof DropshipTools3StoreRoute
   '/dropship/doc': typeof DropshipDocIndexRoute
   '/dropship/progress': typeof DropshipProgressIndexRoute
+  '/dropship/tools': typeof DropshipToolsIndexRoute
   '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
   '/dropship/doc/reading/$slug': typeof DropshipDocReadingSlugRoute
   '/dropship/doc/quy-trinh-2026': typeof DropshipDocQuyTrinh2026IndexRoute
@@ -176,6 +215,7 @@ export interface FileRoutesById {
   '/dropship/dashboard': typeof DropshipDashboardRoute
   '/dropship/doc': typeof DropshipDocRouteWithChildren
   '/dropship/progress': typeof DropshipProgressRouteWithChildren
+  '/dropship/tools': typeof DropshipToolsRouteWithChildren
   '/dropship/': typeof DropshipIndexRoute
   '/dropship/doc/ai-agent': typeof DropshipDocAiAgentRoute
   '/dropship/doc/lab': typeof DropshipDocLabRoute
@@ -184,8 +224,12 @@ export interface FileRoutesById {
   '/dropship/progress/1-market-research': typeof DropshipProgress1MarketResearchRoute
   '/dropship/progress/2-store': typeof DropshipProgress2StoreRoute
   '/dropship/progress/3-video-creative': typeof DropshipProgress3VideoCreativeRoute
+  '/dropship/tools/1-image': typeof DropshipTools1ImageRoute
+  '/dropship/tools/2-video': typeof DropshipTools2VideoRoute
+  '/dropship/tools/3-store': typeof DropshipTools3StoreRoute
   '/dropship/doc/': typeof DropshipDocIndexRoute
   '/dropship/progress/': typeof DropshipProgressIndexRoute
+  '/dropship/tools/': typeof DropshipToolsIndexRoute
   '/dropship/doc/quy-trinh-2026/$stepSlug': typeof DropshipDocQuyTrinh2026StepSlugRoute
   '/dropship/doc/reading/$slug': typeof DropshipDocReadingSlugRoute
   '/dropship/doc/quy-trinh-2026/': typeof DropshipDocQuyTrinh2026IndexRoute
@@ -199,6 +243,7 @@ export interface FileRouteTypes {
     | '/dropship/dashboard'
     | '/dropship/doc'
     | '/dropship/progress'
+    | '/dropship/tools'
     | '/dropship/'
     | '/dropship/doc/ai-agent'
     | '/dropship/doc/lab'
@@ -207,8 +252,12 @@ export interface FileRouteTypes {
     | '/dropship/progress/1-market-research'
     | '/dropship/progress/2-store'
     | '/dropship/progress/3-video-creative'
+    | '/dropship/tools/1-image'
+    | '/dropship/tools/2-video'
+    | '/dropship/tools/3-store'
     | '/dropship/doc/'
     | '/dropship/progress/'
+    | '/dropship/tools/'
     | '/dropship/doc/quy-trinh-2026/$stepSlug'
     | '/dropship/doc/reading/$slug'
     | '/dropship/doc/quy-trinh-2026/'
@@ -225,8 +274,12 @@ export interface FileRouteTypes {
     | '/dropship/progress/1-market-research'
     | '/dropship/progress/2-store'
     | '/dropship/progress/3-video-creative'
+    | '/dropship/tools/1-image'
+    | '/dropship/tools/2-video'
+    | '/dropship/tools/3-store'
     | '/dropship/doc'
     | '/dropship/progress'
+    | '/dropship/tools'
     | '/dropship/doc/quy-trinh-2026/$stepSlug'
     | '/dropship/doc/reading/$slug'
     | '/dropship/doc/quy-trinh-2026'
@@ -238,6 +291,7 @@ export interface FileRouteTypes {
     | '/dropship/dashboard'
     | '/dropship/doc'
     | '/dropship/progress'
+    | '/dropship/tools'
     | '/dropship/'
     | '/dropship/doc/ai-agent'
     | '/dropship/doc/lab'
@@ -246,8 +300,12 @@ export interface FileRouteTypes {
     | '/dropship/progress/1-market-research'
     | '/dropship/progress/2-store'
     | '/dropship/progress/3-video-creative'
+    | '/dropship/tools/1-image'
+    | '/dropship/tools/2-video'
+    | '/dropship/tools/3-store'
     | '/dropship/doc/'
     | '/dropship/progress/'
+    | '/dropship/tools/'
     | '/dropship/doc/quy-trinh-2026/$stepSlug'
     | '/dropship/doc/reading/$slug'
     | '/dropship/doc/quy-trinh-2026/'
@@ -301,6 +359,13 @@ declare module '@tanstack/react-router' {
       path: '/progress'
       fullPath: '/dropship/progress'
       preLoaderRoute: typeof DropshipProgressRouteImport
+      parentRoute: typeof DropshipRoute
+    }
+    '/dropship/tools': {
+      id: '/dropship/tools'
+      path: '/tools'
+      fullPath: '/dropship/tools'
+      preLoaderRoute: typeof DropshipToolsRouteImport
       parentRoute: typeof DropshipRoute
     }
     '/dropship/doc/': {
@@ -365,6 +430,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/dropship/progress/3-video-creative'
       preLoaderRoute: typeof DropshipProgress3VideoCreativeRouteImport
       parentRoute: typeof DropshipProgressRoute
+    }
+    '/dropship/tools/': {
+      id: '/dropship/tools/'
+      path: '/'
+      fullPath: '/dropship/tools/'
+      preLoaderRoute: typeof DropshipToolsIndexRouteImport
+      parentRoute: typeof DropshipToolsRoute
+    }
+    '/dropship/tools/1-image': {
+      id: '/dropship/tools/1-image'
+      path: '/1-image'
+      fullPath: '/dropship/tools/1-image'
+      preLoaderRoute: typeof DropshipTools1ImageRouteImport
+      parentRoute: typeof DropshipToolsRoute
+    }
+    '/dropship/tools/2-video': {
+      id: '/dropship/tools/2-video'
+      path: '/2-video'
+      fullPath: '/dropship/tools/2-video'
+      preLoaderRoute: typeof DropshipTools2VideoRouteImport
+      parentRoute: typeof DropshipToolsRoute
+    }
+    '/dropship/tools/3-store': {
+      id: '/dropship/tools/3-store'
+      path: '/3-store'
+      fullPath: '/dropship/tools/3-store'
+      preLoaderRoute: typeof DropshipTools3StoreRouteImport
+      parentRoute: typeof DropshipToolsRoute
     }
     '/dropship/doc/quy-trinh-2026/': {
       id: '/dropship/doc/quy-trinh-2026/'
@@ -442,10 +535,29 @@ const DropshipProgressRouteChildren: DropshipProgressRouteChildren = {
 const DropshipProgressRouteWithChildren =
   DropshipProgressRoute._addFileChildren(DropshipProgressRouteChildren)
 
+interface DropshipToolsRouteChildren {
+  DropshipTools1ImageRoute: typeof DropshipTools1ImageRoute
+  DropshipTools2VideoRoute: typeof DropshipTools2VideoRoute
+  DropshipTools3StoreRoute: typeof DropshipTools3StoreRoute
+  DropshipToolsIndexRoute: typeof DropshipToolsIndexRoute
+}
+
+const DropshipToolsRouteChildren: DropshipToolsRouteChildren = {
+  DropshipTools1ImageRoute: DropshipTools1ImageRoute,
+  DropshipTools2VideoRoute: DropshipTools2VideoRoute,
+  DropshipTools3StoreRoute: DropshipTools3StoreRoute,
+  DropshipToolsIndexRoute: DropshipToolsIndexRoute,
+}
+
+const DropshipToolsRouteWithChildren = DropshipToolsRoute._addFileChildren(
+  DropshipToolsRouteChildren,
+)
+
 interface DropshipRouteChildren {
   DropshipDashboardRoute: typeof DropshipDashboardRoute
   DropshipDocRoute: typeof DropshipDocRouteWithChildren
   DropshipProgressRoute: typeof DropshipProgressRouteWithChildren
+  DropshipToolsRoute: typeof DropshipToolsRouteWithChildren
   DropshipIndexRoute: typeof DropshipIndexRoute
 }
 
@@ -453,6 +565,7 @@ const DropshipRouteChildren: DropshipRouteChildren = {
   DropshipDashboardRoute: DropshipDashboardRoute,
   DropshipDocRoute: DropshipDocRouteWithChildren,
   DropshipProgressRoute: DropshipProgressRouteWithChildren,
+  DropshipToolsRoute: DropshipToolsRouteWithChildren,
   DropshipIndexRoute: DropshipIndexRoute,
 }
 
